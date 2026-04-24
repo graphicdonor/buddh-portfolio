@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Buddhpriya Gautam</title>
+  <meta name="description" content="Case studies and selected work by Buddhpriya Gautam — Senior Product Designer specialising in SaaS, AI-first products, and design systems.">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7B6CF6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #07070F;
+      --bg2:       #0D0D1C;
+      --bg3:       #131326;
+      --border:    rgba(255,255,255,0.07);
+      --border-hi: rgba(123,108,246,0.3);
+      --accent:    #7B6CF6;
+      --accent-lo: rgba(123,108,246,0.12);
+      --rose:      #F06292;
+      --green:     #4ADE80;
+      --amber:     #FBB024;
+      --blue:      #60A5FA;
+      --e60:       #10B981;
+      --text:      #EEEEF8;
+      --text2:     #8888AA;
+      --text3:     #3E3E60;
+      --r:         16px;
+    }
+
+    html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; cursor: none; }
+
+    /* ─── GRAIN ─── */
+    .grain { position:fixed; inset:-200%; width:500%; height:500%; pointer-events:none; z-index:9997; opacity:.028;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain .4s steps(1) infinite; }
+    @keyframes grain {
+      0%{transform:translate(0,0);} 10%{transform:translate(-2%,-3%);} 20%{transform:translate(1%,2%);}
+      30%{transform:translate(-3%,1%);} 40%{transform:translate(2%,-1%);} 50%{transform:translate(-1%,3%);}
+      60%{transform:translate(3%,-2%);} 70%{transform:translate(-2%,2%);} 80%{transform:translate(1%,-3%);} 90%{transform:translate(-3%,-1%);}
+    }
+
+    /* ─── SCROLL PROGRESS ─── */
+    #scroll-bar { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--accent),var(--rose)); z-index:1000; transition:width .08s; }
+
+    /* ─── CURSOR ─── */
+    #cur,#cur-f { position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
+    #cur  { width:10px; height:10px; background:var(--accent); transition:width .25s,height .25s,background .25s; }
+    #cur-f{ width:38px; height:38px; border:1px solid rgba(123,108,246,.45); z-index:9998; transition:width .3s,height .3s,opacity .3s; }
+    #cur.h   { width:6px; height:6px; background:var(--rose); }
+    #cur-f.h { width:56px; height:56px; opacity:.5; border-color:var(--rose); }
+
+    /* ─── NAV ─── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 56px; display:flex; align-items:center; justify-content:space-between; transition:background .3s,backdrop-filter .3s,border-bottom .3s; }
+    nav.scrolled { background:rgba(7,7,15,.85); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
+    .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
+    .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
+    .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a:hover::after { width:100%; }
+    .nav-links a.active { color:var(--accent); }
+    .nav-links a.active::after { width:100%; }
+    .nav-cta { padding:10px 26px !important; background:var(--accent) !important; color:#fff !important; border-radius:100px !important; font-weight:700 !important; transition:background .2s,transform .2s !important; }
+    .nav-cta:hover { background:#9d91ff !important; transform:translateY(-1px) !important; }
+    .nav-cta::after { display:none !important; }
+    .nav-burger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; z-index:200; }
+    .nav-burger span { display:block; width:22px; height:1.5px; background:var(--text); transition:transform .3s,opacity .3s; transform-origin:center; }
+    .nav-burger.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2){ opacity:0; }
+    .nav-burger.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── REVEAL ─── */
+    .rv { opacity:0; transform:translateY(28px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1); }
+    .rv.in { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.32s;} .d4{transition-delay:.44s;}
+
+    /* ─── UTILS ─── */
+    .tag { display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
+    .tag::before { content:''; width:22px; height:1px; background:var(--accent); }
+    .sh { font-size:clamp(38px,5vw,68px); font-weight:800; letter-spacing:-.038em; line-height:1.04; }
+    .serif { font-family:'Instrument Serif',serif; font-weight:400; font-style:italic; color:var(--accent); }
+    .btn-p { padding:14px 32px; background:var(--accent); color:#fff; border-radius:100px; font-size:15px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:transform .2s,box-shadow .2s,background .2s; }
+    .btn-p:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(123,108,246,.4); background:#9d91ff; }
+    .btn-g { padding:14px 28px; color:var(--text2); border-radius:100px; font-size:15px; font-weight:600; text-decoration:none; transition:color .2s; }
+    .btn-g:hover { color:var(--accent); }
+
+    /* ─── HERO ─── */
+    .work-hero { min-height:52vh; padding:140px 56px 72px; position:relative; overflow:hidden; display:flex; align-items:flex-end; }
+    .hero-bg { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 70% 80% at 60% 50%,black,transparent); }
+    .hero-glow { position:absolute; width:600px; height:600px; background:radial-gradient(circle,rgba(123,108,246,.11) 0%,transparent 65%); top:40%; left:55%; transform:translate(-50%,-50%); pointer-events:none; }
+    .hero-inner { position:relative; z-index:1; }
+    .work-hl { font-size:clamp(52px,8vw,104px); font-weight:800; line-height:.93; letter-spacing:-.045em; margin-bottom:28px; }
+    .work-sub { font-size:17px; line-height:1.75; color:var(--text2); max-width:520px; }
+    .work-sub strong { color:var(--text); }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar { padding:0 56px 48px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; border-bottom:1px solid var(--border); }
+    .filter-btn { padding:8px 20px; background:var(--bg2); border:1px solid var(--border); border-radius:100px; font-size:12px; font-weight:700; color:var(--text2); cursor:pointer; transition:all .2s; letter-spacing:.04em; }
+    .filter-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .filter-btn.on { background:var(--accent-lo); border-color:var(--border-hi); color:var(--accent); }
+
+    /* ─── CASE STUDY CARDS ─── */
+    .work-sec { padding:80px 56px; }
+    .cs-card {
+      background:var(--bg2); border:1px solid var(--border); border-radius:24px;
+      overflow:hidden; margin-bottom:32px;
+      transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .cs-card:hover { border-color:var(--border-hi); transform:translateY(-4px); }
+    .cs-card.e60 { border-color:rgba(16,185,129,.18); }
+    .cs-card.e60:hover { border-color:rgba(16,185,129,.4); }
+
+    .cs-card-inner { display:grid; grid-template-columns:1fr 440px; min-height:360px; }
+    .cs-card-left { padding:52px 56px; display:flex; flex-direction:column; justify-content:space-between; }
+    .cs-card-right { position:relative; overflow:hidden; background:var(--bg3); border-left:1px solid var(--border); }
+    .cs-card.e60 .cs-card-right { border-left-color:rgba(16,185,129,.1); }
+
+    .cs-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+    .cs-chip { padding:5px 14px; background:var(--accent-lo); border:1px solid var(--border-hi); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+    .cs-chip.green { background:rgba(16,185,129,.1); border-color:rgba(16,185,129,.3); color:var(--e60); }
+
+    .cs-card-title { font-size:clamp(36px,4vw,60px); font-weight:800; letter-spacing:-.045em; line-height:.95; margin-bottom:16px; }
+    .cs-card-title .serif { color:var(--accent); }
+    .cs-card-title .green { color:var(--e60); }
+    .cs-card-sub { font-size:15px; line-height:1.75; color:var(--text2); max-width:400px; margin-bottom:28px; }
+
+    .cs-meta-row { display:flex; gap:32px; margin-bottom:32px; }
+    .cs-meta-item { }
+    .cs-meta-label { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--text3); margin-bottom:4px; }
+    .cs-meta-val { font-size:14px; font-weight:600; color:var(--text); }
+
+    .cs-stats { display:flex; gap:28px; flex-wrap:wrap; }
+    .cs-stat { }
+    .cs-stat-n { font-size:28px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; }
+    .cs-stat-n.green { color:var(--e60); }
+    .cs-stat-l { font-size:11px; color:var(--text2); margin-top:3px; }
+
+    .cs-card-link { display:inline-flex; align-items:center; gap:8px; padding:12px 26px; background:var(--accent); color:#fff; border-radius:100px; font-size:14px; font-weight:700; text-decoration:none; transition:background .2s,transform .2s,box-shadow .2s; margin-top:auto; width:fit-content; }
+    .cs-card-link:hover { background:#9d91ff; transform:translateY(-2px); box-shadow:0 12px 30px rgba(123,108,246,.4); }
+    .cs-card-link.green { background:var(--e60); }
+    .cs-card-link.green:hover { background:#34d399; box-shadow:0 12px 30px rgba(16,185,129,.35); }
+
+    /* Right panel visuals */
+    .cs-visual { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+    .cs-visual-glow { position:absolute; width:300px; height:300px; background:radial-gradient(circle,rgba(123,108,246,.15) 0%,transparent 65%); top:50%; left:50%; transform:translate(-50%,-50%); }
+    .cs-visual-glow.green { background:radial-gradient(circle,rgba(16,185,129,.15) 0%,transparent 65%); }
+    .mini-db { background:var(--bg2); border:1px solid var(--border); border-radius:14px; width:340px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.6); transform:perspective(800px) rotateY(-8deg) rotateX(4deg); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+    .cs-card:hover .mini-db { transform:perspective(800px) rotateY(-4deg) rotateX(2deg) translateY(-6px); }
+    .mini-db-bar { background:rgba(255,255,255,.025); border-bottom:1px solid var(--border); padding:9px 14px; display:flex; align-items:center; gap:12px; }
+    .mini-dots { display:flex; gap:5px; }
+    .mini-dots span { width:8px; height:8px; border-radius:50%; display:block; }
+    .mini-dots span:nth-child(1){background:#FF5F57;} .mini-dots span:nth-child(2){background:#FEBC2E;} .mini-dots span:nth-child(3){background:#28C840;}
+    .mini-url { flex:1; background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:4px; padding:3px 10px; font-size:10px; color:var(--text3); }
+    .mini-body { display:grid; grid-template-columns:120px 1fr; min-height:220px; }
+    .mini-side { background:rgba(255,255,255,.015); border-right:1px solid var(--border); padding:12px 8px; }
+    .mini-si { padding:5px 8px; border-radius:5px; font-size:9px; font-weight:500; color:var(--text3); margin-bottom:2px; display:flex; align-items:center; gap:7px; }
+    .mini-si-ic { width:10px; height:10px; border-radius:2px; background:currentColor; opacity:.4; flex-shrink:0; }
+    .mini-si.on { background:rgba(123,108,246,.14); color:var(--accent); font-weight:700; }
+    .mini-si.on.green { background:rgba(16,185,129,.14); color:var(--e60); }
+    .mini-main { padding:14px; }
+    .mini-r3 { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:8px; }
+    .mini-kpi { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:7px; padding:10px; }
+    .mini-kpi-l { font-size:7px; color:var(--text3); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; }
+    .mini-kpi-v { font-size:16px; font-weight:700; letter-spacing:-.03em; color:var(--text); }
+    .mini-kpi-d { font-size:7px; color:var(--green); margin-top:2px; }
+    .mini-chart { background:rgba(255,255,255,.02); border:1px solid var(--border); border-radius:7px; padding:10px; height:80px; position:relative; overflow:hidden; }
+    .mini-chart-t { font-size:8px; font-weight:600; color:var(--text2); margin-bottom:6px; }
+    .mini-bars { display:flex; align-items:flex-end; gap:3px; height:50px; }
+    .mini-bar { flex:1; border-radius:2px 2px 0 0; background:linear-gradient(180deg,var(--accent),rgba(123,108,246,.25)); }
+    .mini-bar.green { background:linear-gradient(180deg,var(--e60),rgba(16,185,129,.25)); }
+
+    /* Phone mockup for Elite60 */
+    .phone-wrap { display:flex; gap:16px; align-items:center; padding:24px; }
+    .mini-phone { width:110px; border-radius:22px; overflow:hidden; border:1.5px solid rgba(16,185,129,.3); box-shadow:0 20px 48px rgba(0,0,0,.6),0 0 32px rgba(16,185,129,.15); }
+    .mini-phone img { width:100%; display:block; }
+    .mini-phone:nth-child(2) { transform:translateY(-20px); }
+    .mini-phone:nth-child(3) { transform:translateY(8px); }
+
+    /* ─── OTHER PROJECTS GRID ─── */
+    .other-sec { padding:0 56px 80px; }
+    .other-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .proj-c {
+      background:var(--bg2); border:1px solid var(--border); border-radius:20px;
+      padding:36px; position:relative; overflow:hidden;
+      transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .proj-c:hover { border-color:var(--border-hi); transform:translateY(-4px); }
+    .proj-accent { position:absolute; top:0; right:0; width:120px; height:120px; border-radius:0 20px 0 120px; opacity:.07; }
+    .proj-num { font-size:64px; font-weight:800; letter-spacing:-.06em; color:var(--text3); opacity:.2; line-height:1; margin-bottom:20px; }
+    .proj-type { font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin-bottom:8px; }
+    .proj-name { font-size:26px; font-weight:800; letter-spacing:-.03em; margin-bottom:10px; }
+    .proj-desc { font-size:13px; color:var(--text2); line-height:1.7; margin-bottom:20px; }
+    .proj-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .proj-tag { padding:4px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:100px; font-size:10px; font-weight:600; color:var(--text2); }
+    .proj-arrow { position:absolute; bottom:28px; right:28px; font-size:20px; color:var(--text3); transition:color .2s,transform .3s; }
+    .proj-c:hover .proj-arrow { color:var(--accent); transform:translate(3px,-3px); }
+
+    /* ─── PROCESS STRIP ─── */
+    .process-sec { padding:80px 56px; background:var(--bg2); border-top:1px solid var(--border); }
+    .proc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:48px; }
+    .proc-c { background:var(--bg); padding:40px; border:1px solid var(--border); transition:background .3s; }
+    .proc-c:hover { background:rgba(123,108,246,.04); }
+    .proc-n { font-size:52px; font-weight:800; letter-spacing:-.06em; color:var(--text3); opacity:.25; line-height:1; margin-bottom:16px; }
+    .proc-t { font-size:16px; font-weight:700; margin-bottom:8px; }
+    .proc-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* ─── CTA ─── */
+    .cta-sec { padding:80px 56px; }
+    .cta-wrap { background:linear-gradient(135deg,rgba(123,108,246,.1),rgba(123,108,246,.03)); border:1px solid var(--border-hi); border-radius:24px; padding:64px; text-align:center; position:relative; overflow:hidden; }
+    .cta-glow { position:absolute; width:400px; height:400px; background:radial-gradient(circle,rgba(123,108,246,.12) 0%,transparent 65%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cta-t { font-size:clamp(28px,4vw,52px); font-weight:800; letter-spacing:-.04em; margin-bottom:14px; }
+    .cta-p { font-size:16px; color:var(--text2); margin-bottom:32px; }
+    .cta-btns { display:flex; align-items:center; justify-content:center; gap:16px; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top:1px solid var(--border); padding:28px 56px; display:flex; align-items:center; justify-content:space-between; }
+    .fc { font-size:12px; color:var(--text3); }
+    .fc em { color:var(--accent); font-style:normal; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width:768px) {
+      #cur,#cur-f { display:none; }
+      body { cursor:auto; }
+      nav { padding:18px 24px; }
+      .nav-burger { display:flex; }
+      .nav-links { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(7,7,15,.97); backdrop-filter:blur(24px); flex-direction:column; align-items:center; justify-content:center; gap:40px; z-index:150; transform:translateX(100%); transition:transform .4s cubic-bezier(.16,1,.3,1); pointer-events:none; }
+      .nav-links.open { transform:translateX(0); pointer-events:all; }
+      .nav-links a { font-size:22px; font-weight:700; color:var(--text); }
+      .work-hero { padding:120px 24px 56px; min-height:auto; }
+      .filter-bar { padding:24px 24px 32px; }
+      .work-sec,.other-sec,.cta-sec { padding:56px 24px; }
+      .process-sec { padding:56px 24px; }
+      .cs-card-inner { grid-template-columns:1fr; }
+      .cs-card-left { padding:32px 24px; }
+      .cs-card-right { display:none; }
+      .cs-meta-row { flex-wrap:wrap; gap:16px; }
+      .cs-stats { gap:20px; }
+      .other-grid { grid-template-columns:1fr; }
+      .proc-grid { grid-template-columns:1fr; }
+      .cta-wrap { padding:40px 24px; }
+      .cta-btns { flex-direction:column; }
+      footer { padding:24px; flex-direction:column; gap:8px; text-align:center; }
+    }
+    @media (max-width:480px) {
+      .cs-stats { flex-wrap:wrap; }
+      .other-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain"></div>
+  <div id="scroll-bar"></div>
+  <div id="cur"></div>
+  <div id="cur-f"></div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <a href="/" class="nav-logo">BG<em>.</em></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/work.html" class="active">Work</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/#process">Process</a></li>
+      <li><a href="/#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <div class="work-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="tag rv">Selected Work</div>
+      <h1 class="work-hl rv d1">
+        Products that<br><span class="serif">ship &amp; scale.</span>
+      </h1>
+      <p class="work-sub rv d2">
+        <strong>7 products</strong> across construction tech, fitness, SEO, brand monitoring, edtech, and BI — each designed to solve a real workflow problem at scale.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── FILTER BAR ─── -->
+  <div class="filter-bar">
+    <button class="filter-btn on" data-filter="all">All Work</button>
+    <button class="filter-btn" data-filter="saas">B2B SaaS</button>
+    <button class="filter-btn" data-filter="ai">AI-First</button>
+    <button class="filter-btn" data-filter="mobile">Mobile</button>
+    <button class="filter-btn" data-filter="zero">0 → 1</button>
+  </div>
+
+  <!-- ═══ FEATURED CASE STUDIES ═══ -->
+  <section class="work-sec">
+    <div class="tag rv">Case Studies</div>
+    <h2 class="sh rv d1" style="margin-bottom:48px">Deep <span class="serif">dives</span></h2>
+
+    <!-- R'Dash -->
+    <div class="cs-card rv" data-tags="saas ai zero">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip">B2B SaaS</span>
+              <span class="cs-chip">AI-First</span>
+              <span class="cs-chip">Lead Product Designer</span>
+              <span class="cs-chip">0 → Scale</span>
+            </div>
+            <div class="cs-card-title">R<span class="serif">'Dash</span></div>
+            <p class="cs-card-sub">AI-powered construction OS connecting procurement, billing, execution, and analytics — built from zero to $4.3M ARR as Lead Product Designer.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Role</div>
+                <div class="cs-meta-val">Lead Product Designer</div>
+              </div>
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Timeline</div>
+                <div class="cs-meta-val">2022 – Present</div>
+              </div>
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Platform</div>
+                <div class="cs-meta-val">Web · B2B SaaS</div>
+              </div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n">$4.3M</div><div class="cs-stat-l">ARR Scaled</div></div>
+              <div class="cs-stat"><div class="cs-stat-n">63%</div><div class="cs-stat-l">MRR Growth</div></div>
+              <div class="cs-stat"><div class="cs-stat-n">65%</div><div class="cs-stat-l">Less Manual Work</div></div>
+              <div class="cs-stat"><div class="cs-stat-n">7 days</div><div class="cs-stat-l">SMB Go-Live</div></div>
+            </div>
+          </div>
+          <a href="/#work" class="cs-card-link">View Case Study →</a>
+        </div>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow"></div>
+            <div class="mini-db">
+              <div class="mini-db-bar">
+                <div class="mini-dots"><span></span><span></span><span></span></div>
+                <div class="mini-url">app.rdash.io/dashboard</div>
+              </div>
+              <div class="mini-body">
+                <div class="mini-side">
+                  <div class="mini-si on"><span class="mini-si-ic"></span>AI Copilot</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Procurement</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>RA Billing</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Payments</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Execution</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Invoice IQ</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Analytics</div>
+                </div>
+                <div class="mini-main">
+                  <div class="mini-r3">
+                    <div class="mini-kpi"><div class="mini-kpi-l">ARR</div><div class="mini-kpi-v">$4.3M</div><div class="mini-kpi-d">↑ 63% MRR</div></div>
+                    <div class="mini-kpi"><div class="mini-kpi-l">Go-Live</div><div class="mini-kpi-v">7d</div><div class="mini-kpi-d">↓ 50% effort</div></div>
+                    <div class="mini-kpi"><div class="mini-kpi-l">Data Loss</div><div class="mini-kpi-v">−95%</div><div class="mini-kpi-d">offline sync</div></div>
+                  </div>
+                  <div class="mini-chart">
+                    <div class="mini-chart-t">ARR Growth</div>
+                    <div class="mini-bars">
+                      <div class="mini-bar" style="height:15%"></div><div class="mini-bar" style="height:25%"></div>
+                      <div class="mini-bar" style="height:38%"></div><div class="mini-bar" style="height:50%"></div>
+                      <div class="mini-bar" style="height:62%"></div><div class="mini-bar" style="height:72%"></div>
+                      <div class="mini-bar" style="height:82%"></div><div class="mini-bar" style="height:92%"></div>
+                      <div class="mini-bar" style="height:100%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elite60 -->
+    <div class="cs-card e60 rv d1" data-tags="mobile zero ai">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip green">PWA + Android APK</span>
+              <span class="cs-chip green">Full-Stack</span>
+              <span class="cs-chip green">Solo Build</span>
+              <span class="cs-chip green">0 → 1</span>
+            </div>
+            <div class="cs-card-title">Elite<span class="green">60</span></div>
+            <p class="cs-card-sub">60-day progressive overload fitness platform — live GPS workout tracking, AI-powered strength programming, and zero infrastructure cost. Shipped solo as both a PWA and native Android APK.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Role</div>
+                <div class="cs-meta-val">Full-Stack · Solo</div>
+              </div>
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Timeline</div>
+                <div class="cs-meta-val">2025</div>
+              </div>
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Platform</div>
+                <div class="cs-meta-val">PWA + Android</div>
+              </div>
+              <div class="cs-meta-item">
+                <div class="cs-meta-label">Live</div>
+                <div class="cs-meta-val"><a href="https://elite60.in" target="_blank" rel="noopener" style="color:var(--e60);text-decoration:none;font-weight:700">elite60.in ↗</a></div>
+              </div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n green">120+</div><div class="cs-stat-l">Workout Sessions</div></div>
+              <div class="cs-stat"><div class="cs-stat-n green">$0</div><div class="cs-stat-l">Infra Cost</div></div>
+              <div class="cs-stat"><div class="cs-stat-n green">2-in-1</div><div class="cs-stat-l">PWA + Android</div></div>
+            </div>
+          </div>
+          <a href="/#work" class="cs-card-link green">View Case Study →</a>
+        </div>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow green"></div>
+            <div class="phone-wrap">
+              <div class="mini-phone">
+                <img src="images/elite60/logo-screen.jpg" alt="Elite60 Logo" loading="lazy">
+              </div>
+              <div class="mini-phone">
+                <img src="images/elite60/splash.jpg" alt="Elite60 Splash" loading="lazy">
+              </div>
+              <div class="mini-phone">
+                <img src="images/elite60/home.jpg" alt="Elite60 Home" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OTHER PROJECTS ═══ -->
+  <section class="other-sec">
+    <div class="tag rv">More Projects</div>
+    <h2 class="sh rv d1" style="margin-bottom:40px">Other <span class="serif">work</span></h2>
+    <div class="other-grid">
+
+      <!-- RankWatch -->
+      <div class="proj-c rv" data-tags="saas">
+        <div class="proj-accent" style="background:#7B6CF6"></div>
+        <div class="proj-num">01</div>
+        <div class="proj-type" style="color:var(--accent)">SEO SaaS Platform</div>
+        <div class="proj-name">RankWatch</div>
+        <div class="proj-desc">Full product design overhaul for an enterprise SEO monitoring platform — improving data visualisation, workflow clarity, and team-level reporting for agencies at scale.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Dashboard Design</span>
+          <span class="proj-tag">Data Visualisation</span>
+          <span class="proj-tag">SaaS Redesign</span>
+          <span class="proj-tag">B2B</span>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+
+      <!-- WebSignals -->
+      <div class="proj-c rv d1" data-tags="saas zero">
+        <div class="proj-accent" style="background:#F06292"></div>
+        <div class="proj-num">02</div>
+        <div class="proj-type" style="color:var(--rose)">Brand Monitoring · 0→1</div>
+        <div class="proj-name">WebSignals</div>
+        <div class="proj-desc">0→1 brand monitoring platform — full product definition, design system creation, and launch experience for a B2B media intelligence and social listening tool.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">0 → 1</span>
+          <span class="proj-tag">Brand System</span>
+          <span class="proj-tag">B2B</span>
+          <span class="proj-tag">Media Intel</span>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+
+      <!-- Knovelo -->
+      <div class="proj-c rv d2" data-tags="mobile zero">
+        <div class="proj-accent" style="background:#4ADE80"></div>
+        <div class="proj-num">03</div>
+        <div class="proj-type" style="color:var(--green)">Consumer App</div>
+        <div class="proj-name">Knovelo</div>
+        <div class="proj-desc">Reader community app connecting book lovers through shared discovery, highlights, and community reviews — built from ideation to final product.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Mobile</span>
+          <span class="proj-tag">Community</span>
+          <span class="proj-tag">Consumer</span>
+          <span class="proj-tag">0 → 1</span>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+
+      <!-- LocatR -->
+      <div class="proj-c rv d1" data-tags="mobile">
+        <div class="proj-accent" style="background:#FBB024"></div>
+        <div class="proj-num">04</div>
+        <div class="proj-type" style="color:var(--amber)">Navigation UX</div>
+        <div class="proj-name">LocatR</div>
+        <div class="proj-desc">Grocery store navigation UX — real-time product availability on a map, reducing time-to-find for shoppers using indoor wayfinding and smart list organisation.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">UX Research</span>
+          <span class="proj-tag">Wayfinding</span>
+          <span class="proj-tag">Mobile</span>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+
+      <!-- Kockpit -->
+      <div class="proj-c rv d2" data-tags="saas">
+        <div class="proj-accent" style="background:#60A5FA"></div>
+        <div class="proj-num">05</div>
+        <div class="proj-type" style="color:var(--blue)">BI Dashboard</div>
+        <div class="proj-name">Kockpit</div>
+        <div class="proj-desc">Executive BI dashboard syndicating data from ERP modules — Revenue, Gross Margin, AR/AP, Stock Ageing, and Open Orders into clear, actionable insights for C-suite decision makers.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">BI</span>
+          <span class="proj-tag">Executive UX</span>
+          <span class="proj-tag">ERP</span>
+          <span class="proj-tag">Data</span>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+
+      <!-- Freelance -->
+      <div class="proj-c rv d3" data-tags="zero">
+        <div class="proj-accent" style="background:#C084FC"></div>
+        <div class="proj-num">06</div>
+        <div class="proj-type" style="color:#C084FC">Freelance · 2020</div>
+        <div class="proj-name">Brand & UI Work</div>
+        <div class="proj-desc">Freelance design engagements covering brand identities, product MVPs, and UI systems — for startups and small businesses across multiple sectors.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Branding</span>
+          <span class="proj-tag">Logo Design</span>
+          <span class="proj-tag">UI Systems</span>
+          <span class="proj-tag">MVP</span>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS ═══ -->
+  <section class="process-sec">
+    <div class="about-sec-inner" style="max-width:1200px;margin:0 auto">
+      <div class="tag rv">My Process</div>
+      <h2 class="sh rv d1">How I <span class="serif">approach</span> every project</h2>
+      <div class="proc-grid">
+        <div class="proc-c rv">
+          <div class="proc-n">01</div>
+          <div class="proc-t">Discover &amp; Define</div>
+          <div class="proc-p">Stakeholder interviews, user research, and competitive analysis to deeply understand the problem space before opening Figma.</div>
+        </div>
+        <div class="proc-c rv d1">
+          <div class="proc-n">02</div>
+          <div class="proc-t">Map &amp; Structure</div>
+          <div class="proc-p">Journey mapping, IA, and workflow definition to create the skeleton of the experience — structure before aesthetics, always.</div>
+        </div>
+        <div class="proc-c rv d2">
+          <div class="proc-n">03</div>
+          <div class="proc-t">Design &amp; Iterate</div>
+          <div class="proc-p">High-fidelity mockups with interactive prototypes — validated with real users through structured, moderated testing sessions.</div>
+        </div>
+        <div class="proc-c rv d1">
+          <div class="proc-n">04</div>
+          <div class="proc-t">Systematize</div>
+          <div class="proc-p">Building reusable component libraries and design tokens that scale across the entire product — not just the current feature.</div>
+        </div>
+        <div class="proc-c rv d2">
+          <div class="proc-n">05</div>
+          <div class="proc-t">Ship &amp; Measure</div>
+          <div class="proc-p">Close collaboration with engineering during handoff, then measuring real usage data and analytics to inform the next iteration.</div>
+        </div>
+        <div class="proc-c rv d3">
+          <div class="proc-n">06</div>
+          <div class="proc-t">Reflect &amp; Refine</div>
+          <div class="proc-p">Post-launch retrospectives and continuous improvement cycles — treating launch as the beginning of the design process, not the end.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-sec">
+    <div class="cta-wrap rv">
+      <div class="cta-glow"></div>
+      <div style="position:relative;z-index:1">
+        <div class="tag" style="justify-content:center">Let's Build Together</div>
+        <div class="cta-t">Got a product<br>that needs a <span class="serif">designer?</span></div>
+        <p class="cta-p">Open to senior product design roles, design leadership, and select freelance projects.</p>
+        <div class="cta-btns">
+          <a href="mailto:buddhpriya93@gmail.com" class="btn-p">Send an Email ↗</a>
+          <a href="/about.html" class="btn-g">More About Me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="fc">© 2026 Buddhpriya Gautam. All rights reserved.</div>
+    <div class="fc">Designed with <em>♥</em> for exceptional experiences</div>
+  </footer>
+
+  <script>
+    // ─── CURSOR ───
+    const cur=document.getElementById('cur'),curf=document.getElementById('cur-f');
+    let mx=0,my=0,fx=0,fy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    (function tick(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;curf.style.left=fx+'px';curf.style.top=fy+'px';requestAnimationFrame(tick);})();
+    document.querySelectorAll('a,button,.cs-card,.proj-c').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{cur.classList.add('h');curf.classList.add('h');});
+      el.addEventListener('mouseleave',()=>{cur.classList.remove('h');curf.classList.remove('h');});
+    });
+
+    // ─── NAV ───
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+
+    // ─── SCROLL PROGRESS ───
+    const bar=document.getElementById('scroll-bar');
+    window.addEventListener('scroll',()=>{bar.style.width=(window.scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';},{passive:true});
+
+    // ─── REVEAL ───
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+    // ─── FILTER ───
+    const filterBtns=document.querySelectorAll('.filter-btn');
+    const cards=[...document.querySelectorAll('.cs-card[data-tags]'),...document.querySelectorAll('.proj-c[data-tags]')];
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        filterBtns.forEach(b=>b.classList.remove('on'));
+        btn.classList.add('on');
+        const f=btn.dataset.filter;
+        cards.forEach(c=>{
+          const tags=c.dataset.tags||'';
+          const show=f==='all'||tags.includes(f);
+          c.style.transition='opacity .35s,transform .35s';
+          c.style.opacity=show?'1':'0.25';
+          c.style.pointerEvents=show?'':'none';
+        });
+      });
+    });
+
+    // ─── MAGNETIC BUTTONS ───
+    document.querySelectorAll('.btn-p,.btn-g,.nav-cta,.cs-card-link').forEach(btn=>{
+      btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;btn.style.transform=`translate(${x*.22}px,${y*.22}px)`;});
+      btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+    });
+
+    // ─── HAMBURGER ───
+    const burger=document.getElementById('nav-burger'),navLinks=document.getElementById('nav-links');
+    burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');document.body.style.overflow=navLinks.classList.contains('open')?'hidden':'';});
+    navLinks.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open');document.body.style.overflow='';});});
+
+    // ─── SERVICE WORKER ───
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});}
+  </script>
+</body>
+</html>
