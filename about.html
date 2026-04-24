@@ -222,6 +222,47 @@
     .skill-list { display:flex; flex-wrap:wrap; gap:8px; }
     .skill-tag { padding:6px 14px; background:var(--bg3); border:1px solid var(--border); border-radius:100px; font-size:12px; font-weight:600; color:var(--text2); }
 
+    /* ─── EDUCATION ─── */
+    .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .edu-c {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:var(--r); padding:32px;
+      transition:border-color .3s;
+      position:relative; overflow:hidden;
+    }
+    .edu-c::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:linear-gradient(180deg,var(--accent),rgba(123,108,246,.15)); }
+    .edu-c:hover { border-color:var(--border-hi); }
+    .edu-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 12px; background:var(--accent-lo); border:1px solid var(--border-hi);
+      border-radius:100px; font-size:10px; font-weight:700;
+      letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+      margin-bottom:16px;
+    }
+    .edu-degree { font-size:19px; font-weight:800; letter-spacing:-.02em; margin-bottom:4px; }
+    .edu-inst { font-size:14px; color:var(--text2); font-weight:500; margin-bottom:4px; }
+    .edu-year { font-size:12px; color:var(--text3); font-weight:600; letter-spacing:.1em; margin-bottom:14px; }
+    .edu-tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .edu-tag { padding:4px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:100px; font-size:10px; font-weight:600; color:var(--text2); }
+
+    .extra-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-top:24px; }
+    .extra-c {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:var(--r); padding:28px;
+      transition:border-color .3s,background .3s;
+    }
+    .extra-c:hover { border-color:var(--border-hi); background:rgba(123,108,246,.03); }
+    .extra-title { font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+    .extra-item { display:flex; flex-direction:column; margin-bottom:14px; }
+    .extra-item:last-child { margin-bottom:0; }
+    .extra-item-name { font-size:14px; font-weight:700; margin-bottom:2px; }
+    .extra-item-sub { font-size:12px; color:var(--text3); font-weight:600; margin-bottom:4px; letter-spacing:.06em; }
+    .extra-item-desc { font-size:12px; color:var(--text2); line-height:1.6; }
+    .lang-list { display:flex; flex-wrap:wrap; gap:8px; }
+    .lang-tag { padding:6px 16px; background:var(--bg3); border:1px solid var(--border); border-radius:100px; font-size:12px; font-weight:600; color:var(--text2); }
+    .hobby-list { display:flex; flex-wrap:wrap; gap:10px; }
+    .hobby-tag { padding:7px 16px; background:var(--bg3); border:1px solid var(--border); border-radius:100px; font-size:12px; font-weight:600; color:var(--text2); display:flex; align-items:center; gap:6px; }
+
     /* ─── VALUES ─── */
     .value-c {
       background:var(--bg2); border:1px solid var(--border);
@@ -297,6 +338,8 @@
       .phil-wrap { padding:36px 24px; }
       .phil-items { grid-template-columns:1fr; gap:24px; }
       .tool-grid { grid-template-columns:repeat(3,1fr); }
+      .edu-grid { grid-template-columns:1fr; }
+      .extra-grid { grid-template-columns:1fr; }
       .about-cta { padding:40px 24px; }
       .cta-btns { flex-direction:column; }
       footer { padding:24px; flex-direction:column; gap:8px; text-align:center; }
@@ -506,6 +549,78 @@
         <div class="tool-c"><div class="tool-ic">💻</div><div class="tool-name">VS Code</div></div>
         <div class="tool-c"><div class="tool-ic">🐙</div><div class="tool-name">GitHub</div></div>
         <div class="tool-c"><div class="tool-ic">🚀</div><div class="tool-name">Vercel</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EDUCATION ═══ -->
+  <section class="about-sec">
+    <div class="about-sec-inner">
+      <div class="tag rv">Education</div>
+      <h2 class="sh rv d1" style="margin-bottom:48px">Where it all <span class="serif">began.</span></h2>
+
+      <div class="edu-grid">
+        <div class="edu-c rv">
+          <div class="edu-badge">🎓 Degree</div>
+          <div class="edu-degree">B.Des — Fashion Design</div>
+          <div class="edu-inst">National Institute of Fashion Technology (NIFT), Raebareli</div>
+          <div class="edu-year">2011 – 2015</div>
+          <div class="edu-tags">
+            <span class="edu-tag">Fashion Design</span>
+            <span class="edu-tag">Visual Thinking</span>
+            <span class="edu-tag">Textile & Aesthetics</span>
+            <span class="edu-tag">Color Theory</span>
+            <span class="edu-tag">Design Process</span>
+          </div>
+        </div>
+        <div class="edu-c rv d1">
+          <div class="edu-badge">💼 Internships</div>
+          <div class="extra-item" style="margin-bottom:18px">
+            <div class="edu-degree" style="font-size:16px">Arvind Life Style Brands Limited</div>
+            <div class="edu-inst">Design Intern · Jun – Jul 2015</div>
+            <div class="extra-item-desc" style="margin-top:6px">Worked on Flying Machine and F2000 Men's Wear line — fashion design and visual merchandising for Arvind Brands.</div>
+          </div>
+          <div class="extra-item">
+            <div class="edu-degree" style="font-size:16px">Mahindra Retail Pvt. Ltd</div>
+            <div class="edu-inst">Design Intern · Jun – Jul 2015</div>
+            <div class="extra-item-desc" style="margin-top:6px">Worked on Mom & Me Women's Wear — Indian ethnic and maternity wear for Kriti Fashion and Kriti Maternity.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-grid">
+        <div class="extra-c rv">
+          <div class="extra-title">Co-Curricular</div>
+          <div class="extra-item">
+            <div class="extra-item-name">NIFT Converse</div>
+            <div class="extra-item-sub">2011 & 2012</div>
+            <div class="extra-item-desc">Participation in Badminton, Long Jump, 100 Meter Running and Mistry Box Event.</div>
+          </div>
+          <div class="extra-item">
+            <div class="extra-item-name">Antaragini — IIT Kanpur</div>
+            <div class="extra-item-sub">2013</div>
+            <div class="extra-item-desc">Participated as a costume designer in Ritambara (Fashion Show).</div>
+          </div>
+        </div>
+        <div class="extra-c rv d1">
+          <div class="extra-title">Languages</div>
+          <div class="lang-list">
+            <span class="lang-tag">🇬🇧 English</span>
+            <span class="lang-tag">🇮🇳 Hindi</span>
+            <span class="lang-tag">🇮🇳 Marathi</span>
+          </div>
+        </div>
+        <div class="extra-c rv d2">
+          <div class="extra-title">Hobbies & Interests</div>
+          <div class="hobby-list">
+            <span class="hobby-tag">✈️ Traveling</span>
+            <span class="hobby-tag">🏅 Sports</span>
+            <span class="hobby-tag">🍜 Foodie</span>
+            <span class="hobby-tag">💪 Fitness</span>
+            <span class="hobby-tag">🎬 Movies</span>
+            <span class="hobby-tag">🎵 Music</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
