@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buddhpriya Gautam — Senior Product Designer</title>
   <meta name="description" content="Senior Product Designer with 9+ years crafting SaaS platforms, design systems, and brand experiences.">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7B6CF6">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Buddh Portfolio">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+
+  <!-- OG -->
+  <meta property="og:title" content="Buddhpriya Gautam — Senior Product Designer">
+  <meta property="og:description" content="Senior Product Designer with 9+ years crafting SaaS platforms, design systems, and brand experiences.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.buddh.in">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -1260,6 +1278,132 @@
     }
     .fc { font-size: 12px; color: var(--text3); }
     .fc em { color: var(--accent); font-style: normal; }
+
+    /* ─── HAMBURGER ─── */
+    .nav-burger {
+      display: none;
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; z-index: 200;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--text);
+      transition: transform .3s, opacity .3s;
+      transform-origin: center;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      /* disable custom cursor on touch */
+      #cur, #cur-f { display: none; }
+      body { cursor: auto; }
+
+      /* nav */
+      nav { padding: 18px 24px; }
+      .nav-burger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(7,7,15,.97);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 40px;
+        z-index: 150;
+        transform: translateX(100%);
+        transition: transform .4s cubic-bezier(.16,1,.3,1);
+        pointer-events: none;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+        pointer-events: all;
+      }
+      .nav-links a { font-size: 22px; font-weight: 700; color: var(--text); }
+      .nav-cta { font-size: 18px !important; }
+
+      /* sections */
+      section { padding: 72px 24px; }
+
+      /* hero */
+      .hero { padding: 0 24px 64px; min-height: 100svh; }
+      .hero-year { display: none; }
+      .hero-hl { font-size: clamp(44px, 13vw, 72px); margin-bottom: 28px; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .hero-desc { font-size: 15px; max-width: 100%; }
+      .hero-btns { flex-direction: column; width: 100%; }
+      .btn-p, .btn-g { width: 100%; justify-content: center; text-align: center; }
+      .hero-scroll { left: 24px; }
+
+      /* about */
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-copy p { font-size: 15px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-num { font-size: 44px; }
+
+      /* case study head */
+      .cs-head {
+        padding: 32px 24px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .cs-name { font-size: clamp(32px, 10vw, 56px); }
+      .cs-meta-grid { grid-template-columns: 1fr 1fr; min-width: unset; }
+
+      /* dashboard mockup */
+      .db-wrap { margin: 0 24px 40px; overflow-x: auto; }
+      .db-body { min-width: 560px; }
+
+      /* case study sections */
+      .cs-sec { grid-template-columns: 1fr; gap: 20px; }
+      .cs-sec-lbl { position: static; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .sol-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .flow { gap: 0; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; }
+      .flow-l { font-size: 10px; }
+
+      /* dec cards */
+      .dec-c { grid-template-columns: 40px 1fr; gap: 14px; }
+      .dec-n { font-size: 26px; }
+
+      /* bento projects */
+      .bento { grid-template-columns: 1fr; }
+      .pc:nth-child(n) { grid-column: span 1; }
+
+      /* elite60 section */
+      .e60-wrap { padding: 32px 24px !important; }
+      .cs-head.e60-head { padding: 32px 24px; }
+
+      /* gallery */
+      .gal-scroll { padding: 36px 24px 0; gap: 14px; }
+      .gal-frame { width: 160px; border-radius: 28px; }
+
+      /* process */
+      .proc-grid { grid-template-columns: 1fr !important; }
+
+      /* contact */
+      .contact-sec { padding: 72px 24px; }
+      .contact-btns { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto 52px; }
+      .contact-links { flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+      /* footer */
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-hl { font-size: clamp(38px, 12vw, 56px); }
+      .impact-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-num { font-size: 38px; }
+      .imp-n { font-size: 40px; }
+      .gal-frame { width: 140px; border-radius: 24px; }
+    }
   </style>
 </head>
 <body>
@@ -1284,12 +1428,15 @@
   <!-- Nav -->
   <nav id="nav">
     <a href="#home" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
     </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- ═══════════════ HERO ═══════════════ -->
@@ -2264,6 +2411,29 @@
         if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
+
+    // ─── HAMBURGER MENU ───
+    const burger = document.getElementById('nav-burger');
+    const navLinks = document.getElementById('nav-links');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ─── SERVICE WORKER ───
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
   </script>
 </body>
 </html>
