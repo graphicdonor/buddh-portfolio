@@ -170,6 +170,24 @@
     .imp-n { font-size:42px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; margin-bottom:8px; }
     .imp-l { font-size:12px; color:var(--text2); line-height:1.6; }
 
+    /* ─── PROTOTYPE EMBED ─── */
+    .proto-sec { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .proto-wrap { margin-top:40px; border:1px solid var(--border); border-radius:var(--r); overflow:hidden; position:relative; background:var(--bg2); }
+    .proto-bar { display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:var(--bg3); border-bottom:1px solid var(--border); }
+    .proto-dots { display:flex; gap:7px; }
+    .proto-dots span { width:11px; height:11px; border-radius:50%; background:var(--border); }
+    .proto-dots span:nth-child(1){ background:#FF5F57; }
+    .proto-dots span:nth-child(2){ background:#FEBC2E; }
+    .proto-dots span:nth-child(3){ background:#28C840; }
+    .proto-label { font-size:12px; color:var(--text3); font-weight:600; letter-spacing:.06em; }
+    .proto-open { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--accent); text-decoration:none; padding:5px 14px; border:1px solid var(--border-hi); border-radius:100px; transition:background .2s; }
+    .proto-open:hover { background:var(--accent-lo); }
+    .proto-frame { width:100%; height:680px; border:none; display:block; }
+    @media(max-width:768px){
+      .proto-sec { padding:56px 24px; }
+      .proto-frame { height:440px; }
+    }
+
     /* ─── NAV FOOTER ─── */
     .cs-nav-footer { padding:56px; background:var(--bg2); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:24px; }
     .cs-nav-btn { display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border:1px solid var(--border); border-radius:100px; font-size:14px; font-weight:700; color:var(--text2); text-decoration:none; transition:all .2s; }
@@ -424,6 +442,29 @@
         <div class="ux-t">Mobile + Offline First</div>
         <div class="ux-p">Every screen designed for a construction site — works on mobile, degrades gracefully to full offline. Desktop was secondary; field reality was always the first constraint.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- PROTOTYPE -->
+  <section class="proto-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">Live Prototype</div>
+      <h2 class="cs-h2 rv d1">Interact with the design</h2>
+      <p class="cs-p rv d2">Click through the full R'Dash prototype — every screen, flow, and interaction, exactly as designed.</p>
+    </div>
+    <div class="proto-wrap rv d2">
+      <div class="proto-bar">
+        <div class="proto-dots"><span></span><span></span><span></span></div>
+        <div class="proto-label">R'Dash — Adobe XD Prototype</div>
+        <a href="https://xd.adobe.com/view/e484912b-3220-435f-ac04-40e3c95f5724-b1d7/?fullscreen" target="_blank" rel="noopener" class="proto-open">Open Fullscreen ↗</a>
+      </div>
+      <iframe
+        class="proto-frame"
+        src="https://xd.adobe.com/embed/e484912b-3220-435f-ac04-40e3c95f5724-b1d7"
+        allowfullscreen
+        title="R'Dash Interactive Prototype"
+        loading="lazy">
+      </iframe>
     </div>
   </section>
 
