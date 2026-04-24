@@ -2251,7 +2251,7 @@
     </p>
     <div class="contact-btns rv d2">
       <a href="mailto:buddhpriya93@gmail.com" class="btn-p">Send an Email ↗</a>
-      <a href="/Buddhpriya_Gautam_Resume_ATS.docx" id="resume-btn" class="btn-g">Download Resume →</a>
+      <a href="javascript:void(0)" id="resume-btn" class="btn-g">Download Resume →</a>
     </div>
     <div class="contact-links rv d3">
       <a href="https://dribbble.com/Buddh" target="_blank" rel="noopener" class="cl">Dribbble ↗</a>
@@ -2432,6 +2432,7 @@
     // ─── RESUME DOWNLOAD ───
     document.getElementById('resume-btn').addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       fetch('/Buddhpriya_Gautam_Resume_ATS.docx')
         .then(r => r.blob())
         .then(blob => {
@@ -2439,6 +2440,7 @@
           const a = document.createElement('a');
           a.href = url;
           a.download = 'Buddhpriya_Gautam_Resume_ATS.docx';
+          a.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
