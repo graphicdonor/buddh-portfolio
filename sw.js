@@ -1,7 +1,9 @@
-const CACHE = 'buddh-v1';
+const CACHE = 'buddh-v2';
 const ASSETS = [
   '/',
   '/index.html',
+  '/work.html',
+  '/about.html',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
