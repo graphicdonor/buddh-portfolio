@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kockpit Case Study — Buddhpriya Gautam</title>
+  <meta name="description" content="An executive BI dashboard syndicating data from ERP modules — Revenue, Gross Margin, AR/AP, Stock Ageing, and Open Orders synthesised into clear, actionable insights for C-suite decision makers.">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#60A5FA">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#07070F; --bg2:#0D0D1C; --bg3:#131326;
+      --border:rgba(255,255,255,0.07); --border-hi:rgba(96,165,250,0.3);
+      --accent:#60A5FA; --accent-lo:rgba(96,165,250,0.12);
+      --rose:#F06292; --green:#4ADE80; --amber:#FBB024;
+      --text:#EEEEF8; --text2:#8888AA; --text3:#3E3E60;
+      --r:16px; --r-sm:8px;
+      --nav-scrolled-bg:rgba(7,7,15,.85); --nav-mobile-bg:rgba(7,7,15,.97);
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg:#F7F7FF; --bg2:#F0F0FA; --bg3:#E8E8F5;
+        --border:rgba(0,0,0,0.08); --border-hi:rgba(96,165,250,0.35);
+        --accent:#2563EB; --accent-lo:rgba(37,99,235,0.10);
+        --rose:#D81B60; --green:#16A34A; --amber:#B45309;
+        --text:#0D0D1A; --text2:#4A4A6A; --text3:#9999BB;
+        --nav-scrolled-bg:rgba(247,247,255,.92); --nav-mobile-bg:rgba(247,247,255,.98);
+      }
+    }
+    [data-theme="light"] {
+      --bg:#F7F7FF; --bg2:#F0F0FA; --bg3:#E8E8F5;
+      --border:rgba(0,0,0,0.08); --border-hi:rgba(96,165,250,0.35);
+      --accent:#2563EB; --accent-lo:rgba(37,99,235,0.10);
+      --rose:#D81B60; --green:#16A34A; --amber:#B45309;
+      --text:#0D0D1A; --text2:#4A4A6A; --text3:#9999BB;
+      --nav-scrolled-bg:rgba(247,247,255,.92); --nav-mobile-bg:rgba(247,247,255,.98);
+    }
+    html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--accent) var(--bg); }
+    ::-webkit-scrollbar { width:3px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+    body { background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; cursor:none; }
+
+    .grain { position:fixed; inset:-200%; width:500%; height:500%; pointer-events:none; z-index:9997; opacity:.028;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation:grain .4s steps(1) infinite; }
+    @keyframes grain {
+      0%{transform:translate(0,0);} 10%{transform:translate(-2%,-3%);} 20%{transform:translate(1%,2%);}
+      30%{transform:translate(-3%,1%);} 40%{transform:translate(2%,-1%);} 50%{transform:translate(-1%,3%);}
+      60%{transform:translate(3%,-2%);} 70%{transform:translate(-2%,2%);} 80%{transform:translate(1%,-3%);} 90%{transform:translate(-3%,-1%);}
+    }
+    #scroll-bar { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--accent),var(--rose)); z-index:1000; transition:width .08s; }
+    #cur,#cur-f { position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
+    #cur { width:10px; height:10px; background:var(--accent); transition:width .25s,height .25s,background .25s; }
+    #cur-f { width:38px; height:38px; border:1px solid rgba(96,165,250,.45); z-index:9998; transition:width .3s,height .3s,opacity .3s; }
+    #cur.h { width:6px; height:6px; background:var(--rose); }
+    #cur-f.h { width:56px; height:56px; opacity:.5; border-color:var(--rose); }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 56px; display:flex; align-items:center; justify-content:space-between; transition:background .3s,backdrop-filter .3s; }
+    nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
+    .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
+    .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
+    .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a:hover::after { width:100%; }
+    .nav-cta { padding:10px 26px !important; background:var(--accent) !important; color:#fff !important; border-radius:100px !important; font-weight:700 !important; }
+    .nav-cta::after { display:none !important; }
+    .theme-toggle { background:none; border:1px solid var(--border); color:var(--text2); width:38px; height:38px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:color .2s,border-color .2s,background .2s; }
+    .theme-toggle:hover { color:var(--text); border-color:var(--border-hi); background:var(--accent-lo); }
+    .theme-toggle svg { display:block; }
+    .nav-burger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; z-index:200; }
+    .nav-burger span { display:block; width:22px; height:1.5px; background:var(--text); transition:transform .3s,opacity .3s; transform-origin:center; }
+    .nav-burger.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2){ opacity:0; }
+    .nav-burger.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+    .rv { opacity:0; transform:translateY(28px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1); }
+    .rv.in { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.32s;}
+    .tag { display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
+    .tag::before { content:''; width:22px; height:1px; background:var(--accent); }
+    .serif { font-family:'Instrument Serif',serif; font-weight:400; font-style:italic; }
+
+    /* ─── HERO ─── */
+    .cs-hero { min-height:72vh; padding:140px 56px 80px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; }
+    .cs-hero-bg { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,black,transparent); }
+    .cs-hero-glow { position:absolute; width:700px; height:700px; background:radial-gradient(circle,rgba(96,165,250,.12) 0%,transparent 65%); top:50%; left:40%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cs-back { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--text2); text-decoration:none; margin-bottom:40px; transition:color .2s; position:relative; z-index:1; }
+    .cs-back:hover { color:var(--accent); }
+    .cs-hero-inner { position:relative; z-index:1; }
+    .cs-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+    .cs-chip { padding:5px 14px; background:var(--accent-lo); border:1px solid var(--border-hi); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+    .cs-title { font-size:clamp(64px,9vw,120px); font-weight:800; line-height:.92; letter-spacing:-.045em; margin-bottom:28px; }
+    .cs-title .serif { color:var(--accent); letter-spacing:-.02em; }
+    .cs-tagline { font-size:18px; line-height:1.7; color:var(--text2); max-width:640px; }
+    .cs-tagline strong { color:var(--text); }
+
+    /* ─── META BAR ─── */
+    .cs-meta-bar { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 56px; display:flex; gap:48px; flex-wrap:wrap; }
+    .cs-meta-item { }
+    .cs-meta-label { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--text3); margin-bottom:6px; }
+    .cs-meta-val { font-size:15px; font-weight:600; color:var(--text); }
+
+    /* ─── IMPACT STATS ─── */
+    .impact-bar { padding:64px 56px; background:linear-gradient(135deg,rgba(96,165,250,.06),rgba(96,165,250,.02)); border-bottom:1px solid var(--border); }
+    .impact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:40px; }
+    .impact-c { background:var(--bg2); border:1px solid var(--border); padding:36px 40px; }
+    .impact-n { font-size:52px; font-weight:800; letter-spacing:-.045em; color:var(--accent); line-height:1; margin-bottom:8px; }
+    .impact-l { font-size:13px; color:var(--text2); line-height:1.6; }
+
+    /* ─── CONTENT SECTIONS ─── */
+    .cs-sec { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .cs-sec:last-of-type { border-bottom:none; }
+    .cs-sec-inner { max-width:900px; }
+    .cs-h2 { font-size:clamp(32px,4vw,52px); font-weight:800; letter-spacing:-.04em; line-height:1.05; margin-bottom:20px; }
+    .cs-p { font-size:16px; line-height:1.85; color:var(--text2); margin-bottom:20px; }
+    .cs-p strong { color:var(--text); }
+    .cs-p:last-child { margin-bottom:0; }
+
+    /* Pain points grid */
+    .pain-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .pain-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; transition:border-color .3s; }
+    .pain-c:hover { border-color:var(--border-hi); }
+    .pain-ic { font-size:28px; margin-bottom:14px; }
+    .pain-t { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .pain-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* Solution grid */
+    .sol-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .sol-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; }
+    .sol-t { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text); }
+    .sol-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* Initiatives */
+    .init-list { margin-top:40px; display:flex; flex-direction:column; gap:2px; }
+    .init-c { background:var(--bg2); border:1px solid var(--border); padding:32px 36px; display:grid; grid-template-columns:80px 1fr; gap:24px; align-items:start; transition:border-color .3s,background .3s; }
+    .init-c:hover { border-color:var(--border-hi); background:rgba(96,165,250,.03); }
+    .init-n { font-size:42px; font-weight:800; letter-spacing:-.06em; color:var(--text3); opacity:.3; line-height:1; }
+    .init-t { font-size:16px; font-weight:700; margin-bottom:8px; }
+    .init-p { font-size:13px; color:var(--text2); line-height:1.7; }
+    .init-stats { display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; }
+    .init-stat { font-size:12px; color:var(--accent); font-weight:700; background:var(--accent-lo); padding:3px 10px; border-radius:100px; }
+
+    /* UX Principles */
+    .ux-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .ux-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; border-top:2px solid var(--accent); }
+    .ux-t { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .ux-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* Impact metrics */
+    .imp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px; }
+    .imp-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; text-align:center; transition:border-color .3s,transform .3s; }
+    .imp-c:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+    .imp-n { font-size:42px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; margin-bottom:8px; }
+    .imp-l { font-size:12px; color:var(--text2); line-height:1.6; }
+
+    /* ─── NAV FOOTER ─── */
+    .cs-nav-footer { padding:56px; background:var(--bg2); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .cs-nav-btn { display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border:1px solid var(--border); border-radius:100px; font-size:14px; font-weight:700; color:var(--text2); text-decoration:none; transition:all .2s; }
+    .cs-nav-btn:hover { border-color:var(--border-hi); color:var(--text); background:var(--accent-lo); }
+    .cs-nav-btn.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .cs-nav-btn.primary:hover { opacity:.9; }
+
+    /* ─── CTA ─── */
+    .cta-sec { padding:80px 56px; text-align:center; }
+    .cta-wrap { background:linear-gradient(135deg,rgba(96,165,250,.1),rgba(96,165,250,.03)); border:1px solid var(--border-hi); border-radius:24px; padding:64px; position:relative; overflow:hidden; }
+    .cta-glow { position:absolute; width:400px; height:400px; background:radial-gradient(circle,rgba(96,165,250,.12) 0%,transparent 65%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cta-t { font-size:clamp(28px,4vw,48px); font-weight:800; letter-spacing:-.04em; margin-bottom:12px; position:relative; z-index:1; }
+    .cta-p { font-size:16px; color:var(--text2); margin-bottom:28px; position:relative; z-index:1; }
+    .cta-btns { display:flex; align-items:center; justify-content:center; gap:16px; position:relative; z-index:1; }
+    .btn-p { padding:14px 32px; background:var(--accent); color:#fff; border-radius:100px; font-size:15px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:transform .2s,box-shadow .2s; }
+    .btn-p:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(96,165,250,.4); }
+    .btn-g { padding:14px 28px; color:var(--text2); border-radius:100px; font-size:15px; font-weight:600; text-decoration:none; transition:color .2s; }
+    .btn-g:hover { color:var(--accent); }
+
+    footer { border-top:1px solid var(--border); padding:28px 56px; display:flex; align-items:center; justify-content:space-between; }
+    .fc { font-size:12px; color:var(--text3); }
+    .fc em { color:var(--accent); font-style:normal; }
+
+    @media (max-width:768px) {
+      #cur,#cur-f { display:none; } body { cursor:auto; }
+      nav { padding:18px 24px; }
+      .nav-burger { display:flex; }
+      .nav-links { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--nav-mobile-bg); backdrop-filter:blur(24px); flex-direction:column; align-items:center; justify-content:center; gap:40px; z-index:150; transform:translateX(100%); transition:transform .4s cubic-bezier(.16,1,.3,1); pointer-events:none; }
+      .nav-links.open { transform:translateX(0); pointer-events:all; }
+      .nav-links a { font-size:22px; font-weight:700; color:var(--text); }
+      .cs-hero { padding:120px 24px 60px; min-height:auto; }
+      .cs-meta-bar { padding:24px; gap:24px; }
+      .impact-bar { padding:48px 24px; }
+      .impact-grid { grid-template-columns:1fr 1fr; }
+      .cs-sec { padding:56px 24px; }
+      .pain-grid,.sol-grid,.ux-grid { grid-template-columns:1fr; }
+      .imp-grid { grid-template-columns:1fr 1fr; }
+      .init-c { grid-template-columns:1fr; gap:8px; padding:24px; }
+      .cs-nav-footer { padding:32px 24px; flex-direction:column; }
+      .cta-sec { padding:56px 24px; }
+      .cta-wrap { padding:40px 24px; }
+      .cta-btns { flex-direction:column; }
+      footer { padding:24px; flex-direction:column; gap:8px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain"></div>
+  <div id="scroll-bar"></div>
+  <div id="cur"></div>
+  <div id="cur-f"></div>
+
+  <nav id="nav">
+    <a href="/" class="nav-logo">BG<em>.</em></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/work.html">Work</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/#process">Process</a></li>
+      <li><a href="/#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-glow"></div>
+    <div class="cs-hero-inner">
+      <a href="/work.html" class="cs-back rv">← Back to Work</a>
+      <div class="cs-chips rv d1">
+        <span class="cs-chip">BI Dashboard</span>
+        <span class="cs-chip">Enterprise</span>
+        <span class="cs-chip">ERP Data</span>
+        <span class="cs-chip">C-Suite UX</span>
+      </div>
+      <h1 class="cs-title rv d2">Kock<span style="color:var(--accent)">pit</span></h1>
+      <p class="cs-tagline rv d3">
+        An <strong>executive BI dashboard syndicating data from ERP modules</strong> — Revenue, Gross Margin, AR/AP, Stock Ageing, and Open Orders synthesised into clear, actionable insights for C-suite decision makers.
+      </p>
+    </div>
+  </div>
+
+  <!-- META BAR -->
+  <div class="cs-meta-bar">
+    <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Product Designer</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2022</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Web · Enterprise</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Modules</div><div class="cs-meta-val">5 ERP Sources</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Audience</div><div class="cs-meta-val">C-Suite</div></div>
+  </div>
+
+  <!-- IMPACT BAR -->
+  <div class="impact-bar">
+    <div class="tag rv">Impact</div>
+    <h2 class="cs-h2 rv d1">One dashboard for every decision</h2>
+    <div class="impact-grid">
+      <div class="impact-c rv"><div class="impact-n">5</div><div class="impact-l">ERP Modules Integrated</div></div>
+      <div class="impact-c rv d1"><div class="impact-n">C-Suite</div><div class="impact-l">Focused UX</div></div>
+      <div class="impact-c rv d2"><div class="impact-n">Real-time</div><div class="impact-l">Business Intelligence</div></div>
+    </div>
+  </div>
+
+  <!-- 01 PROBLEM -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">01 / Problem</div>
+      <h2 class="cs-h2 rv d1">C-suite leaders were flying blind</h2>
+      <p class="cs-p rv d2">Executives at mid-market manufacturing and distribution companies were making critical decisions with <strong>week-old data pulled from disconnected ERP modules</strong>. Finance ran one report, sales ran another, and operations had a third — nobody had the same number.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-c rv">
+        <div class="pain-ic">🏗️</div>
+        <div class="pain-t">Data silos</div>
+        <div class="pain-p">Revenue, AR/AP, and Stock all lived in separate ERP modules with no unified view — each department saw only their slice of the business.</div>
+      </div>
+      <div class="pain-c rv d1">
+        <div class="pain-ic">🕐</div>
+        <div class="pain-t">Stale data</div>
+        <div class="pain-p">Weekly batch exports meant executives were making decisions on data that was 5–7 days old. By the time a problem showed up in a report, it had already compounded.</div>
+      </div>
+      <div class="pain-c rv d2">
+        <div class="pain-ic">🔍</div>
+        <div class="pain-t">No unified view</div>
+        <div class="pain-p">Each department saw only their slice. Finance didn't see open orders. Sales didn't see stock ageing. Operations didn't see cash flow. Nobody had the full picture.</div>
+      </div>
+      <div class="pain-c rv d3">
+        <div class="pain-ic">⏳</div>
+        <div class="pain-t">Analyst bottleneck</div>
+        <div class="pain-p">Executives waited days for someone to pull, clean, and format reports — creating a dependency that slowed every strategic decision in the business.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 DESIGN CHALLENGE -->
+  <section class="cs-sec" style="background:var(--bg2)">
+    <div class="cs-sec-inner">
+      <div class="tag rv">02 / Design Challenge</div>
+      <h2 class="cs-h2 rv d1">Making complex data feel simple</h2>
+      <p class="cs-p rv d2">The challenge wasn't getting the data — the ERP had all of it. The challenge was deciding <strong>what a CEO actually needs to see in the first 30 seconds</strong> of opening the dashboard, and what requires a click-through.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-c rv">
+        <div class="sol-t">Information Hierarchy</div>
+        <div class="sol-p">What goes above the fold, what's one click away, and what's drill-down only. Every piece of data earned its position through executive interviews and observation sessions.</div>
+      </div>
+      <div class="sol-c rv d1">
+        <div class="sol-t">Context over Data</div>
+        <div class="sol-p">Every number needs a trend, a target, and a status — raw numbers are meaningless without context. Revenue of £2.4M means nothing without the target, the prior period, and the trend direction.</div>
+      </div>
+      <div class="sol-c rv d2">
+        <div class="sol-t">Alert-First Thinking</div>
+        <div class="sol-p">The dashboard should tell you when something is wrong, not require you to spot it. Exceptions surface automatically — normal is invisible, anomalies are loud.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 KEY MODULES -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">03 / Key Modules</div>
+      <h2 class="cs-h2 rv d1">Five ERP modules, one view</h2>
+      <p class="cs-p rv d2">Each module was designed as a standalone panel that could surface its own alerts, while contributing to the holistic view of business health across the top of the dashboard.</p>
+    </div>
+    <div class="init-list">
+      <div class="init-c rv">
+        <div class="init-n">01</div>
+        <div>
+          <div class="init-t">Revenue Dashboard</div>
+          <div class="init-p">Monthly/quarterly/annual revenue vs target with trend line. Drill down by product category, region, or customer segment. Forecast vs actual with confidence intervals.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">02</div>
+        <div>
+          <div class="init-t">Gross Margin Tracker</div>
+          <div class="init-p">Margin by product line with waterfall chart showing cost components. Highlights margin compression and flags SKUs below threshold automatically — no manual hunting required.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">03</div>
+        <div>
+          <div class="init-t">AR/AP Monitor</div>
+          <div class="init-p">Receivables by aging bucket (0–30, 30–60, 60–90, 90+ days). Payables due in next 30 days. Cash flow forecast based on committed AR and AP with collection probability scoring.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">04</div>
+        <div>
+          <div class="init-t">Stock Ageing</div>
+          <div class="init-p">Inventory by age with slow-moving stock flagged automatically. Days-on-hand by category with reorder point indicators and carrying cost estimates for aged stock.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">05</div>
+        <div>
+          <div class="init-t">Open Orders</div>
+          <div class="init-p">Pipeline of active orders with fulfilment status, delay flags, and at-risk deliveries. Links to operations for escalation — one click from the flag to the action.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 DESIGN PRINCIPLES -->
+  <section class="cs-sec" style="background:var(--bg2)">
+    <div class="cs-sec-inner">
+      <div class="tag rv">04 / Design Principles</div>
+      <h2 class="cs-h2 rv d1">Four rules for executive UX</h2>
+      <p class="cs-p rv d2">Executives have no patience for UI complexity. These four principles governed every design decision — from layout to data density to interaction patterns.</p>
+    </div>
+    <div class="ux-grid">
+      <div class="ux-c rv">
+        <div class="ux-t">One Screen, Full Picture</div>
+        <div class="ux-p">Everything critical visible without scrolling on a 13" laptop. If it requires scrolling on the default view, it's not critical — it's detail, and detail belongs one click away.</div>
+      </div>
+      <div class="ux-c rv d1">
+        <div class="ux-t">Traffic Light Logic</div>
+        <div class="ux-p">Green/amber/red status on every metric — never make executives hunt for the story. Colour is the first signal, numbers are the confirmation, drill-down is the investigation.</div>
+      </div>
+      <div class="ux-c rv d2">
+        <div class="ux-t">Drill on Demand</div>
+        <div class="ux-p">Default view is aggregated; every number links to the underlying data. Executives start with the summary, analysts get the detail — same tool, different entry points.</div>
+      </div>
+      <div class="ux-c rv d3">
+        <div class="ux-t">Zero Training Required</div>
+        <div class="ux-p">If it needs a legend, redesign it — executives don't read documentation. Every chart, metric, and interaction must be self-explanatory on first encounter.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 OUTCOME -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">05 / Outcome</div>
+      <h2 class="cs-h2 rv d1">A single source of truth</h2>
+      <p class="cs-p rv d2">Kockpit gave executives the ability to walk into any meeting with a complete, live view of the business — no analyst required, no stale exports, no competing numbers between departments.</p>
+    </div>
+    <div class="imp-grid" style="margin-top:40px">
+      <div class="imp-c rv"><div class="imp-n">5</div><div class="imp-l">ERP Modules Unified</div></div>
+      <div class="imp-c rv d1"><div class="imp-n">C-Suite</div><div class="imp-l">Zero-training UX</div></div>
+      <div class="imp-c rv d2"><div class="imp-n">Real-time</div><div class="imp-l">Data Decisions</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec">
+    <div class="cta-wrap rv">
+      <div class="cta-glow"></div>
+      <div class="tag" style="justify-content:center">Let's Work Together</div>
+      <div class="cta-t">Building something that needs<br>a <span class="serif">product designer?</span></div>
+      <p class="cta-p">Open to senior product design roles, design leadership, and select freelance projects.</p>
+      <div class="cta-btns">
+        <a href="mailto:buddhpriya93@gmail.com" class="btn-p">Send an Email ↗</a>
+        <a href="/work.html" class="btn-g">← Back to Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT NAV -->
+  <div class="cs-nav-footer">
+    <a href="/locatr.html" class="cs-nav-btn">← LocatR</a>
+    <a href="/brand-work.html" class="cs-nav-btn primary">Next: Brand &amp; UI →</a>
+  </div>
+
+  <footer>
+    <div class="fc">© 2026 Buddhpriya Gautam. All rights reserved.</div>
+    <div class="fc">Designed with <em>♥</em> for exceptional experiences</div>
+  </footer>
+
+  <script>
+    const cur=document.getElementById('cur'),curf=document.getElementById('cur-f');
+    let mx=0,my=0,fx=0,fy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    (function tick(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;curf.style.left=fx+'px';curf.style.top=fy+'px';requestAnimationFrame(tick);})();
+    document.querySelectorAll('a,button,.pain-c,.sol-c,.ux-c,.imp-c,.init-c').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{cur.classList.add('h');curf.classList.add('h');});
+      el.addEventListener('mouseleave',()=>{cur.classList.remove('h');curf.classList.remove('h');});
+    });
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+    const bar=document.getElementById('scroll-bar');
+    window.addEventListener('scroll',()=>{bar.style.width=(window.scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';},{passive:true});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+    const burger=document.getElementById('nav-burger'),navLinks=document.getElementById('nav-links');
+    burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');document.body.style.overflow=navLinks.classList.contains('open')?'hidden':'';});
+    navLinks.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open');document.body.style.overflow='';});});
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});}
+    const themeBtn=document.getElementById('theme-toggle');
+    const sunSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    const moonSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.innerHTML=t==='dark'?sunSVG:moonSVG;themeBtn.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');}
+    applyTheme(document.documentElement.getAttribute('data-theme')||'dark');
+    themeBtn.addEventListener('click',()=>{const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';localStorage.setItem('theme',next);applyTheme(next);});
+  </script>
+</body>
+</html>

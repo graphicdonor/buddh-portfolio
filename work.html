@@ -284,6 +284,113 @@
     .fc { font-size:12px; color:var(--text3); }
     .fc em { color:var(--accent); font-style:normal; }
 
+    /* ─── ADDITIONAL CARD COLOR VARIANTS ─── */
+    .cs-card.rose { border-color:rgba(240,98,146,.15); }
+    .cs-card.rose:hover { border-color:rgba(240,98,146,.4); }
+    .cs-card.rose .cs-card-right { border-left-color:rgba(240,98,146,.08); }
+    .cs-card.amber-c { border-color:rgba(251,176,36,.15); }
+    .cs-card.amber-c:hover { border-color:rgba(251,176,36,.4); }
+    .cs-card.amber-c .cs-card-right { border-left-color:rgba(251,176,36,.08); }
+    .cs-card.blue-c { border-color:rgba(96,165,250,.15); }
+    .cs-card.blue-c:hover { border-color:rgba(96,165,250,.4); }
+    .cs-card.blue-c .cs-card-right { border-left-color:rgba(96,165,250,.08); }
+    .cs-card.purple-c { border-color:rgba(192,132,252,.15); }
+    .cs-card.purple-c:hover { border-color:rgba(192,132,252,.4); }
+    .cs-card.purple-c .cs-card-right { border-left-color:rgba(192,132,252,.08); }
+
+    .cs-chip.rose { background:rgba(240,98,146,.1); border-color:rgba(240,98,146,.3); color:var(--rose); }
+    .cs-chip.amber { background:rgba(251,176,36,.1); border-color:rgba(251,176,36,.3); color:var(--amber); }
+    .cs-chip.blue { background:rgba(96,165,250,.1); border-color:rgba(96,165,250,.3); color:var(--blue); }
+    .cs-chip.purp { background:rgba(192,132,252,.1); border-color:rgba(192,132,252,.3); color:#C084FC; }
+    .cs-card-title .rose { color:var(--rose); }
+    .cs-card-title .amber { color:var(--amber); }
+    .cs-card-title .blue { color:var(--blue); }
+    .cs-card-title .purp { color:#C084FC; }
+    .cs-stat-n.rose { color:var(--rose); }
+    .cs-stat-n.amber { color:var(--amber); }
+    .cs-stat-n.blue { color:var(--blue); }
+    .cs-stat-n.purp { color:#C084FC; }
+    .cs-card-link.rose { background:var(--rose); }
+    .cs-card-link.rose:hover { background:#f48fb1; box-shadow:0 12px 30px rgba(240,98,146,.35); }
+    .cs-card-link.amber { background:var(--amber); color:#07070F; }
+    .cs-card-link.amber:hover { background:#fcc44f; box-shadow:0 12px 30px rgba(251,176,36,.3); }
+    .cs-card-link.blue { background:var(--blue); color:#fff; }
+    .cs-card-link.blue:hover { background:#93c5fd; box-shadow:0 12px 30px rgba(96,165,250,.35); }
+    .cs-card-link.purp { background:#C084FC; color:#fff; }
+    .cs-card-link.purp:hover { background:#d8b4fe; box-shadow:0 12px 30px rgba(192,132,252,.35); }
+
+    /* ─── RIGHT-PANEL MOCKUPS (additional projects) ─── */
+
+    /* RankWatch SEO mockup */
+    .mini-seo { background:var(--bg2); border:1px solid var(--border); border-radius:14px; width:330px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.6); transform:perspective(800px) rotateY(-8deg) rotateX(4deg); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+    .cs-card:hover .mini-seo { transform:perspective(800px) rotateY(-4deg) rotateX(2deg) translateY(-6px); }
+    .mini-seo-hd { display:grid; grid-template-columns:1fr 36px 50px; padding:6px 10px; font-size:8px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text3); border-bottom:1px solid var(--border); background:rgba(255,255,255,.025); }
+    .mini-seo-row { display:grid; grid-template-columns:1fr 36px 50px; padding:6px 10px; border-bottom:1px solid rgba(255,255,255,.03); align-items:center; }
+    .mini-seo-row:last-child { border-bottom:none; }
+    .mini-seo-kw { font-size:9px; color:var(--text2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .mini-seo-pos { font-size:12px; font-weight:700; text-align:center; }
+    .mini-seo-pos.top { color:var(--green); }
+    .mini-seo-pos.mid { color:var(--accent); }
+    .mini-seo-pos.low { color:var(--text2); }
+    .mini-seo-chg { font-size:9px; text-align:right; font-weight:600; }
+    .mini-seo-chg.up { color:var(--green); }
+    .mini-seo-chg.dn { color:var(--rose); }
+    .mini-seo-chg.fl { color:var(--text3); }
+
+    /* WebSignals mention feed mockup */
+    .mini-feed { background:var(--bg2); border:1px solid var(--border); border-radius:14px; width:310px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.6); transform:perspective(800px) rotateY(-8deg) rotateX(4deg); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+    .cs-card:hover .mini-feed { transform:perspective(800px) rotateY(-4deg) rotateX(2deg) translateY(-6px); }
+    .mini-feed-hd { background:rgba(255,255,255,.025); border-bottom:1px solid var(--border); padding:10px 12px; font-size:10px; font-weight:700; color:var(--text2); display:flex; align-items:center; gap:7px; }
+    .mini-feed-dot { width:6px; height:6px; border-radius:50%; background:var(--rose); flex-shrink:0; animation:pulse 2s infinite; }
+    .mini-feed-item { padding:9px 12px; border-bottom:1px solid rgba(255,255,255,.03); }
+    .mini-feed-item:last-child { border-bottom:none; }
+    .mfi-source { font-size:8px; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px; }
+    .mfi-text { font-size:9px; color:var(--text2); line-height:1.4; margin-bottom:5px; }
+    .mfi-tags { display:flex; gap:5px; }
+    .mfi-tag { padding:2px 7px; border-radius:100px; font-size:8px; font-weight:700; }
+    .mfi-tag.pos { background:rgba(74,222,128,.1); color:var(--green); }
+    .mfi-tag.neg { background:rgba(240,98,146,.1); color:var(--rose); }
+    .mfi-tag.neu { background:rgba(255,255,255,.06); color:var(--text3); }
+
+    /* Knovelo book grid mockup */
+    .book-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:300px; }
+    .book-cover { border-radius:7px; height:88px; display:flex; align-items:center; justify-content:center; font-size:22px; box-shadow:0 10px 24px rgba(0,0,0,.5); }
+    .book-ttl { font-size:8px; color:var(--text2); margin-top:5px; font-weight:600; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .book-stars { font-size:8px; color:var(--green); text-align:center; }
+
+    /* LocatR store map mockup */
+    .mini-loc { background:var(--bg2); border:1px solid var(--border); border-radius:14px; width:310px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.6); transform:perspective(800px) rotateY(-8deg) rotateX(4deg); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+    .cs-card:hover .mini-loc { transform:perspective(800px) rotateY(-4deg) rotateX(2deg) translateY(-6px); }
+    .mini-loc-hd { background:rgba(255,255,255,.025); border-bottom:1px solid var(--border); padding:9px 12px; font-size:10px; font-weight:700; color:var(--text2); }
+    .store-aisles { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; padding:10px 10px 4px; }
+    .aisle-block { background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:4px; padding:6px 3px; font-size:7px; color:var(--text3); text-align:center; line-height:1.3; }
+    .aisle-block.act { background:rgba(251,176,36,.1); border-color:rgba(251,176,36,.3); color:var(--amber); }
+    .loc-list { padding:4px 10px 10px; }
+    .loc-item { display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.04); font-size:9px; color:var(--text2); }
+    .loc-item:last-child { border-bottom:none; }
+    .loc-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+
+    /* Kockpit BI dashboard mockup */
+    .mini-bi-wrap { background:var(--bg2); border:1px solid var(--border); border-radius:14px; width:330px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.6); transform:perspective(800px) rotateY(-8deg) rotateX(4deg); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+    .cs-card:hover .mini-bi-wrap { transform:perspective(800px) rotateY(-4deg) rotateX(2deg) translateY(-6px); }
+    .bi-hd { background:rgba(255,255,255,.025); border-bottom:1px solid var(--border); padding:9px 12px; font-size:10px; font-weight:700; color:var(--text2); }
+    .bi-kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; padding:10px; }
+    .bi-kpi-c { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:7px; padding:9px; }
+    .bi-kpi-l { font-size:7px; color:var(--text3); letter-spacing:.08em; text-transform:uppercase; margin-bottom:3px; }
+    .bi-kpi-v { font-size:14px; font-weight:700; letter-spacing:-.03em; }
+    .bi-kpi-d { font-size:7px; margin-top:2px; }
+    .bi-chart-b { margin:0 10px 10px; background:rgba(255,255,255,.02); border:1px solid var(--border); border-radius:7px; padding:8px; }
+    .bi-chart-t { font-size:8px; color:var(--text2); margin-bottom:6px; font-weight:600; }
+    .bi-bars { display:flex; align-items:flex-end; gap:3px; height:44px; }
+    .bi-bar { flex:1; border-radius:2px 2px 0 0; }
+
+    /* Brand & UI mockup */
+    .mini-brand-wrap { width:300px; }
+    .brand-logos-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px; }
+    .brand-logo-c { background:var(--bg2); border:1px solid var(--border); border-radius:12px; height:72px; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:800; letter-spacing:-.05em; box-shadow:0 8px 20px rgba(0,0,0,.35); }
+    .palette-row { display:flex; gap:6px; }
+    .palette-sw { flex:1; height:28px; border-radius:6px; }
+
     /* ─── MOBILE ─── */
     @media (max-width:768px) {
       #cur,#cur-f { display:none; }
@@ -363,7 +470,7 @@
   <!-- ═══ FEATURED CASE STUDIES ═══ -->
   <section class="work-sec">
     <div class="tag rv">Case Studies</div>
-    <h2 class="sh rv d1" style="margin-bottom:48px">Deep <span class="serif">dives</span></h2>
+    <h2 class="sh rv d1" style="margin-bottom:48px">All <span class="serif">projects</span></h2>
 
     <!-- R'Dash -->
     <div class="cs-card rv" data-tags="saas ai zero">
@@ -399,7 +506,7 @@
               <div class="cs-stat"><div class="cs-stat-n">7 days</div><div class="cs-stat-l">SMB Go-Live</div></div>
             </div>
           </div>
-          <a href="/#work" class="cs-card-link">View Case Study →</a>
+          <a href="/rdash.html" class="cs-card-link">View Case Study →</a>
         </div>
         <div class="cs-card-right">
           <div class="cs-visual">
@@ -480,7 +587,7 @@
               <div class="cs-stat"><div class="cs-stat-n green">2-in-1</div><div class="cs-stat-l">PWA + Android</div></div>
             </div>
           </div>
-          <a href="/#work" class="cs-card-link green">View Case Study →</a>
+          <a href="/elite60.html" class="cs-card-link green">View Case Study →</a>
         </div>
         <div class="cs-card-right">
           <div class="cs-visual">
@@ -500,109 +607,301 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══ OTHER PROJECTS ═══ -->
-  <section class="other-sec">
-    <div class="tag rv">More Projects</div>
-    <h2 class="sh rv d1" style="margin-bottom:40px">Other <span class="serif">work</span></h2>
-    <div class="other-grid">
-
-      <!-- RankWatch -->
-      <div class="proj-c rv" data-tags="saas">
-        <div class="proj-accent" style="background:#7B6CF6"></div>
-        <div class="proj-num">01</div>
-        <div class="proj-type" style="color:var(--accent)">SEO SaaS Platform</div>
-        <div class="proj-name">RankWatch</div>
-        <div class="proj-desc">Full product design overhaul for an enterprise SEO monitoring platform — improving data visualisation, workflow clarity, and team-level reporting for agencies at scale.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Dashboard Design</span>
-          <span class="proj-tag">Data Visualisation</span>
-          <span class="proj-tag">SaaS Redesign</span>
-          <span class="proj-tag">B2B</span>
+    <!-- RankWatch -->
+    <div class="cs-card rv d2" data-tags="saas">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip">B2B SaaS</span>
+              <span class="cs-chip">SEO Platform</span>
+              <span class="cs-chip">Product Overhaul</span>
+            </div>
+            <div class="cs-card-title">Rank<span class="serif">Watch</span></div>
+            <p class="cs-card-sub">Full product design overhaul for an enterprise SEO monitoring platform — improving data visualisation, workflow clarity, and team-level reporting for agencies managing hundreds of clients at scale.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Lead Product Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2022 – 2023</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Web · B2B SaaS</div></div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n">40+</div><div class="cs-stat-l">Features Redesigned</div></div>
+              <div class="cs-stat"><div class="cs-stat-n">3</div><div class="cs-stat-l">User Tiers</div></div>
+              <div class="cs-stat"><div class="cs-stat-n">Enterprise</div><div class="cs-stat-l">Scale</div></div>
+            </div>
+          </div>
+          <a href="/rankwatch.html" class="cs-card-link">View Case Study →</a>
         </div>
-        <div class="proj-arrow">→</div>
-      </div>
-
-      <!-- WebSignals -->
-      <div class="proj-c rv d1" data-tags="saas zero">
-        <div class="proj-accent" style="background:#F06292"></div>
-        <div class="proj-num">02</div>
-        <div class="proj-type" style="color:var(--rose)">Brand Monitoring · 0→1</div>
-        <div class="proj-name">WebSignals</div>
-        <div class="proj-desc">0→1 brand monitoring platform — full product definition, design system creation, and launch experience for a B2B media intelligence and social listening tool.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">0 → 1</span>
-          <span class="proj-tag">Brand System</span>
-          <span class="proj-tag">B2B</span>
-          <span class="proj-tag">Media Intel</span>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow"></div>
+            <div class="mini-seo">
+              <div class="mini-db-bar">
+                <div class="mini-dots"><span></span><span></span><span></span></div>
+                <div class="mini-url">rankwatch.com/keywords</div>
+              </div>
+              <div class="mini-seo-hd"><span>Keyword</span><span>Pos</span><span>Change</span></div>
+              <div class="mini-seo-row"><span class="mini-seo-kw">seo rank tracker</span><span class="mini-seo-pos top">2</span><span class="mini-seo-chg up">↑ 4</span></div>
+              <div class="mini-seo-row"><span class="mini-seo-kw">keyword monitoring tool</span><span class="mini-seo-pos top">5</span><span class="mini-seo-chg up">↑ 2</span></div>
+              <div class="mini-seo-row"><span class="mini-seo-kw">rank tracking software</span><span class="mini-seo-pos mid">11</span><span class="mini-seo-chg fl">— 0</span></div>
+              <div class="mini-seo-row"><span class="mini-seo-kw">google position checker</span><span class="mini-seo-pos mid">14</span><span class="mini-seo-chg dn">↓ 1</span></div>
+              <div class="mini-seo-row"><span class="mini-seo-kw">serp monitoring</span><span class="mini-seo-pos top">7</span><span class="mini-seo-chg up">↑ 6</span></div>
+              <div class="mini-seo-row"><span class="mini-seo-kw">backlink analysis</span><span class="mini-seo-pos low">23</span><span class="mini-seo-chg up">↑ 3</span></div>
+            </div>
+          </div>
         </div>
-        <div class="proj-arrow">→</div>
       </div>
+    </div>
 
-      <!-- Knovelo -->
-      <div class="proj-c rv d2" data-tags="mobile zero">
-        <div class="proj-accent" style="background:#4ADE80"></div>
-        <div class="proj-num">03</div>
-        <div class="proj-type" style="color:var(--green)">Consumer App</div>
-        <div class="proj-name">Knovelo</div>
-        <div class="proj-desc">Reader community app connecting book lovers through shared discovery, highlights, and community reviews — built from ideation to final product.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Mobile</span>
-          <span class="proj-tag">Community</span>
-          <span class="proj-tag">Consumer</span>
-          <span class="proj-tag">0 → 1</span>
+    <!-- WebSignals -->
+    <div class="cs-card rose rv" data-tags="saas zero">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip rose">Brand Monitoring</span>
+              <span class="cs-chip rose">0 → 1</span>
+              <span class="cs-chip rose">Media Intelligence</span>
+            </div>
+            <div class="cs-card-title">Web<span class="rose">Signals</span></div>
+            <p class="cs-card-sub">0→1 brand monitoring platform — full product definition, design system creation, and launch experience for a B2B media intelligence and social listening tool built from first principles.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Lead Product Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2023</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Web · B2B SaaS</div></div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n rose">0→1</div><div class="cs-stat-l">Full Product Launch</div></div>
+              <div class="cs-stat"><div class="cs-stat-n rose">Full</div><div class="cs-stat-l">Design System</div></div>
+              <div class="cs-stat"><div class="cs-stat-n rose">B2B</div><div class="cs-stat-l">Media Intel</div></div>
+            </div>
+          </div>
+          <a href="/websignals.html" class="cs-card-link rose">View Case Study →</a>
         </div>
-        <div class="proj-arrow">→</div>
-      </div>
-
-      <!-- LocatR -->
-      <div class="proj-c rv d1" data-tags="mobile">
-        <div class="proj-accent" style="background:#FBB024"></div>
-        <div class="proj-num">04</div>
-        <div class="proj-type" style="color:var(--amber)">Navigation UX</div>
-        <div class="proj-name">LocatR</div>
-        <div class="proj-desc">Grocery store navigation UX — real-time product availability on a map, reducing time-to-find for shoppers using indoor wayfinding and smart list organisation.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">UX Research</span>
-          <span class="proj-tag">Wayfinding</span>
-          <span class="proj-tag">Mobile</span>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow" style="background:radial-gradient(circle,rgba(240,98,146,.12) 0%,transparent 65%)"></div>
+            <div class="mini-feed">
+              <div class="mini-feed-hd"><div class="mini-feed-dot"></div>Live Brand Mentions</div>
+              <div class="mini-feed-item">
+                <div class="mfi-source">TechCrunch · 2m ago</div>
+                <div class="mfi-text">"WebSignals outperforms legacy tools with real-time AI categorisation..."</div>
+                <div class="mfi-tags"><span class="mfi-tag pos">Positive</span><span class="mfi-tag neu">Press</span></div>
+              </div>
+              <div class="mini-feed-item">
+                <div class="mfi-source">Reddit · 5m ago</div>
+                <div class="mfi-text">"Anyone using WebSignals? Impressive alert speed 🚀"</div>
+                <div class="mfi-tags"><span class="mfi-tag pos">Positive</span><span class="mfi-tag neu">Social</span></div>
+              </div>
+              <div class="mini-feed-item">
+                <div class="mfi-source">G2 Review · 18m ago</div>
+                <div class="mfi-text">"Alert system needs more granular filtering options."</div>
+                <div class="mfi-tags"><span class="mfi-tag neg">Constructive</span><span class="mfi-tag neu">Review</span></div>
+              </div>
+              <div class="mini-feed-item">
+                <div class="mfi-source">LinkedIn · 1h ago</div>
+                <div class="mfi-text">"Switched our agency to WebSignals. Total game changer."</div>
+                <div class="mfi-tags"><span class="mfi-tag pos">Positive</span><span class="mfi-tag neu">Social</span></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="proj-arrow">→</div>
       </div>
+    </div>
 
-      <!-- Kockpit -->
-      <div class="proj-c rv d2" data-tags="saas">
-        <div class="proj-accent" style="background:#60A5FA"></div>
-        <div class="proj-num">05</div>
-        <div class="proj-type" style="color:var(--blue)">BI Dashboard</div>
-        <div class="proj-name">Kockpit</div>
-        <div class="proj-desc">Executive BI dashboard syndicating data from ERP modules — Revenue, Gross Margin, AR/AP, Stock Ageing, and Open Orders into clear, actionable insights for C-suite decision makers.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">BI</span>
-          <span class="proj-tag">Executive UX</span>
-          <span class="proj-tag">ERP</span>
-          <span class="proj-tag">Data</span>
+    <!-- Knovelo -->
+    <div class="cs-card rv d1" data-tags="mobile zero">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip green">Consumer App</span>
+              <span class="cs-chip green">0 → 1</span>
+              <span class="cs-chip green">Community</span>
+            </div>
+            <div class="cs-card-title">Kno<span class="green">velo</span></div>
+            <p class="cs-card-sub">Reader community app connecting book lovers through shared discovery, highlights, and community reviews — designed from ideation to production-ready mobile experience.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Lead Product Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2022</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">iOS · Android</div></div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n green">0→1</div><div class="cs-stat-l">Mobile App</div></div>
+              <div class="cs-stat"><div class="cs-stat-n green">Social</div><div class="cs-stat-l">Discovery Feed</div></div>
+              <div class="cs-stat"><div class="cs-stat-n green">Highlights</div><div class="cs-stat-l">& Reviews</div></div>
+            </div>
+          </div>
+          <a href="/knovelo.html" class="cs-card-link green">View Case Study →</a>
         </div>
-        <div class="proj-arrow">→</div>
-      </div>
-
-      <!-- Freelance -->
-      <div class="proj-c rv d3" data-tags="zero">
-        <div class="proj-accent" style="background:#C084FC"></div>
-        <div class="proj-num">06</div>
-        <div class="proj-type" style="color:#C084FC">Freelance · 2020</div>
-        <div class="proj-name">Brand & UI Work</div>
-        <div class="proj-desc">Freelance design engagements covering brand identities, product MVPs, and UI systems — for startups and small businesses across multiple sectors.</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Branding</span>
-          <span class="proj-tag">Logo Design</span>
-          <span class="proj-tag">UI Systems</span>
-          <span class="proj-tag">MVP</span>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow" style="background:radial-gradient(circle,rgba(74,222,128,.12) 0%,transparent 65%)"></div>
+            <div class="book-grid">
+              <div class="book-item"><div class="book-cover" style="background:linear-gradient(135deg,#1a1a3e,#2d2d6b)">📗</div><div class="book-ttl">Atomic Habits</div><div class="book-stars">★★★★★</div></div>
+              <div class="book-item"><div class="book-cover" style="background:linear-gradient(135deg,#2d1b4e,#5b2d8e)">📘</div><div class="book-ttl">Deep Work</div><div class="book-stars">★★★★☆</div></div>
+              <div class="book-item"><div class="book-cover" style="background:linear-gradient(135deg,#1b3a4e,#1e6091)">📙</div><div class="book-ttl">The Almanack</div><div class="book-stars">★★★★★</div></div>
+              <div class="book-item"><div class="book-cover" style="background:linear-gradient(135deg,#2d4a1b,#3a6b24)">📕</div><div class="book-ttl">Zero to One</div><div class="book-stars">★★★★☆</div></div>
+              <div class="book-item"><div class="book-cover" style="background:linear-gradient(135deg,#4e1b1b,#7a2d2d)">📒</div><div class="book-ttl">Show Your Work</div><div class="book-stars">★★★★☆</div></div>
+              <div class="book-item"><div class="book-cover" style="background:linear-gradient(135deg,#1b2d4e,#2d4a7a)">📓</div><div class="book-ttl">SPRINT</div><div class="book-stars">★★★★★</div></div>
+            </div>
+          </div>
         </div>
-        <div class="proj-arrow">→</div>
       </div>
+    </div>
 
+    <!-- LocatR -->
+    <div class="cs-card amber-c rv d2" data-tags="mobile">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip amber">Navigation UX</span>
+              <span class="cs-chip amber">Mobile</span>
+              <span class="cs-chip amber">Wayfinding</span>
+            </div>
+            <div class="cs-card-title">Loc<span class="amber">atR</span></div>
+            <p class="cs-card-sub">Grocery store navigation UX — real-time product availability on an indoor map, reducing time-to-find for shoppers using smart list organisation and aisle-level wayfinding.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">UX Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2021</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Mobile</div></div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n amber">Indoor</div><div class="cs-stat-l">Wayfinding</div></div>
+              <div class="cs-stat"><div class="cs-stat-n amber">Smart</div><div class="cs-stat-l">Lists</div></div>
+              <div class="cs-stat"><div class="cs-stat-n amber">Real-time</div><div class="cs-stat-l">Availability</div></div>
+            </div>
+          </div>
+          <a href="/locatr.html" class="cs-card-link amber">View Case Study →</a>
+        </div>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow" style="background:radial-gradient(circle,rgba(251,176,36,.1) 0%,transparent 65%)"></div>
+            <div class="mini-loc">
+              <div class="mini-loc-hd">Store Navigator</div>
+              <div class="store-aisles">
+                <div class="aisle-block">Produce</div>
+                <div class="aisle-block act">Dairy ★</div>
+                <div class="aisle-block">Bakery</div>
+                <div class="aisle-block">Meat</div>
+                <div class="aisle-block">Aisle 1<br>Snacks</div>
+                <div class="aisle-block">Aisle 2<br>Drinks</div>
+                <div class="aisle-block act">Aisle 3<br>Frozen ★</div>
+                <div class="aisle-block">Aisle 4<br>Cleaning</div>
+              </div>
+              <div class="loc-list">
+                <div class="loc-item"><div class="loc-dot" style="background:var(--amber)"></div>Milk 2L — Dairy Aisle</div>
+                <div class="loc-item"><div class="loc-dot" style="background:var(--amber)"></div>Ice Cream — Frozen, Aisle 3</div>
+                <div class="loc-item"><div class="loc-dot" style="background:var(--text3)"></div>Broccoli — Produce Section</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kockpit -->
+    <div class="cs-card blue-c rv" data-tags="saas">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip blue">BI Dashboard</span>
+              <span class="cs-chip blue">Enterprise</span>
+              <span class="cs-chip blue">ERP Data</span>
+            </div>
+            <div class="cs-card-title">Kock<span class="blue">pit</span></div>
+            <p class="cs-card-sub">Executive BI dashboard syndicating data from ERP modules — Revenue, Gross Margin, AR/AP, Stock Ageing, and Open Orders into clear, actionable insights for C-suite decision makers.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Product Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2022</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Web · Enterprise</div></div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n blue">5</div><div class="cs-stat-l">ERP Modules</div></div>
+              <div class="cs-stat"><div class="cs-stat-n blue">C-Suite</div><div class="cs-stat-l">UX Focus</div></div>
+              <div class="cs-stat"><div class="cs-stat-n blue">Real-time</div><div class="cs-stat-l">BI Insights</div></div>
+            </div>
+          </div>
+          <a href="/kockpit.html" class="cs-card-link blue">View Case Study →</a>
+        </div>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow" style="background:radial-gradient(circle,rgba(96,165,250,.12) 0%,transparent 65%)"></div>
+            <div class="mini-bi-wrap">
+              <div class="bi-hd">Kockpit — Executive Dashboard</div>
+              <div class="bi-kpis">
+                <div class="bi-kpi-c"><div class="bi-kpi-l">Revenue</div><div class="bi-kpi-v" style="color:var(--blue)">₹8.2Cr</div><div class="bi-kpi-d" style="color:var(--green)">↑ 12%</div></div>
+                <div class="bi-kpi-c"><div class="bi-kpi-l">Gross Margin</div><div class="bi-kpi-v" style="color:var(--blue)">38.4%</div><div class="bi-kpi-d" style="color:var(--green)">↑ 3%</div></div>
+                <div class="bi-kpi-c"><div class="bi-kpi-l">AR Overdue</div><div class="bi-kpi-v" style="color:var(--rose)">₹1.1Cr</div><div class="bi-kpi-d" style="color:var(--rose)">↓ 8%</div></div>
+              </div>
+              <div class="bi-chart-b">
+                <div class="bi-chart-t">Monthly Revenue Trend</div>
+                <div class="bi-bars">
+                  <div class="bi-bar" style="height:30%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:45%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:38%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:55%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:62%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:72%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:84%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:92%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                  <div class="bi-bar" style="height:100%;background:linear-gradient(180deg,var(--blue),rgba(96,165,250,.15))"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand & UI Work -->
+    <div class="cs-card purple-c rv d1" data-tags="zero">
+      <div class="cs-card-inner">
+        <div class="cs-card-left">
+          <div>
+            <div class="cs-chips">
+              <span class="cs-chip purp">Freelance</span>
+              <span class="cs-chip purp">Branding</span>
+              <span class="cs-chip purp">UI Systems</span>
+            </div>
+            <div class="cs-card-title">Brand <span class="purp">&amp; UI</span></div>
+            <p class="cs-card-sub">Freelance design engagements covering brand identities, product MVPs, and UI systems — for startups and small businesses across fintech, edtech, retail, and logistics sectors.</p>
+            <div class="cs-meta-row">
+              <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Brand Designer</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2020</div></div>
+              <div class="cs-meta-item"><div class="cs-meta-label">Scope</div><div class="cs-meta-val">Multiple Clients</div></div>
+            </div>
+            <div class="cs-stats">
+              <div class="cs-stat"><div class="cs-stat-n purp">10+</div><div class="cs-stat-l">Brands Designed</div></div>
+              <div class="cs-stat"><div class="cs-stat-n purp">MVPs</div><div class="cs-stat-l">&amp; Systems</div></div>
+              <div class="cs-stat"><div class="cs-stat-n purp">Multi-sector</div><div class="cs-stat-l">Experience</div></div>
+            </div>
+          </div>
+          <a href="/brand-work.html" class="cs-card-link purp">View Case Study →</a>
+        </div>
+        <div class="cs-card-right">
+          <div class="cs-visual">
+            <div class="cs-visual-glow" style="background:radial-gradient(circle,rgba(192,132,252,.12) 0%,transparent 65%)"></div>
+            <div class="mini-brand-wrap">
+              <div class="brand-logos-row">
+                <div class="brand-logo-c" style="color:#C084FC">Ax</div>
+                <div class="brand-logo-c" style="color:var(--rose)">Bø</div>
+                <div class="brand-logo-c" style="color:var(--green)">Cc</div>
+              </div>
+              <div class="palette-row">
+                <div class="palette-sw" style="background:#C084FC"></div>
+                <div class="palette-sw" style="background:#F06292"></div>
+                <div class="palette-sw" style="background:#4ADE80"></div>
+                <div class="palette-sw" style="background:#FBB024"></div>
+                <div class="palette-sw" style="background:#60A5FA"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

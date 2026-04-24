@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocatR Case Study — Buddhpriya Gautam</title>
+  <meta name="description" content="A grocery store navigation UX that puts real-time product availability on an indoor map — reducing time-to-find for shoppers.">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#FBB024">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#07070F; --bg2:#0D0D1C; --bg3:#131326;
+      --border:rgba(255,255,255,0.07); --border-hi:rgba(251,176,36,0.3);
+      --accent:#FBB024; --accent-lo:rgba(251,176,36,0.12);
+      --rose:#F06292; --green:#4ADE80; --amber:#FBB024;
+      --text:#EEEEF8; --text2:#8888AA; --text3:#3E3E60;
+      --r:16px; --r-sm:8px;
+      --nav-scrolled-bg:rgba(7,7,15,.85); --nav-mobile-bg:rgba(7,7,15,.97);
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg:#F7F7FF; --bg2:#F0F0FA; --bg3:#E8E8F5;
+        --border:rgba(0,0,0,0.08); --border-hi:rgba(251,176,36,0.35);
+        --accent:#D4890A; --accent-lo:rgba(212,137,10,0.10);
+        --rose:#D81B60; --green:#16A34A; --amber:#B45309;
+        --text:#0D0D1A; --text2:#4A4A6A; --text3:#9999BB;
+        --nav-scrolled-bg:rgba(247,247,255,.92); --nav-mobile-bg:rgba(247,247,255,.98);
+      }
+    }
+    [data-theme="light"] {
+      --bg:#F7F7FF; --bg2:#F0F0FA; --bg3:#E8E8F5;
+      --border:rgba(0,0,0,0.08); --border-hi:rgba(251,176,36,0.35);
+      --accent:#D4890A; --accent-lo:rgba(212,137,10,0.10);
+      --rose:#D81B60; --green:#16A34A; --amber:#B45309;
+      --text:#0D0D1A; --text2:#4A4A6A; --text3:#9999BB;
+      --nav-scrolled-bg:rgba(247,247,255,.92); --nav-mobile-bg:rgba(247,247,255,.98);
+    }
+    html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--accent) var(--bg); }
+    ::-webkit-scrollbar { width:3px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+    body { background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; cursor:none; }
+
+    .grain { position:fixed; inset:-200%; width:500%; height:500%; pointer-events:none; z-index:9997; opacity:.028;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation:grain .4s steps(1) infinite; }
+    @keyframes grain {
+      0%{transform:translate(0,0);} 10%{transform:translate(-2%,-3%);} 20%{transform:translate(1%,2%);}
+      30%{transform:translate(-3%,1%);} 40%{transform:translate(2%,-1%);} 50%{transform:translate(-1%,3%);}
+      60%{transform:translate(3%,-2%);} 70%{transform:translate(-2%,2%);} 80%{transform:translate(1%,-3%);} 90%{transform:translate(-3%,-1%);}
+    }
+    #scroll-bar { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--accent),var(--rose)); z-index:1000; transition:width .08s; }
+    #cur,#cur-f { position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
+    #cur { width:10px; height:10px; background:var(--accent); transition:width .25s,height .25s,background .25s; }
+    #cur-f { width:38px; height:38px; border:1px solid rgba(251,176,36,.45); z-index:9998; transition:width .3s,height .3s,opacity .3s; }
+    #cur.h { width:6px; height:6px; background:var(--rose); }
+    #cur-f.h { width:56px; height:56px; opacity:.5; border-color:var(--rose); }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 56px; display:flex; align-items:center; justify-content:space-between; transition:background .3s,backdrop-filter .3s; }
+    nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
+    .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
+    .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
+    .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a:hover::after { width:100%; }
+    .nav-cta { padding:10px 26px !important; background:var(--accent) !important; color:#07070F !important; border-radius:100px !important; font-weight:700 !important; }
+    .nav-cta::after { display:none !important; }
+    .theme-toggle { background:none; border:1px solid var(--border); color:var(--text2); width:38px; height:38px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:color .2s,border-color .2s,background .2s; }
+    .theme-toggle:hover { color:var(--text); border-color:var(--border-hi); background:var(--accent-lo); }
+    .theme-toggle svg { display:block; }
+    .nav-burger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; z-index:200; }
+    .nav-burger span { display:block; width:22px; height:1.5px; background:var(--text); transition:transform .3s,opacity .3s; transform-origin:center; }
+    .nav-burger.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2){ opacity:0; }
+    .nav-burger.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+    .rv { opacity:0; transform:translateY(28px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1); }
+    .rv.in { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.32s;}
+    .tag { display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:22px; }
+    .tag::before { content:''; width:22px; height:1px; background:var(--accent); }
+    .serif { font-family:'Instrument Serif',serif; font-weight:400; font-style:italic; }
+
+    /* ─── HERO ─── */
+    .cs-hero { min-height:72vh; padding:140px 56px 80px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; }
+    .cs-hero-bg { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,black,transparent); }
+    .cs-hero-glow { position:absolute; width:700px; height:700px; background:radial-gradient(circle,rgba(251,176,36,.12) 0%,transparent 65%); top:50%; left:40%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cs-back { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--text2); text-decoration:none; margin-bottom:40px; transition:color .2s; position:relative; z-index:1; }
+    .cs-back:hover { color:var(--accent); }
+    .cs-hero-inner { position:relative; z-index:1; }
+    .cs-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+    .cs-chip { padding:5px 14px; background:var(--accent-lo); border:1px solid var(--border-hi); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+    .cs-title { font-size:clamp(64px,9vw,120px); font-weight:800; line-height:.92; letter-spacing:-.045em; margin-bottom:28px; }
+    .cs-title .serif { color:var(--accent); letter-spacing:-.02em; }
+    .cs-tagline { font-size:18px; line-height:1.7; color:var(--text2); max-width:640px; }
+    .cs-tagline strong { color:var(--text); }
+
+    /* ─── META BAR ─── */
+    .cs-meta-bar { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 56px; display:flex; gap:48px; flex-wrap:wrap; }
+    .cs-meta-item { }
+    .cs-meta-label { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--text3); margin-bottom:6px; }
+    .cs-meta-val { font-size:15px; font-weight:600; color:var(--text); }
+
+    /* ─── IMPACT STATS ─── */
+    .impact-bar { padding:64px 56px; background:linear-gradient(135deg,rgba(251,176,36,.06),rgba(251,176,36,.02)); border-bottom:1px solid var(--border); }
+    .impact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:40px; }
+    .impact-c { background:var(--bg2); border:1px solid var(--border); padding:36px 40px; }
+    .impact-n { font-size:52px; font-weight:800; letter-spacing:-.045em; color:var(--accent); line-height:1; margin-bottom:8px; }
+    .impact-l { font-size:13px; color:var(--text2); line-height:1.6; }
+
+    /* ─── CONTENT SECTIONS ─── */
+    .cs-sec { padding:80px 56px; border-bottom:1px solid var(--border); }
+    .cs-sec:last-of-type { border-bottom:none; }
+    .cs-sec-inner { max-width:900px; }
+    .cs-h2 { font-size:clamp(32px,4vw,52px); font-weight:800; letter-spacing:-.04em; line-height:1.05; margin-bottom:20px; }
+    .cs-p { font-size:16px; line-height:1.85; color:var(--text2); margin-bottom:20px; }
+    .cs-p strong { color:var(--text); }
+    .cs-p:last-child { margin-bottom:0; }
+
+    /* Pain points grid */
+    .pain-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .pain-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; transition:border-color .3s; }
+    .pain-c:hover { border-color:var(--border-hi); }
+    .pain-ic { font-size:28px; margin-bottom:14px; }
+    .pain-t { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .pain-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* Solution flow */
+    .flow { display:flex; gap:0; margin-top:40px; overflow-x:auto; padding-bottom:8px; }
+    .flow-step { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r-sm); padding:16px 20px; white-space:nowrap; font-size:12px; font-weight:700; color:var(--text2); display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .flow-step.on { background:var(--accent-lo); border-color:var(--border-hi); color:var(--accent); }
+    .flow-arrow { color:var(--text3); font-size:18px; display:flex; align-items:center; padding:0 4px; flex-shrink:0; }
+    .flow-num { font-size:10px; font-weight:800; letter-spacing:.1em; opacity:.6; }
+
+    /* Solution grid */
+    .sol-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .sol-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; }
+    .sol-t { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text); }
+    .sol-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* Initiatives */
+    .init-list { margin-top:40px; display:flex; flex-direction:column; gap:2px; }
+    .init-c { background:var(--bg2); border:1px solid var(--border); padding:32px 36px; display:grid; grid-template-columns:80px 1fr; gap:24px; align-items:start; transition:border-color .3s,background .3s; }
+    .init-c:hover { border-color:var(--border-hi); background:rgba(251,176,36,.03); }
+    .init-n { font-size:42px; font-weight:800; letter-spacing:-.06em; color:var(--text3); opacity:.3; line-height:1; }
+    .init-t { font-size:16px; font-weight:700; margin-bottom:8px; }
+    .init-p { font-size:13px; color:var(--text2); line-height:1.7; }
+    .init-stats { display:flex; gap:20px; flex-wrap:wrap; margin-top:12px; }
+    .init-stat { font-size:12px; color:var(--accent); font-weight:700; background:var(--accent-lo); padding:3px 10px; border-radius:100px; }
+
+    /* UX Principles */
+    .ux-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .ux-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; border-top:2px solid var(--accent); }
+    .ux-t { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .ux-p { font-size:13px; color:var(--text2); line-height:1.7; }
+
+    /* Impact metrics */
+    .imp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px; }
+    .imp-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; text-align:center; transition:border-color .3s,transform .3s; }
+    .imp-c:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+    .imp-n { font-size:42px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; margin-bottom:8px; }
+    .imp-l { font-size:12px; color:var(--text2); line-height:1.6; }
+
+    /* ─── NAV FOOTER ─── */
+    .cs-nav-footer { padding:56px; background:var(--bg2); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .cs-nav-btn { display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border:1px solid var(--border); border-radius:100px; font-size:14px; font-weight:700; color:var(--text2); text-decoration:none; transition:all .2s; }
+    .cs-nav-btn:hover { border-color:var(--border-hi); color:var(--text); background:var(--accent-lo); }
+    .cs-nav-btn.primary { background:var(--accent); color:#07070F; border-color:var(--accent); }
+    .cs-nav-btn.primary:hover { opacity:.9; }
+
+    /* ─── CTA ─── */
+    .cta-sec { padding:80px 56px; text-align:center; }
+    .cta-wrap { background:linear-gradient(135deg,rgba(251,176,36,.1),rgba(251,176,36,.03)); border:1px solid var(--border-hi); border-radius:24px; padding:64px; position:relative; overflow:hidden; }
+    .cta-glow { position:absolute; width:400px; height:400px; background:radial-gradient(circle,rgba(251,176,36,.12) 0%,transparent 65%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cta-t { font-size:clamp(28px,4vw,48px); font-weight:800; letter-spacing:-.04em; margin-bottom:12px; position:relative; z-index:1; }
+    .cta-p { font-size:16px; color:var(--text2); margin-bottom:28px; position:relative; z-index:1; }
+    .cta-btns { display:flex; align-items:center; justify-content:center; gap:16px; position:relative; z-index:1; }
+    .btn-p { padding:14px 32px; background:var(--accent); color:#07070F; border-radius:100px; font-size:15px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:transform .2s,box-shadow .2s; }
+    .btn-p:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(251,176,36,.4); }
+    .btn-g { padding:14px 28px; color:var(--text2); border-radius:100px; font-size:15px; font-weight:600; text-decoration:none; transition:color .2s; }
+    .btn-g:hover { color:var(--accent); }
+
+    footer { border-top:1px solid var(--border); padding:28px 56px; display:flex; align-items:center; justify-content:space-between; }
+    .fc { font-size:12px; color:var(--text3); }
+    .fc em { color:var(--accent); font-style:normal; }
+
+    @media (max-width:768px) {
+      #cur,#cur-f { display:none; } body { cursor:auto; }
+      nav { padding:18px 24px; }
+      .nav-burger { display:flex; }
+      .nav-links { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--nav-mobile-bg); backdrop-filter:blur(24px); flex-direction:column; align-items:center; justify-content:center; gap:40px; z-index:150; transform:translateX(100%); transition:transform .4s cubic-bezier(.16,1,.3,1); pointer-events:none; }
+      .nav-links.open { transform:translateX(0); pointer-events:all; }
+      .nav-links a { font-size:22px; font-weight:700; color:var(--text); }
+      .cs-hero { padding:120px 24px 60px; min-height:auto; }
+      .cs-meta-bar { padding:24px; gap:24px; }
+      .impact-bar { padding:48px 24px; }
+      .impact-grid { grid-template-columns:1fr 1fr; }
+      .cs-sec { padding:56px 24px; }
+      .pain-grid,.sol-grid,.ux-grid { grid-template-columns:1fr; }
+      .imp-grid { grid-template-columns:1fr 1fr; }
+      .init-c { grid-template-columns:1fr; gap:8px; padding:24px; }
+      .cs-nav-footer { padding:32px 24px; flex-direction:column; }
+      .cta-sec { padding:56px 24px; }
+      .cta-wrap { padding:40px 24px; }
+      .cta-btns { flex-direction:column; }
+      footer { padding:24px; flex-direction:column; gap:8px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain"></div>
+  <div id="scroll-bar"></div>
+  <div id="cur"></div>
+  <div id="cur-f"></div>
+
+  <nav id="nav">
+    <a href="/" class="nav-logo">BG<em>.</em></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/work.html">Work</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/#process">Process</a></li>
+      <li><a href="/#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-hero-glow"></div>
+    <div class="cs-hero-inner">
+      <a href="/work.html" class="cs-back rv">← Back to Work</a>
+      <div class="cs-chips rv d1">
+        <span class="cs-chip">Navigation UX</span>
+        <span class="cs-chip">Mobile</span>
+        <span class="cs-chip">Wayfinding</span>
+        <span class="cs-chip">UX Research</span>
+      </div>
+      <h1 class="cs-title rv d2">Loc<span style="color:var(--accent)">atR</span></h1>
+      <p class="cs-tagline rv d3">
+        A grocery store navigation UX that puts <strong>real-time product availability on an indoor map</strong> — reducing time-to-find for shoppers using smart list organisation and aisle-level wayfinding.
+      </p>
+    </div>
+  </div>
+
+  <!-- META BAR -->
+  <div class="cs-meta-bar">
+    <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">UX Designer</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2021</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Mobile</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Focus</div><div class="cs-meta-val">Indoor Wayfinding</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Type</div><div class="cs-meta-val">UX Research + Design</div></div>
+  </div>
+
+  <!-- IMPACT BAR -->
+  <div class="impact-bar">
+    <div class="tag rv">Impact</div>
+    <h2 class="cs-h2 rv d1">Navigation that knows your store</h2>
+    <div class="impact-grid">
+      <div class="impact-c rv"><div class="impact-n">Indoor</div><div class="impact-l">Wayfinding System</div></div>
+      <div class="impact-c rv d1"><div class="impact-n">Smart</div><div class="impact-l">Shopping Lists</div></div>
+      <div class="impact-c rv d2"><div class="impact-n">Real-time</div><div class="impact-l">Product Availability</div></div>
+    </div>
+  </div>
+
+  <!-- 01 PROBLEM -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">01 / Problem</div>
+      <h2 class="cs-h2 rv d1">Grocery shopping is surprisingly stressful</h2>
+      <p class="cs-p rv d2">The average grocery shopping trip involves <strong>27 items and takes 41 minutes</strong> — but studies show 25% of that time is spent wandering aisles looking for specific products. Stores change their layouts, products move, and shoppers without a systematic approach backtrack constantly.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-c rv">
+        <div class="pain-ic">🗺️</div>
+        <div class="pain-t">No map of the store</div>
+        <div class="pain-p">Shoppers rely on memory and trial-and-error to navigate store layouts they may only visit occasionally — or that have changed since their last visit.</div>
+      </div>
+      <div class="pain-c rv d1">
+        <div class="pain-ic">🔄</div>
+        <div class="pain-t">Products frequently move</div>
+        <div class="pain-p">Promotions, restocking rotations, and seasonal displays mean the product you found last week may not be in the same place today.</div>
+      </div>
+      <div class="pain-c rv d2">
+        <div class="pain-ic">📋</div>
+        <div class="pain-t">Lists don't connect to location</div>
+        <div class="pain-p">You know what you need, not where it is. Shopping lists are purely item-based — there's no connection between your list and the physical store layout.</div>
+      </div>
+      <div class="pain-c rv d3">
+        <div class="pain-ic">🙋</div>
+        <div class="pain-t">Store staff are hard to find for help</div>
+        <div class="pain-p">Locating an available member of staff who knows product locations adds time and frustration — especially during busy periods.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 RESEARCH -->
+  <section class="cs-sec" style="background:var(--bg2)">
+    <div class="cs-sec-inner">
+      <div class="tag rv">02 / Research</div>
+      <h2 class="cs-h2 rv d1">Understanding the shopper journey</h2>
+      <p class="cs-p rv d2">I conducted contextual inquiry sessions with <strong>8 shoppers across 3 different store formats</strong> — hypermarket, supermarket, and convenience. I observed the full journey from arrival to checkout, noting navigation patterns, list-checking behaviours, and moments of friction.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-c rv">
+        <div class="sol-t">Mental Models</div>
+        <div class="sol-p">Shoppers organise by meal, not by category. They think "ingredients for pasta night" not "pasta aisle then sauce aisle then cheese section" — the mental model doesn't match the store structure.</div>
+      </div>
+      <div class="sol-c rv d1">
+        <div class="sol-t">Navigation Heuristics</div>
+        <div class="sol-p">Most people do a rough perimeter sweep first, then fill in the middle aisles. This intuitive pattern suggests a route optimisation that respects how shoppers naturally move.</div>
+      </div>
+      <div class="sol-c rv d2">
+        <div class="sol-t">List Behaviour</div>
+        <div class="sol-p">Most people check their list 8–12 times per trip. This constant context-switching between list and environment is a core friction point — the list and the map should be one.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 DESIGN SOLUTION -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">03 / Design Solution</div>
+      <h2 class="cs-h2 rv d1">Three layers of wayfinding</h2>
+      <p class="cs-p rv d2">LocatR collapses the gap between your shopping list and the physical store through three interconnected layers — each designed to reduce cognitive load at a specific moment in the trip.</p>
+    </div>
+    <div class="flow rv d2">
+      <div class="flow-step on"><span class="flow-num">01</span> Smart List</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-num">02</span> Map View</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-num">03</span> Aisle Guide</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-num">04</span> Found Item</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-num">05</span> Next Stop</div>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-c rv">
+        <div class="sol-t">Smart List Builder</div>
+        <div class="sol-p">Add items normally. LocatR automatically groups them by aisle, optimises the path through the store, and shows which items are available vs out of stock.</div>
+      </div>
+      <div class="sol-c rv d1">
+        <div class="sol-t">Store Map View</div>
+        <div class="sol-p">Bird's eye view of the store with your items pinned. Colour-coded by section (produce, dairy, frozen etc.). Current position tracked via Bluetooth beacon or Wi-Fi triangulation.</div>
+      </div>
+      <div class="sol-c rv d2">
+        <div class="sol-t">Aisle Navigator</div>
+        <div class="sol-p">Tap any item to get step-by-step aisle directions from your current position, with a shelf-level indicator (eye level, bottom shelf, above eye line).</div>
+      </div>
+      <div class="sol-c rv d3">
+        <div class="sol-t">Live Availability</div>
+        <div class="sol-p">Inventory sync shows items as available (green), low stock (amber), or unavailable (red). Auto-suggests alternatives for out-of-stock items before you reach the aisle.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 KEY DESIGN DECISIONS -->
+  <section class="cs-sec" style="background:var(--bg2)">
+    <div class="cs-sec-inner">
+      <div class="tag rv">04 / Key Design Decisions</div>
+      <h2 class="cs-h2 rv d1">Designing for a distracted context</h2>
+      <p class="cs-p rv d2">Grocery shoppers are cognitively loaded — pushing a cart, managing kids, checking prices, and trying to remember what else they need. Every design decision was made for a <strong>distracted, moving user</strong>.</p>
+    </div>
+    <div class="init-list">
+      <div class="init-c rv">
+        <div class="init-n">01</div>
+        <div>
+          <div class="init-t">Glanceable UI</div>
+          <div class="init-p">Large text, high contrast, and one-action screens. You should be able to understand the screen in under 1 second without stopping your cart. No hidden menus, no dense information panels.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">02</div>
+        <div>
+          <div class="init-t">Voice-First Option</div>
+          <div class="init-p">Hands-free mode lets shoppers add items and navigate by voice — critical when your hands are full or you're pushing a cart. Voice commands are simple and forgiving of ambient noise.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">03</div>
+        <div>
+          <div class="init-t">Offline-Capable</div>
+          <div class="init-p">Store map and your list work offline after the initial load. Connectivity in large stores can be poor — the app can't fail mid-trip. All core functionality is available without a network.</div>
+        </div>
+      </div>
+      <div class="init-c rv">
+        <div class="init-n">04</div>
+        <div>
+          <div class="init-t">Minimal Auth</div>
+          <div class="init-p">No account required to use the basic map and list. Account unlocks history, preferences, and personalised suggestions. Reduce friction at entry — the first trip should require zero sign-up.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 OUTCOME -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">05 / Outcome</div>
+      <h2 class="cs-h2 rv d1">Turning grocery shopping into a system</h2>
+      <p class="cs-p rv d2">LocatR transforms an unstructured, memory-dependent activity into a guided, efficient system — giving shoppers the spatial intelligence of a store associate, always in their pocket.</p>
+    </div>
+    <div class="imp-grid" style="margin-top:40px">
+      <div class="imp-c rv"><div class="imp-n">Indoor</div><div class="imp-l">Wayfinding Design</div></div>
+      <div class="imp-c rv d1"><div class="imp-n">Smart</div><div class="imp-l">Path Optimisation</div></div>
+      <div class="imp-c rv d2"><div class="imp-n">Real-time</div><div class="imp-l">Inventory Integration</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec">
+    <div class="cta-wrap rv">
+      <div class="cta-glow"></div>
+      <div class="tag" style="justify-content:center">Let's Work Together</div>
+      <div class="cta-t">Building something that needs<br>a <span class="serif">product designer?</span></div>
+      <p class="cta-p">Open to senior product design roles, design leadership, and select freelance projects.</p>
+      <div class="cta-btns">
+        <a href="mailto:buddhpriya93@gmail.com" class="btn-p">Send an Email ↗</a>
+        <a href="/work.html" class="btn-g">← Back to Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT NAV -->
+  <div class="cs-nav-footer">
+    <a href="/knovelo.html" class="cs-nav-btn">← Knovelo</a>
+    <a href="/kockpit.html" class="cs-nav-btn primary">Next: Kockpit →</a>
+  </div>
+
+  <footer>
+    <div class="fc">© 2026 Buddhpriya Gautam. All rights reserved.</div>
+    <div class="fc">Designed with <em>♥</em> for exceptional experiences</div>
+  </footer>
+
+  <script>
+    const cur=document.getElementById('cur'),curf=document.getElementById('cur-f');
+    let mx=0,my=0,fx=0,fy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    (function tick(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;curf.style.left=fx+'px';curf.style.top=fy+'px';requestAnimationFrame(tick);})();
+    document.querySelectorAll('a,button,.pain-c,.sol-c,.ux-c,.imp-c,.init-c').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{cur.classList.add('h');curf.classList.add('h');});
+      el.addEventListener('mouseleave',()=>{cur.classList.remove('h');curf.classList.remove('h');});
+    });
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+    const bar=document.getElementById('scroll-bar');
+    window.addEventListener('scroll',()=>{bar.style.width=(window.scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';},{passive:true});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+    const burger=document.getElementById('nav-burger'),navLinks=document.getElementById('nav-links');
+    burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');document.body.style.overflow=navLinks.classList.contains('open')?'hidden':'';});
+    navLinks.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open');document.body.style.overflow='';});});
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});}
+    const themeBtn=document.getElementById('theme-toggle');
+    const sunSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    const moonSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.innerHTML=t==='dark'?sunSVG:moonSVG;themeBtn.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');}
+    applyTheme(document.documentElement.getAttribute('data-theme')||'dark');
+    themeBtn.addEventListener('click',()=>{const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';localStorage.setItem('theme',next);applyTheme(next);});
+  </script>
+</body>
+</html>
