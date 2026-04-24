@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddhpriya Gautam — Senior Product Designer</title>
+  <meta name="description" content="Senior Product Designer with 9+ years crafting SaaS platforms, design systems, and brand experiences.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #07070F;
+      --bg2:       #0D0D1C;
+      --bg3:       #131326;
+      --border:    rgba(255,255,255,0.07);
+      --border-hi: rgba(123,108,246,0.3);
+      --accent:    #7B6CF6;
+      --accent-lo: rgba(123,108,246,0.12);
+      --rose:      #F06292;
+      --green:     #4ADE80;
+      --amber:     #FBB024;
+      --text:      #EEEEF8;
+      --text2:     #8888AA;
+      --text3:     #3E3E60;
+      --r:         16px;
+      --r-sm:      8px;
+    }
+
+    html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    .grain {
+      position: fixed;
+      inset: -200%;
+      width: 500%; height: 500%;
+      pointer-events: none;
+      z-index: 9997;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 0.4s steps(1) infinite;
+    }
+    @keyframes grain {
+      0%   { transform: translate(0,0); }
+      10%  { transform: translate(-2%,-3%); }
+      20%  { transform: translate(1%,2%); }
+      30%  { transform: translate(-3%,1%); }
+      40%  { transform: translate(2%,-1%); }
+      50%  { transform: translate(-1%,3%); }
+      60%  { transform: translate(3%,-2%); }
+      70%  { transform: translate(-2%,2%); }
+      80%  { transform: translate(1%,-3%); }
+      90%  { transform: translate(-3%,-1%); }
+    }
+
+    /* ─── SCROLL PROGRESS ─── */
+    #scroll-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--rose));
+      z-index: 1000;
+      transition: width 0.08s;
+    }
+
+    /* ─── CURSOR ─── */
+    #cur, #cur-f {
+      position: fixed;
+      top: 0; left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+    }
+    #cur {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      transition: width .25s, height .25s, background .25s;
+    }
+    #cur-f {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(123,108,246,.45);
+      z-index: 9998;
+      transition: width .3s, height .3s, opacity .3s;
+    }
+    #cur.h   { width: 6px; height: 6px; background: var(--rose); }
+    #cur-f.h { width: 56px; height: 56px; opacity: .5; border-color: var(--rose); }
+
+    /* ─── LOADER ─── */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity .7s ease, visibility .7s;
+    }
+    #loader.gone { opacity: 0; visibility: hidden; }
+    .ld-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--text2);
+    }
+    .ld-bar {
+      width: 180px; height: 1px;
+      background: var(--bg3);
+      position: relative; overflow: hidden;
+    }
+    .ld-fill {
+      position: absolute; top:0; left:0;
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+    }
+    .ld-pct {
+      font-size: 11px;
+      color: var(--text3);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .3s, backdrop-filter .3s, border-bottom .3s;
+    }
+    nav.scrolled {
+      background: rgba(7,7,15,.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 16px; font-weight: 800;
+      letter-spacing: -.03em;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-logo em { color: var(--accent); font-style: normal; }
+    .nav-links {
+      display: flex; align-items: center;
+      gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--text2); text-decoration: none;
+      transition: color .2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute;
+      bottom:-3px; left:0;
+      width:0; height:1px;
+      background: var(--accent);
+      transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 10px 26px !important;
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-radius: 100px !important;
+      font-weight: 700 !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+    }
+    .nav-cta:hover {
+      background: #9d91ff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 10px 30px rgba(123,108,246,.4) !important;
+    }
+    .nav-cta::after { display: none !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 56px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 80% at 40% 50%, black, transparent);
+      transition: transform .1s linear;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(123,108,246,.14) 0%, transparent 65%);
+      top: 50%; left: 35%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(240,98,146,.07) 0%, transparent 65%);
+      top: 30%; right: 10%;
+      pointer-events: none;
+    }
+    .hero-year {
+      position: absolute;
+      top: 120px; right: 56px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--text3);
+      writing-mode: vertical-rl;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center; gap: 8px;
+      padding: 8px 18px;
+      background: rgba(74,222,128,.08);
+      border: 1px solid rgba(74,222,128,.2);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 600;
+      color: var(--green);
+      margin-bottom: 36px;
+      width: fit-content;
+      opacity: 0;
+      animation: fadeUp .6s ease 1.4s forwards;
+    }
+    .hero-badge::before {
+      content:'';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.8); }
+    }
+    .hero-hl {
+      font-size: clamp(56px, 9vw, 128px);
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: -.045em;
+      margin-bottom: 36px;
+    }
+    .hero-hl .serif {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400; font-style: italic;
+      letter-spacing: -.02em;
+      color: var(--accent);
+    }
+    .word { display: inline-block; overflow: hidden; }
+    .word span {
+      display: inline-block;
+      transform: translateY(115%);
+      animation: wordUp .85s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .word:nth-child(1) span { animation-delay: .7s; }
+    .word:nth-child(2) span { animation-delay: .87s; }
+    .word:nth-child(3) span { animation-delay: 1.04s; }
+    .word:nth-child(4) span { animation-delay: 1.18s; }
+    @keyframes wordUp { to { transform: translateY(0); } }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      opacity: 0;
+      animation: fadeUp .7s ease 1.55s forwards;
+    }
+    .hero-desc {
+      max-width: 380px;
+      font-size: 16px; line-height: 1.75;
+      color: var(--text2);
+    }
+    .hero-desc strong { color: var(--text); }
+    .hero-btns {
+      display: flex; align-items: center; gap: 14px;
+      flex-shrink: 0;
+    }
+    .btn-p {
+      padding: 14px 32px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn-p:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(123,108,246,.4);
+      background: #9d91ff;
+    }
+    .btn-g {
+      padding: 14px 28px;
+      color: var(--text2);
+      border-radius: 100px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .btn-g:hover { color: var(--accent); }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 56px;
+      display: flex; align-items: center; gap: 14px;
+      opacity: 0;
+      animation: fadeUp .7s ease 1.9s forwards;
+    }
+    .hero-scroll span {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--text3);
+    }
+    .scroll-line {
+      width: 48px; height: 1px;
+      background: linear-gradient(90deg, var(--text3), transparent);
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(18px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; gap: 40px;
+      animation: marquee 24s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 14px;
+      white-space: nowrap;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--text3);
+    }
+    .marquee-dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; flex-shrink:0; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── LAYOUT BASE ─── */
+    section { padding: 120px 56px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+    .tag::before { content:''; width: 22px; height: 1px; background: var(--accent); }
+    .sh {
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 800;
+      letter-spacing: -.038em;
+      line-height: 1.04;
+    }
+    .sh .serif {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400; font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ─── REVEAL ─── */
+    .rv {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+    }
+    .rv.in { opacity:1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .32s; }
+    .d4 { transition-delay: .44s; }
+    .d5 { transition-delay: .56s; }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .about-copy { }
+    .about-copy p {
+      font-size: 17px; line-height: 1.8;
+      color: var(--text2);
+      margin-top: 24px;
+    }
+    .about-copy p strong { color: var(--text); }
+    .about-chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 32px;
+    }
+    .chip {
+      padding: 7px 16px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 600;
+      color: var(--text2);
+      transition: border-color .25s, color .25s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .stat-c {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      transition: background .3s;
+    }
+    .stat-c:hover { background: rgba(123,108,246,.05); }
+    .stat-c:first-child  { border-radius: var(--r) 0 0 0; }
+    .stat-c:nth-child(2) { border-radius: 0 var(--r) 0 0; }
+    .stat-c:nth-child(3) { border-radius: 0 0 0 var(--r); }
+    .stat-c:last-child   { border-radius: 0 0 var(--r) 0; }
+    .stat-num {
+      font-size: 58px; font-weight: 800;
+      letter-spacing: -.05em; line-height: 1;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .stat-num sup { font-size: 32px; color: var(--accent); }
+    .stat-lbl { font-size: 13px; color: var(--text2); font-weight: 500; }
+
+    /* ─── CASE STUDY HERO ─── */
+    .cs-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 72px;
+    }
+    .cs-head {
+      padding: 60px 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-chips { display: flex; gap: 10px; margin-bottom: 18px; }
+    .cs-chip {
+      padding: 5px 14px;
+      background: var(--accent-lo);
+      border: 1px solid var(--border-hi);
+      border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .cs-name {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: .95;
+    }
+    .cs-name .serif {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400; font-style: italic;
+      color: var(--accent);
+    }
+    .cs-tagline {
+      margin-top: 14px;
+      font-size: 16px; line-height: 1.65;
+      color: var(--text2); max-width: 440px;
+    }
+    .cs-meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; min-width: 260px;
+    }
+    .cs-mi-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--text3); margin-bottom: 5px;
+    }
+    .cs-mi-val { font-size: 14px; font-weight: 600; color: var(--text); }
+
+    /* Dashboard Mockup */
+    .db-wrap {
+      margin: 0 64px 64px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .db-bar {
+      background: rgba(255,255,255,.025);
+      border-bottom: 1px solid var(--border);
+      padding: 11px 18px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .db-dots { display:flex; gap:6px; }
+    .db-dots span {
+      width: 10px; height: 10px; border-radius: 50%; display:block;
+    }
+    .db-dots span:nth-child(1) { background:#FF5F57; }
+    .db-dots span:nth-child(2) { background:#FEBC2E; }
+    .db-dots span:nth-child(3) { background:#28C840; }
+    .db-url {
+      flex:1; background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 11px; color: var(--text3);
+      max-width: 260px;
+    }
+    .db-body {
+      display: grid;
+      grid-template-columns: 195px 1fr;
+      min-height: 400px;
+    }
+    .db-side {
+      background: rgba(255,255,255,.015);
+      border-right: 1px solid var(--border);
+      padding: 20px 10px;
+    }
+    .db-si {
+      padding: 8px 12px; border-radius: 7px;
+      font-size: 11px; font-weight: 500;
+      color: var(--text3); margin-bottom: 3px;
+      display: flex; align-items: center; gap: 9px;
+      transition: background .2s, color .2s;
+    }
+    .db-si:hover { background: rgba(255,255,255,.04); color: var(--text2); }
+    .db-si.on { background: rgba(123,108,246,.14); color: var(--accent); font-weight: 700; }
+    .db-si-ic {
+      width: 14px; height: 14px; border-radius: 3px;
+      background: currentColor; opacity: .45; flex-shrink:0;
+    }
+    .db-main { padding: 22px; }
+    .db-r4 {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 10px; margin-bottom: 14px;
+    }
+    .db-kpi {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 15px;
+    }
+    .db-kpi-l { font-size: 9px; color: var(--text3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 7px; }
+    .db-kpi-v { font-size: 22px; font-weight: 700; letter-spacing: -.03em; color: var(--text); }
+    .db-kpi-d { font-size: 9px; color: var(--green); margin-top: 3px; }
+    .db-r2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px; }
+    .db-chart {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px;
+      height: 148px; position: relative; overflow: hidden;
+    }
+    .db-chart-t { font-size: 10px; font-weight: 600; color: var(--text2); margin-bottom: 12px; }
+    .bars { display:flex; align-items: flex-end; gap: 5px; height: 88px; }
+    .bar {
+      flex:1; border-radius: 3px 3px 0 0;
+      background: linear-gradient(180deg, var(--accent), rgba(123,108,246,.25));
+    }
+    .db-tbl {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .db-th {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      padding: 9px 14px;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text3);
+      border-bottom: 1px solid var(--border);
+    }
+    .db-tr {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      padding: 9px 14px;
+      font-size: 10px; color: var(--text2);
+      border-bottom: 1px solid rgba(255,255,255,.028);
+    }
+    .db-tr:last-child { border-bottom: none; }
+    .badge {
+      display: inline-block;
+      font-size: 9px; font-weight: 700;
+      padding: 2px 8px; border-radius: 100px;
+    }
+    .badge.g { background: rgba(74,222,128,.1); color: var(--green); }
+    .badge.b { background: rgba(96,165,250,.1); color: #60A5FA; }
+    .badge.y { background: rgba(251,176,36,.1); color: var(--amber); }
+
+    /* ─── CS DETAIL SECTIONS ─── */
+    .cs-sections { display: flex; flex-direction: column; gap: 88px; }
+    .cs-sec {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+    }
+    .cs-sec-lbl {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--text3);
+      padding-top: 4px;
+      position: sticky; top: 100px; height: fit-content;
+    }
+    .cs-sec-t {
+      font-size: 28px; font-weight: 800;
+      letter-spacing: -.03em; margin-bottom: 16px;
+    }
+    .cs-sec-p { font-size: 16px; line-height: 1.8; color: var(--text2); }
+
+    /* Pain points */
+    .pain-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 24px;
+    }
+    .pain-c {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px;
+      transition: border-color .3s, background .3s;
+    }
+    .pain-c:hover { border-color: var(--border-hi); background: rgba(123,108,246,.04); }
+    .pain-ic {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(240,98,146,.08);
+      border: 1px solid rgba(240,98,146,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 14px;
+    }
+    .pain-t { font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+    .pain-p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+    /* Process flow */
+    .flow {
+      display: flex; align-items: flex-start;
+      gap: 0; margin-top: 28px;
+      position: relative;
+    }
+    .flow::before {
+      content:'';
+      position: absolute;
+      top: 19px; left: 20px;
+      right: 20px; height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(123,108,246,.15));
+    }
+    .flow-s {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      flex: 1;
+    }
+    .flow-n {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      position: relative; z-index: 1;
+    }
+    .flow-l {
+      font-size: 11px; font-weight: 600;
+      color: var(--text2); text-align: center;
+      letter-spacing: .04em;
+    }
+
+    /* Solutions */
+    .sol-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 24px;
+    }
+    .sol-c {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px;
+      position: relative; overflow: hidden;
+      transition: border-color .3s;
+    }
+    .sol-c::before {
+      content:''; position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--accent), rgba(123,108,246,.2));
+    }
+    .sol-c:hover { border-color: var(--border-hi); }
+    .sol-t { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .sol-p { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+    /* Decisions */
+    .dec-list { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+    .dec-c {
+      display: grid; grid-template-columns: 52px 1fr;
+      gap: 18px; align-items: start;
+      padding: 24px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: border-color .3s;
+    }
+    .dec-c:hover { border-color: var(--border-hi); }
+    .dec-n {
+      font-size: 34px; font-weight: 800;
+      color: var(--text3); letter-spacing: -.04em; line-height: 1;
+    }
+    .dec-t { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .dec-p { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+    /* Impact */
+    .impact-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 14px; margin-top: 24px;
+    }
+    .imp-c {
+      background: linear-gradient(145deg, rgba(123,108,246,.12), rgba(123,108,246,.03));
+      border: 1px solid var(--border-hi);
+      border-radius: var(--r); padding: 36px 24px;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+    .imp-c:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .imp-n {
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -.05em; color: var(--accent);
+      margin-bottom: 10px; line-height: 1;
+    }
+    .imp-l { font-size: 13px; color: var(--text2); font-weight: 500; line-height: 1.5; }
+
+    /* ─── PROJECT BENTO ─── */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .pc {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px;
+      position: relative; overflow: hidden;
+      transition: border-color .3s;
+      cursor: none;
+    }
+    .pc:hover { border-color: var(--border-hi); }
+    .pc:nth-child(1) { grid-column: span 7; }
+    .pc:nth-child(2) { grid-column: span 5; }
+    .pc:nth-child(3) { grid-column: span 4; }
+    .pc:nth-child(4) { grid-column: span 4; }
+    .pc:nth-child(5) { grid-column: span 4; }
+    .pc-num {
+      font-size: 72px; font-weight: 800;
+      letter-spacing: -.06em; color: var(--text3);
+      opacity: .25; line-height: 1; margin-bottom: 28px;
+    }
+    .pc-type {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .pc-name {
+      font-size: 26px; font-weight: 800;
+      letter-spacing: -.03em; margin-bottom: 10px;
+    }
+    .pc-desc { font-size: 13px; color: var(--text2); line-height: 1.65; max-width: 320px; }
+    .pc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+    .pc-tag {
+      padding: 4px 12px;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 10px; font-weight: 600; color: var(--text2);
+    }
+    .pc-arrow {
+      position: absolute; bottom: 36px; right: 36px;
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--text2);
+      transition: background .3s, border-color .3s, color .3s, transform .3s;
+    }
+    .pc:hover .pc-arrow {
+      background: var(--accent); border-color: var(--accent); color: #fff;
+      transform: rotate(45deg);
+    }
+    .pc-bg {
+      position: absolute; top: 0; right: 0;
+      width: 180px; height: 180px;
+      opacity: .06;
+      border-radius: 50%;
+      filter: blur(40px);
+      transition: opacity .4s;
+    }
+    .pc:hover .pc-bg { opacity: .12; }
+
+    /* ─── ELITE60 CASE STUDY ─── */
+    .e60-wrap { border-color: rgba(16,185,129,.18) !important; }
+    .e60-wrap .cs-head { border-bottom-color: rgba(16,185,129,.1); }
+    .e60-chip {
+      padding: 5px 14px;
+      background: rgba(16,185,129,.1);
+      border: 1px solid rgba(16,185,129,.22);
+      border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: #10B981;
+    }
+    .e60-acc { color: #10B981; }
+    .e60-sol-c::before { background: linear-gradient(180deg, #10B981, rgba(16,185,129,.15)) !important; }
+    .e60-imp-c {
+      background: linear-gradient(145deg, rgba(16,185,129,.1), rgba(16,185,129,.02));
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: var(--r); padding: 36px 24px;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+    .e60-imp-c:hover { border-color: #10B981; transform: translateY(-3px); }
+    .e60-imp-n {
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -.05em; color: #10B981;
+      margin-bottom: 10px; line-height: 1;
+    }
+
+    /* Live URL badge */
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px;
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.2);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 700;
+      color: #10B981; text-decoration: none;
+      transition: background .2s, border-color .2s;
+      margin-top: 16px;
+    }
+    .live-badge::before {
+      content:''; width: 6px; height: 6px;
+      background: #10B981; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .live-badge:hover { background: rgba(16,185,129,.14); border-color: rgba(16,185,129,.4); }
+
+    /* ─── SPLASH HERO ─── */
+    .splash-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 40px 0;
+      border-top: 1px solid rgba(16,185,129,.08);
+      background: var(--bg3);
+      position: relative;
+      overflow: hidden;
+    }
+    .splash-hero::before {
+      content: '';
+      position: absolute;
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(16,185,129,.12) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -40%);
+      pointer-events: none;
+    }
+    .splash-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: #10B981; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .splash-label::before, .splash-label::after {
+      content: ''; width: 28px; height: 1px; background: rgba(16,185,129,.4);
+    }
+    .splash-phone {
+      width: 280px;
+      border-radius: 40px;
+      border: 2px solid rgba(16,185,129,.35);
+      overflow: hidden;
+      position: relative; z-index: 1;
+      box-shadow:
+        0 0 0 8px rgba(16,185,129,.04),
+        0 0 0 16px rgba(16,185,129,.025),
+        0 40px 80px rgba(0,0,0,.55),
+        0 0 80px rgba(16,185,129,.18);
+      animation: floatPhone 4s ease-in-out infinite;
+    }
+    @keyframes floatPhone {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+    .splash-phone img { width: 100%; display: block; }
+    .splash-stats {
+      display: flex; gap: 48px;
+      margin-top: 36px; padding: 28px 48px;
+      background: rgba(16,185,129,.04);
+      border: 1px solid rgba(16,185,129,.12);
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+      position: relative; z-index: 1;
+    }
+    .sp-stat { text-align: center; }
+    .sp-num {
+      font-size: 32px; font-weight: 800;
+      letter-spacing: -.04em; color: #10B981; line-height: 1;
+      margin-bottom: 5px;
+    }
+    .sp-lbl {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--text3);
+    }
+
+    /* ─── SCREENSHOT GALLERY ─── */
+    .gal-outer {
+      border-top: 1px solid rgba(16,185,129,.1);
+      background: var(--bg3);
+      position: relative;
+    }
+    .gal-outer::before, .gal-outer::after {
+      content:''; position: absolute;
+      top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+    }
+    .gal-outer::before { left:0; background: linear-gradient(90deg, var(--bg3), transparent); }
+    .gal-outer::after  { right:0; background: linear-gradient(-90deg, var(--bg3), transparent); }
+    .gal-scroll {
+      display: flex; gap: 20px;
+      overflow-x: auto;
+      padding: 48px 80px 0;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .gal-scroll:active { cursor: grabbing; }
+    .gal-scroll::-webkit-scrollbar { display: none; }
+    .gal-item {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 14px;
+    }
+    .gal-item:nth-child(even) { margin-top: 36px; }
+    /* logo + splash always centered, no offset */
+    .gal-item.center { margin-top: 0 !important; }
+    .gal-frame {
+      width: 200px;
+      border-radius: 36px;
+      border: 1.5px solid rgba(16,185,129,.22);
+      overflow: hidden;
+      box-shadow:
+        0 28px 60px rgba(0,0,0,.5),
+        0 0 0 1px rgba(255,255,255,.05);
+      transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, border-color .4s;
+    }
+    .gal-frame:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow:
+        0 48px 90px rgba(0,0,0,.6),
+        0 0 60px rgba(16,185,129,.2),
+        0 0 0 1.5px rgba(16,185,129,.4);
+      border-color: rgba(16,185,129,.5);
+    }
+    .gal-frame img { width: 100%; display: block; }
+    .gal-lbl {
+      font-size: 10px; font-weight: 700;
+      color: var(--text3);
+      letter-spacing: .1em; text-transform: uppercase;
+      text-align: center;
+    }
+    .gal-hint {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 24px 0 36px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--text3);
+    }
+    .gal-hint-line { width: 32px; height: 1px; background: var(--text3); }
+    .gal-dots {
+      display: flex; gap: 5px; justify-content: center; padding-bottom: 32px;
+    }
+    .gal-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--text3); cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .gal-dot.on { background: #10B981; transform: scale(1.4); }
+
+    /* Phone frames (kept for CSS-only fallback) */
+    .phone-screen {
+      background: #0D0D1A;
+      border-radius: 26px;
+      overflow: hidden;
+      aspect-ratio: 9/19.5;
+      position: relative;
+    }
+
+    /* Screen 1 – Workout */
+    .s1-top {
+      padding: 14px 13px 10px;
+      background: linear-gradient(180deg, rgba(16,185,129,.14), transparent);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .s1-day  { font-size: 9px; color: #10B981; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
+    .s1-name { font-size: 13px; font-weight: 800; letter-spacing: -.02em; }
+    .s1-bar  { margin-top: 8px; height: 2px; background: rgba(255,255,255,.06); border-radius: 1px; }
+    .s1-fill { height: 100%; background: #10B981; border-radius: 1px; width: 42%; }
+    .s1-ex {
+      margin: 9px 11px 0;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 10px; padding: 10px;
+    }
+    .s1-en { font-size: 11px; font-weight: 700; margin-bottom: 7px; }
+    .s1-sh {
+      display: grid; grid-template-columns: 18px 1fr 1fr 1fr;
+      gap: 3px; font-size: 8px; color: var(--text3);
+      padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+      align-items: center;
+    }
+    .s1-sh:last-child { border-bottom: none; }
+    .s1-done { color: #10B981; }
+    .s1-check {
+      width: 12px; height: 12px; border-radius: 50%;
+      border: 1.5px solid rgba(16,185,129,.4);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .s1-check.ok { background: #10B981; border-color: #10B981; }
+    .s1-check.ok::after { content: '✓'; font-size: 7px; color: white; }
+    .s1-timer {
+      margin: 8px 11px;
+      background: rgba(16,185,129,.1);
+      border: 1px solid rgba(16,185,129,.2);
+      border-radius: 10px; padding: 9px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .s1-tl { font-size: 8px; color: #10B981; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .s1-tv { font-size: 20px; font-weight: 800; color: #10B981; letter-spacing: -.04em; }
+    .s1-pr {
+      margin: 0 11px 8px;
+      background: rgba(251,176,36,.1);
+      border: 1px solid rgba(251,176,36,.2);
+      border-radius: 10px; padding: 8px 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .s1-pr-ic { font-size: 12px; }
+    .s1-pr-t { font-size: 9px; font-weight: 700; color: var(--amber); }
+
+    /* Screen 2 – Progress */
+    .s2-head { padding: 14px 13px 8px; }
+    .s2-title { font-size: 13px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 10px; }
+    .s2-donut { display: flex; justify-content: center; padding: 4px 0 8px; }
+    .s2-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0 11px; }
+    .s2-s {
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
+      border-radius: 8px; padding: 8px;
+    }
+    .s2-sl { font-size: 7px; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
+    .s2-sv { font-size: 16px; font-weight: 800; letter-spacing: -.03em; }
+    .s2-streak {
+      margin: 6px 11px 0;
+      background: linear-gradient(135deg, rgba(251,176,36,.1), transparent);
+      border: 1px solid rgba(251,176,36,.18);
+      border-radius: 8px; padding: 8px 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .s2-si { font-size: 13px; }
+    .s2-st { font-size: 9px; font-weight: 700; color: var(--amber); }
+    .s2-legend { margin: 8px 11px 0; display: flex; flex-direction: column; gap: 4px; }
+    .s2-leg { display: flex; align-items: center; gap: 6px; font-size: 8px; color: var(--text2); }
+    .s2-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Screen 3 – GPS */
+    .s3-map {
+      height: 54%;
+      background: linear-gradient(160deg, #07120d, #0a1810, #071209);
+      position: relative; overflow: hidden;
+    }
+    .s3-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(16,185,129,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,185,129,.05) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+    .s3-meta { padding: 10px 13px; }
+    .s3-row { display: flex; justify-content: space-around; margin-bottom: 8px; }
+    .s3-m { text-align: center; }
+    .s3-ml { font-size: 7px; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
+    .s3-mv { font-size: 15px; font-weight: 800; letter-spacing: -.03em; }
+    .s3-status {
+      background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 8px; font-weight: 700; color: #10B981;
+      text-align: center; margin: 0 auto 8px; display: block; width: fit-content;
+    }
+    .s3-pace-bar { margin: 0 13px; height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; }
+    .s3-pace-fill { height: 100%; background: linear-gradient(90deg, #10B981, rgba(16,185,129,.3)); border-radius: 2px; width: 62%; }
+
+    /* Tech pills */
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .tp {
+      padding: 5px 13px;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 11px; font-weight: 600; color: var(--text2);
+      transition: border-color .25s, color .25s;
+      cursor: default;
+    }
+    .tp:hover { border-color: rgba(16,185,129,.35); color: #10B981; }
+    .tp.hi { background: rgba(16,185,129,.07); border-color: rgba(16,185,129,.2); color: #10B981; }
+
+    /* Feature grid */
+    .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 24px; }
+    .feat-c {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 24px;
+      transition: border-color .3s, background .3s;
+    }
+    .feat-c:hover { border-color: rgba(16,185,129,.3); background: rgba(16,185,129,.04); }
+    .feat-ic {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 14px;
+    }
+    .feat-t { font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+    .feat-p { font-size: 12px; color: var(--text2); line-height: 1.65; }
+
+    /* Engineering challenges */
+    .chal-list { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+    .chal-c {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px;
+      transition: border-color .3s;
+    }
+    .chal-c:hover { border-color: rgba(16,185,129,.25); }
+    .chal-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: 8px; padding: 3px 10px; border-radius: 100px;
+    }
+    .chal-badge.prob { background: rgba(240,98,146,.08); border: 1px solid rgba(240,98,146,.18); color: var(--rose); }
+    .chal-badge.sol  { background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.18); color: #10B981; }
+    .chal-t { font-size: 15px; font-weight: 700; margin-bottom: 7px; }
+    .chal-p { font-size: 13px; color: var(--text2); line-height: 1.65; }
+    .chal-div { width: 100%; height: 1px; background: var(--border); margin: 14px 0; }
+    .code-snip {
+      padding: 12px 16px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 8px; margin-top: 10px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 11px; color: #10B981; line-height: 1.6;
+    }
+    .code-snip .cm { color: var(--text3); }
+
+    /* Case study divider */
+    .cs-divider {
+      margin: 0 56px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ─── PROCESS ─── */
+    .proc-section { background: var(--bg2); }
+    .proc-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; margin-top: 60px;
+    }
+    .proc-c {
+      background: var(--bg); padding: 48px 40px;
+      border: 1px solid var(--border);
+      transition: background .3s;
+    }
+    .proc-c:hover { background: rgba(123,108,246,.04); }
+    .proc-c:nth-child(1) { border-radius: var(--r) 0 0 0; }
+    .proc-c:nth-child(3) { border-radius: 0 var(--r) 0 0; }
+    .proc-c:nth-child(4) { border-radius: 0 0 0 var(--r); }
+    .proc-c:nth-child(6) { border-radius: 0 0 var(--r) 0; }
+    .proc-n {
+      font-size: 48px; font-weight: 800;
+      color: var(--text3); letter-spacing: -.05em;
+      margin-bottom: 20px; line-height: 1;
+    }
+    .proc-t { font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 11px; }
+    .proc-p { font-size: 14px; color: var(--text2); line-height: 1.75; }
+
+    /* ─── CONTACT ─── */
+    .contact-sec {
+      text-align: center; padding: 160px 56px;
+      position: relative; overflow: hidden;
+    }
+    .contact-glow {
+      position: absolute; width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(123,108,246,.1), transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .contact-t {
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 800;
+      letter-spacing: -.05em; line-height: .95;
+      margin-bottom: 28px;
+    }
+    .contact-t .serif {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400; font-style: italic;
+      color: var(--accent);
+    }
+    .contact-sub {
+      font-size: 17px; color: var(--text2);
+      max-width: 440px; margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+    .contact-btns {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin-bottom: 52px;
+    }
+    .contact-links {
+      display: flex; align-items: center; justify-content: center;
+      gap: 36px;
+    }
+    .cl {
+      font-size: 13px; font-weight: 600;
+      color: var(--text2); text-decoration: none;
+      transition: color .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cl:hover { color: var(--accent); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .fc { font-size: 12px; color: var(--text3); }
+    .fc em { color: var(--accent); font-style: normal; }
+  </style>
+</head>
+<body>
+
+  <!-- Grain -->
+  <div class="grain"></div>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-bar"></div>
+
+  <!-- Cursor -->
+  <div id="cur"></div>
+  <div id="cur-f"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="ld-logo">Buddhpriya Gautam</div>
+    <div class="ld-bar"><div class="ld-fill" id="ld-fill"></div></div>
+    <div class="ld-pct" id="ld-pct">0%</div>
+  </div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <a href="#home" class="nav-logo">BG<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-grid" id="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-year">2026</div>
+
+    <div class="hero-badge">Available for Senior Roles</div>
+
+    <h1 class="hero-hl">
+      <div class="word"><span>Designing</span></div><br>
+      <div class="word"><span class="serif">Experiences</span></div><br>
+      <div class="word"><span>That</span></div>&nbsp;<div class="word"><span>Scale.</span></div>
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        <strong>Buddhpriya Gautam</strong> — Senior Product Designer with 9+ years crafting SaaS platforms, design systems, and brand experiences that ship and scale.
+      </p>
+      <div class="hero-btns">
+        <a href="#work" class="btn-p">View Work ↓</a>
+        <a href="#contact" class="btn-g">Say Hello →</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MARQUEE ═══════════════ -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot"></span>SaaS Product Design</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Design Systems</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>User Research</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>B2B SaaS</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Figma</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Journey Mapping</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Brand Systems</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>0→1 Products</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Information Architecture</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Prototyping</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Stakeholder Management</div>
+      <!-- repeat -->
+      <div class="marquee-item"><span class="marquee-dot"></span>SaaS Product Design</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Design Systems</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>User Research</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>B2B SaaS</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Figma</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Journey Mapping</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Brand Systems</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>0→1 Products</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Information Architecture</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Prototyping</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Stakeholder Management</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <div class="tag rv">About</div>
+        <h2 class="sh rv d1">System thinker.<br><span class="serif">Story</span> seller.</h2>
+        <p class="rv d2">
+          I'm a <strong>Senior Product Designer</strong> with 9+ years of experience building enterprise SaaS platforms, consumer apps, and scalable brand systems across multiple industries.
+        </p>
+        <p class="rv d3">
+          I specialize in turning complex, fragmented workflows into <strong>intuitive, delightful products</strong> — with a sharp focus on systems thinking, measurable impact, and cross-functional collaboration.
+        </p>
+        <div class="about-chips rv d4">
+          <span class="chip">Figma</span>
+          <span class="chip">Design Systems</span>
+          <span class="chip">Framer</span>
+          <span class="chip">User Research</span>
+          <span class="chip">Prototyping</span>
+          <span class="chip">Miro</span>
+          <span class="chip">B2B SaaS</span>
+          <span class="chip">IA</span>
+        </div>
+      </div>
+
+      <div class="stats-grid rv d2">
+        <div class="stat-c">
+          <div class="stat-num"><span class="cnt" data-t="9">0</span><sup>+</sup></div>
+          <div class="stat-lbl">Years of Experience</div>
+        </div>
+        <div class="stat-c">
+          <div class="stat-num"><span class="cnt" data-t="50">0</span><sup>+</sup></div>
+          <div class="stat-lbl">Projects Shipped</div>
+        </div>
+        <div class="stat-c">
+          <div class="stat-num"><span class="cnt" data-t="12">0</span><sup>+</sup></div>
+          <div class="stat-lbl">SaaS Products</div>
+        </div>
+        <div class="stat-c">
+          <div class="stat-num"><span class="cnt" data-t="4">0</span></div>
+          <div class="stat-lbl">Industries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FEATURED CASE STUDY ═══════════════ -->
+  <section id="work" style="padding-top:0">
+    <div class="tag rv">Featured Case Study</div>
+    <h2 class="sh rv d1" style="margin-bottom:44px">
+      R'Dash — <span class="serif">Construction</span><br>SaaS Platform
+    </h2>
+
+    <div class="cs-wrap rv d2">
+      <!-- Header -->
+      <div class="cs-head">
+        <div>
+          <div class="cs-chips">
+            <span class="cs-chip">B2B SaaS</span>
+            <span class="cs-chip">Web Platform</span>
+            <span class="cs-chip">End-to-End</span>
+          </div>
+          <div class="cs-name">R<span class="serif">'Dash</span></div>
+          <p class="cs-tagline">
+            A unified construction and interior project management platform — connecting developers, contractors, and design studios across the full project lifecycle.
+          </p>
+        </div>
+        <div class="cs-meta-grid">
+          <div>
+            <div class="cs-mi-label">Role</div>
+            <div class="cs-mi-val">Sr. Product Designer</div>
+          </div>
+          <div>
+            <div class="cs-mi-label">Timeline</div>
+            <div class="cs-mi-val">2022 – Present</div>
+          </div>
+          <div>
+            <div class="cs-mi-label">Platform</div>
+            <div class="cs-mi-val">Web (B2B)</div>
+          </div>
+          <div>
+            <div class="cs-mi-label">Industry</div>
+            <div class="cs-mi-val">Construction Tech</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Mockup -->
+      <div class="db-wrap">
+        <div class="db-bar">
+          <div class="db-dots"><span></span><span></span><span></span></div>
+          <div class="db-url">app.rdash.io/dashboard</div>
+        </div>
+        <div class="db-body">
+          <div class="db-side">
+            <div class="db-si on"><span class="db-si-ic"></span>Dashboard</div>
+            <div class="db-si"><span class="db-si-ic"></span>Projects</div>
+            <div class="db-si"><span class="db-si-ic"></span>BOQ Manager</div>
+            <div class="db-si"><span class="db-si-ic"></span>Vendors</div>
+            <div class="db-si"><span class="db-si-ic"></span>Timeline</div>
+            <div class="db-si"><span class="db-si-ic"></span>Reports</div>
+            <div class="db-si"><span class="db-si-ic"></span>Team</div>
+            <div class="db-si"><span class="db-si-ic"></span>Settings</div>
+          </div>
+          <div class="db-main">
+            <div class="db-r4">
+              <div class="db-kpi">
+                <div class="db-kpi-l">Active Projects</div>
+                <div class="db-kpi-v">24</div>
+                <div class="db-kpi-d">↑ 12% this month</div>
+              </div>
+              <div class="db-kpi">
+                <div class="db-kpi-l">BOQ Line Items</div>
+                <div class="db-kpi-v">1,847</div>
+                <div class="db-kpi-d">↑ 8% this week</div>
+              </div>
+              <div class="db-kpi">
+                <div class="db-kpi-l">Active Vendors</div>
+                <div class="db-kpi-v">136</div>
+                <div class="db-kpi-d">↑ 3 new</div>
+              </div>
+              <div class="db-kpi">
+                <div class="db-kpi-l">On Track</div>
+                <div class="db-kpi-v">87%</div>
+                <div class="db-kpi-d">↑ 5% from last</div>
+              </div>
+            </div>
+            <div class="db-r2">
+              <div class="db-chart">
+                <div class="db-chart-t">Execution Progress — Q2 2026</div>
+                <div class="bars">
+                  <div class="bar" style="height:58%"></div>
+                  <div class="bar" style="height:76%"></div>
+                  <div class="bar" style="height:44%"></div>
+                  <div class="bar" style="height:92%"></div>
+                  <div class="bar" style="height:68%"></div>
+                  <div class="bar" style="height:52%"></div>
+                  <div class="bar" style="height:84%"></div>
+                  <div class="bar" style="height:63%"></div>
+                  <div class="bar" style="height:77%"></div>
+                  <div class="bar" style="height:48%"></div>
+                  <div class="bar" style="height:96%"></div>
+                  <div class="bar" style="height:38%"></div>
+                </div>
+              </div>
+              <div class="db-tbl">
+                <div class="db-th"><span>Project</span><span>Phase</span><span>Status</span></div>
+                <div class="db-tr"><span>Villa Block A</span><span>Execution</span><span class="badge g">On Track</span></div>
+                <div class="db-tr"><span>Office Tower</span><span>Design</span><span class="badge b">In Review</span></div>
+                <div class="db-tr"><span>Retail Fit-out</span><span>BOQ</span><span class="badge y">Pending</span></div>
+                <div class="db-tr"><span>Residence Cmplx</span><span>Survey</span><span class="badge b">Active</span></div>
+                <div class="db-tr"><span>Hotel Lobby</span><span>Tracking</span><span class="badge g">On Track</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study Detail -->
+    <div class="cs-sections">
+
+      <!-- Problem -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">01 / Problem</div>
+        <div>
+          <h3 class="cs-sec-t">Construction workflows are deeply fragmented</h3>
+          <p class="cs-sec-p">Teams relied on spreadsheets, WhatsApp threads, and disconnected tools — creating information silos, delayed approvals, and zero real-time visibility across the project lifecycle.</p>
+          <div class="pain-grid">
+            <div class="pain-c">
+              <div class="pain-ic">🗂️</div>
+              <div class="pain-t">No single source of truth</div>
+              <div class="pain-p">Data scattered across tools led to conflicting information and costly decisions made on outdated data.</div>
+            </div>
+            <div class="pain-c">
+              <div class="pain-ic">⏳</div>
+              <div class="pain-t">Delayed approvals</div>
+              <div class="pain-p">Approval chains had no structure — leading to project delays, cost overruns, and accountability gaps.</div>
+            </div>
+            <div class="pain-c">
+              <div class="pain-ic">🔍</div>
+              <div class="pain-t">Lack of visibility</div>
+              <div class="pain-p">Stakeholders couldn't track real-time project status — everything was reactive, never proactive.</div>
+            </div>
+            <div class="pain-c">
+              <div class="pain-ic">💬</div>
+              <div class="pain-t">High coordination overhead</div>
+              <div class="pain-p">Constant back-and-forth between contractors, designers, and developers wasted hours daily across teams.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approach -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">02 / Approach</div>
+        <div>
+          <h3 class="cs-sec-t">Workflow-first design methodology</h3>
+          <p class="cs-sec-p">Rather than designing screens in isolation, I began with deep stakeholder mapping and end-to-end journey analysis to understand the full construction lifecycle — then defined UX principles around the workflows, not the other way around.</p>
+          <div class="flow">
+            <div class="flow-s"><div class="flow-n">01</div><div class="flow-l">Survey</div></div>
+            <div class="flow-s"><div class="flow-n">02</div><div class="flow-l">Design</div></div>
+            <div class="flow-s"><div class="flow-n">03</div><div class="flow-l">BOQ</div></div>
+            <div class="flow-s"><div class="flow-n">04</div><div class="flow-l">Vendor</div></div>
+            <div class="flow-s"><div class="flow-n">05</div><div class="flow-l">Execution</div></div>
+            <div class="flow-s"><div class="flow-n">06</div><div class="flow-l">Tracking</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">03 / Solution</div>
+        <div>
+          <h3 class="cs-sec-t">One platform for the entire lifecycle</h3>
+          <p class="cs-sec-p">R'Dash connects every phase of a construction project in one unified platform — with role-based experiences customized for each stakeholder type, reducing tool dependency and creating a single source of truth.</p>
+          <div class="sol-grid">
+            <div class="sol-c">
+              <div class="sol-t">Unified Workflow System</div>
+              <div class="sol-p">Connected the full project lifecycle into one platform — eliminating tool-switching and information gaps across every phase.</div>
+            </div>
+            <div class="sol-c">
+              <div class="sol-t">Role-Based Dashboards</div>
+              <div class="sol-p">Customized experience per stakeholder — developers, contractors, and studios each see exactly what they need, nothing more.</div>
+            </div>
+            <div class="sol-c">
+              <div class="sol-t">BOQ System</div>
+              <div class="sol-p">Structured, real-time bill of quantities with live pricing, vendor linking, and built-in approval workflows.</div>
+            </div>
+            <div class="sol-c">
+              <div class="sol-t">Vendor Allocation</div>
+              <div class="sol-p">Streamlined vendor assignment and tracking with capacity planning, performance scoring, and contract management.</div>
+            </div>
+            <div class="sol-c" style="grid-column:span 2">
+              <div class="sol-t">Real-Time Project Tracking</div>
+              <div class="sol-p">Live status visibility across all projects, phases, and teams — with timeline views, milestone alerts, and export-ready stakeholder reports. Transformed reactive management into proactive, data-driven decision making.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design Decisions -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">04 / Design Decisions</div>
+        <div>
+          <h3 class="cs-sec-t">Three principles that shaped everything</h3>
+          <div class="dec-list">
+            <div class="dec-c">
+              <div class="dec-n">01</div>
+              <div>
+                <div class="dec-t">Workflow-first design</div>
+                <div class="dec-p">Every workflow was mapped and validated before designing a single screen. This ensured the UI served real processes rather than imposing new ones — reducing training time and adoption friction.</div>
+              </div>
+            </div>
+            <div class="dec-c">
+              <div class="dec-n">02</div>
+              <div>
+                <div class="dec-t">Data simplification through hierarchy</div>
+                <div class="dec-p">Construction generates enormous data. I applied progressive disclosure and strict visual hierarchy to surface only what's critical at each stage — reducing cognitive load and decision fatigue.</div>
+              </div>
+            </div>
+            <div class="dec-c">
+              <div class="dec-n">03</div>
+              <div>
+                <div class="dec-t">System thinking with reusable components</div>
+                <div class="dec-p">Built a shared design system that scaled across all roles and modules — reducing design debt, ensuring visual consistency, and cutting future feature delivery time by ~40%.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Impact -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">05 / Impact</div>
+        <div>
+          <h3 class="cs-sec-t">Measurable results, real outcomes</h3>
+          <p class="cs-sec-p">Post-launch metrics and stakeholder feedback confirmed that the platform fundamentally changed how construction teams coordinate and execute projects.</p>
+          <div class="impact-grid">
+            <div class="imp-c">
+              <div class="imp-n">40%</div>
+              <div class="imp-l">Improvement in workflow efficiency across project teams</div>
+            </div>
+            <div class="imp-c">
+              <div class="imp-n">3×</div>
+              <div class="imp-l">Reduction in cross-tool dependency per active project</div>
+            </div>
+            <div class="imp-c">
+              <div class="imp-n">87%</div>
+              <div class="imp-l">Stakeholder collaboration satisfaction score post-launch</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ ELITE60 CASE STUDY ═══════════════ -->
+  <div class="cs-divider"></div>
+  <section style="padding-top:80px">
+    <div class="tag rv" style="color:#10B981">
+      <span style="display:inline-block;width:22px;height:1px;background:#10B981;margin-right:10px"></span>
+      Case Study 02
+    </div>
+    <h2 class="sh rv d1" style="margin-bottom:44px">
+      Elite60 — <span style="font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;color:#10B981">Fitness</span><br>Platform
+    </h2>
+
+    <div class="cs-wrap e60-wrap rv d2">
+      <!-- Header -->
+      <div class="cs-head">
+        <div>
+          <div class="cs-chips">
+            <span class="e60-chip">PWA + Android APK</span>
+            <span class="e60-chip">Full-Stack</span>
+            <span class="e60-chip">Solo Build</span>
+          </div>
+          <div class="cs-name" style="color:var(--text)">
+            Elite<span class="e60-acc">60</span>
+          </div>
+          <p class="cs-tagline">
+            A 60-day progressive overload fitness platform that automates strength programming, tracks athletic goals with live GPS, and ships as both a PWA and native Android APK — built and deployed solo.
+          </p>
+          <a href="https://elite60.in" target="_blank" rel="noopener" class="live-badge">Live at elite60.in ↗</a>
+        </div>
+        <div class="cs-meta-grid">
+          <div>
+            <div class="cs-mi-label">Role</div>
+            <div class="cs-mi-val">Full-Stack Developer</div>
+          </div>
+          <div>
+            <div class="cs-mi-label">Timeline</div>
+            <div class="cs-mi-val">2025</div>
+          </div>
+          <div>
+            <div class="cs-mi-label">Platform</div>
+            <div class="cs-mi-val">PWA + Android</div>
+          </div>
+          <div>
+            <div class="cs-mi-label">Stack</div>
+            <div class="cs-mi-val">React · Node · PostgreSQL</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real App Screenshots Gallery -->
+      <div class="gal-outer">
+        <div class="gal-scroll" id="galScroll">
+          <div class="gal-item center">
+            <div class="gal-frame" style="border-color:rgba(16,185,129,.4);box-shadow:0 28px 60px rgba(0,0,0,.55),0 0 48px rgba(16,185,129,.2),0 0 0 1px rgba(16,185,129,.15);">
+              <img src="images/elite60/logo-screen.jpg" alt="Elite60 Logo Screen" loading="lazy">
+            </div>
+            <span class="gal-lbl">Logo Screen</span>
+          </div>
+          <div class="gal-item center">
+            <div class="gal-frame" style="border-color:rgba(16,185,129,.4);box-shadow:0 28px 60px rgba(0,0,0,.55),0 0 48px rgba(16,185,129,.2),0 0 0 1px rgba(16,185,129,.15);">
+              <img src="images/elite60/splash.jpg" alt="Elite60 Splash Screen" loading="lazy">
+            </div>
+            <span class="gal-lbl">Splash Screen</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/home.jpg" alt="Elite60 Home Dashboard" loading="lazy">
+            </div>
+            <span class="gal-lbl">Home Dashboard</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/workout.jpg" alt="Workout Session" loading="lazy">
+            </div>
+            <span class="gal-lbl">Workout Session</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/progress-standard.jpg" alt="Progress — Standard Plan" loading="lazy">
+            </div>
+            <span class="gal-lbl">Progress — Standard</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/progress-goals.jpg" alt="Progress — Strength Goals" loading="lazy">
+            </div>
+            <span class="gal-lbl">Strength Goals</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/progress-athletics.jpg" alt="Progress — Athletics" loading="lazy">
+            </div>
+            <span class="gal-lbl">Athletics Tracker</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/plans.jpg" alt="Choose Your Plan" loading="lazy">
+            </div>
+            <span class="gal-lbl">Program Selection</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/gps-goal.jpg" alt="GPS Goal Detail" loading="lazy">
+            </div>
+            <span class="gal-lbl">GPS Goal Detail</span>
+          </div>
+          <div class="gal-item">
+            <div class="gal-frame">
+              <img src="images/elite60/gps-live.jpg" alt="Live GPS Workout" loading="lazy">
+            </div>
+            <span class="gal-lbl">Live GPS Workout</span>
+          </div>
+        </div>
+        <div class="gal-dots" id="galDots">
+          <div class="gal-dot on" data-i="0"></div>
+          <div class="gal-dot" data-i="1"></div>
+          <div class="gal-dot" data-i="2"></div>
+          <div class="gal-dot" data-i="3"></div>
+          <div class="gal-dot" data-i="4"></div>
+          <div class="gal-dot" data-i="5"></div>
+          <div class="gal-dot" data-i="6"></div>
+          <div class="gal-dot" data-i="7"></div>
+          <div class="gal-dot" data-i="8"></div>
+          <div class="gal-dot" data-i="9"></div>
+        </div>
+        <div class="gal-hint">
+          <div class="gal-hint-line"></div>
+          Drag to explore
+          <div class="gal-hint-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail Sections -->
+    <div class="cs-sections" style="margin-top:72px">
+
+      <!-- Problem -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">01 / Problem</div>
+        <div>
+          <h3 class="cs-sec-t">Most gym-goers plateau because programming is hard</h3>
+          <p class="cs-sec-p">People track workouts in notes apps, forget last session's weights, or follow generic plans that never adapt. Dedicated fitness apps are either too expensive, too complicated, or disconnected from real programming logic.</p>
+          <div class="pain-grid">
+            <div class="pain-c">
+              <div class="pain-ic" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.18)">📈</div>
+              <div class="pain-t">No automatic progression</div>
+              <div class="pain-p">Users have to decide when to increase weight — a decision that requires programming knowledge most people don't have.</div>
+            </div>
+            <div class="pain-c">
+              <div class="pain-ic" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.18)">🗂️</div>
+              <div class="pain-t">Fragmented tracking</div>
+              <div class="pain-p">Separate apps for strength, cardio, and body stats — no single platform unifying the full fitness picture.</div>
+            </div>
+            <div class="pain-c">
+              <div class="pain-ic" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.18)">📶</div>
+              <div class="pain-t">No offline support</div>
+              <div class="pain-p">Most fitness apps fail in gym environments with poor Wi-Fi — the exact moment you need them most.</div>
+            </div>
+            <div class="pain-c">
+              <div class="pain-ic" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.18)">🎚️</div>
+              <div class="pain-t">Generic programs</div>
+              <div class="pain-p">One-size-fits-all plans with no beginner/advanced differentiation — and no adaptation over the 60-day arc.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Features -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">02 / Key Features</div>
+        <div>
+          <h3 class="cs-sec-t">Ten features, one cohesive system</h3>
+          <p class="cs-sec-p">Every feature was built around the core premise: remove every decision that isn't "show up and lift." The app handles programming, progression, tracking, and motivation automatically.</p>
+          <div class="feat-grid">
+            <div class="feat-c">
+              <div class="feat-ic">⚙️</div>
+              <div class="feat-t">Linear Progression Engine</div>
+              <div class="feat-p">Auto-adjusts weights: +2.5kg upper / +5kg lower on success, holds on miss, 5% deload after two failures. Zero programming knowledge required.</div>
+            </div>
+            <div class="feat-c">
+              <div class="feat-ic">🏋️</div>
+              <div class="feat-t">5 Structured Programs</div>
+              <div class="feat-p">PPL, 6-Day Bodybuilding, 3-Day Full Body, 4-Day Intermediate, and 5-Day Hypertrophy — across 4 progressive phases spanning 60 days.</div>
+            </div>
+            <div class="feat-c">
+              <div class="feat-ic">⚡</div>
+              <div class="feat-t">Beginner / Advanced Toggle</div>
+              <div class="feat-p">A single switch adjusts sets, reps, and rest periods across every exercise in every program in real time — no separate app versions needed.</div>
+            </div>
+            <div class="feat-c">
+              <div class="feat-ic">🎯</div>
+              <div class="feat-t">Strength Goal Plans</div>
+              <div class="feat-p">Set a custom goal (e.g. Bench 80kg → 100kg in 12 weeks). The app auto-generates a week-by-week plan and tracks you against the curve on a live chart.</div>
+            </div>
+            <div class="feat-c">
+              <div class="feat-ic">🗺️</div>
+              <div class="feat-t">Live GPS Athletics Tracker</div>
+              <div class="feat-p">MapLibre GL + CartoDB tiles for zero API cost. Real-time route polyline, Haversine distance, 30s rolling pace window with On Track / Speed Up / Ease Up status.</div>
+            </div>
+            <div class="feat-c">
+              <div class="feat-ic">👁️</div>
+              <div class="feat-t">Admin CRM</div>
+              <div class="feat-p">Role-gated panel (React 19 + Tailwind v4) with KPI dashboard, searchable user list, per-user session history, and role management.</div>
+            </div>
+          </div>
+          <div class="tech-stack">
+            <span class="tp hi">React 18</span>
+            <span class="tp hi">TypeScript</span>
+            <span class="tp hi">Node.js</span>
+            <span class="tp hi">PostgreSQL</span>
+            <span class="tp">Prisma v5</span>
+            <span class="tp">TanStack Query v5</span>
+            <span class="tp">Framer Motion v12</span>
+            <span class="tp">Capacitor v8</span>
+            <span class="tp">MapLibre GL v5</span>
+            <span class="tp">Workbox (PWA)</span>
+            <span class="tp">Recharts</span>
+            <span class="tp">Netlify Functions</span>
+            <span class="tp">Zod</span>
+            <span class="tp">Resend</span>
+            <span class="tp">Vite 5 + SWC</span>
+            <span class="tp">shadcn/ui</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">03 / Architecture</div>
+        <div>
+          <h3 class="cs-sec-t">Three independent apps, one monorepo</h3>
+          <p class="cs-sec-p">The system is structured as a monorepo with three independent apps — user PWA/APK, admin CRM, and Express REST API — each with their own stack, deployed as a unified platform on Netlify.</p>
+          <div class="sol-grid" style="margin-top:24px">
+            <div class="sol-c e60-sol-c">
+              <div class="sol-t">/src — User PWA + Android</div>
+              <div class="sol-p">React 18 · Vite 5 · Tailwind v3 · Capacitor v8. Shipped as both a PWA with Workbox service worker and a native Android APK with haptics, local notifications, and GPS access.</div>
+            </div>
+            <div class="sol-c e60-sol-c">
+              <div class="sol-t">/admin-app — Admin CRM</div>
+              <div class="sol-p">React 19 · Vite 8 · Tailwind v4. Intentionally runs a newer stack — served as a testbed for the newer ecosystem before migrating the main app.</div>
+            </div>
+            <div class="sol-c e60-sol-c">
+              <div class="sol-t">/backend — REST API</div>
+              <div class="sol-p">Express + Prisma v5 + PostgreSQL (Supabase). Entire Express app bundled by esbuild into a single Netlify Function via <code style="color:#10B981;font-family:monospace">serverless-http</code> — zero server management.</div>
+            </div>
+            <div class="sol-c e60-sol-c">
+              <div class="sol-t">Dual-Layer Persistence</div>
+              <div class="sol-p">Every write hits localStorage immediately for instant UI, then syncs to backend async. On mount, server state reconciles. App is fully functional offline — critical in gym environments with poor signal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engineering Challenges -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">04 / Engineering Challenges</div>
+        <div>
+          <h3 class="cs-sec-t">Five real problems, five precise solutions</h3>
+          <div class="chal-list">
+            <div class="chal-c">
+              <span class="chal-badge prob">Problem</span>
+              <div class="chal-t">Rest timer invisible behind nav bar</div>
+              <div class="chal-p"><code style="font-family:monospace;color:var(--rose)">backdrop-filter</code> on the nav created a new stacking context in WebKit/Blink — making any z-index on children irrelevant. The overlay rendered underneath regardless of the value set.</div>
+              <div class="chal-div"></div>
+              <span class="chal-badge sol">Solution</span>
+              <div class="chal-p">Rendered the rest timer into a React Portal targeting <code style="font-family:monospace;color:#10B981">#portal-root</code> — a sibling div placed after <code style="font-family:monospace;color:#10B981">#root</code> in index.html. Portals escape the component tree entirely, rendering above any stacking context in the app.</div>
+            </div>
+            <div class="chal-c">
+              <span class="chal-badge prob">Problem</span>
+              <div class="chal-t">Full Express + Prisma backend with zero server management</div>
+              <div class="chal-p">One function per route would duplicate middleware across dozens of handlers. A dedicated server meant infrastructure overhead for a solo side project.</div>
+              <div class="chal-div"></div>
+              <span class="chal-badge sol">Solution</span>
+              <div class="chal-p">Wrapped the entire Express app with <code style="font-family:monospace;color:#10B981">serverless-http</code> as a single Netlify Function. esbuild bundles at deploy time with <code style="font-family:monospace;color:#10B981">@prisma/client</code> marked external — keeping cold starts low while retaining a full ORM and structured routing.</div>
+            </div>
+            <div class="chal-c">
+              <span class="chal-badge prob">Problem</span>
+              <div class="chal-t">Native feel on a web app — tap delays, zoom, scrollbars</div>
+              <div class="chal-p">PWAs often feel "webby" — 300ms tap delays, iOS auto-zoom on inputs, grey tap highlights, rubber-band interference, visible text selection on press.</div>
+              <div class="chal-div"></div>
+              <span class="chal-badge sol">Solution</span>
+              <div class="chal-p">Comprehensive fix layer: <code style="font-family:monospace;color:#10B981">touch-action: manipulation</code> kills the 300ms delay, <code style="font-family:monospace;color:#10B981">font-size: 16px</code> on all inputs blocks iOS zoom, <code style="font-family:monospace;color:#10B981">overscroll-behavior: none</code> stops pull-to-refresh interference, <code style="font-family:monospace;color:#10B981">active:scale-[0.96]</code> on every button gives tactile press feedback. Capacitor haptics fire on every button click via the base component.</div>
+            </div>
+            <div class="chal-c">
+              <span class="chal-badge prob">Problem</span>
+              <div class="chal-t">GPS maps without a billing API key</div>
+              <div class="chal-p">Google Maps and Mapbox both require accounts with billing. For a zero-cost infrastructure target, this was a hard blocker from the start.</div>
+              <div class="chal-div"></div>
+              <span class="chal-badge sol">Solution</span>
+              <div class="chal-p">Switched to <strong>MapLibre GL v5</strong> (Apache 2.0) with <strong>CartoDB Dark Matter</strong> raster tiles — fully free, no API key, no rate limits for standard usage. The dark tile theme matches the app's aesthetic perfectly with no extra configuration.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="cs-sec rv">
+        <div class="cs-sec-lbl">05 / Results</div>
+        <div>
+          <h3 class="cs-sec-t">Live, functional, and zero ongoing cost</h3>
+          <p class="cs-sec-p">Shipped as a complete, production-grade product — not a prototype. Every feature is live and working on elite60.in, from GPS session tracking to automated weekly summary emails.</p>
+          <div class="impact-grid" style="margin-top:24px">
+            <div class="e60-imp-c">
+              <div class="e60-imp-n">120+</div>
+              <div class="imp-l">Workout sessions across 5 programs and 4 progressive phases</div>
+            </div>
+            <div class="e60-imp-c">
+              <div class="e60-imp-n">$0</div>
+              <div class="imp-l">Ongoing infrastructure cost — maps, hosting, and DB on free tiers</div>
+            </div>
+            <div class="e60-imp-c">
+              <div class="e60-imp-n">2-in-1</div>
+              <div class="imp-l">Single codebase ships as both a PWA and a native Android APK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ OTHER PROJECTS ═══════════════ -->
+  <section style="padding-top:64px">
+    <div class="tag rv">Other Work</div>
+    <h2 class="sh rv d1" style="margin-bottom:44px">More <span class="serif">projects</span></h2>
+
+    <div class="bento">
+      <!-- RankWatch -->
+      <div class="pc rv">
+        <div class="pc-bg" style="background:#7B6CF6"></div>
+        <div class="pc-num">01</div>
+        <div class="pc-type">SEO SaaS Platform</div>
+        <div class="pc-name">RankWatch</div>
+        <div class="pc-desc">Full product design overhaul for an enterprise SEO monitoring platform — improving data visualization, workflow clarity, and team-level reporting for SEO professionals at scale.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">Dashboard Design</span>
+          <span class="pc-tag">Data Visualization</span>
+          <span class="pc-tag">SaaS Redesign</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <!-- WebSignals -->
+      <div class="pc rv d1">
+        <div class="pc-bg" style="background:#F06292"></div>
+        <div class="pc-num">02</div>
+        <div class="pc-type">Brand Monitoring · 0→1</div>
+        <div class="pc-name">WebSignals</div>
+        <div class="pc-desc">0→1 brand monitoring platform — full product definition, design system creation, and launch experience for a B2B media intelligence tool.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">0 → 1</span>
+          <span class="pc-tag">Brand System</span>
+          <span class="pc-tag">B2B</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <!-- Knovelo -->
+      <div class="pc rv d1">
+        <div class="pc-bg" style="background:#4ADE80"></div>
+        <div class="pc-num">03</div>
+        <div class="pc-type">Consumer App</div>
+        <div class="pc-name">Knovelo</div>
+        <div class="pc-desc">Reader community app connecting book lovers through shared discovery, highlights, and community reviews.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">Mobile</span>
+          <span class="pc-tag">Community</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <!-- LocatR -->
+      <div class="pc rv d2">
+        <div class="pc-bg" style="background:#FBB024"></div>
+        <div class="pc-num">04</div>
+        <div class="pc-type">Navigation UX</div>
+        <div class="pc-name">LocatR</div>
+        <div class="pc-desc">Grocery store navigation UX — reducing time-to-find for shoppers using indoor wayfinding and smart list organization.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">UX Research</span>
+          <span class="pc-tag">Wayfinding</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <!-- Kockpit -->
+      <div class="pc rv d3">
+        <div class="pc-bg" style="background:#60A5FA"></div>
+        <div class="pc-num">05</div>
+        <div class="pc-type">BI Dashboard</div>
+        <div class="pc-name">Kockpit</div>
+        <div class="pc-desc">Executive business intelligence dashboard — translating complex enterprise data into clear, actionable insights for C-suite decision makers.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">BI</span>
+          <span class="pc-tag">Executive UX</span>
+          <span class="pc-tag">Data</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROCESS ═══════════════ -->
+  <section class="proc-section" id="process">
+    <div class="tag rv">My Process</div>
+    <h2 class="sh rv d1">How I <span class="serif">approach</span><br>every project</h2>
+
+    <div class="proc-grid">
+      <div class="proc-c rv">
+        <div class="proc-n">01</div>
+        <div class="proc-t">Discover & Define</div>
+        <div class="proc-p">Stakeholder interviews, user research, and competitive analysis to deeply understand the problem space before opening Figma.</div>
+      </div>
+      <div class="proc-c rv d1">
+        <div class="proc-n">02</div>
+        <div class="proc-t">Map & Structure</div>
+        <div class="proc-p">Journey mapping, IA, and workflow definition to create the skeleton of the experience — structure before aesthetics, always.</div>
+      </div>
+      <div class="proc-c rv d2">
+        <div class="proc-n">03</div>
+        <div class="proc-t">Design & Iterate</div>
+        <div class="proc-p">High-fidelity mockups with interactive prototypes — validated with real users through structured, moderated testing sessions.</div>
+      </div>
+      <div class="proc-c rv d1">
+        <div class="proc-n">04</div>
+        <div class="proc-t">Systematize</div>
+        <div class="proc-p">Building reusable component libraries and design tokens that scale across the entire product — not just the current feature.</div>
+      </div>
+      <div class="proc-c rv d2">
+        <div class="proc-n">05</div>
+        <div class="proc-t">Ship & Measure</div>
+        <div class="proc-p">Close collaboration with engineering during handoff, then measuring real usage data and analytics to inform the next iteration.</div>
+      </div>
+      <div class="proc-c rv d3">
+        <div class="proc-n">06</div>
+        <div class="proc-t">Reflect & Refine</div>
+        <div class="proc-p">Post-launch retrospectives and continuous improvement cycles — treating launch as the beginning of the design process, not the end.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section class="contact-sec" id="contact">
+    <div class="contact-glow"></div>
+    <div class="tag" style="justify-content:center">Contact</div>
+    <h2 class="contact-t rv">
+      Let's create<br>
+      something<br>
+      <span class="serif">remarkable.</span>
+    </h2>
+    <p class="contact-sub rv d1">
+      Open to senior product design roles, freelance projects, and design leadership opportunities.
+    </p>
+    <div class="contact-btns rv d2">
+      <a href="mailto:buddhpriya@gmail.com" class="btn-p">Send an Email ↗</a>
+      <a href="#" class="btn-g">Download Resume →</a>
+    </div>
+    <div class="contact-links rv d3">
+      <a href="#" class="cl">Dribbble ↗</a>
+      <a href="#" class="cl">LinkedIn ↗</a>
+      <a href="#" class="cl">Behance ↗</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="fc">© 2026 Buddhpriya Gautam. All rights reserved.</div>
+    <div class="fc">Designed with <em>♥</em> for exceptional experiences</div>
+  </footer>
+
+  <script>
+    // ─── LOADER ───
+    const fill = document.getElementById('ld-fill');
+    const pct  = document.getElementById('ld-pct');
+    const ldr  = document.getElementById('loader');
+    let p = 0;
+    const lt = setInterval(() => {
+      p += Math.random() * 18 + 4;
+      if (p >= 100) {
+        p = 100;
+        clearInterval(lt);
+        setTimeout(() => ldr.classList.add('gone'), 350);
+      }
+      fill.style.width = p + '%';
+      pct.textContent  = Math.floor(p) + '%';
+    }, 70);
+
+    // ─── CURSOR ───
+    const cur  = document.getElementById('cur');
+    const curf = document.getElementById('cur-f');
+    let mx = 0, my = 0, fx = 0, fy = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.left = mx + 'px';
+      cur.style.top  = my + 'px';
+    });
+
+    (function tick() {
+      fx += (mx - fx) * 0.11;
+      fy += (my - fy) * 0.11;
+      curf.style.left = fx + 'px';
+      curf.style.top  = fy + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    document.querySelectorAll('a, button, .pc, .pain-c, .sol-c, .dec-c, .imp-c, .chip').forEach(el => {
+      el.addEventListener('mouseenter', () => { cur.classList.add('h'); curf.classList.add('h'); });
+      el.addEventListener('mouseleave', () => { cur.classList.remove('h'); curf.classList.remove('h'); });
+    });
+
+    // ─── NAV SCROLL ───
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ─── SCROLL PROGRESS ───
+    const bar = document.getElementById('scroll-bar');
+    window.addEventListener('scroll', () => {
+      bar.style.width = (window.scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
+    }, { passive: true });
+
+    // ─── PARALLAX HERO GRID ───
+    const hg = document.getElementById('hero-grid');
+    window.addEventListener('scroll', () => {
+      hg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+    }, { passive: true });
+
+    // ─── REVEAL ON SCROLL ───
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+    // ─── COUNTERS ───
+    const cobs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const t = parseInt(e.target.dataset.t);
+        let c = 0; const step = t / 45;
+        const ti = setInterval(() => {
+          c += step;
+          if (c >= t) { c = t; clearInterval(ti); }
+          e.target.textContent = Math.floor(c);
+        }, 35);
+        cobs.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.cnt').forEach(el => cobs.observe(el));
+
+    // ─── CARD 3D TILT ───
+    document.querySelectorAll('.pc, .pain-c, .imp-c').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        const rx = (y - r.height / 2) / r.height * -8;
+        const ry = (x - r.width  / 2) / r.width  *  8;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    // ─── MAGNETIC BUTTONS ───
+    document.querySelectorAll('.btn-p, .btn-g, .nav-cta').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width  / 2;
+        const y = e.clientY - r.top  - r.height / 2;
+        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+
+    // ─── GALLERY DRAG SCROLL ───
+    const galScroll = document.getElementById('galScroll');
+    const galDots   = document.querySelectorAll('.gal-dot');
+    if (galScroll) {
+      let isDown = false, startX = 0, scrollLeft = 0;
+      galScroll.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - galScroll.offsetLeft;
+        scrollLeft = galScroll.scrollLeft;
+      });
+      galScroll.addEventListener('mouseleave', () => { isDown = false; });
+      galScroll.addEventListener('mouseup',    () => { isDown = false; });
+      galScroll.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        galScroll.scrollLeft = scrollLeft - (e.pageX - galScroll.offsetLeft - startX) * 1.2;
+      });
+      galScroll.addEventListener('scroll', () => {
+        const items = galScroll.querySelectorAll('.gal-item');
+        let closest = 0, minDist = Infinity;
+        items.forEach((item, i) => {
+          const dist = Math.abs(item.getBoundingClientRect().left - galScroll.getBoundingClientRect().left);
+          if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        galDots.forEach((d, i) => d.classList.toggle('on', i === closest));
+      }, { passive: true });
+      galDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const i = parseInt(dot.dataset.i);
+          const items = galScroll.querySelectorAll('.gal-item');
+          if (items[i]) items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        });
+      });
+    }
+
+    // ─── SMOOTH SCROLL ───
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
