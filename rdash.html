@@ -170,6 +170,40 @@
     .imp-n { font-size:42px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; margin-bottom:8px; }
     .imp-l { font-size:12px; color:var(--text2); line-height:1.6; }
 
+    /* ─── SCREENS SHOWCASE ─── */
+    .screens-sec { padding:80px 56px; border-bottom:1px solid var(--border); overflow:hidden; }
+    .screens-scroll { display:flex; gap:20px; overflow-x:auto; padding-bottom:16px; margin-top:40px; scrollbar-width:thin; scrollbar-color:var(--accent) transparent; }
+    .screens-scroll::-webkit-scrollbar { height:3px; }
+    .screens-scroll::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
+    .screen-card { flex-shrink:0; width:340px; background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; transition:border-color .3s,transform .3s; }
+    .screen-card:hover { border-color:var(--border-hi); transform:translateY(-4px); }
+    .screen-card-bar { background:var(--bg3); padding:10px 14px; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border); }
+    .screen-card-dots { display:flex; gap:5px; }
+    .screen-card-dots span { width:9px; height:9px; border-radius:50%; }
+    .screen-card-dots span:nth-child(1){ background:#FF5F57; }
+    .screen-card-dots span:nth-child(2){ background:#FEBC2E; }
+    .screen-card-dots span:nth-child(3){ background:#28C840; }
+    .screen-card-label { font-size:11px; font-weight:700; color:var(--text3); letter-spacing:.06em; flex:1; text-align:center; }
+    .screen-card-body { padding:20px; }
+    .screen-card-stage { font-size:10px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+    .screen-card-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px; }
+    .screen-card-desc { font-size:12px; color:var(--text2); line-height:1.7; margin-bottom:14px; }
+    .screen-card-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .screen-tag { font-size:10px; font-weight:700; padding:3px 9px; border-radius:100px; background:var(--accent-lo); color:var(--accent); border:1px solid var(--border-hi); }
+    .screen-card-mockup { height:160px; background:var(--bg3); border-top:1px solid var(--border); display:flex; flex-direction:column; gap:6px; padding:14px; overflow:hidden; }
+    .mock-row { height:10px; background:var(--border); border-radius:3px; }
+    .mock-row.accent { background:rgba(123,108,246,.25); width:60%; }
+    .mock-row.short { width:40%; }
+    .mock-row.med { width:70%; }
+    .mock-badge { display:inline-flex; gap:4px; }
+    .mock-b { height:10px; width:52px; border-radius:100px; background:rgba(74,222,128,.2); }
+    .mock-b.orange { background:rgba(251,176,36,.2); }
+    .mock-b.blue { background:rgba(123,108,246,.25); }
+    @media(max-width:768px){
+      .screens-sec { padding:56px 24px; }
+      .screen-card { width:280px; }
+    }
+
     /* ─── PROTOTYPE EMBED ─── */
     .proto-sec { padding:80px 56px; border-bottom:1px solid var(--border); }
     .proto-wrap { margin-top:40px; border:1px solid var(--border); border-radius:var(--r); overflow:hidden; position:relative; background:var(--bg2); }
@@ -336,34 +370,36 @@
       <p class="cs-p rv d2">R'Dash connects every layer of a construction project into a single intelligent system — from procurement to payments, site execution to AI insights — eliminating tool-switching and giving every stakeholder exactly what they need.</p>
     </div>
     <div class="flow rv d2" style="margin-top:40px">
-      <div class="flow-step on"><span class="flow-num">01</span> Project Setup</div>
+      <div class="flow-step on"><span class="flow-num">01</span> Recce</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">02</span> BOQ Planning</div>
+      <div class="flow-step"><span class="flow-num">02</span> Design</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">03</span> Procurement</div>
+      <div class="flow-step"><span class="flow-num">03</span> BOQ</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">04</span> Execution</div>
+      <div class="flow-step"><span class="flow-num">04</span> Orders</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">05</span> Billing & Pay</div>
+      <div class="flow-step"><span class="flow-num">05</span> Work Progress</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">06</span> AI Insights</div>
+      <div class="flow-step"><span class="flow-num">06</span> Snags</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-num">07</span> Handover</div>
     </div>
     <div class="sol-grid">
       <div class="sol-c rv">
-        <div class="sol-t">Procurement → Billing → Payments → Reconciliation</div>
-        <div class="sol-p">Milestone-based RA billing, AI-driven payment triggers, and 3-way matching that eliminated disputes and accelerated cash flow across all projects.</div>
+        <div class="sol-t">Recce → Site Survey → Approval</div>
+        <div class="sol-p">Template-driven site surveys covering External Environment, Internal Environment, Signage & Facade, Layouts & Sketches, and Custom Sections — assigned to field engineers via WhatsApp link, executed on mobile, approved on web.</div>
       </div>
       <div class="sol-c rv d1">
-        <div class="sol-t">Site Execution → Activity Tracking → Reporting</div>
-        <div class="sol-p">Real-time site execution tracking with daily automated reports delivered via Email and WhatsApp — keeping all stakeholders informed without manual effort.</div>
+        <div class="sol-t">BOQ → Scope → Proposals → Pricing</div>
+        <div class="sol-p">Sectioned BOQ (Civil Work, Demolition, Interior & Allied Work) with image-linked line items, vendor proposals, automatic discount calculations, and net amount summaries — all tracked against the live project scope.</div>
       </div>
       <div class="sol-c rv d2">
-        <div class="sol-t">AI Copilot → Insights → Automation</div>
-        <div class="sol-p">Natural language to dashboards — reducing BI workload by 55% and dashboard creation time by 60% through conversational AI interfaces.</div>
+        <div class="sol-t">Orders → Vendor Invoices → Payments</div>
+        <div class="sol-p">End-to-end vendor order management with PO attachment, progress tracking per order line, vendor-wise scope and invoicing — replacing scattered email and WhatsApp approvals with a single auditable flow.</div>
       </div>
       <div class="sol-c rv d3">
-        <div class="sol-t">AI Voice Copilot (Mobile)</div>
-        <div class="sol-p">Multilingual voice assistant for field teams — 30% less manual lookup, 40% faster field decisions, working even in low-connectivity construction environments.</div>
+        <div class="sol-t">Work Progress → Snags → Handover</div>
+        <div class="sol-p">Real-time Gantt date tracker with projected vs. expected end dates, section-level progress %, material procurement status, and a snag management system with photo evidence, category tags, and resolution tracking.</div>
       </div>
     </div>
   </section>
@@ -378,50 +414,190 @@
       <div class="init-c rv">
         <div class="init-n">01</div>
         <div>
-          <div class="init-t">SMB Growth Engine</div>
-          <div class="init-p">AI-powered onboarding system that reduced go-live from weeks to 7 days. Designed progressive disclosure flows that matched the complexity of construction ops without overwhelming new users.</div>
-          <div class="init-stats"><span class="init-stat">7-day go-live</span><span class="init-stat">50% less implementation effort</span><span class="init-stat">~40% of total revenue</span></div>
+          <div class="init-t">My Projects Dashboard</div>
+          <div class="init-p">Designed a high-density project command centre tracking 768+ live projects across 8 pipeline stages — Project Created, Recce Pending, Design Pending, Designs Approved, BOQ in Process, BOQ Approved, Execution in Progress, Execution Completed. Stage-badge filtering, multi-tag search, and a sortable data table (Job ID, Client, City, Project Manager, Estimate, Due Date) gave managers full fleet visibility in one view.</div>
+          <div class="init-stats"><span class="init-stat">768+ projects tracked</span><span class="init-stat">8 pipeline stages</span><span class="init-stat">7-day go-live</span></div>
         </div>
       </div>
       <div class="init-c rv">
         <div class="init-n">02</div>
         <div>
-          <div class="init-t">Invoice Intelligence (OCR + 3-Way Matching)</div>
-          <div class="init-p">Designed an AI-first invoice review flow that auto-extracts line items via OCR and matches against PO and GRN data — reducing manual effort by 60–70% and dispute rates by 40%.</div>
-          <div class="init-stats"><span class="init-stat">60–70% effort reduction</span><span class="init-stat">40% fewer disputes</span></div>
+          <div class="init-t">Recce & Mobile Site Survey</div>
+          <div class="init-p">Replaced manual WhatsApp site-survey coordination with a structured Recce module. PMs create a template-driven recce link on web (External Environment, Internal Environment, Signage & Facade, Layouts & Sketches, Custom Sections), assign it to field engineers, and the link is shared via WhatsApp. Engineers execute the survey on mobile — uploading photos, videos, and structured data. The web reviewer approves or rejects each section. Eliminated untracked site data and cut survey-to-approval time significantly.</div>
+          <div class="init-stats"><span class="init-stat">Mobile-first capture</span><span class="init-stat">WhatsApp link sharing</span><span class="init-stat">Structured approval flow</span></div>
         </div>
       </div>
       <div class="init-c rv">
         <div class="init-n">03</div>
         <div>
-          <div class="init-t">Mobile-First Execution</div>
-          <div class="init-p">Rebuilt the site execution interface from scratch for field conditions — large touch targets, voice input, minimal cognitive load. Resulted in 75% more field team engagement and drove 63% MRR growth.</div>
-          <div class="init-stats"><span class="init-stat">63% MRR growth</span><span class="init-stat">75% more field engagement</span></div>
+          <div class="init-t">BOQ & Scope Management</div>
+          <div class="init-p">Designed a sectioned BOQ system replacing Excel — Civil Work, Demolition & Dismantling, Interior & Allied Work — with image-linked line items, category codes, source proposals (PROP432545), item type tags (Procurement / Production), UOM, quantity, and final amount per line. Automatic footer totals show Base Amount, Avg. Discount %, Total Discount, and Net Amount in real time. Tabs for My Scope, Proposals For Client, Incoming Orders, and Rejected Scope gave every stakeholder a filtered view of exactly their responsibility.</div>
+          <div class="init-stats"><span class="init-stat">65% less manual invoice effort</span><span class="init-stat">40% fewer disputes</span><span class="init-stat">Auto net amount calc</span></div>
         </div>
       </div>
       <div class="init-c rv">
         <div class="init-n">04</div>
         <div>
-          <div class="init-t">Offline-First Infrastructure</div>
-          <div class="init-p">Designed UX for an offline-first sync architecture — every action queues locally and reconciles when connectivity returns. Field teams can work through zero-network zones without any interruption.</div>
-          <div class="init-stats"><span class="init-stat">95% data loss reduction</span><span class="init-stat">Zero-network continuity</span></div>
+          <div class="init-t">Vendor Orders & Payment Management</div>
+          <div class="init-p">Designed a full vendor procurement layer — Proposals From Vendor, Vendor Order, Vendor Invoices, Vendor Payments, Other Expenses, Vendor Wise Scope, and Vendor Wise Progress Report. Each order tracks Order No., Order To, Issued By, Issue/Due Dates, Order Status (Pending Approval / Pending), PO attachment status, and a visual progress bar per order. Category tags (Production, Procurement, Tilling, Flooring) enable filtering across 24+ line items per vendor. Eliminated PO-to-payment ambiguity that caused reconciliation delays and cost leakages.</div>
+          <div class="init-stats"><span class="init-stat">End-to-end PO tracking</span><span class="init-stat">7 vendor sub-modules</span><span class="init-stat">50% less implementation effort</span></div>
         </div>
       </div>
       <div class="init-c rv">
         <div class="init-n">05</div>
         <div>
-          <div class="init-t">Authentication & Smart Notifications</div>
-          <div class="init-p">Redesigned auth with SSO + magic links, cutting login cost by 70% and auth time by 95%. Smart notification routing reduced alert fatigue by 40% and misrouting by 25%.</div>
-          <div class="init-stats"><span class="init-stat">70% login cost reduction</span><span class="init-stat">95% faster auth</span><span class="init-stat">25% less misrouting</span></div>
+          <div class="init-t">Work Progress Tracking & Snag Management</div>
+          <div class="init-p">Rebuilt progress visibility with a dual-view system — a Gantt-style Date Tracker (Projected End vs. Expected Due) and a Time Status bar showing Actual Start, Till Date, and Expected Due at a glance. Section-level progress % (e.g. 65%) rolls up to daily (12%) and overall (30%) summaries with rupee values. The Snag module adds a quality control layer: field teams log snags with photo evidence, location, category tags (Faucet Missing, Piper Fitting), and committed closure dates — tracked through Open Unresolved → Open Resolved → Closed states with a tri-color progress bar.</div>
+          <div class="init-stats"><span class="init-stat">63% MRR growth</span><span class="init-stat">95% data loss reduction</span><span class="init-stat">Real-time Gantt tracker</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT SCREENS -->
+  <section class="screens-sec" style="background:var(--bg2)">
+    <div class="cs-sec-inner">
+      <div class="tag rv">Product Screens</div>
+      <h2 class="cs-h2 rv d1">Every screen, a deliberate decision</h2>
+      <p class="cs-p rv d2">Seven modules, one pipeline — each screen designed around the actual mental model of a PM, contractor, or field engineer on a live construction project.</p>
+    </div>
+    <div class="screens-scroll">
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">My Projects</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Dashboard</div>
+          <div class="screen-card-title">Project Fleet Overview</div>
+          <div class="screen-card-desc">768 live projects across 8 pipeline stages — stage-badge filtering, multi-tag search, sortable by Job ID, Client, City, PM, Estimate, Due Date.</div>
+          <div class="screen-card-tags"><span class="screen-tag">768 Projects</span><span class="screen-tag">8 Stages</span><span class="screen-tag">Add Project</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent"></div>
+          <div class="mock-row"></div><div class="mock-row short"></div>
+          <div class="mock-badge"><div class="mock-b blue"></div><div class="mock-b orange"></div><div class="mock-b"></div></div>
+          <div class="mock-row med"></div><div class="mock-row short"></div><div class="mock-row"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv d1">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Recce — Create</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 01 / Recce</div>
+          <div class="screen-card-title">Site Survey Setup</div>
+          <div class="screen-card-desc">Template-based recce creation — External Environment, Internal Environment, Signage & Facade, Layouts & Sketches, Custom Section. Assign to field engineers, set due date, add Client POC.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Template Select</span><span class="screen-tag">Assign Engineers</span><span class="screen-tag">Create Link</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent"></div>
+          <div class="mock-row short"></div><div class="mock-row med"></div>
+          <div class="mock-row"></div><div class="mock-row short"></div>
+          <div class="mock-row med"></div><div class="mock-row short"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv d2">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Recce — Share</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 01 / Recce</div>
+          <div class="screen-card-title">WhatsApp Link Distribution</div>
+          <div class="screen-card-desc">Recce link generated and shared via WhatsApp to assigned Project Engineers. Copy link, add custom users, view already-shared recipients — all from a single confirmation modal.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Copy Link</span><span class="screen-tag">WhatsApp Share</span><span class="screen-tag">Custom Users</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent short"></div>
+          <div class="mock-row"></div><div class="mock-row med"></div>
+          <div class="mock-row short"></div><div class="mock-row"></div>
+          <div class="mock-row short"></div><div class="mock-row med"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Recce — Review</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 01 / Recce</div>
+          <div class="screen-card-title">Survey Review & Approval</div>
+          <div class="screen-card-desc">Submitted recce reviewed per section — External Images & Videos, Internal Environment, Signage, Layouts. Custom components with text and image grids. Approve or reject per section.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Photo Evidence</span><span class="screen-tag">Video Upload</span><span class="screen-tag">Approve</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent"></div>
+          <div class="mock-row med"></div>
+          <div style="display:flex;gap:4px;margin-top:4px"><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div></div>
+          <div class="mock-row short" style="margin-top:6px"></div><div class="mock-row"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv d1">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">BOQ — My Scope</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 03 / BOQ</div>
+          <div class="screen-card-title">Scope & Pricing</div>
+          <div class="screen-card-desc">Sectioned BOQ — Civil Work, Demolition, Interior & Allied Work — with image-linked items, category codes, proposals, UOM, quantity, and real-time net amount after discount.</div>
+          <div class="screen-card-tags"><span class="screen-tag">My Scope</span><span class="screen-tag">Proposals</span><span class="screen-tag">Auto Totals</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent"></div>
+          <div class="mock-row"></div><div class="mock-row med"></div>
+          <div class="mock-row short"></div><div class="mock-row"></div>
+          <div class="mock-row med"></div><div class="mock-row short"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv d2">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Orders — Vendor</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 04 / Orders</div>
+          <div class="screen-card-title">Vendor Order Management</div>
+          <div class="screen-card-desc">Proposals From Vendor, Vendor Order, Vendor Invoices, Vendor Payments, Other Expenses, Vendor Wise Scope, and Progress Report — with PO attachment, progress %, and category tags per order.</div>
+          <div class="screen-card-tags"><span class="screen-tag">PO Tracking</span><span class="screen-tag">Vendor Invoices</span><span class="screen-tag">Payments</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent"></div>
+          <div class="mock-row"></div>
+          <div class="mock-badge"><div class="mock-b blue"></div><div class="mock-b orange"></div></div>
+          <div class="mock-row med"></div><div class="mock-row short"></div>
+          <div class="mock-row"></div><div class="mock-row short"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Work Progress</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 05 / Work Progress</div>
+          <div class="screen-card-title">Gantt Tracker & Progress</div>
+          <div class="screen-card-desc">Projected vs. Expected date Gantt, Time Status bar (Actual Start → Projected End), section-level progress %, daily vs. overall summary with ₹ values, and Generate Report CTA.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Date Tracker</span><span class="screen-tag">Section Progress</span><span class="screen-tag">Generate Report</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div class="mock-row accent short"></div>
+          <div style="height:32px;background:var(--bg);border-radius:4px;border:1px solid var(--border);margin-top:4px;padding:6px 8px;display:flex;align-items:center;gap:4px"><div style="height:6px;width:50%;background:rgba(123,108,246,.3);border-radius:2px"></div><div style="height:6px;width:20%;background:rgba(251,176,36,.4);border-radius:2px"></div></div>
+          <div class="mock-row short" style="margin-top:6px"></div><div class="mock-row"></div><div class="mock-row med"></div>
+        </div>
+      </div>
+
+      <div class="screen-card rv d1">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Snags</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 06 / Snags</div>
+          <div class="screen-card-title">Quality Control & Resolution</div>
+          <div class="screen-card-desc">Log snags with photo evidence, snag code, location, category tags (Faucet Missing, Piper Fitting), committed closure date — tracked through Open Unresolved → Open Resolved → Closed with a tri-color progress bar.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Photo Evidence</span><span class="screen-tag">Category Tags</span><span class="screen-tag">Resolution Tracking</span></div>
+        </div>
+        <div class="screen-card-mockup">
+          <div style="display:flex;gap:0;height:8px;border-radius:100px;overflow:hidden;margin-bottom:8px"><div style="flex:0.54;background:rgba(74,222,128,.4)"></div><div style="flex:0.14;background:rgba(251,176,36,.4)"></div><div style="flex:0.32;background:rgba(251,176,36,.25)"></div></div>
+          <div class="mock-row"></div><div class="mock-row med"></div>
+          <div class="mock-row short"></div><div class="mock-row"></div>
+          <div class="mock-row med"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- 04 UX STRATEGY -->
   <section class="cs-sec" style="background:var(--bg2)">
     <div class="cs-sec-inner">
-      <div class="tag rv">04 / UX Strategy</div>
+      <div class="tag rv">05 / UX Strategy</div>
       <h2 class="cs-h2 rv d1">AI-first, systems-led design</h2>
       <p class="cs-p rv d2">Four principles governed every design decision across the platform — from onboarding flows to AI Copilot to offline execution.</p>
     </div>
