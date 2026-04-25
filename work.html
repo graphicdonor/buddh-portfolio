@@ -226,15 +226,32 @@
     .mini-si.on.green { background:rgba(16,185,129,.14); color:var(--e60); }
     .mini-main { padding:14px; }
     .mini-r3 { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:8px; }
+    .mini-r4 { display:grid; grid-template-columns:repeat(2,1fr); gap:5px; margin-bottom:8px; }
     .mini-kpi { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:7px; padding:10px; }
     .mini-kpi-l { font-size:7px; color:var(--text3); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; }
     .mini-kpi-v { font-size:16px; font-weight:700; letter-spacing:-.03em; color:var(--text); }
     .mini-kpi-d { font-size:7px; color:var(--green); margin-top:2px; }
+    .mini-kpi-d.warn { color:var(--amber); }
     .mini-chart { background:rgba(255,255,255,.02); border:1px solid var(--border); border-radius:7px; padding:10px; height:80px; position:relative; overflow:hidden; }
     .mini-chart-t { font-size:8px; font-weight:600; color:var(--text2); margin-bottom:6px; }
     .mini-bars { display:flex; align-items:flex-end; gap:3px; height:50px; }
     .mini-bar { flex:1; border-radius:2px 2px 0 0; background:linear-gradient(180deg,var(--accent),rgba(123,108,246,.25)); }
     .mini-bar.green { background:linear-gradient(180deg,var(--e60),rgba(16,185,129,.25)); }
+    /* Vendor progress bars */
+    .mini-hbars { display:flex; flex-direction:column; gap:5px; }
+    .mini-hbar-row { display:flex; align-items:center; gap:6px; }
+    .mini-hbar-label { font-size:7px; color:var(--text3); width:52px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .mini-hbar-track { flex:1; height:5px; background:rgba(255,255,255,.06); border-radius:100px; overflow:hidden; }
+    .mini-hbar-fill { height:100%; border-radius:100px; }
+    .mini-hbar-fill.a { background:var(--accent); }
+    .mini-hbar-fill.b { background:rgba(123,108,246,.5); }
+    /* Pipeline strip */
+    .mini-pipeline { display:flex; align-items:center; gap:3px; margin-bottom:8px; overflow:hidden; }
+    .mini-step { font-size:6.5px; font-weight:700; padding:2px 6px; border-radius:100px; white-space:nowrap; }
+    .mini-step.done { background:rgba(74,222,128,.15); color:var(--green); }
+    .mini-step.active { background:var(--accent-lo); color:var(--accent); border:1px solid var(--border-hi); }
+    .mini-step.pend { background:rgba(255,255,255,.04); color:var(--text3); }
+    .mini-arr { font-size:7px; color:var(--text3); }
 
     /* Phone mockup for Elite60 */
     .phone-wrap { display:flex; gap:16px; align-items:center; padding:24px; }
@@ -514,32 +531,40 @@
             <div class="mini-db">
               <div class="mini-db-bar">
                 <div class="mini-dots"><span></span><span></span><span></span></div>
-                <div class="mini-url">app.rdash.io/dashboard</div>
+                <div class="mini-url">app.rdash.io/my-projects</div>
               </div>
               <div class="mini-body">
                 <div class="mini-side">
-                  <div class="mini-si on"><span class="mini-si-ic"></span>AI Copilot</div>
-                  <div class="mini-si"><span class="mini-si-ic"></span>Procurement</div>
-                  <div class="mini-si"><span class="mini-si-ic"></span>RA Billing</div>
-                  <div class="mini-si"><span class="mini-si-ic"></span>Payments</div>
-                  <div class="mini-si"><span class="mini-si-ic"></span>Execution</div>
-                  <div class="mini-si"><span class="mini-si-ic"></span>Invoice IQ</div>
-                  <div class="mini-si"><span class="mini-si-ic"></span>Analytics</div>
+                  <div class="mini-si on"><span class="mini-si-ic"></span>My Projects</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Recce</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Design</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>BOQ</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Orders</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Work Progress</div>
+                  <div class="mini-si"><span class="mini-si-ic"></span>Snags</div>
                 </div>
                 <div class="mini-main">
-                  <div class="mini-r3">
-                    <div class="mini-kpi"><div class="mini-kpi-l">ARR</div><div class="mini-kpi-v">$4.3M</div><div class="mini-kpi-d">↑ 63% MRR</div></div>
-                    <div class="mini-kpi"><div class="mini-kpi-l">Go-Live</div><div class="mini-kpi-v">7d</div><div class="mini-kpi-d">↓ 50% effort</div></div>
-                    <div class="mini-kpi"><div class="mini-kpi-l">Data Loss</div><div class="mini-kpi-v">−95%</div><div class="mini-kpi-d">offline sync</div></div>
+                  <div class="mini-pipeline">
+                    <span class="mini-step done">✓ Recce</span><span class="mini-arr">›</span>
+                    <span class="mini-step done">✓ Design</span><span class="mini-arr">›</span>
+                    <span class="mini-step done">✓ BOQ</span><span class="mini-arr">›</span>
+                    <span class="mini-step active">Orders</span><span class="mini-arr">›</span>
+                    <span class="mini-step pend">Progress</span>
+                  </div>
+                  <div class="mini-r4">
+                    <div class="mini-kpi"><div class="mini-kpi-l">Scope Approved</div><div class="mini-kpi-v">60%</div><div class="mini-kpi-d">↑ 54 items</div></div>
+                    <div class="mini-kpi"><div class="mini-kpi-l">Total Value</div><div class="mini-kpi-v">₹3.45L</div><div class="mini-kpi-d">↑ 7 vendors</div></div>
+                    <div class="mini-kpi"><div class="mini-kpi-l">Progress</div><div class="mini-kpi-v">30%</div><div class="mini-kpi-d">↑ material ok</div></div>
+                    <div class="mini-kpi"><div class="mini-kpi-l">Timeline</div><div class="mini-kpi-v">3 days</div><div class="mini-kpi-d warn">⚠ to complete</div></div>
                   </div>
                   <div class="mini-chart">
-                    <div class="mini-chart-t">ARR Growth</div>
-                    <div class="mini-bars">
-                      <div class="mini-bar" style="height:15%"></div><div class="mini-bar" style="height:25%"></div>
-                      <div class="mini-bar" style="height:38%"></div><div class="mini-bar" style="height:50%"></div>
-                      <div class="mini-bar" style="height:62%"></div><div class="mini-bar" style="height:72%"></div>
-                      <div class="mini-bar" style="height:82%"></div><div class="mini-bar" style="height:92%"></div>
-                      <div class="mini-bar" style="height:100%"></div>
+                    <div class="mini-chart-t">Vendor Wise Progress</div>
+                    <div class="mini-hbars">
+                      <div class="mini-hbar-row"><span class="mini-hbar-label">Azeem Contr.</span><div class="mini-hbar-track"><div class="mini-hbar-fill a" style="width:76%"></div></div></div>
+                      <div class="mini-hbar-row"><span class="mini-hbar-label">Raheem Contr.</span><div class="mini-hbar-track"><div class="mini-hbar-fill a" style="width:55%"></div></div></div>
+                      <div class="mini-hbar-row"><span class="mini-hbar-label">Hafiz Contr.</span><div class="mini-hbar-track"><div class="mini-hbar-fill b" style="width:89%"></div></div></div>
+                      <div class="mini-hbar-row"><span class="mini-hbar-label">Abc Contr.</span><div class="mini-hbar-track"><div class="mini-hbar-fill b" style="width:43%"></div></div></div>
+                      <div class="mini-hbar-row"><span class="mini-hbar-label">Ranjeet Fab.</span><div class="mini-hbar-track"><div class="mini-hbar-fill a" style="width:36%"></div></div></div>
                     </div>
                   </div>
                 </div>
