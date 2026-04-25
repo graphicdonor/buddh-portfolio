@@ -92,12 +92,18 @@
     .tag::before { content:''; width:22px; height:1px; background:var(--accent); }
     .serif { font-family:'Instrument Serif',serif; font-weight:400; font-style:italic; }
 
-    .cs-hero { min-height:72vh; padding:140px 56px 80px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; }
+    .cs-hero { min-height:82vh; padding:140px 56px 80px; position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; align-items:flex-end; gap:48px; }
     .cs-hero-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(16,185,129,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,.06) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,black,transparent); }
-    .cs-hero-glow { position:absolute; width:700px; height:700px; background:radial-gradient(circle,rgba(16,185,129,.12) 0%,transparent 65%); top:50%; left:40%; transform:translate(-50%,-50%); pointer-events:none; }
+    .cs-hero-glow { position:absolute; width:700px; height:700px; background:radial-gradient(circle,rgba(16,185,129,.12) 0%,transparent 65%); top:50%; left:30%; transform:translate(-50%,-50%); pointer-events:none; }
     .cs-back { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--text2); text-decoration:none; margin-bottom:40px; transition:color .2s; position:relative; z-index:1; }
     .cs-back:hover { color:var(--accent); }
     .cs-hero-inner { position:relative; z-index:1; }
+    .cs-hero-phones { position:relative; z-index:1; display:flex; align-items:flex-end; justify-content:center; gap:12px; padding-bottom:4px; }
+    .cs-phone { border-radius:32px; overflow:hidden; border:1.5px solid rgba(16,185,129,.22); box-shadow:0 28px 56px rgba(0,0,0,.65), 0 0 0 1px rgba(16,185,129,.06); flex-shrink:0; }
+    .cs-phone img { display:block; width:100%; }
+    .cs-phone-a { width:148px; transform:rotate(-5deg) translateY(18px); }
+    .cs-phone-b { width:172px; z-index:2; position:relative; }
+    .cs-phone-c { width:148px; transform:rotate(5deg) translateY(18px); }
     .cs-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
     .cs-chip { padding:5px 14px; background:var(--accent-lo); border:1px solid var(--border-hi); border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
     .cs-title { font-size:clamp(64px,9vw,120px); font-weight:800; line-height:.92; letter-spacing:-.045em; margin-bottom:28px; }
@@ -187,7 +193,8 @@
       .nav-links { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--nav-mobile-bg); backdrop-filter:blur(24px); flex-direction:column; align-items:center; justify-content:center; gap:40px; z-index:150; transform:translateX(100%); transition:transform .4s cubic-bezier(.16,1,.3,1); pointer-events:none; }
       .nav-links.open { transform:translateX(0); pointer-events:all; }
       .nav-links a { font-size:22px; font-weight:700; color:var(--text); }
-      .cs-hero { padding:120px 24px 60px; min-height:auto; }
+      .cs-hero { padding:120px 24px 60px; min-height:auto; grid-template-columns:1fr; }
+      .cs-hero-phones { display:none; }
       .cs-meta-bar { padding:24px; gap:24px; }
       .impact-bar { padding:48px 24px; }
       .impact-grid { grid-template-columns:1fr 1fr; }
@@ -241,6 +248,18 @@
         A <strong>60-day progressive overload fitness platform</strong> that automates strength programming, tracks athletic goals with live GPS, and ships as both a PWA and native Android APK — designed and built solo.
       </p>
       <a href="https://elite60.in" target="_blank" rel="noopener" class="live-link rv d3">Live at elite60.in ↗</a>
+    </div>
+
+    <div class="cs-hero-phones rv d2">
+      <div class="cs-phone cs-phone-a">
+        <img src="/images/elite60/workout.jpg" alt="Workout Session">
+      </div>
+      <div class="cs-phone cs-phone-b">
+        <img src="/images/elite60/home.jpg" alt="Home Dashboard">
+      </div>
+      <div class="cs-phone cs-phone-c">
+        <img src="/images/elite60/gps-live.jpg" alt="Live GPS Workout">
+      </div>
     </div>
   </div>
 
