@@ -1,373 +1,379 @@
-<svg width="1440" height="800" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif">
+<svg width="1440" height="800" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans',Arial,sans-serif">
   <defs>
     <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
-      <path d="M64 0H0V64" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <path d="M64 0H0V64" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
     </pattern>
-    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
-      <stop offset="0%" stop-color="rgba(123,108,246,0.16)"/>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(123,108,246,0.2)"/>
       <stop offset="100%" stop-color="transparent"/>
     </radialGradient>
-    <filter id="cardshadow" x="-5%" y="-5%" width="110%" height="120%">
-      <feDropShadow dx="0" dy="16" stdDeviation="28" flood-color="rgba(0,0,0,0.55)"/>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(74,222,128,0.12)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(251,176,36,0.1)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7B6CF6"/>
+      <stop offset="100%" stop-color="rgba(123,108,246,0.2)"/>
+    </linearGradient>
+    <linearGradient id="barGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="rgba(74,222,128,0.2)"/>
+    </linearGradient>
+    <linearGradient id="hbarGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7B6CF6"/>
+      <stop offset="100%" stop-color="rgba(123,108,246,0.3)"/>
+    </linearGradient>
+    <linearGradient id="hbarGrad2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="rgba(34,211,238,0.3)"/>
+    </linearGradient>
+    <filter id="cshadow">
+      <feDropShadow dx="0" dy="20" stdDeviation="32" flood-color="rgba(0,0,0,0.7)"/>
     </filter>
     <clipPath id="dashclip">
-      <rect x="72" y="38" width="1296" height="728" rx="13"/>
+      <rect x="72" y="36" width="1296" height="730" rx="14"/>
     </clipPath>
   </defs>
 
-  <!-- Dark background -->
+  <!-- ── OUTER BACKGROUND ── -->
   <rect width="1440" height="800" fill="#07070F"/>
   <rect width="1440" height="800" fill="url(#grid)"/>
-  <ellipse cx="720" cy="400" rx="680" ry="430" fill="url(#glow)"/>
+  <ellipse cx="500" cy="360" rx="500" ry="380" fill="url(#glow1)" opacity="0.7"/>
+  <ellipse cx="1050" cy="500" rx="340" ry="260" fill="url(#glow2)" opacity="0.5"/>
 
-  <!-- Dashboard card shadow + card -->
-  <rect x="72" y="38" width="1296" height="728" rx="13" fill="rgba(0,0,0,0.45)" transform="translate(0,14)"/>
-  <rect x="72" y="38" width="1296" height="728" rx="13" fill="white"/>
+  <!-- ── DASHBOARD CARD ── -->
+  <rect x="72" y="36" width="1296" height="730" rx="14" fill="rgba(0,0,0,0.5)" transform="translate(0,16)" filter="url(#cshadow)"/>
+  <rect x="72" y="36" width="1296" height="730" rx="14" fill="#0D0D1C" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
 
-  <!-- ── BROWSER CHROME (y=38, h=28) ── -->
-  <rect x="72" y="38" width="1296" height="28" rx="13" fill="#EFEFEF"/>
-  <rect x="72" y="51" width="1296" height="15" fill="#EFEFEF"/>
-  <circle cx="100" cy="52" r="5" fill="#FF5F57"/>
-  <circle cx="118" cy="52" r="5" fill="#FEBC2E"/>
-  <circle cx="136" cy="52" r="5" fill="#28C840"/>
+  <!-- ── BROWSER CHROME (y=36, h=30) ── -->
+  <rect x="72" y="36" width="1296" height="30" rx="14" fill="#131326"/>
+  <rect x="72" y="51" width="1296" height="15" fill="#131326"/>
+  <line x1="72" y1="66" x2="1368" y2="66" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <circle cx="100" cy="51" r="5" fill="#FF5F57"/>
+  <circle cx="118" cy="51" r="5" fill="#FEBC2E"/>
+  <circle cx="136" cy="51" r="5" fill="#28C840"/>
+  <!-- Address bar -->
+  <rect x="560" y="42" width="220" height="18" rx="9" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+  <text x="670" y="55" font-size="9" fill="#3E3E60" text-anchor="middle">app.rdash.io/dashboard</text>
 
-  <!-- ── APP BAR (y=66, h=50) ── -->
-  <rect x="72" y="66" width="1296" height="50" fill="white"/>
-  <line x1="72" y1="116" x2="1368" y2="116" stroke="#E5E5E5" stroke-width="0.75"/>
+  <!-- ── APP BAR (y=66, h=48) ── -->
+  <rect x="72" y="66" width="1296" height="48" fill="#0D0D1C"/>
+  <line x1="72" y1="114" x2="1368" y2="114" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
   <!-- R Logo -->
-  <rect x="90" y="76" width="32" height="30" rx="5" fill="#C62828"/>
-  <text x="99" y="96" font-size="17" font-weight="900" fill="white">R</text>
+  <rect x="90" y="76" width="30" height="28" rx="5" fill="#C62828"/>
+  <text x="98" y="95" font-size="16" font-weight="900" fill="white">R</text>
   <!-- Breadcrumb -->
-  <text x="134" y="97" font-size="11" fill="#9E9E9E">All Projects /</text>
-  <text x="210" y="97" font-size="11" font-weight="700" fill="#212121">Bimal Tyre - B Shop</text>
-  <rect x="378" y="83" width="80" height="20" rx="10" fill="#EEF2FF"/>
-  <text x="385" y="97" font-size="9.5" fill="#3949AB">JOB ID : BRID3342</text>
-  <!-- Status right -->
-  <text x="906" y="91" font-size="10" fill="#9E9E9E">Project Status :</text>
-  <text x="994" y="91" font-size="10" font-weight="700" fill="#C62828">Execution in progress</text>
+  <text x="132" y="96" font-size="10.5" fill="#3E3E60">All Projects /</text>
+  <text x="206" y="96" font-size="10.5" font-weight="700" fill="#EEEEF8">Bimal Tyre - B Shop</text>
+  <rect x="372" y="82" width="80" height="20" rx="10" fill="rgba(123,108,246,0.15)" stroke="rgba(123,108,246,0.3)" stroke-width="0.5"/>
+  <text x="382" y="96" font-size="9.5" fill="#7B6CF6">JOB ID: BRID3342</text>
+  <!-- Status -->
+  <text x="900" y="91" font-size="10" fill="#8888AA">Project Status :</text>
+  <text x="988" y="91" font-size="10" font-weight="700" fill="#4ADE80">Execution in progress</text>
   <!-- BOQ badge -->
-  <rect x="1118" y="79" width="118" height="22" rx="11" fill="#FFF3E0" stroke="#FFCC80" stroke-width="0.5"/>
-  <text x="1128" y="94" font-size="9.5" fill="#E65100" font-weight="600">BOQ: Not Created</text>
+  <rect x="1116" y="79" width="120" height="22" rx="11" fill="rgba(251,176,36,0.12)" stroke="rgba(251,176,36,0.3)" stroke-width="0.5"/>
+  <text x="1126" y="94" font-size="9.5" fill="#FBB024" font-weight="600">BOQ: Not Created</text>
   <!-- Actions btn -->
   <rect x="1248" y="79" width="96" height="24" rx="5" fill="#C62828"/>
   <text x="1261" y="95" font-size="10" fill="white" font-weight="700">▶ Actions</text>
 
-  <!-- ── PIPELINE (y=116, h=42) ── -->
-  <rect x="72" y="116" width="1296" height="42" fill="#FAFAFA"/>
-  <line x1="72" y1="158" x2="1368" y2="158" stroke="#E5E5E5" stroke-width="0.75"/>
-  <!-- done steps -->
-  <circle cx="116" cy="137" r="8" fill="#26A69A"/><text x="113" y="141" font-size="8" fill="white">✓</text>
-  <line x1="124" y1="137" x2="154" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="96" y="153" font-size="9" fill="#26A69A" font-weight="600">Recce</text>
-  <circle cx="182" cy="137" r="8" fill="#26A69A"/><text x="179" y="141" font-size="8" fill="white">✓</text>
-  <line x1="190" y1="137" x2="220" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="162" y="153" font-size="9" fill="#26A69A" font-weight="600">Design</text>
-  <circle cx="248" cy="137" r="8" fill="#1565C0"/><text x="245" y="141" font-size="8" fill="white">✓</text>
-  <line x1="256" y1="137" x2="286" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="232" y="153" font-size="9" fill="#1565C0" font-weight="700">BOQ</text>
-  <circle cx="314" cy="137" r="8" fill="#26A69A"/><text x="311" y="141" font-size="8" fill="white">✓</text>
-  <line x1="322" y1="137" x2="362" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="294" y="153" font-size="9" fill="#26A69A" font-weight="600">Planning</text>
-  <circle cx="390" cy="137" r="8" fill="#26A69A"/><text x="387" y="141" font-size="8" fill="white">✓</text>
-  <line x1="398" y1="137" x2="440" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="372" y="153" font-size="9" fill="#26A69A" font-weight="600">Orders</text>
-  <!-- pending steps -->
-  <circle cx="468" cy="137" r="8" fill="none" stroke="#BDBDBD" stroke-width="1.5"/>
-  <line x1="476" y1="137" x2="550" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="434" y="153" font-size="9" fill="#BDBDBD">Work Progress</text>
-  <circle cx="578" cy="137" r="8" fill="none" stroke="#BDBDBD" stroke-width="1.5"/>
-  <line x1="586" y1="137" x2="628" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="562" y="153" font-size="9" fill="#BDBDBD">Snags</text>
-  <circle cx="656" cy="137" r="8" fill="none" stroke="#BDBDBD" stroke-width="1.5"/>
-  <line x1="664" y1="137" x2="718" y2="137" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="636" y="153" font-size="9" fill="#BDBDBD">Finances</text>
-  <circle cx="746" cy="137" r="8" fill="none" stroke="#BDBDBD" stroke-width="1.5"/>
-  <text x="720" y="153" font-size="9" fill="#BDBDBD">Settlement</text>
+  <!-- ── PIPELINE (y=114, h=44) ── -->
+  <rect x="72" y="114" width="1296" height="44" fill="#131326"/>
+  <line x1="72" y1="158" x2="1368" y2="158" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <!-- Done steps -->
+  <circle cx="116" cy="136" r="8" fill="#4ADE80"/><text x="113" y="140" font-size="8" fill="#07070F" font-weight="800">✓</text>
+  <line x1="124" y1="136" x2="154" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="98" y="152" font-size="8.5" fill="#4ADE80" font-weight="600">Recce</text>
+  <circle cx="182" cy="136" r="8" fill="#4ADE80"/><text x="179" y="140" font-size="8" fill="#07070F" font-weight="800">✓</text>
+  <line x1="190" y1="136" x2="220" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="163" y="152" font-size="8.5" fill="#4ADE80" font-weight="600">Design</text>
+  <circle cx="248" cy="136" r="8" fill="#7B6CF6"/><text x="245" y="140" font-size="8" fill="white" font-weight="800">✓</text>
+  <line x1="256" y1="136" x2="286" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="233" y="152" font-size="8.5" fill="#7B6CF6" font-weight="700">BOQ</text>
+  <circle cx="314" cy="136" r="8" fill="#4ADE80"/><text x="311" y="140" font-size="8" fill="#07070F" font-weight="800">✓</text>
+  <line x1="322" y1="136" x2="362" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="294" y="152" font-size="8.5" fill="#4ADE80" font-weight="600">Planning</text>
+  <circle cx="390" cy="136" r="8" fill="#4ADE80"/><text x="387" y="140" font-size="8" fill="#07070F" font-weight="800">✓</text>
+  <line x1="398" y1="136" x2="440" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="372" y="152" font-size="8.5" fill="#4ADE80" font-weight="600">Orders</text>
+  <!-- Pending steps -->
+  <circle cx="468" cy="136" r="8" fill="none" stroke="#3E3E60" stroke-width="1.5"/>
+  <line x1="476" y1="136" x2="548" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="434" y="152" font-size="8.5" fill="#3E3E60">Work Progress</text>
+  <circle cx="576" cy="136" r="8" fill="none" stroke="#3E3E60" stroke-width="1.5"/>
+  <line x1="584" y1="136" x2="626" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="561" y="152" font-size="8.5" fill="#3E3E60">Snags</text>
+  <circle cx="654" cy="136" r="8" fill="none" stroke="#3E3E60" stroke-width="1.5"/>
+  <line x1="662" y1="136" x2="716" y2="136" stroke="#3E3E60" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="634" y="152" font-size="8.5" fill="#3E3E60">Finances</text>
+  <circle cx="744" cy="136" r="8" fill="none" stroke="#3E3E60" stroke-width="1.5"/>
+  <text x="718" y="152" font-size="8.5" fill="#3E3E60">Settlement</text>
 
   <!-- ── TABS (y=158, h=36) ── -->
-  <rect x="72" y="158" width="1296" height="36" fill="white"/>
-  <line x1="72" y1="194" x2="1368" y2="194" stroke="#E5E5E5" stroke-width="0.75"/>
-  <text x="92" y="181" font-size="12" fill="#C62828" font-weight="700">Project Details</text>
-  <rect x="92" y="191" width="90" height="2" rx="1" fill="#C62828"/>
-  <text x="202" y="181" font-size="12" fill="#9E9E9E">Task Manager</text>
-  <text x="316" y="181" font-size="12" fill="#9E9E9E">Alerts</text>
-  <text x="374" y="181" font-size="12" fill="#9E9E9E">Dashboard</text>
+  <rect x="72" y="158" width="1296" height="36" fill="#0D0D1C"/>
+  <line x1="72" y1="194" x2="1368" y2="194" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="92" y="181" font-size="11.5" fill="#7B6CF6" font-weight="700">Project Details</text>
+  <rect x="92" y="191" width="90" height="2" rx="1" fill="#7B6CF6"/>
+  <text x="202" y="181" font-size="11.5" fill="#3E3E60">Task Manager</text>
+  <text x="314" y="181" font-size="11.5" fill="#3E3E60">Alerts</text>
+  <text x="370" y="181" font-size="11.5" fill="#3E3E60">Dashboard</text>
 
-  <!-- ── CONTENT BACKGROUND (y=194) ── -->
-  <rect x="72" y="194" width="1296" height="572" fill="#F4F5F7"/>
+  <!-- ── CONTENT BG ── -->
+  <rect x="72" y="194" width="1296" height="572" fill="#07070F"/>
 
-  <!-- ════════════════════════════════════════
-       ROW 1  y=208  h=166
-       W1 x=88,w=410  W2 x=510,w=410  W3 x=932,w=428
-       ════════════════════════════════════════ -->
-
-  <!-- W1: My Scope Status Value (donut) -->
-  <rect x="88" y="208" width="410" height="166" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="104" y="228" font-size="10.5" font-weight="700" fill="#212121">My Scope Status Value (₹)</text>
-  <rect x="468" y="212" width="18" height="18" rx="3" fill="none" stroke="#E0E0E0" stroke-width="1"/>
-  <text x="472" y="224" font-size="10" fill="#9E9E9E">↗</text>
-  <!-- Donut r=46 cx=188 cy=310 circ=289 -->
-  <circle cx="188" cy="308" r="46" fill="none" stroke="#F0F0F0" stroke-width="14"/>
-  <circle cx="188" cy="308" r="46" fill="none" stroke="#26A69A" stroke-width="14" stroke-dasharray="173.4 115.6" stroke-dashoffset="0" transform="rotate(-90 188 308)"/>
-  <circle cx="188" cy="308" r="46" fill="none" stroke="#FFA726" stroke-width="14" stroke-dasharray="86.7 202.3" stroke-dashoffset="-173.4" transform="rotate(-90 188 308)"/>
-  <circle cx="188" cy="308" r="46" fill="none" stroke="#EF5350" stroke-width="14" stroke-dasharray="28.9 260.1" stroke-dashoffset="-260.1" transform="rotate(-90 188 308)"/>
-  <text x="188" y="303" font-size="16" font-weight="800" fill="#212121" text-anchor="middle">60%</text>
-  <text x="188" y="318" font-size="9" fill="#9E9E9E" text-anchor="middle">Approved</text>
+  <!-- ════════ ROW 1  y=208  h=166 ════════ -->
+  <!-- W1 My Scope Status -->
+  <rect x="88" y="208" width="410" height="166" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="88" y="208" width="410" height="3" rx="10" fill="#7B6CF6" opacity="0.6"/>
+  <text x="104" y="229" font-size="10" font-weight="700" fill="#EEEEF8">My Scope Status Value (₹)</text>
+  <!-- Donut: r=44 cx=185 cy=306  circ=276.5 -->
+  <!-- green 60%=165.9  amber 30%=82.9  rose 10%=27.6 -->
+  <circle cx="185" cy="306" r="44" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="13"/>
+  <circle cx="185" cy="306" r="44" fill="none" stroke="#4ADE80" stroke-width="13" stroke-dasharray="165.9 110.6" stroke-dashoffset="0" transform="rotate(-90 185 306)"/>
+  <circle cx="185" cy="306" r="44" fill="none" stroke="#FBB024" stroke-width="13" stroke-dasharray="82.9 193.6" stroke-dashoffset="-165.9" transform="rotate(-90 185 306)"/>
+  <circle cx="185" cy="306" r="44" fill="none" stroke="#F06292" stroke-width="13" stroke-dasharray="27.6 248.9" stroke-dashoffset="-248.8" transform="rotate(-90 185 306)"/>
+  <text x="185" y="301" font-size="15" font-weight="800" fill="#EEEEF8" text-anchor="middle">60%</text>
+  <text x="185" y="315" font-size="8.5" fill="#8888AA" text-anchor="middle">Approved</text>
   <!-- Legend -->
-  <circle cx="258" cy="272" r="5" fill="#26A69A"/>
-  <text x="268" y="276" font-size="9" fill="#616161">Approved (54)</text>
-  <text x="358" y="276" font-size="9" font-weight="700" fill="#212121">60%</text>
-  <text x="380" y="276" font-size="9" fill="#9E9E9E">34,099</text>
-  <circle cx="258" cy="292" r="5" fill="#FFA726"/>
-  <text x="268" y="296" font-size="9" fill="#616161">Draft (32)</text>
-  <text x="358" y="296" font-size="9" font-weight="700" fill="#212121">30%</text>
-  <text x="380" y="296" font-size="9" fill="#9E9E9E">12,900</text>
-  <circle cx="258" cy="312" r="5" fill="#EF5350"/>
-  <text x="268" y="316" font-size="9" fill="#616161">Cancelled (14)</text>
-  <text x="358" y="316" font-size="9" font-weight="700" fill="#212121">10%</text>
-  <text x="380" y="316" font-size="9" fill="#9E9E9E">8,000</text>
+  <circle cx="252" cy="268" r="5" fill="#4ADE80"/>
+  <text x="262" y="272" font-size="8.5" fill="#8888AA">Approved (54)</text><text x="352" y="272" font-size="8.5" font-weight="700" fill="#EEEEF8">60%</text><text x="372" y="272" font-size="8.5" fill="#3E3E60">34,099</text>
+  <circle cx="252" cy="288" r="5" fill="#FBB024"/>
+  <text x="262" y="292" font-size="8.5" fill="#8888AA">Draft (32)</text><text x="352" y="292" font-size="8.5" font-weight="700" fill="#EEEEF8">30%</text><text x="372" y="292" font-size="8.5" fill="#3E3E60">12,900</text>
+  <circle cx="252" cy="308" r="5" fill="#F06292"/>
+  <text x="262" y="312" font-size="8.5" fill="#8888AA">Cancelled (14)</text><text x="352" y="312" font-size="8.5" font-weight="700" fill="#EEEEF8">10%</text><text x="372" y="312" font-size="8.5" fill="#3E3E60">8,000</text>
 
-  <!-- W2: Store Details -->
-  <rect x="510" y="208" width="410" height="166" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="526" y="228" font-size="10.5" font-weight="700" fill="#212121">Store Details</text>
-  <line x1="510" y1="235" x2="920" y2="235" stroke="#F5F5F5" stroke-width="1"/>
-  <text x="526" y="254" font-size="10" fill="#9E9E9E">Job ID</text><text x="650" y="254" font-size="10" fill="#212121">BRID3342</text>
-  <text x="526" y="272" font-size="10" fill="#9E9E9E">Store Name</text><text x="650" y="272" font-size="10" fill="#212121">Shri Ganesh Tyres</text>
-  <text x="526" y="290" font-size="10" fill="#9E9E9E">Client</text><text x="650" y="290" font-size="10" fill="#212121">Bridgestone</text>
-  <text x="526" y="308" font-size="10" fill="#9E9E9E">Business Category</text><text x="650" y="308" font-size="10" fill="#212121">Inchify</text>
-  <text x="526" y="326" font-size="10" fill="#9E9E9E">Store Type</text>
-  <rect x="650" y="317" width="54" height="16" rx="8" fill="#E8F5E9"/>
-  <text x="658" y="329" font-size="9" fill="#388E3C" font-weight="700">Premium</text>
-  <text x="526" y="344" font-size="10" fill="#9E9E9E">Store Address</text>
-  <text x="650" y="344" font-size="9.5" fill="#616161">House No. 73, Near Bhajni Devasthan</text>
-  <text x="650" y="358" font-size="9" fill="#9E9E9E">Panchmahal, Gujarat — 373353</text>
+  <!-- W2 Store Details -->
+  <rect x="510" y="208" width="410" height="166" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="526" y="229" font-size="10" font-weight="700" fill="#EEEEF8">Store Details</text>
+  <line x1="526" y1="236" x2="900" y2="236" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="526" y="254" font-size="9.5" fill="#3E3E60">Job ID</text><text x="640" y="254" font-size="9.5" fill="#EEEEF8">BRID3342</text>
+  <text x="526" y="272" font-size="9.5" fill="#3E3E60">Store Name</text><text x="640" y="272" font-size="9.5" fill="#EEEEF8">Shri Ganesh Tyres</text>
+  <text x="526" y="290" font-size="9.5" fill="#3E3E60">Client</text><text x="640" y="290" font-size="9.5" fill="#EEEEF8">Bridgestone</text>
+  <text x="526" y="308" font-size="9.5" fill="#3E3E60">Business Category</text><text x="640" y="308" font-size="9.5" fill="#EEEEF8">Inchify</text>
+  <text x="526" y="326" font-size="9.5" fill="#3E3E60">Store Type</text>
+  <rect x="640" y="316" width="52" height="16" rx="8" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.25)" stroke-width="0.5"/>
+  <text x="648" y="328" font-size="8.5" fill="#4ADE80" font-weight="700">Premium</text>
+  <text x="526" y="344" font-size="9.5" fill="#3E3E60">Store Address</text>
+  <text x="640" y="344" font-size="9" fill="#8888AA">House No. 73, Near Bhajni Devasthan</text>
+  <text x="640" y="357" font-size="8.5" fill="#3E3E60">Panchmahal, Gujarat — 373353</text>
 
-  <!-- W3: My Organisation -->
-  <rect x="932" y="208" width="428" height="166" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="948" y="228" font-size="10.5" font-weight="700" fill="#212121">My Organisation</text>
-  <text x="1116" y="228" font-size="10" fill="#9E9E9E">Other Organisation</text>
-  <text x="1290" y="228" font-size="10" fill="#C62828" font-weight="700">+ Add Users</text>
-  <line x1="948" y1="233" x2="1100" y2="233" stroke="#C62828" stroke-width="1.5"/>
-  <!-- User rows -->
-  <circle cx="964" cy="254" r="11" fill="#E3F2FD"/><text x="958" y="258" font-size="9.5" fill="#1565C0" font-weight="700">ST</text>
-  <text x="982" y="251" font-size="10" fill="#212121" font-weight="600">Sopan Turlapati</text>
-  <text x="982" y="264" font-size="9" fill="#9E9E9E">Project Manager · +91-8879787787</text>
-  <circle cx="964" cy="284" r="11" fill="#FFF3E0"/><text x="958" y="288" font-size="9.5" fill="#E65100" font-weight="700">TK</text>
-  <text x="982" y="281" font-size="10" fill="#212121" font-weight="600">Tarun Kambale</text>
-  <text x="982" y="294" font-size="9" fill="#9E9E9E">Project Manager · +91-8879787787</text>
-  <circle cx="964" cy="314" r="11" fill="#F3E5F5"/><text x="958" y="318" font-size="9.5" fill="#7B1FA2" font-weight="700">TK</text>
-  <text x="982" y="311" font-size="10" fill="#212121" font-weight="600">Tarun Kambale</text>
-  <text x="982" y="324" font-size="9" fill="#9E9E9E">Project Manager · +91-8879787787</text>
-  <circle cx="964" cy="344" r="11" fill="#E8F5E9"/><text x="958" y="348" font-size="9.5" fill="#388E3C" font-weight="700">TK</text>
-  <text x="982" y="341" font-size="10" fill="#212121" font-weight="600">Tarun Kambale</text>
-  <text x="982" y="354" font-size="9" fill="#9E9E9E">Project Manager · +91-8879787787</text>
+  <!-- W3 My Organisation -->
+  <rect x="932" y="208" width="428" height="166" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="948" y="229" font-size="10" font-weight="700" fill="#EEEEF8">My Organisation</text>
+  <text x="1116" y="229" font-size="9.5" fill="#3E3E60">Other Organisation</text>
+  <text x="1286" y="229" font-size="9.5" fill="#7B6CF6" font-weight="700">+ Add Users</text>
+  <line x1="948" y1="233" x2="1090" y2="233" stroke="#7B6CF6" stroke-width="1.5" opacity="0.7"/>
+  <!-- Users -->
+  <circle cx="964" cy="253" r="11" fill="rgba(123,108,246,0.2)" stroke="rgba(123,108,246,0.3)" stroke-width="0.5"/>
+  <text x="958" y="257" font-size="9" fill="#7B6CF6" font-weight="700">ST</text>
+  <text x="982" y="250" font-size="9.5" fill="#EEEEF8" font-weight="600">Sopan Turlapati</text>
+  <text x="982" y="262" font-size="8.5" fill="#3E3E60">Project Manager · +91-8879787787</text>
+  <circle cx="964" cy="282" r="11" fill="rgba(251,176,36,0.15)" stroke="rgba(251,176,36,0.25)" stroke-width="0.5"/>
+  <text x="958" y="286" font-size="9" fill="#FBB024" font-weight="700">TK</text>
+  <text x="982" y="279" font-size="9.5" fill="#EEEEF8" font-weight="600">Tarun Kambale</text>
+  <text x="982" y="291" font-size="8.5" fill="#3E3E60">Project Manager · +91-8879787787</text>
+  <circle cx="964" cy="311" r="11" fill="rgba(240,98,146,0.15)" stroke="rgba(240,98,146,0.25)" stroke-width="0.5"/>
+  <text x="958" y="315" font-size="9" fill="#F06292" font-weight="700">TK</text>
+  <text x="982" y="308" font-size="9.5" fill="#EEEEF8" font-weight="600">Tarun Kambale</text>
+  <text x="982" y="320" font-size="8.5" fill="#3E3E60">Project Manager · +91-8879787787</text>
+  <circle cx="964" cy="340" r="11" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.2)" stroke-width="0.5"/>
+  <text x="958" y="344" font-size="9" fill="#4ADE80" font-weight="700">TK</text>
+  <text x="982" y="337" font-size="9.5" fill="#EEEEF8" font-weight="600">Tarun Kambale</text>
+  <text x="982" y="349" font-size="8.5" fill="#3E3E60">Project Manager · +91-8879787787</text>
 
-  <!-- ════════════════════════════════════════
-       ROW 2  y=386  h=158
-       W4 x=88,w=582  W5 x=682,w=678
-       ════════════════════════════════════════ -->
-
-  <!-- W4: Project Progress (line+bar chart) -->
-  <rect x="88" y="386" width="582" height="158" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="104" y="406" font-size="10.5" font-weight="700" fill="#212121">Project Progress</text>
-  <rect x="648" y="390" width="18" height="18" rx="3" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+  <!-- ════════ ROW 2  y=386  h=155 ════════ -->
+  <!-- W4 Project Progress -->
+  <rect x="88" y="386" width="582" height="155" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="104" y="406" font-size="10" font-weight="700" fill="#EEEEF8">Project Progress</text>
   <!-- Chart axes -->
-  <line x1="114" y1="412" x2="114" y2="518" stroke="#EEEEEE" stroke-width="1"/>
-  <line x1="114" y1="518" x2="644" y2="518" stroke="#EEEEEE" stroke-width="1"/>
-  <line x1="114" y1="465" x2="644" y2="465" stroke="#F5F5F5" stroke-width="0.75"/>
-  <text x="110" y="416" font-size="7.5" fill="#BDBDBD" text-anchor="end">100</text>
-  <text x="110" y="469" font-size="7.5" fill="#BDBDBD" text-anchor="end">50</text>
-  <text x="110" y="521" font-size="7.5" fill="#BDBDBD" text-anchor="end">0</text>
-  <!-- Bars (manpower) -->
-  <rect x="128" y="488" width="14" height="30" rx="2" fill="#BBDEFB" opacity="0.7"/>
-  <rect x="156" y="478" width="14" height="40" rx="2" fill="#90CAF9" opacity="0.75"/>
-  <rect x="184" y="470" width="14" height="48" rx="2" fill="#64B5F6" opacity="0.8"/>
-  <rect x="212" y="462" width="14" height="56" rx="2" fill="#42A5F5" opacity="0.85"/>
-  <rect x="240" y="456" width="14" height="62" rx="2" fill="#2196F3" opacity="0.85"/>
-  <rect x="268" y="449" width="14" height="69" rx="2" fill="#1E88E5"/>
-  <rect x="296" y="442" width="14" height="76" rx="2" fill="#1976D2"/>
-  <rect x="324" y="437" width="14" height="81" rx="2" fill="#1565C0"/>
-  <rect x="352" y="432" width="14" height="86" rx="2" fill="#0D47A1"/>
-  <rect x="380" y="428" width="14" height="90" rx="2" fill="#1A237E"/>
-  <rect x="408" y="425" width="14" height="93" rx="2" fill="#1A237E"/>
-  <rect x="436" y="422" width="14" height="96" rx="2" fill="#1A237E"/>
-  <rect x="464" y="430" width="14" height="88" rx="2" fill="#283593"/>
-  <rect x="492" y="426" width="14" height="92" rx="2" fill="#1A237E"/>
-  <rect x="520" y="423" width="14" height="95" rx="2" fill="#1A237E"/>
-  <rect x="548" y="421" width="14" height="97" rx="2" fill="#0D47A1"/>
-  <rect x="576" y="418" width="14" height="100" rx="2" fill="#0D47A1"/>
-  <!-- Current progress line (green) -->
-  <polyline points="135,488 163,473 191,464 219,455 247,447 275,440 303,432 331,426 359,421 387,416 415,420 443,426 471,432 499,428 527,424 555,421 583,418"
-    fill="none" stroke="#26A69A" stroke-width="1.5" stroke-linejoin="round"/>
-  <!-- Daily progress dashed line -->
-  <polyline points="135,500 163,490 191,482 219,475 247,468 275,461 303,453 331,447 359,442 387,437 415,440 443,445 471,449 499,444 527,440 555,437 583,434"
-    fill="none" stroke="#90CAF9" stroke-width="1" stroke-dasharray="4,3" stroke-linejoin="round"/>
+  <line x1="118" y1="413" x2="118" y2="516" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="118" y1="516" x2="638" y2="516" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="118" y1="464" x2="638" y2="464" stroke="rgba(255,255,255,0.04)" stroke-width="0.75"/>
+  <text x="114" y="417" font-size="7.5" fill="#3E3E60" text-anchor="end">100</text>
+  <text x="114" y="468" font-size="7.5" fill="#3E3E60" text-anchor="end">50</text>
+  <text x="114" y="519" font-size="7.5" fill="#3E3E60" text-anchor="end">0</text>
+  <!-- Bars (gradient purple) -->
+  <rect x="130" y="490" width="14" height="26" rx="2" fill="url(#barGrad)" opacity="0.5"/>
+  <rect x="158" y="481" width="14" height="35" rx="2" fill="url(#barGrad)" opacity="0.55"/>
+  <rect x="186" y="473" width="14" height="43" rx="2" fill="url(#barGrad)" opacity="0.6"/>
+  <rect x="214" y="465" width="14" height="51" rx="2" fill="url(#barGrad)" opacity="0.65"/>
+  <rect x="242" y="458" width="14" height="58" rx="2" fill="url(#barGrad)" opacity="0.7"/>
+  <rect x="270" y="451" width="14" height="65" rx="2" fill="url(#barGrad)" opacity="0.75"/>
+  <rect x="298" y="444" width="14" height="72" rx="2" fill="url(#barGrad)" opacity="0.8"/>
+  <rect x="326" y="438" width="14" height="78" rx="2" fill="url(#barGrad)" opacity="0.85"/>
+  <rect x="354" y="432" width="14" height="84" rx="2" fill="url(#barGrad)" opacity="0.9"/>
+  <rect x="382" y="428" width="14" height="88" rx="2" fill="url(#barGrad)"/>
+  <rect x="410" y="425" width="14" height="91" rx="2" fill="url(#barGrad)"/>
+  <rect x="438" y="422" width="14" height="94" rx="2" fill="url(#barGrad)"/>
+  <rect x="466" y="428" width="14" height="88" rx="2" fill="url(#barGrad)" opacity="0.9"/>
+  <rect x="494" y="424" width="14" height="92" rx="2" fill="url(#barGrad)"/>
+  <rect x="522" y="421" width="14" height="95" rx="2" fill="url(#barGrad)"/>
+  <rect x="550" y="418" width="14" height="98" rx="2" fill="url(#barGrad)"/>
+  <rect x="578" y="415" width="14" height="101" rx="2" fill="url(#barGrad)"/>
+  <!-- Green progress line -->
+  <polyline points="137,490 165,476 193,467 221,458 249,451 277,444 305,436 333,430 361,423 389,419 417,423 445,428 473,433 501,429 529,425 557,422 585,419"
+    fill="none" stroke="#4ADE80" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Dashed line -->
+  <polyline points="137,498 165,488 193,480 221,473 249,466 277,459 305,452 333,446 361,440 389,435 417,438 445,442 473,446 501,441 529,438 557,434 585,431"
+    fill="none" stroke="rgba(123,108,246,0.5)" stroke-width="1" stroke-dasharray="4,3" stroke-linejoin="round"/>
   <!-- X labels -->
-  <text x="135" y="531" font-size="7.5" fill="#BDBDBD" text-anchor="middle">12 Jan</text>
-  <text x="219" y="531" font-size="7.5" fill="#BDBDBD" text-anchor="middle">15 Jan</text>
-  <text x="303" y="531" font-size="7.5" fill="#BDBDBD" text-anchor="middle">17 Jan</text>
-  <text x="387" y="531" font-size="7.5" fill="#BDBDBD" text-anchor="middle">21 Jan</text>
-  <text x="471" y="531" font-size="7.5" fill="#BDBDBD" text-anchor="middle">23 Jan</text>
-  <text x="555" y="531" font-size="7.5" fill="#BDBDBD" text-anchor="middle">25 Jan</text>
+  <text x="137" y="530" font-size="7.5" fill="#3E3E60" text-anchor="middle">12 Jan</text>
+  <text x="221" y="530" font-size="7.5" fill="#3E3E60" text-anchor="middle">15 Jan</text>
+  <text x="305" y="530" font-size="7.5" fill="#3E3E60" text-anchor="middle">17 Jan</text>
+  <text x="389" y="530" font-size="7.5" fill="#3E3E60" text-anchor="middle">21 Jan</text>
+  <text x="473" y="530" font-size="7.5" fill="#3E3E60" text-anchor="middle">23 Jan</text>
+  <text x="557" y="530" font-size="7.5" fill="#3E3E60" text-anchor="middle">25 Jan</text>
   <!-- Legend -->
-  <line x1="114" y1="544" x2="128" y2="544" stroke="#26A69A" stroke-width="1.5"/>
-  <text x="132" y="547" font-size="8" fill="#9E9E9E">Current progress %</text>
-  <line x1="232" y1="544" x2="246" y2="544" stroke="#90CAF9" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="250" y="547" font-size="8" fill="#9E9E9E">Daily progress %</text>
-  <rect x="344" y="540" width="8" height="7" rx="1" fill="#64B5F6"/>
-  <text x="356" y="547" font-size="8" fill="#9E9E9E">Manpower</text>
+  <line x1="118" y1="544" x2="132" y2="544" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="136" y="547" font-size="8" fill="#8888AA">Current progress %</text>
+  <line x1="234" y1="544" x2="248" y2="544" stroke="rgba(123,108,246,0.6)" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="252" y="547" font-size="8" fill="#8888AA">Daily progress %</text>
+  <rect x="344" y="540" width="8" height="7" rx="1" fill="url(#barGrad)"/>
+  <text x="356" y="547" font-size="8" fill="#8888AA">Manpower</text>
 
-  <!-- W5: Vendor Wise Progress (horizontal bars) -->
-  <rect x="682" y="386" width="678" height="158" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="698" y="406" font-size="10.5" font-weight="700" fill="#212121">Vendor Wise Progress (Scope Value)</text>
-  <rect x="1340" y="390" width="18" height="18" rx="3" fill="none" stroke="#E0E0E0" stroke-width="1"/>
-  <!-- Vendor bars -->
-  <text x="698" y="430" font-size="9.5" fill="#616161">Azeem Contractor</text>
-  <rect x="846" y="422" width="470" height="10" rx="3" fill="#F0F0F0"/>
-  <rect x="846" y="422" width="360" height="10" rx="3" fill="#2196F3" opacity="0.85"/>
-  <rect x="846" y="422" width="236" height="10" rx="3" fill="#26A69A" opacity="0.8"/>
-  <text x="1326" y="431" font-size="8.5" fill="#212121" font-weight="600">25,000</text>
+  <!-- W5 Vendor Wise Progress -->
+  <rect x="682" y="386" width="678" height="155" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="698" y="406" font-size="10" font-weight="700" fill="#EEEEF8">Vendor Wise Progress (Scope Value)</text>
+  <!-- Bars -->
+  <text x="698" y="430" font-size="9" fill="#8888AA">Azeem Contractor</text>
+  <rect x="840" y="422" width="460" height="9" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="840" y="422" width="346" height="9" rx="4" fill="url(#hbarGrad)"/>
+  <rect x="840" y="422" width="228" height="9" rx="4" fill="url(#hbarGrad2)" opacity="0.7"/>
+  <text x="1312" y="431" font-size="8.5" fill="#EEEEF8" font-weight="600">25,000</text>
 
-  <text x="698" y="452" font-size="9.5" fill="#616161">Raheem Contractor</text>
-  <rect x="846" y="444" width="470" height="10" rx="3" fill="#F0F0F0"/>
-  <rect x="846" y="444" width="260" height="10" rx="3" fill="#2196F3" opacity="0.85"/>
-  <rect x="846" y="444" width="90" height="10" rx="3" fill="#26A69A" opacity="0.8"/>
-  <text x="1326" y="453" font-size="8.5" fill="#212121" font-weight="600">12,000</text>
+  <text x="698" y="452" font-size="9" fill="#8888AA">Raheem Contractor</text>
+  <rect x="840" y="444" width="460" height="9" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="840" y="444" width="250" height="9" rx="4" fill="url(#hbarGrad)"/>
+  <rect x="840" y="444" width="88" height="9" rx="4" fill="url(#hbarGrad2)" opacity="0.7"/>
+  <text x="1312" y="453" font-size="8.5" fill="#EEEEF8" font-weight="600">12,000</text>
 
-  <text x="698" y="474" font-size="9.5" fill="#616161">Hafiz Contractor</text>
-  <rect x="846" y="466" width="470" height="10" rx="3" fill="#F0F0F0"/>
-  <rect x="846" y="466" width="420" height="10" rx="3" fill="#2196F3" opacity="0.85"/>
-  <rect x="846" y="466" width="248" height="10" rx="3" fill="#26A69A" opacity="0.8"/>
-  <text x="1326" y="475" font-size="8.5" fill="#212121" font-weight="600">18,000</text>
+  <text x="698" y="474" font-size="9" fill="#8888AA">Hafiz Contractor</text>
+  <rect x="840" y="466" width="460" height="9" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="840" y="466" width="404" height="9" rx="4" fill="url(#hbarGrad)"/>
+  <rect x="840" y="466" width="240" height="9" rx="4" fill="url(#hbarGrad2)" opacity="0.7"/>
+  <text x="1312" y="475" font-size="8.5" fill="#EEEEF8" font-weight="600">18,000</text>
 
-  <text x="698" y="496" font-size="9.5" fill="#616161">Abc Contractor</text>
-  <rect x="846" y="488" width="470" height="10" rx="3" fill="#F0F0F0"/>
-  <rect x="846" y="488" width="200" height="10" rx="3" fill="#2196F3" opacity="0.85"/>
-  <rect x="846" y="488" width="100" height="10" rx="3" fill="#26A69A" opacity="0.8"/>
-  <text x="1326" y="497" font-size="8.5" fill="#212121" font-weight="600">20,000</text>
+  <text x="698" y="496" font-size="9" fill="#8888AA">Abc Contractor</text>
+  <rect x="840" y="488" width="460" height="9" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="840" y="488" width="193" height="9" rx="4" fill="url(#hbarGrad)"/>
+  <rect x="840" y="488" width="98" height="9" rx="4" fill="url(#hbarGrad2)" opacity="0.7"/>
+  <text x="1312" y="497" font-size="8.5" fill="#EEEEF8" font-weight="600">20,000</text>
 
-  <text x="698" y="518" font-size="9.5" fill="#616161">Ranjeet Fabrication</text>
-  <rect x="846" y="510" width="470" height="10" rx="3" fill="#F0F0F0"/>
-  <rect x="846" y="510" width="170" height="10" rx="3" fill="#2196F3" opacity="0.85"/>
-  <rect x="846" y="510" width="48" height="10" rx="3" fill="#26A69A" opacity="0.8"/>
-  <text x="1326" y="519" font-size="8.5" fill="#212121" font-weight="600">10,860</text>
+  <text x="698" y="518" font-size="9" fill="#8888AA">Ranjeet Fabrication</text>
+  <rect x="840" y="510" width="460" height="9" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="840" y="510" width="164" height="9" rx="4" fill="url(#hbarGrad)"/>
+  <rect x="840" y="510" width="46" height="9" rx="4" fill="url(#hbarGrad2)" opacity="0.7"/>
+  <text x="1312" y="519" font-size="8.5" fill="#EEEEF8" font-weight="600">10,860</text>
+
   <!-- Legend -->
-  <rect x="846" y="530" width="10" height="6" rx="1" fill="#2196F3"/>
-  <text x="860" y="536" font-size="8" fill="#9E9E9E">Vendor Scope</text>
-  <rect x="944" y="530" width="10" height="6" rx="1" fill="#26A69A"/>
-  <text x="958" y="536" font-size="8" fill="#9E9E9E">Actual Progress</text>
+  <rect x="840" y="532" width="9" height="5" rx="2" fill="#7B6CF6"/>
+  <text x="853" y="537" font-size="8" fill="#8888AA">Vendor Scope</text>
+  <rect x="938" y="532" width="9" height="5" rx="2" fill="#22D3EE"/>
+  <text x="951" y="537" font-size="8" fill="#8888AA">Actual Progress</text>
 
-  <!-- ════════════════════════════════════════
-       ROW 3  y=556  h=158
-       W6 x=88,w=374  W7 x=474,w=414  W8 x=900,w=460
-       ════════════════════════════════════════ -->
-
-  <!-- W6: Vendor Wise Payables (bar chart) -->
-  <rect x="88" y="556" width="374" height="158" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="104" y="576" font-size="10.5" font-weight="700" fill="#212121">Vendor Wise Payables</text>
-  <line x1="116" y1="582" x2="116" y2="690" stroke="#EEEEEE" stroke-width="1"/>
-  <line x1="116" y1="690" x2="442" y2="690" stroke="#EEEEEE" stroke-width="1"/>
-  <text x="112" y="586" font-size="7.5" fill="#BDBDBD" text-anchor="end">100k</text>
-  <text x="112" y="638" font-size="7.5" fill="#BDBDBD" text-anchor="end">50k</text>
-  <!-- Bar groups (4 vendors) -->
-  <rect x="132" y="626" width="11" height="64" rx="1" fill="#1E88E5"/>
-  <rect x="145" y="636" width="11" height="54" rx="1" fill="#FFA726"/>
-  <rect x="158" y="658" width="11" height="32" rx="1" fill="#26A69A"/>
-  <text x="147" y="702" font-size="7.5" fill="#9E9E9E" text-anchor="middle">Azeem</text>
-
-  <rect x="194" y="630" width="11" height="60" rx="1" fill="#1E88E5"/>
-  <rect x="207" y="640" width="11" height="50" rx="1" fill="#FFA726"/>
-  <rect x="220" y="660" width="11" height="30" rx="1" fill="#26A69A"/>
-  <text x="209" y="702" font-size="7.5" fill="#9E9E9E" text-anchor="middle">Raheem</text>
-
-  <rect x="256" y="620" width="11" height="70" rx="1" fill="#1E88E5"/>
-  <rect x="269" y="630" width="11" height="60" rx="1" fill="#FFA726"/>
-  <rect x="282" y="652" width="11" height="38" rx="1" fill="#26A69A"/>
-  <text x="271" y="702" font-size="7.5" fill="#9E9E9E" text-anchor="middle">Hafiz</text>
-
-  <rect x="318" y="634" width="11" height="56" rx="1" fill="#1E88E5"/>
-  <rect x="331" y="644" width="11" height="46" rx="1" fill="#FFA726"/>
-  <rect x="344" y="664" width="11" height="26" rx="1" fill="#26A69A"/>
-  <text x="333" y="702" font-size="7.5" fill="#9E9E9E" text-anchor="middle">Abc</text>
+  <!-- ════════ ROW 3  y=553  h=155 ════════ -->
+  <!-- W6 Vendor Wise Payables -->
+  <rect x="88" y="553" width="374" height="155" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="104" y="573" font-size="10" font-weight="700" fill="#EEEEF8">Vendor Wise Payables</text>
+  <line x1="116" y1="579" x2="116" y2="682" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="116" y1="682" x2="442" y2="682" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="112" y="583" font-size="7.5" fill="#3E3E60" text-anchor="end">100k</text>
+  <text x="112" y="633" font-size="7.5" fill="#3E3E60" text-anchor="end">50k</text>
+  <!-- Bars -->
+  <rect x="132" y="621" width="11" height="61" rx="1" fill="#7B6CF6" opacity="0.85"/>
+  <rect x="145" y="630" width="11" height="52" rx="1" fill="#FBB024" opacity="0.8"/>
+  <rect x="158" y="651" width="11" height="31" rx="1" fill="#4ADE80" opacity="0.8"/>
+  <text x="147" y="694" font-size="7.5" fill="#3E3E60" text-anchor="middle">Azeem</text>
+  <rect x="192" y="626" width="11" height="56" rx="1" fill="#7B6CF6" opacity="0.85"/>
+  <rect x="205" y="636" width="11" height="46" rx="1" fill="#FBB024" opacity="0.8"/>
+  <rect x="218" y="657" width="11" height="25" rx="1" fill="#4ADE80" opacity="0.8"/>
+  <text x="207" y="694" font-size="7.5" fill="#3E3E60" text-anchor="middle">Raheem</text>
+  <rect x="252" y="616" width="11" height="66" rx="1" fill="#7B6CF6" opacity="0.85"/>
+  <rect x="265" y="626" width="11" height="56" rx="1" fill="#FBB024" opacity="0.8"/>
+  <rect x="278" y="648" width="11" height="34" rx="1" fill="#4ADE80" opacity="0.8"/>
+  <text x="267" y="694" font-size="7.5" fill="#3E3E60" text-anchor="middle">Hafiz</text>
+  <rect x="312" y="630" width="11" height="52" rx="1" fill="#7B6CF6" opacity="0.85"/>
+  <rect x="325" y="640" width="11" height="42" rx="1" fill="#FBB024" opacity="0.8"/>
+  <rect x="338" y="660" width="11" height="22" rx="1" fill="#4ADE80" opacity="0.8"/>
+  <text x="327" y="694" font-size="7.5" fill="#3E3E60" text-anchor="middle">Abc</text>
   <!-- Legend -->
-  <rect x="116" y="708" width="8" height="5" rx="1" fill="#1E88E5"/>
-  <text x="127" y="713" font-size="7.5" fill="#9E9E9E">Total Order</text>
-  <rect x="195" y="708" width="8" height="5" rx="1" fill="#FFA726"/>
-  <text x="206" y="713" font-size="7.5" fill="#9E9E9E">Total PO</text>
-  <rect x="262" y="708" width="8" height="5" rx="1" fill="#26A69A"/>
-  <text x="273" y="713" font-size="7.5" fill="#9E9E9E">Invoice Amt</text>
+  <rect x="116" y="700" width="8" height="5" rx="1" fill="#7B6CF6"/>
+  <text x="127" y="705" font-size="7.5" fill="#3E3E60">Total Order</text>
+  <rect x="192" y="700" width="8" height="5" rx="1" fill="#FBB024"/>
+  <text x="203" y="705" font-size="7.5" fill="#3E3E60">Total PO</text>
+  <rect x="257" y="700" width="8" height="5" rx="1" fill="#4ADE80"/>
+  <text x="268" y="705" font-size="7.5" fill="#3E3E60">Invoice Amt</text>
 
-  <!-- W7: Vendor Wise Scope Value (multi-segment donut) -->
-  <rect x="474" y="556" width="414" height="158" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="490" y="576" font-size="10.5" font-weight="700" fill="#212121">Vendor Wise Scope Value (₹)</text>
-  <!-- Donut r=42 cx=562 cy=644 circ=263.9 -->
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#F0F0F0" stroke-width="13"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#2196F3"  stroke-width="13" stroke-dasharray="60.7 203.2" stroke-dashoffset="0"      transform="rotate(-90 562 644)"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#26C6DA"  stroke-width="13" stroke-dasharray="52.8 211.1" stroke-dashoffset="-60.7"   transform="rotate(-90 562 644)"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#66BB6A"  stroke-width="13" stroke-dasharray="42.2 221.7" stroke-dashoffset="-113.5"  transform="rotate(-90 562 644)"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#FFA726"  stroke-width="13" stroke-dasharray="39.6 224.3" stroke-dashoffset="-155.7"  transform="rotate(-90 562 644)"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#EF5350"  stroke-width="13" stroke-dasharray="34.3 229.6" stroke-dashoffset="-195.3"  transform="rotate(-90 562 644)"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#AB47BC"  stroke-width="13" stroke-dasharray="18.5 245.4" stroke-dashoffset="-229.6"  transform="rotate(-90 562 644)"/>
-  <circle cx="562" cy="644" r="42" fill="none" stroke="#78909C"  stroke-width="13" stroke-dasharray="15.8 248.1" stroke-dashoffset="-248.1"  transform="rotate(-90 562 644)"/>
-  <text x="562" y="639" font-size="13" font-weight="800" fill="#212121" text-anchor="middle">3,45,000</text>
-  <text x="562" y="653" font-size="8" fill="#9E9E9E" text-anchor="middle">Total Value</text>
+  <!-- W7 Vendor Wise Scope Donut -->
+  <rect x="474" y="553" width="414" height="155" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="490" y="573" font-size="10" font-weight="700" fill="#EEEEF8">Vendor Wise Scope Value (₹)</text>
+  <!-- Donut r=40 cx=558 cy=638 circ=251.3 -->
+  <circle cx="558" cy="638" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#7B6CF6"  stroke-width="12" stroke-dasharray="57.8 193.5" stroke-dashoffset="0"      transform="rotate(-90 558 638)"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#22D3EE"  stroke-width="12" stroke-dasharray="50.3 201.0" stroke-dashoffset="-57.8"   transform="rotate(-90 558 638)"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#4ADE80"  stroke-width="12" stroke-dasharray="40.2 211.1" stroke-dashoffset="-108.1"  transform="rotate(-90 558 638)"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#FBB024"  stroke-width="12" stroke-dasharray="37.7 213.6" stroke-dashoffset="-148.3"  transform="rotate(-90 558 638)"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#F06292"  stroke-width="12" stroke-dasharray="32.7 218.6" stroke-dashoffset="-186.0"  transform="rotate(-90 558 638)"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#9D91FF"  stroke-width="12" stroke-dasharray="17.6 233.7" stroke-dashoffset="-218.7"  transform="rotate(-90 558 638)"/>
+  <circle cx="558" cy="638" r="40" fill="none" stroke="#8888AA"  stroke-width="12" stroke-dasharray="15.1 236.2" stroke-dashoffset="-236.3"  transform="rotate(-90 558 638)"/>
+  <text x="558" y="633" font-size="11" font-weight="800" fill="#EEEEF8" text-anchor="middle">3,45,000</text>
+  <text x="558" y="647" font-size="7.5" fill="#8888AA" text-anchor="middle">Total Value</text>
   <!-- Legend -->
-  <circle cx="630" cy="580" r="4" fill="#2196F3"/> <text x="638" y="584" font-size="8" fill="#616161">Azeem (23%)</text>  <text x="728" y="584" font-size="8" fill="#212121" font-weight="600">7,97,132</text>
-  <circle cx="630" cy="598" r="4" fill="#26C6DA"/> <text x="638" y="602" font-size="8" fill="#616161">Raheem (32%)</text> <text x="728" y="602" font-size="8" fill="#212121" font-weight="600">6,87,101</text>
-  <circle cx="630" cy="616" r="4" fill="#66BB6A"/> <text x="638" y="620" font-size="8" fill="#616161">Hafiz (32%)</text>  <text x="728" y="620" font-size="8" fill="#212121" font-weight="600">5,45,957</text>
-  <circle cx="630" cy="634" r="4" fill="#FFA726"/> <text x="638" y="638" font-size="8" fill="#616161">Abc (32%)</text>    <text x="728" y="638" font-size="8" fill="#212121" font-weight="600">3,43,952</text>
-  <circle cx="630" cy="652" r="4" fill="#EF5350"/> <text x="638" y="656" font-size="8" fill="#616161">Ranjeet (32%)</text><text x="728" y="656" font-size="8" fill="#212121" font-weight="600">3,62,118</text>
-  <circle cx="630" cy="670" r="4" fill="#AB47BC"/> <text x="638" y="674" font-size="8" fill="#616161">Xyz (32%)</text>    <text x="728" y="674" font-size="8" fill="#212121" font-weight="600">3,37,308</text>
-  <circle cx="630" cy="688" r="4" fill="#78909C"/> <text x="638" y="692" font-size="8" fill="#616161">Pqr (32%)</text>    <text x="728" y="692" font-size="8" fill="#212121" font-weight="600">6,94,409</text>
+  <circle cx="628" cy="578" r="4" fill="#7B6CF6"/> <text x="636" y="582" font-size="8" fill="#8888AA">Azeem (23%)</text><text x="726" y="582" font-size="8" fill="#EEEEF8" font-weight="600">7,97,132</text>
+  <circle cx="628" cy="596" r="4" fill="#22D3EE"/> <text x="636" y="600" font-size="8" fill="#8888AA">Raheem (32%)</text><text x="726" y="600" font-size="8" fill="#EEEEF8" font-weight="600">6,87,101</text>
+  <circle cx="628" cy="614" r="4" fill="#4ADE80"/> <text x="636" y="618" font-size="8" fill="#8888AA">Hafiz (32%)</text><text x="726" y="618" font-size="8" fill="#EEEEF8" font-weight="600">5,45,957</text>
+  <circle cx="628" cy="632" r="4" fill="#FBB024"/> <text x="636" y="636" font-size="8" fill="#8888AA">Abc (32%)</text><text x="726" y="636" font-size="8" fill="#EEEEF8" font-weight="600">3,43,952</text>
+  <circle cx="628" cy="650" r="4" fill="#F06292"/> <text x="636" y="654" font-size="8" fill="#8888AA">Ranjeet (32%)</text><text x="726" y="654" font-size="8" fill="#EEEEF8" font-weight="600">3,62,118</text>
+  <circle cx="628" cy="668" r="4" fill="#9D91FF"/> <text x="636" y="672" font-size="8" fill="#8888AA">Xyz (32%)</text><text x="726" y="672" font-size="8" fill="#EEEEF8" font-weight="600">3,37,308</text>
+  <circle cx="628" cy="686" r="4" fill="#8888AA"/> <text x="636" y="690" font-size="8" fill="#8888AA">Pqr (32%)</text><text x="726" y="690" font-size="8" fill="#EEEEF8" font-weight="600">6,94,409</text>
 
-  <!-- W8: Item Type Distribution (donut + legend) -->
-  <rect x="900" y="556" width="460" height="158" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="916" y="576" font-size="10.5" font-weight="700" fill="#212121">Item Type Distribution</text>
-  <!-- Donut r=36 cx=990 cy=644 circ=226.2 -->
-  <circle cx="990" cy="644" r="36" fill="none" stroke="#F0F0F0" stroke-width="12"/>
-  <circle cx="990" cy="644" r="36" fill="none" stroke="#EF5350" stroke-width="12" stroke-dasharray="79.2 147"   stroke-dashoffset="0"      transform="rotate(-90 990 644)"/>
-  <circle cx="990" cy="644" r="36" fill="none" stroke="#FFA726" stroke-width="12" stroke-dasharray="56.5 169.7" stroke-dashoffset="-79.2"   transform="rotate(-90 990 644)"/>
-  <circle cx="990" cy="644" r="36" fill="none" stroke="#FFEE58" stroke-width="12" stroke-dasharray="38.5 187.7" stroke-dashoffset="-135.7"  transform="rotate(-90 990 644)"/>
-  <circle cx="990" cy="644" r="36" fill="none" stroke="#66BB6A" stroke-width="12" stroke-dasharray="33.9 192.3" stroke-dashoffset="-174.2"  transform="rotate(-90 990 644)"/>
-  <circle cx="990" cy="644" r="36" fill="none" stroke="#26C6DA" stroke-width="12" stroke-dasharray="18.1 208.1" stroke-dashoffset="-208.1"  transform="rotate(-90 990 644)"/>
-  <text x="990" y="639" font-size="13" font-weight="800" fill="#212121" text-anchor="middle">35%</text>
-  <text x="990" y="653" font-size="8" fill="#9E9E9E" text-anchor="middle">Consultation</text>
-  <!-- Legend 2 cols -->
-  <circle cx="1056" cy="586" r="4" fill="#EF5350"/>  <text x="1064" y="590" font-size="8" fill="#616161">Consultation</text>  <text x="1142" y="590" font-size="8" fill="#212121" font-weight="600">35%</text>
-  <circle cx="1056" cy="604" r="4" fill="#FFA726"/>  <text x="1064" y="608" font-size="8" fill="#616161">Production</text>    <text x="1142" y="608" font-size="8" fill="#212121" font-weight="600">25%</text>
-  <circle cx="1056" cy="622" r="4" fill="#FFEE58"/>  <text x="1064" y="626" font-size="8" fill="#616161">Bought Out</text>    <text x="1142" y="626" font-size="8" fill="#212121" font-weight="600">17%</text>
-  <circle cx="1056" cy="640" r="4" fill="#66BB6A"/>  <text x="1064" y="644" font-size="8" fill="#616161">Sitework</text>      <text x="1142" y="644" font-size="8" fill="#212121" font-weight="600">15%</text>
-  <circle cx="1056" cy="658" r="4" fill="#26C6DA"/>  <text x="1064" y="662" font-size="8" fill="#616161">Transportation</text><text x="1142" y="662" font-size="8" fill="#212121" font-weight="600">10%</text>
-  <circle cx="1190" cy="586" r="4" fill="#7B6CF6"/>  <text x="1198" y="590" font-size="8" fill="#616161">Procurement</text>   <text x="1282" y="590" font-size="8" fill="#212121" font-weight="600">9%</text>
-  <circle cx="1190" cy="604" r="4" fill="#78909C"/>  <text x="1198" y="608" font-size="8" fill="#616161">Raw Material</text>  <text x="1282" y="608" font-size="8" fill="#212121" font-weight="600">8%</text>
+  <!-- W8 Item Type Distribution -->
+  <rect x="900" y="553" width="460" height="155" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="916" y="573" font-size="10" font-weight="700" fill="#EEEEF8">Item Type Distribution</text>
+  <!-- Donut r=34 cx=984 cy=638 circ=213.6 -->
+  <circle cx="984" cy="638" r="34" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="11"/>
+  <circle cx="984" cy="638" r="34" fill="none" stroke="#F06292"  stroke-width="11" stroke-dasharray="74.8 138.8" stroke-dashoffset="0"      transform="rotate(-90 984 638)"/>
+  <circle cx="984" cy="638" r="34" fill="none" stroke="#FBB024"  stroke-width="11" stroke-dasharray="53.4 160.2" stroke-dashoffset="-74.8"   transform="rotate(-90 984 638)"/>
+  <circle cx="984" cy="638" r="34" fill="none" stroke="#4ADE80"  stroke-width="11" stroke-dasharray="36.3 177.3" stroke-dashoffset="-128.2"  transform="rotate(-90 984 638)"/>
+  <circle cx="984" cy="638" r="34" fill="none" stroke="#22D3EE"  stroke-width="11" stroke-dasharray="32.0 181.6" stroke-dashoffset="-164.5"  transform="rotate(-90 984 638)"/>
+  <circle cx="984" cy="638" r="34" fill="none" stroke="#7B6CF6"  stroke-width="11" stroke-dasharray="17.1 196.5" stroke-dashoffset="-196.5"  transform="rotate(-90 984 638)"/>
+  <text x="984" y="633" font-size="12" font-weight="800" fill="#EEEEF8" text-anchor="middle">35%</text>
+  <text x="984" y="647" font-size="7.5" fill="#8888AA" text-anchor="middle">Consultation</text>
+  <!-- Legend 2-col -->
+  <circle cx="1046" cy="582" r="4" fill="#F06292"/>  <text x="1054" y="586" font-size="8" fill="#8888AA">Consultation</text>  <text x="1130" y="586" font-size="8" fill="#EEEEF8" font-weight="600">35%</text>
+  <circle cx="1046" cy="600" r="4" fill="#FBB024"/>  <text x="1054" y="604" font-size="8" fill="#8888AA">Production</text>    <text x="1130" y="604" font-size="8" fill="#EEEEF8" font-weight="600">25%</text>
+  <circle cx="1046" cy="618" r="4" fill="#4ADE80"/>  <text x="1054" y="622" font-size="8" fill="#8888AA">Bought Out</text>    <text x="1130" y="622" font-size="8" fill="#EEEEF8" font-weight="600">17%</text>
+  <circle cx="1046" cy="636" r="4" fill="#22D3EE"/>  <text x="1054" y="640" font-size="8" fill="#8888AA">Sitework</text>      <text x="1130" y="640" font-size="8" fill="#EEEEF8" font-weight="600">15%</text>
+  <circle cx="1046" cy="654" r="4" fill="#7B6CF6"/>  <text x="1054" y="658" font-size="8" fill="#8888AA">Transportation</text><text x="1130" y="658" font-size="8" fill="#EEEEF8" font-weight="600">10%</text>
+  <circle cx="1188" cy="582" r="4" fill="#9D91FF"/>  <text x="1196" y="586" font-size="8" fill="#8888AA">Procurement</text>   <text x="1272" y="586" font-size="8" fill="#EEEEF8" font-weight="600">9%</text>
+  <circle cx="1188" cy="600" r="4" fill="#8888AA"/>  <text x="1196" y="604" font-size="8" fill="#8888AA">Raw Material</text>  <text x="1272" y="604" font-size="8" fill="#EEEEF8" font-weight="600">8%</text>
 
-  <!-- ════════════════════════════════════════
-       ROW 4  y=726  h=50 — Timeline + Dates
-       ════════════════════════════════════════ -->
+  <!-- ════════ ROW 4  y=720  h=44 ════════ -->
+  <!-- W9 Project Timeline -->
+  <rect x="88" y="720" width="582" height="44" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="104" y="738" font-size="9.5" font-weight="700" fill="#EEEEF8">Project Time Line</text>
+  <text x="104" y="754" font-size="7.5" fill="#3E3E60">Recce Pending</text>
+  <rect x="180" y="748" width="52" height="7" rx="3" fill="#F06292" opacity="0.7"/>
+  <text x="244" y="754" font-size="7.5" fill="#3E3E60">Design Freeze</text>
+  <rect x="320" y="748" width="72" height="7" rx="3" fill="#7B6CF6" opacity="0.7"/>
+  <text x="404" y="754" font-size="7.5" fill="#3E3E60">Execution</text>
+  <rect x="458" y="748" width="188" height="7" rx="3" fill="#FBB024" opacity="0.55"/>
+  <text x="104" y="760" font-size="7" fill="#3E3E60">10 Feb</text>
+  <text x="248" y="760" font-size="7" fill="#3E3E60">16 Feb</text>
+  <text x="394" y="760" font-size="7" fill="#3E3E60">22 Feb</text>
 
-  <!-- W9: Project Timeline (compact Gantt) -->
-  <rect x="88" y="726" width="582" height="50" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="104" y="744" font-size="10" font-weight="700" fill="#212121">Project Time Line</text>
-  <!-- Stage labels + bars -->
-  <text x="104" y="760" font-size="7.5" fill="#9E9E9E">Recce</text>
-  <rect x="168" y="754" width="50" height="8" rx="2" fill="#EF5350" opacity="0.75"/>
-  <text x="236" y="760" font-size="7.5" fill="#9E9E9E">Design Freeze</text>
-  <rect x="312" y="754" width="70" height="8" rx="2" fill="#1E88E5" opacity="0.75"/>
-  <text x="396" y="760" font-size="7.5" fill="#9E9E9E">Execution</text>
-  <rect x="454" y="754" width="188" height="8" rx="2" fill="#FFA726" opacity="0.6"/>
-  <text x="104" y="770" font-size="7" fill="#BDBDBD">10 Feb</text>
-  <text x="246" y="770" font-size="7" fill="#BDBDBD">16 Feb</text>
-  <text x="390" y="770" font-size="7" fill="#BDBDBD">22 Feb</text>
-
-  <!-- W10: Important Dates -->
-  <rect x="682" y="726" width="678" height="50" rx="8" fill="white" stroke="#E5E5E5" stroke-width="0.5"/>
-  <text x="698" y="744" font-size="10" font-weight="700" fill="#212121">Important Dates</text>
-  <circle cx="826" cy="741" r="3" fill="#EF5350"/>
-  <text x="832" y="745" font-size="8" fill="#EF5350">Only 3 days remaining to complete</text>
-  <!-- Date timeline bar -->
-  <text x="698" y="760" font-size="8" fill="#9E9E9E">Expected Start: <tspan font-weight="700" fill="#212121">13 Jan</tspan></text>
-  <text x="870" y="760" font-size="8" fill="#9E9E9E">Projected End: <tspan font-weight="700" fill="#212121">28 Jan</tspan></text>
-  <text x="1050" y="760" font-size="8" fill="#9E9E9E">Project Created: <tspan font-weight="700" fill="#212121">24 Feb 2023</tspan></text>
-  <text x="698" y="770" font-size="7.5" fill="#9E9E9E">Recce Due: 20 Jan 2023  |  Execution Due: 28 Feb 2023</text>
+  <!-- W10 Important Dates -->
+  <rect x="682" y="720" width="678" height="44" rx="10" fill="#131326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="698" y="738" font-size="9.5" font-weight="700" fill="#EEEEF8">Important Dates</text>
+  <circle cx="826" cy="736" r="3" fill="#F06292"/>
+  <text x="832" y="740" font-size="8" fill="#F06292">Only 3 days remaining to complete</text>
+  <text x="698" y="755" font-size="8" fill="#3E3E60">Expected Start: <tspan font-weight="700" fill="#8888AA">13 Jan</tspan></text>
+  <text x="840" y="755" font-size="8" fill="#3E3E60">Projected End: <tspan font-weight="700" fill="#8888AA">28 Jan</tspan></text>
+  <text x="1010" y="755" font-size="8" fill="#3E3E60">Project Created: <tspan font-weight="700" fill="#8888AA">24 Feb 2023</tspan></text>
+  <text x="698" y="760" font-size="7.5" fill="#3E3E60">Recce Due: 20 Jan 2023  |  Execution Due: 28 Feb 2023</text>
 
 </svg>
