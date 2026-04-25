@@ -7,125 +7,149 @@ Personal portfolio website for **Buddhpriya Gautam**, Senior Product Designer wi
 
 ---
 
-## Overview
+## File Structure
 
-Single-file HTML portfolio with no frameworks or build tools. All CSS and JavaScript are embedded directly in `index.html`. The entire site ships as one HTML file plus a folder of optimised images.
+Static multi-page site — no build tools, no frameworks. All CSS and JS are embedded per-page.
 
 ```
 Buddh mmt/
-├── index.html          # Complete site — HTML + CSS + JS (2269 lines)
+├── index.html              # Homepage (2583 lines)
+├── work.html               # Full work / case study listing (1059 lines)
+├── about.html              # About page — bio, skills, timeline (855 lines)
+├── rdash.html              # R'Dash case study (766 lines)
+├── elite60.html            # Elite60 case study
+├── brand-work.html         # Brand & visual design work
+├── knovelo.html            # Knovelo case study
+├── kockpit.html            # Kockpit case study
+├── locatr.html             # LocatR case study
+├── rankwatch.html          # RankWatch case study
+├── websignals.html         # WebSignals case study
+├── sw.js                   # Service worker — cache key: buddh-v6
+├── manifest.json           # PWA manifest
+├── _headers                # Netlify response headers config
+├── Rdash_Logo.svg          # R'Dash brand logo
+├── Buddhpriya_Gautam_Resume_ATS.docx
+├── icons/                  # PWA icons (72 → 512 px + apple-touch-icon)
 └── images/
-    └── elite60/        # Elite60 app screenshots (10 × JPEG, ~850 KB total)
-        ├── logo-screen.jpg
-        ├── splash.jpg
-        ├── home.jpg
-        ├── workout.jpg
-        ├── progress-standard.jpg
-        ├── progress-goals.jpg
-        ├── progress-athletics.jpg
-        ├── plans.jpg
-        ├── gps-goal.jpg
-        └── gps-live.jpg
+    ├── rdash-hero.svg      # R'Dash dashboard hero (dark-themed SVG, 1440×800)
+    ├── elite60/            # Elite60 screenshots (10 × JPEG, ~850 KB)
+    └── RDash/              # R'Dash product screenshots (16 × PNG)
 ```
 
 ---
 
-## Sections
+## Pages
 
-| Section | ID | Description |
-|---------|----|-------------|
-| Hero | `#home` | Full-screen headline with animated grid, CTAs |
-| Marquee | — | Scrolling skill tags strip |
-| About | `#about` | Bio, animated stat counters, skills grid |
-| Case Study 1 | `#work` | **R'Dash** — SaaS analytics platform (primary case study) |
-| Case Study 2 | — | **Elite60** — fitness app (full-stack, with screenshot gallery) |
-| Other Projects | — | RankWatch, WebSignals, Knovelo, LocatR, Kockpit |
-| Process | `#process` | 4-step design process breakdown |
-| Contact | `#contact` | Email CTA + social links |
+| File | Route | Description |
+|------|-------|-------------|
+| `index.html` | `/` | Homepage — hero, marquee, about, selected work, process, contact |
+| `work.html` | `/work.html` | Full case study grid — R'Dash, Elite60, brand work, and other projects |
+| `about.html` | `/about.html` | Bio, skills grid, experience timeline, awards |
+| `rdash.html` | `/rdash.html` | R'Dash case study — problem, solution, key initiatives, 16 real product screens, XD prototype embed |
+| `elite60.html` | `/elite60.html` | Elite60 fitness app case study |
+| `brand-work.html` | `/brand-work.html` | Brand & visual design showcase |
+| `knovelo.html` | `/knovelo.html` | Knovelo case study |
+| `kockpit.html` | `/kockpit.html` | Kockpit case study |
+| `locatr.html` | `/locatr.html` | LocatR case study |
+| `rankwatch.html` | `/rankwatch.html` | RankWatch case study |
+| `websignals.html` | `/websignals.html` | WebSignals case study |
 
 ---
 
 ## Design System
 
-### Colour tokens (`index.html:14–30`)
+Tokens are defined in `:root` and override to a light palette when `[data-theme="light"]` is set. Theme choice is persisted in `localStorage`.
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--bg` | `#07070F` | Page background |
-| `--bg2` | `#0D0D1C` | Card / section backgrounds |
-| `--bg3` | `#131326` | Elevated surfaces |
-| `--accent` | `#7B6CF6` | Purple — primary accent (R'Dash) |
-| `--rose` | `#F06292` | Rose — secondary accent |
-| `--green` | `#4ADE80` | Emerald — Elite60 accent |
-| `--amber` | `#FBB024` | Amber — warnings / highlights |
-| `--text` | `#EEEEF8` | Primary text |
-| `--text2` | `#8888AA` | Secondary / muted text |
+### Colour tokens
+
+| Token | Dark value | Light value | Usage |
+|-------|-----------|-------------|-------|
+| `--bg` | `#07070F` | `#F7F7FF` | Page background |
+| `--bg2` | `#0D0D1C` | `#F0F0FA` | Card / section backgrounds |
+| `--bg3` | `#131326` | `#E8E8F5` | Elevated surfaces |
+| `--accent` | `#7B6CF6` | `#6C5EE8` | Purple — primary accent |
+| `--rose` | `#F06292` | `#D81B60` | Rose — secondary accent |
+| `--green` | `#4ADE80` | `#16A34A` | Emerald — done states, Elite60 |
+| `--amber` | `#FBB024` | `#B45309` | Amber — in-progress, warnings |
+| `--text` | `#EEEEF8` | `#0D0D1A` | Primary text |
+| `--text2` | `#8888AA` | `#4A4A6A` | Secondary / muted text |
+| `--text3` | `#3E3E60` | `#9999BB` | Placeholder / disabled |
+| `--border` | `rgba(255,255,255,0.07)` | `rgba(0,0,0,0.08)` | Default border |
+| `--border-hi` | `rgba(123,108,246,0.3)` | `rgba(108,94,232,0.35)` | Accent border (hover) |
+| `--accent-lo` | `rgba(123,108,246,0.12)` | `rgba(108,94,232,0.10)` | Tinted background fills |
 
 ### Typography
 
-- **Plus Jakarta Sans** — UI text (weights 300–800, italic)
-- **Instrument Serif** — Display / italic accent (`.serif` class)
-
-Both loaded from Google Fonts with `display=swap`.
+- **Plus Jakarta Sans** — UI text (weights 300–800 + italic), loaded from Google Fonts
+- **Instrument Serif** — Display italic accent (`.serif` class)
 
 ---
 
 ## Interactive Features
 
-### Custom Cursor (`index.html:2138`)
-Two-layer cursor: a sharp dot that follows the mouse instantly, and a larger ring that lerps behind it at 11% per frame via `requestAnimationFrame`.
+### Custom Cursor
+Two-layer cursor: a 10px dot that tracks the mouse instantly, and a 38px ring that lerps at 11% per frame. Both scale up on hover of any interactive element (`.h` class).
 
-```js
-fx += (mx - fx) * 0.11;   // lag follower easing
-```
+### Scroll Reveal
+`IntersectionObserver` on all `.rv` elements — adds `.in` class on entry, triggering `opacity 0→1` + `translateY(28px→0)`. Delay utilities `.d1`–`.d3` stagger children by 0.1s increments.
 
-Scales up (`.h` class) when hovering any interactive element.
+### Light / Dark Toggle
+Theme button in nav reads `data-theme` from `<html>`. Clicking cycles between `dark` and `light`, saves to `localStorage`. Theme is applied before first paint via an inline `<script>` tag to prevent flash.
 
-### Scroll Reveal (`index.html:2180`)
-`IntersectionObserver` watches all `.rv` elements. On entry, adds `.in` class which transitions `opacity: 0 → 1` and `translateY(28px → 0)`.
+### Scroll Progress Bar
+Fixed 2px bar at viewport top fills proportionally to `scrollY / (scrollHeight - innerHeight)`.
 
-Delay utilities: `.d1` through `.d5` add `0.1s` increments to stagger children.
+### Animated Grain
+SVG `feTurbulence` noise texture on a fixed full-screen pseudo-element, animated with CSS keyframes to shift position. Opacity: 0.028 — subtle film-grain feel.
 
-### Animated Counters (`index.html:2186`)
-Second `IntersectionObserver` targets `.cnt[data-t]` elements. On entry, counts from 0 to `data-t` over ~45 steps at 35 ms intervals.
+### 3D Card Tilt
+`.pc`, `.pain-c`, `.imp-c` cards apply `perspective(900px) rotateX() rotateY()` based on cursor offset from card centre on `mousemove`.
 
-### 3D Card Tilt (`index.html:2202`)
-`mousemove` on `.pc`, `.pain-c`, `.imp-c` cards calculates cursor offset from card centre and applies:
-```js
-`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`
-```
-
-### Magnetic Buttons (`index.html:2214`)
-`.btn-p`, `.btn-g`, `.nav-cta` buttons follow the cursor slightly (22% factor) on `mousemove`, snap back on `mouseleave`.
-
-### Animated Grain (`index.html:1267`)
-SVG `feTurbulence` filter rendered into a full-screen pseudo-element, animated with a CSS keyframe that shifts the `baseFrequency` to create film-grain noise texture.
-
-### Hero Parallax Grid (`index.html:2174`)
-Background dot-grid moves at `scrollY × 0.28` on scroll for a subtle depth effect.
-
-### Scroll Progress Bar (`index.html:2168`)
-Fixed 2px bar at the very top of the viewport fills as the user scrolls.
-
-### Page Loader (`index.html:2122`)
-Full-screen loader with a progress bar that randomly increments to 100%, then fades out.
+### Magnetic Buttons
+`.btn-p`, `.btn-g`, `.nav-cta` follow the cursor at 22% factor, snap back on `mouseleave`.
 
 ---
 
-## Elite60 Screenshot Gallery (`index.html:1700`)
+## R'Dash Case Study (`rdash.html`)
 
-Horizontal scroll gallery with 10 app screens.
+### Hero
+Custom dark-themed SVG (`images/rdash-hero.svg`, 1440×800) showing the actual R'Dash dashboard — My Scope donut, Project Progress bar chart, Vendor Wise Progress horizontal bars, Vendor Scope donut, and Project Timeline Gantt. Uses portfolio design system colours with radial purple glow and grid background.
 
-**Layout rules:**
-- Default: `nth-child(even)` items have `margin-top: 36px` for a staggered height effect
-- `.center` class override: `margin-top: 0 !important` — applied to the Logo Screen and Splash Screen items so they sit at the visual midpoint
+### Product Screens (16 real screenshots)
 
-**Interactions:**
-- **Drag to scroll** — mouse drag with 1.2× multiplier
-- **Dot indicators** — active dot updates on scroll via `IntersectionObserver`-style distance check
-- **Dot click** — `scrollIntoView({ inline: 'start' })` to jump to item
+All images from `images/RDash/`. Displayed in a horizontal scrollable card strip with `object-fit:cover; object-position:top`.
 
-**Image specs:** All 10 images resized to max 630px wide, saved as JPEG ~80% quality via macOS `sips`. Total gallery weight ~850 KB.
+| Screen | Image file |
+|--------|-----------|
+| My Projects Fleet | `All project table design update – -1.png` |
+| Projects Table (Alt) | `All project table design update – 33333.png` |
+| Recce Review | `Submitted recce on web External Environment – 2.png` |
+| BOQ My Scope | `My scope – 4.png` |
+| BOQ Item Detail | `Item Detail page web BOQ updates – 7.png` |
+| Purchase Requests | `Purchase request – 8.png` |
+| Purchase Request Detail | `Purchase request – 10.png` |
+| Vendor Order Approval | `Vendor Order Approval inside Project 4 – 2.png` |
+| All Project Invoices | `Project all Invoice – 29.png` |
+| Task Manager 2.0 | `Task Manager 2.0.0 2 – 11.png` |
+| Task UI Update | `Pure Task ui update – 6.png` |
+| Leads Manager | `Leads Manager 1 – 10.png` |
+| Leads Empty State | `Leads Manager 1 empty screen.png` |
+| Platform Module | `Mask Group 10.png` |
+| Platform Detail | `Mask Group 11.png` |
+| Platform Dashboard | `Artboard – 5jk.png` |
+
+### Prototype Embed
+Adobe XD prototype embedded via `<iframe>` with `src="https://xd.adobe.com/embed/..."`. Fullscreen link opens the view URL.
+
+---
+
+## Service Worker (`sw.js`)
+
+- **Cache key:** `buddh-v6` — bump this string to bust the cache on next deploy
+- **Strategy:** Cache-first for pre-listed assets, network-first with runtime caching for everything else. Offline fallback returns `/index.html`.
+- **Pre-cached assets:** `/`, `index.html`, `work.html`, `about.html`, `manifest.json`, icons, Elite60 images, Google Fonts stylesheet.
+
+To bust the cache: change `const CACHE = 'buddh-v6'` to `'buddh-v7'` (or any new string) and redeploy.
 
 ---
 
@@ -137,14 +161,18 @@ Horizontal scroll gallery with 10 app screens.
 - **Custom domain:** `www.buddh.in`
 - **Admin:** [app.netlify.com/projects/buddh-portfolio](https://app.netlify.com/projects/buddh-portfolio)
 
-To redeploy manually:
+Deploy command:
 ```bash
-~/.npm-global/bin/netlify deploy --prod --dir .
+cd "Buddh mmt" && git add -A && git commit -m "your message" && git push origin main && npx netlify deploy --prod --dir .
+```
+
+Or Netlify-only (no git):
+```bash
+npx netlify deploy --prod --dir .
 ```
 
 ### DNS (buddh.in)
-Point your domain registrar's nameservers to Netlify DNS:
-
+Nameservers pointing to Netlify DNS:
 ```
 dns1.p06.nsone.net
 dns2.p06.nsone.net
@@ -153,11 +181,31 @@ dns4.p06.nsone.net
 ```
 
 ### GitHub
+- **Remote:** `https://github.com/graphicdonor/buddh-portfolio.git`
+- **Branch:** `main`
+
+---
+
+## Common Tasks
+
+### Add a new case study page
+1. Copy `rdash.html` as a template
+2. Update the hero section, meta bar, and content sections
+3. Add screenshots to `images/<project-name>/`
+4. Add a card for it in `work.html`
+5. Add route to nav links if needed
+6. Deploy
+
+### Update service worker cache
+Change `const CACHE = 'buddh-v6'` in `sw.js` to a new version string. Users will get fresh assets on next load.
+
+### Add/resize images
 ```bash
-git add index.html
-git commit -m "your message"
-git push origin main
+sips -Z 1200 source.png --out images/RDash/name.png
 ```
+
+### Change accent colour
+Update `--accent` in `:root` in the relevant file. The purple `#7B6CF6` is used across buttons, borders, glows, and hover states.
 
 ---
 
@@ -172,26 +220,4 @@ git push origin main
 
 ---
 
-## Making Changes
-
-### Update text content
-Open `index.html` and search for the section by its HTML comment (e.g. `<!-- HERO -->`, `<!-- ELITE60 CASE STUDY -->`). All content is plain HTML.
-
-### Add a new case study
-1. Copy an existing `<section>` block as a template
-2. Add a `.cs-divider` between the new and previous case study
-3. Add app images to `images/<project-name>/`
-4. Redeploy
-
-### Change accent colour
-Update `--accent` in `:root` (`index.html:20`). The purple `#7B6CF6` is used across buttons, borders, glows, and hover states.
-
-### Add/update images
-Resize source images with `sips` before adding:
-```bash
-sips -Z 630 source.png --out images/elite60/name.jpg
-```
-
----
-
-*Built April 2026 · Buddhpriya Gautam · buddhpriya93@gmail.com*
+*Last updated April 2026 · Buddhpriya Gautam · buddhpriya93@gmail.com*
