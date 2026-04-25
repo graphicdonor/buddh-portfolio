@@ -431,6 +431,129 @@
       to   { opacity:1; transform: translateY(0); }
     }
 
+    /* ─── HERO CANVAS ─── */
+    .hero-canvas {
+      position: absolute;
+      right: 0; top: 0;
+      width: 52%; height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .hc-svg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .hc-node {
+      position: absolute;
+      pointer-events: all;
+      translate: var(--hx, 0px) var(--hy, 0px);
+      transition: translate 1.2s cubic-bezier(.16,1,.3,1);
+      opacity: 0;
+      animation: hcIn .8s ease forwards;
+    }
+    .hc-node:nth-child(2) { animation-delay: 1.9s; }
+    .hc-node:nth-child(3) { animation-delay: 2.15s; }
+    .hc-node:nth-child(4) { animation-delay: 2.4s; }
+    .hc-node:nth-child(5) { animation-delay: 2.65s; }
+    .hc-node:nth-child(6) { animation-delay: 2.9s; }
+    @keyframes hcIn {
+      from { opacity:0; transform: translateY(16px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes hcF1 { 0%,100%{ transform:translateY(0px) }    50%{ transform:translateY(-10px) } }
+    @keyframes hcF2 { 0%,100%{ transform:translateY(-6px) }   50%{ transform:translateY(8px) } }
+    @keyframes hcF3 { 0%,100%{ transform:translateY(0px) }    50%{ transform:translateY(-7px) } }
+
+    .hc-card {
+      background: rgba(13,13,28,0.76);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(123,108,246,0.22);
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.055);
+      animation-duration: 5.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+    .hc-chip {
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 11px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .hc-chip::before {
+      content:''; width: 14px; height: 1px; background: var(--accent);
+    }
+    /* Typography card */
+    .hc-aa {
+      font-size: 50px; font-weight: 800;
+      line-height: 1; letter-spacing: -.04em;
+      color: var(--text); margin-bottom: 3px;
+    }
+    .hc-font-name {
+      font-size: 10px; font-weight: 500;
+      color: var(--text3); margin-bottom: 11px;
+    }
+    .hc-scale { display:flex; align-items:baseline; gap:10px; }
+    /* Color tokens */
+    .hc-swatches { display:flex; gap:6px; margin-bottom:10px; }
+    .hc-sw {
+      width:28px; height:28px; border-radius:8px;
+      transition: transform .18s, box-shadow .18s;
+      cursor: default;
+    }
+    .hc-sw:hover { transform:scale(1.18); box-shadow:0 4px 14px rgba(0,0,0,.5); }
+    .hc-token-name { font-size:10px; font-family:monospace; color:var(--text3); }
+    /* Layers */
+    .hc-layer-row {
+      display:flex; align-items:center; gap:8px;
+      font-size:11px; font-weight:500; color:var(--text2);
+      padding:5px 8px; border-radius:6px; margin-bottom:2px;
+    }
+    .hc-layer-sel { background:var(--accent-lo); color:var(--text); }
+    .hc-ico { width:14px; height:14px; color:var(--text3); flex-shrink:0; }
+    .hc-layer-sel .hc-ico { color:var(--accent); }
+    /* Component button */
+    .hc-demo-btn {
+      width:100%; padding:9px 18px;
+      background:var(--accent); color:#fff;
+      border:none; border-radius:100px;
+      font-size:12px; font-weight:700;
+      font-family:inherit; cursor:pointer;
+      transition:transform .18s, box-shadow .18s;
+      margin-bottom:10px;
+    }
+    .hc-demo-btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(123,108,246,.5);
+    }
+    .hc-state-row { display:flex; gap:6px; }
+    .hc-state {
+      font-size:9px; font-weight:600; letter-spacing:.06em;
+      padding:3px 8px; border-radius:100px;
+      border:1px solid var(--border); color:var(--text3);
+    }
+    .hc-state-hov {
+      border-color:var(--accent); color:var(--accent);
+      background:var(--accent-lo);
+    }
+    /* Metrics */
+    .hc-met-grid { display:flex; gap:18px; }
+    .hc-met { text-align:center; }
+    .hc-met-v {
+      font-size:22px; font-weight:800;
+      letter-spacing:-.04em; color:var(--accent);
+      line-height:1; margin-bottom:4px;
+    }
+    .hc-met-l {
+      font-size:9px; font-weight:600;
+      letter-spacing:.08em; text-transform:uppercase; color:var(--text3);
+    }
+    @media (max-width: 900px) { .hero-canvas { display:none; } }
+
     /* ─── MARQUEE ─── */
     .marquee-wrap {
       padding: 18px 0;
@@ -1519,6 +1642,113 @@
     <div class="hero-grid" id="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="hero-glow2"></div>
+
+    <!-- ─── DESIGN CANVAS ─── -->
+    <div class="hero-canvas" id="heroCanvas" aria-hidden="true">
+
+      <!-- connector lines -->
+      <svg class="hc-svg" viewBox="0 0 600 860" preserveAspectRatio="none" fill="none">
+        <line x1="108" y1="174" x2="398" y2="248" stroke="rgba(123,108,246,0.11)" stroke-width="1" stroke-dasharray="4 8"/>
+        <line x1="398" y1="248" x2="352" y2="378" stroke="rgba(123,108,246,0.09)" stroke-width="1" stroke-dasharray="4 8"/>
+        <line x1="62"  y1="454" x2="352" y2="378" stroke="rgba(123,108,246,0.09)" stroke-width="1" stroke-dasharray="4 8"/>
+        <line x1="62"  y1="454" x2="242" y2="574" stroke="rgba(123,108,246,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
+        <line x1="352" y1="378" x2="242" y2="574" stroke="rgba(123,108,246,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
+        <circle cx="108" cy="174" r="2.5" fill="rgba(123,108,246,0.28)"/>
+        <circle cx="398" cy="248" r="2.5" fill="rgba(123,108,246,0.28)"/>
+        <circle cx="62"  cy="454" r="2.5" fill="rgba(123,108,246,0.28)"/>
+        <circle cx="352" cy="378" r="2.5" fill="rgba(123,108,246,0.28)"/>
+        <circle cx="242" cy="574" r="2.5" fill="rgba(123,108,246,0.28)"/>
+      </svg>
+
+      <!-- Card 1: Typography -->
+      <div class="hc-node" data-depth="0.04" style="top:12%;left:5%">
+        <div class="hc-card" style="animation-name:hcF1">
+          <div class="hc-chip">Typography</div>
+          <div class="hc-aa">Aa</div>
+          <div class="hc-font-name">Plus Jakarta Sans</div>
+          <div class="hc-scale">
+            <span style="font-size:17px;font-weight:800;color:var(--text)">H1</span>
+            <span style="font-size:13px;font-weight:600;color:var(--text2)">H3</span>
+            <span style="font-size:11px;font-weight:400;color:var(--text3)">Body</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Color tokens -->
+      <div class="hc-node" data-depth="0.07" style="top:20%;right:5%">
+        <div class="hc-card" style="animation-name:hcF2">
+          <div class="hc-chip">Color Tokens</div>
+          <div class="hc-swatches">
+            <div class="hc-sw" style="background:#7B6CF6"></div>
+            <div class="hc-sw" style="background:#4ADE80"></div>
+            <div class="hc-sw" style="background:#FBB024"></div>
+            <div class="hc-sw" style="background:#F06292"></div>
+            <div class="hc-sw" style="background:#60A5FA"></div>
+          </div>
+          <div class="hc-token-name">#7B6CF6 — primary</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Layers panel -->
+      <div class="hc-node" data-depth="0.05" style="top:43%;left:3%">
+        <div class="hc-card" style="animation-name:hcF3;animation-duration:6.5s">
+          <div class="hc-chip">Layers</div>
+          <div class="hc-layer-row hc-layer-sel">
+            <svg class="hc-ico" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            Navigation
+          </div>
+          <div class="hc-layer-row">
+            <svg class="hc-ico" viewBox="0 0 16 16"><rect x="1" y="5" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="4" y="1" width="8" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            Hero Section
+          </div>
+          <div class="hc-layer-row">
+            <svg class="hc-ico" viewBox="0 0 16 16"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Content Grid
+          </div>
+          <div class="hc-layer-row">
+            <svg class="hc-ico" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            Background
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Component -->
+      <div class="hc-node" data-depth="0.09" style="top:35%;right:4%">
+        <div class="hc-card" style="animation-name:hcF1;animation-duration:4.8s">
+          <div class="hc-chip">Component</div>
+          <button class="hc-demo-btn">Primary Action ↗</button>
+          <div class="hc-state-row">
+            <span class="hc-state">Default</span>
+            <span class="hc-state hc-state-hov">Hover</span>
+            <span class="hc-state">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Impact metrics -->
+      <div class="hc-node" data-depth="0.06" style="top:61%;left:28%">
+        <div class="hc-card" style="animation-name:hcF2;animation-duration:6s">
+          <div class="hc-chip">Impact</div>
+          <div class="hc-met-grid">
+            <div class="hc-met">
+              <div class="hc-met-v">9+</div>
+              <div class="hc-met-l">Years</div>
+            </div>
+            <div class="hc-met">
+              <div class="hc-met-v" style="color:var(--green)">$4.3M</div>
+              <div class="hc-met-l">ARR Scaled</div>
+            </div>
+            <div class="hc-met">
+              <div class="hc-met-v" style="color:var(--amber)">12+</div>
+              <div class="hc-met-l">Products</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- ─── /DESIGN CANVAS ─── -->
+
     <div class="hero-year">2026</div>
 
     <div class="hero-badge">Available for Senior Roles</div>
@@ -2417,6 +2647,29 @@
     window.addEventListener('scroll', () => {
       hg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
     }, { passive: true });
+
+    // ─── HERO CANVAS PARALLAX ───
+    (function () {
+      const heroEl = document.querySelector('.hero');
+      const nodes  = document.querySelectorAll('.hc-node');
+      if (!nodes.length) return;
+      heroEl.addEventListener('mousemove', e => {
+        const r  = heroEl.getBoundingClientRect();
+        const cx = (e.clientX - r.left)  / r.width  - 0.5;
+        const cy = (e.clientY - r.top)   / r.height - 0.5;
+        nodes.forEach(n => {
+          const d  = parseFloat(n.dataset.depth) || 0.05;
+          n.style.setProperty('--hx', (cx * d * 130) + 'px');
+          n.style.setProperty('--hy', (cy * d *  90) + 'px');
+        });
+      });
+      heroEl.addEventListener('mouseleave', () => {
+        nodes.forEach(n => {
+          n.style.setProperty('--hx', '0px');
+          n.style.setProperty('--hy', '0px');
+        });
+      });
+    })();
 
     // ─── REVEAL ON SCROLL ───
     const obs = new IntersectionObserver(entries => {
