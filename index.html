@@ -211,6 +211,7 @@
       backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
     }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-logo {
       font-size: 16px; font-weight: 800;
       letter-spacing: -.03em;
@@ -1491,16 +1492,18 @@
   <!-- Nav -->
   <nav id="nav">
     <a href="#home" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="/work.html">Work</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
-    </ul>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
-    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+      <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- ═══════════════ HERO ═══════════════ -->
