@@ -195,15 +195,9 @@
     .screen-card-desc { font-size:12px; color:var(--text2); line-height:1.7; margin-bottom:14px; }
     .screen-card-tags { display:flex; flex-wrap:wrap; gap:6px; }
     .screen-tag { font-size:10px; font-weight:700; padding:3px 9px; border-radius:100px; background:var(--accent-lo); color:var(--accent); border:1px solid var(--border-hi); }
-    .screen-card-mockup { height:160px; background:var(--bg3); border-top:1px solid var(--border); display:flex; flex-direction:column; gap:6px; padding:14px; overflow:hidden; }
-    .mock-row { height:10px; background:var(--border); border-radius:3px; }
-    .mock-row.accent { background:rgba(123,108,246,.25); width:60%; }
-    .mock-row.short { width:40%; }
-    .mock-row.med { width:70%; }
-    .mock-badge { display:inline-flex; gap:4px; }
-    .mock-b { height:10px; width:52px; border-radius:100px; background:rgba(74,222,128,.2); }
-    .mock-b.orange { background:rgba(251,176,36,.2); }
-    .mock-b.blue { background:rgba(123,108,246,.25); }
+    .screen-card-img { border-top:1px solid var(--border); overflow:hidden; height:200px; }
+    .screen-card-img img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .5s ease; }
+    .screen-card:hover .screen-card-img img { transform:scale(1.04); }
     @media(max-width:768px){
       .screens-sec { padding:56px 24px; }
       .screen-card { width:280px; }
@@ -477,126 +471,174 @@
           <div class="screen-card-stage">Dashboard</div>
           <div class="screen-card-title">Project Fleet Overview</div>
           <div class="screen-card-desc">768 live projects across 8 pipeline stages — stage-badge filtering, multi-tag search, sortable by Job ID, Client, City, PM, Estimate, Due Date.</div>
-          <div class="screen-card-tags"><span class="screen-tag">768 Projects</span><span class="screen-tag">8 Stages</span><span class="screen-tag">Add Project</span></div>
+          <div class="screen-card-tags"><span class="screen-tag">768 Projects</span><span class="screen-tag">8 Stages</span><span class="screen-tag">Table View</span></div>
         </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent"></div>
-          <div class="mock-row"></div><div class="mock-row short"></div>
-          <div class="mock-badge"><div class="mock-b blue"></div><div class="mock-b orange"></div><div class="mock-b"></div></div>
-          <div class="mock-row med"></div><div class="mock-row short"></div><div class="mock-row"></div>
-        </div>
+        <div class="screen-card-img"><img src="/images/RDash/All%20project%20table%20design%20update%20%E2%80%93%20-1.png" alt="All Projects Table" loading="lazy"></div>
       </div>
 
       <div class="screen-card rv d1">
-        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Recce — Create</div></div>
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">My Projects — Alt</div></div>
         <div class="screen-card-body">
-          <div class="screen-card-stage">Stage 01 / Recce</div>
-          <div class="screen-card-title">Site Survey Setup</div>
-          <div class="screen-card-desc">Template-based recce creation — External Environment, Internal Environment, Signage & Facade, Layouts & Sketches, Custom Section. Assign to field engineers, set due date, add Client POC.</div>
-          <div class="screen-card-tags"><span class="screen-tag">Template Select</span><span class="screen-tag">Assign Engineers</span><span class="screen-tag">Create Link</span></div>
+          <div class="screen-card-stage">Dashboard</div>
+          <div class="screen-card-title">Projects Table (Updated)</div>
+          <div class="screen-card-desc">Refined project table design with enhanced column layout, improved status badges, and faster filter interactions for high-density project lists.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Search</span><span class="screen-tag">Sort</span><span class="screen-tag">Filter</span></div>
         </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent"></div>
-          <div class="mock-row short"></div><div class="mock-row med"></div>
-          <div class="mock-row"></div><div class="mock-row short"></div>
-          <div class="mock-row med"></div><div class="mock-row short"></div>
-        </div>
+        <div class="screen-card-img"><img src="/images/RDash/All%20project%20table%20design%20update%20%E2%80%93%2033333.png" alt="Projects Table Updated" loading="lazy"></div>
       </div>
 
       <div class="screen-card rv d2">
-        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Recce — Share</div></div>
-        <div class="screen-card-body">
-          <div class="screen-card-stage">Stage 01 / Recce</div>
-          <div class="screen-card-title">WhatsApp Link Distribution</div>
-          <div class="screen-card-desc">Recce link generated and shared via WhatsApp to assigned Project Engineers. Copy link, add custom users, view already-shared recipients — all from a single confirmation modal.</div>
-          <div class="screen-card-tags"><span class="screen-tag">Copy Link</span><span class="screen-tag">WhatsApp Share</span><span class="screen-tag">Custom Users</span></div>
-        </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent short"></div>
-          <div class="mock-row"></div><div class="mock-row med"></div>
-          <div class="mock-row short"></div><div class="mock-row"></div>
-          <div class="mock-row short"></div><div class="mock-row med"></div>
-        </div>
-      </div>
-
-      <div class="screen-card rv">
         <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Recce — Review</div></div>
         <div class="screen-card-body">
           <div class="screen-card-stage">Stage 01 / Recce</div>
           <div class="screen-card-title">Survey Review & Approval</div>
-          <div class="screen-card-desc">Submitted recce reviewed per section — External Images & Videos, Internal Environment, Signage, Layouts. Custom components with text and image grids. Approve or reject per section.</div>
-          <div class="screen-card-tags"><span class="screen-tag">Photo Evidence</span><span class="screen-tag">Video Upload</span><span class="screen-tag">Approve</span></div>
+          <div class="screen-card-desc">Submitted recce reviewed per section — External Environment photos, Internal Environment, Signage, Layouts. Approve or reject each section with evidence attached.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Photo Evidence</span><span class="screen-tag">External Env</span><span class="screen-tag">Approve</span></div>
         </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent"></div>
-          <div class="mock-row med"></div>
-          <div style="display:flex;gap:4px;margin-top:4px"><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div><div style="width:32px;height:24px;background:var(--border);border-radius:4px"></div></div>
-          <div class="mock-row short" style="margin-top:6px"></div><div class="mock-row"></div>
-        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Submitted%20recce%20on%20web%20External%20Environment%20%E2%80%93%202.png" alt="Recce External Environment Review" loading="lazy"></div>
       </div>
 
-      <div class="screen-card rv d1">
+      <div class="screen-card rv">
         <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">BOQ — My Scope</div></div>
         <div class="screen-card-body">
           <div class="screen-card-stage">Stage 03 / BOQ</div>
           <div class="screen-card-title">Scope & Pricing</div>
           <div class="screen-card-desc">Sectioned BOQ — Civil Work, Demolition, Interior & Allied Work — with image-linked items, category codes, proposals, UOM, quantity, and real-time net amount after discount.</div>
-          <div class="screen-card-tags"><span class="screen-tag">My Scope</span><span class="screen-tag">Proposals</span><span class="screen-tag">Auto Totals</span></div>
+          <div class="screen-card-tags"><span class="screen-tag">My Scope</span><span class="screen-tag">60% Approved</span><span class="screen-tag">Auto Totals</span></div>
         </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent"></div>
-          <div class="mock-row"></div><div class="mock-row med"></div>
-          <div class="mock-row short"></div><div class="mock-row"></div>
-          <div class="mock-row med"></div><div class="mock-row short"></div>
-        </div>
-      </div>
-
-      <div class="screen-card rv d2">
-        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Orders — Vendor</div></div>
-        <div class="screen-card-body">
-          <div class="screen-card-stage">Stage 04 / Orders</div>
-          <div class="screen-card-title">Vendor Order Management</div>
-          <div class="screen-card-desc">Proposals From Vendor, Vendor Order, Vendor Invoices, Vendor Payments, Other Expenses, Vendor Wise Scope, and Progress Report — with PO attachment, progress %, and category tags per order.</div>
-          <div class="screen-card-tags"><span class="screen-tag">PO Tracking</span><span class="screen-tag">Vendor Invoices</span><span class="screen-tag">Payments</span></div>
-        </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent"></div>
-          <div class="mock-row"></div>
-          <div class="mock-badge"><div class="mock-b blue"></div><div class="mock-b orange"></div></div>
-          <div class="mock-row med"></div><div class="mock-row short"></div>
-          <div class="mock-row"></div><div class="mock-row short"></div>
-        </div>
-      </div>
-
-      <div class="screen-card rv">
-        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Work Progress</div></div>
-        <div class="screen-card-body">
-          <div class="screen-card-stage">Stage 05 / Work Progress</div>
-          <div class="screen-card-title">Gantt Tracker & Progress</div>
-          <div class="screen-card-desc">Projected vs. Expected date Gantt, Time Status bar (Actual Start → Projected End), section-level progress %, daily vs. overall summary with ₹ values, and Generate Report CTA.</div>
-          <div class="screen-card-tags"><span class="screen-tag">Date Tracker</span><span class="screen-tag">Section Progress</span><span class="screen-tag">Generate Report</span></div>
-        </div>
-        <div class="screen-card-mockup">
-          <div class="mock-row accent short"></div>
-          <div style="height:32px;background:var(--bg);border-radius:4px;border:1px solid var(--border);margin-top:4px;padding:6px 8px;display:flex;align-items:center;gap:4px"><div style="height:6px;width:50%;background:rgba(123,108,246,.3);border-radius:2px"></div><div style="height:6px;width:20%;background:rgba(251,176,36,.4);border-radius:2px"></div></div>
-          <div class="mock-row short" style="margin-top:6px"></div><div class="mock-row"></div><div class="mock-row med"></div>
-        </div>
+        <div class="screen-card-img"><img src="/images/RDash/My%20scope%20%E2%80%93%204.png" alt="BOQ My Scope" loading="lazy"></div>
       </div>
 
       <div class="screen-card rv d1">
-        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Snags</div></div>
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">BOQ — Item Detail</div></div>
         <div class="screen-card-body">
-          <div class="screen-card-stage">Stage 06 / Snags</div>
-          <div class="screen-card-title">Quality Control & Resolution</div>
-          <div class="screen-card-desc">Log snags with photo evidence, snag code, location, category tags (Faucet Missing, Piper Fitting), committed closure date — tracked through Open Unresolved → Open Resolved → Closed with a tri-color progress bar.</div>
-          <div class="screen-card-tags"><span class="screen-tag">Photo Evidence</span><span class="screen-tag">Category Tags</span><span class="screen-tag">Resolution Tracking</span></div>
+          <div class="screen-card-stage">Stage 03 / BOQ</div>
+          <div class="screen-card-title">Item Detail Page</div>
+          <div class="screen-card-desc">Deep-dive view into a single BOQ line item — category, UOM, quantity, vendor proposals, pricing history, and linked procurement status in one panel.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Item Detail</span><span class="screen-tag">Proposals</span><span class="screen-tag">Pricing</span></div>
         </div>
-        <div class="screen-card-mockup">
-          <div style="display:flex;gap:0;height:8px;border-radius:100px;overflow:hidden;margin-bottom:8px"><div style="flex:0.54;background:rgba(74,222,128,.4)"></div><div style="flex:0.14;background:rgba(251,176,36,.4)"></div><div style="flex:0.32;background:rgba(251,176,36,.25)"></div></div>
-          <div class="mock-row"></div><div class="mock-row med"></div>
-          <div class="mock-row short"></div><div class="mock-row"></div>
-          <div class="mock-row med"></div>
+        <div class="screen-card-img"><img src="/images/RDash/Item%20Detail%20page%20web%20BOQ%20updates%20%E2%80%93%207.png" alt="BOQ Item Detail Page" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d2">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Orders — Purchase</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 04 / Orders</div>
+          <div class="screen-card-title">Purchase Requests</div>
+          <div class="screen-card-desc">All purchase requests with approval status — issue date, due date, vendor, category tags (Production, Procurement), and PO attachment status per request.</div>
+          <div class="screen-card-tags"><span class="screen-tag">PO Tracking</span><span class="screen-tag">Pending</span><span class="screen-tag">Approved</span></div>
         </div>
+        <div class="screen-card-img"><img src="/images/RDash/Purchase%20request%20%E2%80%93%208.png" alt="Purchase Requests" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Orders — PR Detail</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 04 / Orders</div>
+          <div class="screen-card-title">Purchase Request Detail</div>
+          <div class="screen-card-desc">Detailed purchase request view — line items, quantities, vendor selection, approval chain, and current status at a glance.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Line Items</span><span class="screen-tag">Vendor</span><span class="screen-tag">Approval</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Purchase%20request%20%E2%80%93%2010.png" alt="Purchase Request Detail" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d1">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Orders — Vendor Approval</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 04 / Orders</div>
+          <div class="screen-card-title">Vendor Order Approval</div>
+          <div class="screen-card-desc">Vendor order approval flow inside a project — review PO details, scope, amounts, and approve or reject with remarks. Full audit trail maintained.</div>
+          <div class="screen-card-tags"><span class="screen-tag">PO Details</span><span class="screen-tag">Approve</span><span class="screen-tag">Audit Trail</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Vendor%20Order%20Approval%20inside%20Project%204%20%E2%80%93%202.png" alt="Vendor Order Approval" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d2">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Invoices</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 04 / Orders</div>
+          <div class="screen-card-title">All Project Invoices</div>
+          <div class="screen-card-desc">Consolidated invoice tracker across all vendors — invoice number, amount, status, and payment date in a single sortable table with quick-action approvals.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Invoices</span><span class="screen-tag">Payments</span><span class="screen-tag">Vendors</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Project%20all%20Invoice%20%E2%80%93%2029.png" alt="Project All Invoices" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Task Manager 2.0</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 05 / Progress</div>
+          <div class="screen-card-title">Task Manager 2.0</div>
+          <div class="screen-card-desc">Redesigned task manager — task assignment, due dates, priority tags, and section-level progress tracking for field teams and project managers.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Assign</span><span class="screen-tag">Due Dates</span><span class="screen-tag">Priority</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Task%20Manager%202.0.0%202%20%E2%80%93%2011.png" alt="Task Manager 2.0" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d1">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Work Progress</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Stage 05 / Progress</div>
+          <div class="screen-card-title">Task & Progress UI</div>
+          <div class="screen-card-desc">Updated task interface for field execution tracking — section progress %, daily summary, overall rollup with ₹ values, and Gantt date tracker.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Section %</span><span class="screen-tag">Gantt</span><span class="screen-tag">₹ Summary</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Pure%20Task%20ui%20update%20%E2%80%93%206.png" alt="Task UI Update" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d2">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Leads Manager</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">CRM</div>
+          <div class="screen-card-title">Leads Manager</div>
+          <div class="screen-card-desc">Manage incoming project leads — track status, assign to PMs, set follow-up dates, and move leads through the sales pipeline into active projects.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Leads</span><span class="screen-tag">CRM</span><span class="screen-tag">Pipeline</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Leads%20Manager%201%20%E2%80%93%2010.png" alt="Leads Manager" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Leads — Empty State</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">CRM</div>
+          <div class="screen-card-title">Leads Manager — Empty</div>
+          <div class="screen-card-desc">Thoughtfully designed empty state for new users — clear CTA, guidance copy, and visual cue to add the first lead without overwhelming the workspace.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Empty State</span><span class="screen-tag">Onboarding</span><span class="screen-tag">CTA</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Leads%20Manager%201%20empty%20screen.png" alt="Leads Manager Empty State" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d1">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Platform View</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Platform</div>
+          <div class="screen-card-title">Platform Module</div>
+          <div class="screen-card-desc">Core platform module view — high-density data layout optimised for project managers who need context-switching across multiple project scopes.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Overview</span><span class="screen-tag">Module</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Mask%20Group%2010.png" alt="Platform Module View" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv d2">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Platform Detail</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Platform</div>
+          <div class="screen-card-title">Platform Detail View</div>
+          <div class="screen-card-desc">Detailed platform panel — contextual data surfaced inline with actions, minimising navigation depth while keeping full detail accessible in one scroll.</div>
+          <div class="screen-card-tags"><span class="screen-tag">Detail</span><span class="screen-tag">Inline Actions</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Mask%20Group%2011.png" alt="Platform Detail View" loading="lazy"></div>
+      </div>
+
+      <div class="screen-card rv">
+        <div class="screen-card-bar"><div class="screen-card-dots"><span></span><span></span><span></span></div><div class="screen-card-label">Dashboard</div></div>
+        <div class="screen-card-body">
+          <div class="screen-card-stage">Platform</div>
+          <div class="screen-card-title">Platform Dashboard</div>
+          <div class="screen-card-desc">Unified project dashboard — KPI tiles, scope progress, vendor payables, and project timeline in one command centre view for senior stakeholders.</div>
+          <div class="screen-card-tags"><span class="screen-tag">KPIs</span><span class="screen-tag">Command Centre</span></div>
+        </div>
+        <div class="screen-card-img"><img src="/images/RDash/Artboard%20%E2%80%93%205jk.png" alt="Platform Dashboard" loading="lazy"></div>
       </div>
 
     </div>
