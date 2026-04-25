@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="glow" cx="38%" cy="36%" r="55%">
+      <stop offset="0%" stop-color="#7B6CF6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#07070F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Dark background with rounded corners (app icon shape) -->
+  <rect width="512" height="512" rx="116" fill="#07070F"/>
+  <!-- Subtle purple glow -->
+  <rect width="512" height="512" rx="116" fill="url(#glow)"/>
+  <!-- Bold B letterform -->
+  <!-- B stem (vertical bar) -->
+  <rect x="128" y="112" width="56" height="288" rx="8" fill="#EEEEF8"/>
+  <!-- B top bump -->
+  <path d="M184 112 h68 a76 76 0 0 1 0 144 h-68 z" fill="#EEEEF8"/>
+  <!-- B bottom bump (slightly wider) -->
+  <path d="M184 256 h80 a88 88 0 0 1 0 144 h-80 z" fill="#EEEEF8"/>
+  <!-- Purple accent dot — matches buddh. brand mark -->
+  <circle cx="368" cy="382" r="38" fill="#7B6CF6"/>
+</svg>

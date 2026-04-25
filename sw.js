@@ -1,10 +1,12 @@
-const CACHE = 'buddh-v11';
+const CACHE = 'buddh-v12';
 const ASSETS = [
   '/',
   '/index.html',
   '/work.html',
   '/about.html',
   '/manifest.json',
+  '/favicon.svg',
+  '/icons/icon-32.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/images/elite60/logo-screen.jpg',
