@@ -1,4 +1,4 @@
-const CACHE = 'buddh-v15';
+const CACHE = 'buddh-v16';
 const ASSETS = [
   '/',
   '/index.html',
@@ -9,6 +9,11 @@ const ASSETS = [
   '/icons/icon-32.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
+  '/images/hero-rankwatch.svg',
+  '/images/hero-websignals.svg',
+  '/images/hero-kockpit.svg',
+  '/images/hero-knovelo.svg',
+  '/images/hero-locatr.svg',
   '/images/elite60/logo-screen.jpg',
   '/images/elite60/splash.jpg',
   '/images/elite60/home.jpg',

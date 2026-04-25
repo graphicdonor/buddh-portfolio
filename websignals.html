@@ -102,6 +102,9 @@
     .cs-title { font-size:clamp(64px,9vw,120px); font-weight:800; line-height:.92; letter-spacing:-.045em; margin-bottom:28px; }
     .cs-tagline { font-size:18px; line-height:1.7; color:var(--text2); max-width:640px; }
     .cs-tagline strong { color:var(--text); }
+    .cs-hero-img { position:relative; z-index:1; margin-top:48px; border-radius:var(--r); overflow:hidden; border:1px solid var(--border); box-shadow:0 32px 80px rgba(0,0,0,0.5); }
+    .cs-hero-img img { width:100%; display:block; }
+    @media(max-width:768px){ .cs-hero-img { margin-top:32px; } }
 
     /* ─── META BAR ─── */
     .cs-meta-bar { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 56px; display:flex; gap:48px; flex-wrap:wrap; }
@@ -251,6 +254,9 @@
       <p class="cs-tagline rv d3">
         A 0→1 brand monitoring and media intelligence platform — designed from first principles, with full product definition, a complete design system, and a launch experience built for B2B growth.
       </p>
+      <div class="cs-hero-img rv d3">
+        <img src="/images/hero-websignals.svg" alt="WebSignals brand monitoring UI mockup" loading="eager"/>
+      </div>
     </div>
   </div>
 

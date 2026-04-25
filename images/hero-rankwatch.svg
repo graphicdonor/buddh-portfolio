@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560">
+  <defs>
+    <filter id="sh"><feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+    <filter id="sh2"><feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity=".45"/></filter>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#131326"/><stop offset="100%" stop-color="#0D0D1C"/></linearGradient>
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7B6CF6" stop-opacity=".35"/><stop offset="100%" stop-color="#7B6CF6" stop-opacity="0"/></linearGradient>
+    <linearGradient id="fadeBottom" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0D0D1C" stop-opacity="0"/><stop offset="100%" stop-color="#0D0D1C" stop-opacity="1"/></linearGradient>
+  </defs>
+
+  <!-- Background glows -->
+  <circle cx="980" cy="120" r="220" fill="rgba(123,108,246,.055)"/>
+  <circle cx="180" cy="420" r="160" fill="rgba(34,211,238,.04)"/>
+
+  <!-- Main browser window -->
+  <g filter="url(#sh)">
+    <rect x="210" y="48" width="780" height="464" rx="14" fill="url(#scr)" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
+    <!-- Chrome bar -->
+    <rect x="210" y="48" width="780" height="38" rx="14" fill="#131326"/>
+    <rect x="210" y="72" width="780" height="14" fill="#131326"/>
+    <!-- Traffic lights -->
+    <circle cx="238" cy="67" r="5.5" fill="#FF5F57"/>
+    <circle cx="256" cy="67" r="5.5" fill="#FEBC2E"/>
+    <circle cx="274" cy="67" r="5.5" fill="#28C840"/>
+    <!-- URL bar -->
+    <rect x="350" y="56" width="300" height="20" rx="10" fill="rgba(255,255,255,.05)"/>
+    <text x="500" y="70" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="rgba(255,255,255,.22)" text-anchor="middle">app.rankwatch.com/rank-tracker</text>
+  </g>
+
+  <!-- Left sidebar -->
+  <rect x="210" y="86" width="110" height="426" rx="0" fill="#0F0F20" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+  <rect x="210" y="86" width="1" height="426" fill="rgba(255,255,255,.07)"/>
+  <!-- Sidebar nav items -->
+  <rect x="218" y="104" width="94" height="22" rx="6" fill="rgba(123,108,246,.18)"/>
+  <text x="227" y="119" font-family="system-ui,sans-serif" font-size="9" fill="#7B6CF6" font-weight="600">Rank Tracker</text>
+  <text x="227" y="148" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">Backlinks</text>
+  <text x="227" y="172" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">Site Audit</text>
+  <text x="227" y="196" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">Keywords</text>
+  <text x="227" y="220" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">Competitors</text>
+  <text x="227" y="244" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">Reports</text>
+
+  <!-- Main content area -->
+  <!-- Page header -->
+  <rect x="320" y="86" width="670" height="42" fill="rgba(255,255,255,.02)"/>
+  <text x="336" y="113" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="rgba(238,238,248,.9)">Rank Tracker</text>
+  <!-- Filter chips -->
+  <rect x="500" y="96" width="60" height="20" rx="10" fill="rgba(255,255,255,.06)"/>
+  <text x="530" y="110" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.5)" text-anchor="middle">All Keywords</text>
+  <rect x="568" y="96" width="50" height="20" rx="10" fill="rgba(255,255,255,.06)"/>
+  <text x="593" y="110" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.5)" text-anchor="middle">↑ Rising</text>
+  <!-- Add keyword button -->
+  <rect x="870" y="96" width="100" height="22" rx="11" fill="#7B6CF6"/>
+  <text x="920" y="111" font-family="system-ui,sans-serif" font-size="8.5" fill="white" text-anchor="middle" font-weight="700">+ Add Keyword</text>
+
+  <!-- Mini sparkline chart area -->
+  <rect x="320" y="128" width="670" height="80" fill="rgba(123,108,246,.03)" stroke="rgba(123,108,246,.08)" stroke-width="1"/>
+  <!-- Chart area background fill -->
+  <path d="M330 195 L370 178 L420 165 L480 170 L540 155 L600 148 L660 152 L720 140 L780 145 L840 138 L890 132 L940 128 L970 125 L970 208 L330 208 Z" fill="url(#chartGrad)"/>
+  <!-- Chart line -->
+  <polyline points="330,195 370,178 420,165 480,170 540,155 600,148 660,152 720,140 780,145 840,138 890,132 940,128 970,125" fill="none" stroke="#7B6CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Chart dots -->
+  <circle cx="720" cy="140" r="4" fill="#7B6CF6"/>
+  <circle cx="970" cy="125" r="4" fill="#4ADE80"/>
+  <!-- Chart labels -->
+  <text x="336" y="143" font-family="system-ui,sans-serif" font-size="7.5" fill="rgba(238,238,248,.35)">Avg. Rank Trend — Last 30 Days</text>
+  <text x="940" y="142" font-family="system-ui,sans-serif" font-size="8" fill="#4ADE80" font-weight="700">↑ 32%</text>
+
+  <!-- Table header -->
+  <rect x="320" y="208" width="670" height="22" fill="rgba(255,255,255,.03)"/>
+  <text x="336" y="223" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)" font-weight="700" letter-spacing=".05em">KEYWORD</text>
+  <text x="530" y="223" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)" font-weight="700" letter-spacing=".05em">CURR RANK</text>
+  <text x="620" y="223" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)" font-weight="700" letter-spacing=".05em">CHANGE</text>
+  <text x="710" y="223" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)" font-weight="700" letter-spacing=".05em">VOLUME</text>
+  <text x="800" y="223" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)" font-weight="700" letter-spacing=".05em">BEST RANK</text>
+  <text x="890" y="223" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)" font-weight="700" letter-spacing=".05em">STATUS</text>
+
+  <!-- Table rows -->
+  <!-- Row 1 -->
+  <line x1="320" y1="230" x2="990" y2="230" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <text x="336" y="246" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.85)">seo monitoring tool</text>
+  <rect x="532" y="234" width="28" height="18" rx="9" fill="rgba(74,222,128,.15)"/>
+  <text x="546" y="246" font-family="system-ui,sans-serif" font-size="9" fill="#4ADE80" text-anchor="middle" font-weight="700">#1</text>
+  <text x="636" y="246" font-family="system-ui,sans-serif" font-size="9" fill="#4ADE80" font-weight="700">↑ 4</text>
+  <text x="714" y="246" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">18,100</text>
+  <text x="810" y="246" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">#1</text>
+  <rect x="892" y="234" width="52" height="18" rx="9" fill="rgba(74,222,128,.12)"/>
+  <text x="918" y="246" font-family="system-ui,sans-serif" font-size="8" fill="#4ADE80" text-anchor="middle">Top 3</text>
+
+  <!-- Row 2 -->
+  <line x1="320" y1="255" x2="990" y2="255" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <text x="336" y="271" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.85)">rank tracking software</text>
+  <rect x="532" y="259" width="28" height="18" rx="9" fill="rgba(123,108,246,.2)"/>
+  <text x="546" y="271" font-family="system-ui,sans-serif" font-size="9" fill="#7B6CF6" text-anchor="middle" font-weight="700">#3</text>
+  <text x="636" y="271" font-family="system-ui,sans-serif" font-size="9" fill="#4ADE80" font-weight="700">↑ 2</text>
+  <text x="714" y="271" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">12,400</text>
+  <text x="810" y="271" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">#2</text>
+  <rect x="892" y="259" width="52" height="18" rx="9" fill="rgba(123,108,246,.15)"/>
+  <text x="918" y="271" font-family="system-ui,sans-serif" font-size="8" fill="#7B6CF6" text-anchor="middle">Top 5</text>
+
+  <!-- Row 3 -->
+  <line x1="320" y1="280" x2="990" y2="280" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <text x="336" y="296" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.85)">backlink checker free</text>
+  <rect x="532" y="284" width="28" height="18" rx="9" fill="rgba(251,176,36,.15)"/>
+  <text x="546" y="296" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024" text-anchor="middle" font-weight="700">#7</text>
+  <text x="636" y="296" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024" font-weight="700">↑ 1</text>
+  <text x="714" y="296" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">8,900</text>
+  <text x="810" y="296" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">#5</text>
+  <rect x="892" y="284" width="52" height="18" rx="9" fill="rgba(251,176,36,.12)"/>
+  <text x="918" y="296" font-family="system-ui,sans-serif" font-size="8" fill="#FBB024" text-anchor="middle">Top 10</text>
+
+  <!-- Row 4 -->
+  <line x1="320" y1="305" x2="990" y2="305" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <text x="336" y="321" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.85)">site audit tool</text>
+  <rect x="532" y="309" width="28" height="18" rx="9" fill="rgba(123,108,246,.2)"/>
+  <text x="546" y="321" font-family="system-ui,sans-serif" font-size="9" fill="#7B6CF6" text-anchor="middle" font-weight="700">#4</text>
+  <text x="636" y="321" font-family="system-ui,sans-serif" font-size="9" fill="#4ADE80" font-weight="700">↑ 3</text>
+  <text x="714" y="321" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">6,200</text>
+  <text x="810" y="321" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">#3</text>
+  <rect x="892" y="309" width="52" height="18" rx="9" fill="rgba(74,222,128,.12)"/>
+  <text x="918" y="321" font-family="system-ui,sans-serif" font-size="8" fill="#4ADE80" text-anchor="middle">Top 5</text>
+
+  <!-- Row 5 -->
+  <line x1="320" y1="330" x2="990" y2="330" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <text x="336" y="346" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.85)">keyword research tool</text>
+  <rect x="532" y="334" width="32" height="18" rx="9" fill="rgba(240,98,146,.15)"/>
+  <text x="548" y="346" font-family="system-ui,sans-serif" font-size="9" fill="#F06292" text-anchor="middle" font-weight="700">#14</text>
+  <text x="636" y="346" font-family="system-ui,sans-serif" font-size="9" fill="#F06292" font-weight="700">↓ 2</text>
+  <text x="714" y="346" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">22,000</text>
+  <text x="810" y="346" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.55)">#9</text>
+  <rect x="892" y="334" width="52" height="18" rx="9" fill="rgba(240,98,146,.12)"/>
+  <text x="918" y="346" font-family="system-ui,sans-serif" font-size="8" fill="#F06292" text-anchor="middle">Top 20</text>
+
+  <!-- Fade out bottom rows -->
+  <rect x="320" y="355" width="670" height="157" fill="url(#fadeBottom)"/>
+  <line x1="320" y1="355" x2="990" y2="355" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <text x="336" y="371" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.4)">competitor analysis free</text>
+  <line x1="320" y1="380" x2="990" y2="380" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+  <text x="336" y="396" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.25)">white label seo reports</text>
+
+  <!-- Floating card 1: Top Rank -->
+  <g filter="url(#sh2)" transform="translate(28, 100)">
+    <rect width="158" height="98" rx="14" fill="#131326" stroke="rgba(74,222,128,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="158" height="3" rx="1.5" fill="#4ADE80"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Top Position</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="34" font-weight="800" fill="#EEEEF8" letter-spacing="-2">#1</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="#4ADE80">↑ Held for 14 days</text>
+  </g>
+
+  <!-- Floating card 2: Audit params -->
+  <g filter="url(#sh2)" transform="translate(18, 280)">
+    <rect width="158" height="98" rx="14" fill="#131326" stroke="rgba(34,211,238,.25)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="158" height="3" rx="1.5" fill="#22D3EE"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Site Audit</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#EEEEF8" letter-spacing="-1">110+</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="#22D3EE">Parameters checked</text>
+  </g>
+
+  <!-- Floating card 3: Visibility -->
+  <g filter="url(#sh2)" transform="translate(1014, 180)">
+    <rect width="158" height="98" rx="14" fill="#131326" stroke="rgba(123,108,246,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="158" height="3" rx="1.5" fill="#7B6CF6"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Visibility Score</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#EEEEF8" letter-spacing="-1">+32%</text>
+    <!-- Mini bar -->
+    <rect x="18" y="68" width="122" height="6" rx="3" fill="rgba(255,255,255,.07)"/>
+    <rect x="18" y="68" width="90" height="6" rx="3" fill="#7B6CF6"/>
+    <text x="18" y="85" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.4)">vs last month</text>
+  </g>
+</svg>

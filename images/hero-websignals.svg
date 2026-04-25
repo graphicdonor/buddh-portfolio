@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560">
+  <defs>
+    <filter id="sh"><feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+    <filter id="sh2"><feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity=".45"/></filter>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#131326"/><stop offset="100%" stop-color="#0D0D1C"/></linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0D0D1C" stop-opacity="0"/><stop offset="100%" stop-color="#0D0D1C" stop-opacity="1"/></linearGradient>
+    <linearGradient id="posGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4ADE80" stop-opacity=".4"/><stop offset="100%" stop-color="#4ADE80" stop-opacity="0"/></linearGradient>
+    <linearGradient id="negGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F06292" stop-opacity=".3"/><stop offset="100%" stop-color="#F06292" stop-opacity="0"/></linearGradient>
+  </defs>
+
+  <!-- Background glows -->
+  <circle cx="960" cy="100" r="200" fill="rgba(240,98,146,.05)"/>
+  <circle cx="200" cy="380" r="160" fill="rgba(123,108,246,.05)"/>
+
+  <!-- Main browser window -->
+  <g filter="url(#sh)">
+    <rect x="200" y="48" width="800" height="464" rx="14" fill="url(#scr)" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
+    <rect x="200" y="48" width="800" height="38" rx="14" fill="#131326"/>
+    <rect x="200" y="72" width="800" height="14" fill="#131326"/>
+    <circle cx="228" cy="67" r="5.5" fill="#FF5F57"/>
+    <circle cx="246" cy="67" r="5.5" fill="#FEBC2E"/>
+    <circle cx="264" cy="67" r="5.5" fill="#28C840"/>
+    <rect x="340" y="56" width="320" height="20" rx="10" fill="rgba(255,255,255,.05)"/>
+    <text x="500" y="70" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="rgba(255,255,255,.22)" text-anchor="middle">app.websignals.io/monitor</text>
+  </g>
+
+  <!-- Top header bar -->
+  <rect x="200" y="86" width="800" height="44" fill="rgba(255,255,255,.02)"/>
+  <text x="220" y="114" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="rgba(238,238,248,.9)">Brand Monitor</text>
+  <!-- Live indicator -->
+  <circle cx="328" cy="108" r="5" fill="#4ADE80"/>
+  <circle cx="328" cy="108" r="8" fill="rgba(74,222,128,.25)"/>
+  <text x="340" y="113" font-family="system-ui,sans-serif" font-size="9" fill="#4ADE80" font-weight="600">Live</text>
+  <!-- Filter controls -->
+  <rect x="700" y="96" width="70" height="22" rx="11" fill="rgba(255,255,255,.06)"/>
+  <text x="735" y="111" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.5)" text-anchor="middle">Last 7 days</text>
+  <rect x="778" y="96" width="80" height="22" rx="11" fill="rgba(240,98,146,.12)" stroke="rgba(240,98,146,.2)" stroke-width="1"/>
+  <text x="818" y="111" font-family="system-ui,sans-serif" font-size="8" fill="#F06292" text-anchor="middle">Set Alert ↗</text>
+  <rect x="864" y="96" width="100" height="22" rx="11" fill="#7B6CF6"/>
+  <text x="914" y="111" font-family="system-ui,sans-serif" font-size="8.5" fill="white" text-anchor="middle" font-weight="700">+ Track Brand</text>
+
+  <!-- Left column: Mention Feed -->
+  <rect x="200" y="130" width="480" height="382" fill="rgba(255,255,255,.01)"/>
+  <line x1="680" y1="130" x2="680" y2="512" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+  <!-- Feed header -->
+  <text x="218" y="152" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="rgba(238,238,248,.7)">Recent Mentions</text>
+  <text x="630" y="152" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">1,243 total</text>
+
+  <!-- Mention card 1 — Positive -->
+  <rect x="212" y="162" width="456" height="68" rx="10" fill="rgba(74,222,128,.05)" stroke="rgba(74,222,128,.12)" stroke-width="1"/>
+  <rect x="212" y="162" width="3" height="68" rx="1.5" fill="#4ADE80"/>
+  <text x="226" y="178" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.8)">TechCrunch</text>
+  <rect x="310" y="167" width="52" height="16" rx="8" fill="rgba(74,222,128,.15)"/>
+  <text x="336" y="179" font-family="system-ui,sans-serif" font-size="7.5" fill="#4ADE80" text-anchor="middle">Positive</text>
+  <text x="620" y="178" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">2m ago</text>
+  <text x="226" y="195" font-family="system-ui,sans-serif" font-size="8.5" fill="rgba(238,238,248,.55)">"WebSignals is transforming how brands track their online presence..."</text>
+  <text x="226" y="218" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">Domain Authority: 94 · Estimated Reach: 2.4M</text>
+
+  <!-- Mention card 2 — Positive -->
+  <rect x="212" y="238" width="456" height="68" rx="10" fill="rgba(74,222,128,.03)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <rect x="212" y="238" width="3" height="68" rx="1.5" fill="#4ADE80"/>
+  <text x="226" y="254" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.8)">ProductHunt</text>
+  <rect x="316" y="243" width="52" height="16" rx="8" fill="rgba(74,222,128,.15)"/>
+  <text x="342" y="255" font-family="system-ui,sans-serif" font-size="7.5" fill="#4ADE80" text-anchor="middle">Positive</text>
+  <text x="620" y="254" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">18m ago</text>
+  <text x="226" y="271" font-family="system-ui,sans-serif" font-size="8.5" fill="rgba(238,238,248,.55)">"Best real-time brand monitoring tool we've tested this year..."</text>
+  <text x="226" y="294" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">Domain Authority: 87 · Estimated Reach: 890K</text>
+
+  <!-- Mention card 3 — Neutral -->
+  <rect x="212" y="314" width="456" height="68" rx="10" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <rect x="212" y="314" width="3" height="68" rx="1.5" fill="#FBB024"/>
+  <text x="226" y="330" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.8)">Hacker News</text>
+  <rect x="318" y="319" width="52" height="16" rx="8" fill="rgba(251,176,36,.15)"/>
+  <text x="344" y="331" font-family="system-ui,sans-serif" font-size="7.5" fill="#FBB024" text-anchor="middle">Neutral</text>
+  <text x="620" y="330" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">45m ago</text>
+  <text x="226" y="347" font-family="system-ui,sans-serif" font-size="8.5" fill="rgba(238,238,248,.55)">"Anyone tried WebSignals for brand tracking? Looking for feedback..."</text>
+  <text x="226" y="370" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">Domain Authority: 82 · Estimated Reach: 420K</text>
+
+  <!-- Fade bottom of feed -->
+  <rect x="200" y="390" width="480" height="122" fill="url(#fade)"/>
+
+  <!-- Right column: Sentiment chart -->
+  <text x="698" y="152" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="rgba(238,238,248,.7)">Sentiment Analysis</text>
+
+  <!-- Donut chart area (CSS circle approximation with arcs) -->
+  <!-- Background circle -->
+  <circle cx="800" cy="270" r="80" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="22"/>
+  <!-- Positive segment (87%) - large arc -->
+  <circle cx="800" cy="270" r="80" fill="none" stroke="#4ADE80" stroke-width="22" stroke-dasharray="436 500" stroke-dashoffset="0" transform="rotate(-90 800 270)" stroke-linecap="round" opacity=".8"/>
+  <!-- Negative segment (9%) -->
+  <circle cx="800" cy="270" r="80" fill="none" stroke="#F06292" stroke-width="22" stroke-dasharray="45 500" stroke-dashoffset="-436" transform="rotate(-90 800 270)" stroke-linecap="round" opacity=".7"/>
+  <!-- Neutral segment (4%) -->
+  <circle cx="800" cy="270" r="80" fill="none" stroke="#FBB024" stroke-width="22" stroke-dasharray="20 500" stroke-dashoffset="-481" transform="rotate(-90 800 270)" stroke-linecap="round" opacity=".7"/>
+  <!-- Center label -->
+  <text x="800" y="264" font-family="system-ui,sans-serif" font-size="26" font-weight="800" fill="#EEEEF8" text-anchor="middle">87%</text>
+  <text x="800" y="282" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.4)" text-anchor="middle">Positive</text>
+
+  <!-- Legend -->
+  <circle cx="706" cy="380" r="5" fill="#4ADE80"/>
+  <text x="716" y="385" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.6)">Positive — 87%</text>
+  <circle cx="706" cy="400" r="5" fill="#F06292"/>
+  <text x="716" y="405" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.6)">Negative — 9%</text>
+  <circle cx="706" cy="420" r="5" fill="#FBB024"/>
+  <text x="716" y="425" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.6)">Neutral — 4%</text>
+
+  <!-- Floating card 1: Mentions -->
+  <g filter="url(#sh2)" transform="translate(22, 110)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(123,108,246,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#7B6CF6"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Total Mentions</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#EEEEF8" letter-spacing="-1">1.2K</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="#4ADE80">↑ 23% this week</text>
+  </g>
+
+  <!-- Floating card 2: Positive -->
+  <g filter="url(#sh2)" transform="translate(14, 290)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(74,222,128,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#4ADE80"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Positive Sentiment</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#EEEEF8" letter-spacing="-1">87%</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="#4ADE80">↑ 5% vs last week</text>
+  </g>
+
+  <!-- Floating card 3: Reach -->
+  <g filter="url(#sh2)" transform="translate(1016, 160)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(240,98,146,.25)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#F06292"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Est. Reach</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="26" font-weight="800" fill="#EEEEF8" letter-spacing="-1">14.2M</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="rgba(238,238,248,.4)">Across all sources</text>
+  </g>
+</svg>

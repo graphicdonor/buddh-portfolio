@@ -105,6 +105,9 @@
     .cs-title .serif { color:var(--accent); letter-spacing:-.02em; }
     .cs-tagline { font-size:18px; line-height:1.7; color:var(--text2); max-width:640px; }
     .cs-tagline strong { color:var(--text); }
+    .cs-hero-img { position:relative; z-index:1; margin-top:48px; border-radius:var(--r); overflow:hidden; border:1px solid var(--border); box-shadow:0 32px 80px rgba(0,0,0,0.5); }
+    .cs-hero-img img { width:100%; display:block; }
+    @media(max-width:768px){ .cs-hero-img { margin-top:32px; } }
 
     /* ─── META BAR ─── */
     .cs-meta-bar { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 56px; display:flex; gap:48px; flex-wrap:wrap; }
@@ -255,6 +258,9 @@
       <p class="cs-tagline rv d3">
         A full product design overhaul for an all-in-one SEO monitoring platform — redesigning rank tracking, backlink analysis, site auditing, and white-label agency reporting across 8 core modules used by thousands of agencies and businesses worldwide.
       </p>
+      <div class="cs-hero-img rv d3">
+        <img src="/images/hero-rankwatch.svg" alt="RankWatch SEO platform UI mockup" loading="eager"/>
+      </div>
     </div>
   </div>
 

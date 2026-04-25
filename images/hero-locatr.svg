@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560">
+  <defs>
+    <filter id="sh"><feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+    <filter id="sh2"><feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity=".45"/></filter>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#131326"/><stop offset="100%" stop-color="#0D0D1C"/></linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0D0D1C" stop-opacity="0"/><stop offset="100%" stop-color="#0D0D1C" stop-opacity="1"/></linearGradient>
+    <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7B6CF6" stop-opacity=".8"/><stop offset="100%" stop-color="#4ADE80" stop-opacity=".8"/></linearGradient>
+  </defs>
+
+  <!-- Background glows -->
+  <circle cx="960" cy="120" r="200" fill="rgba(74,222,128,.05)"/>
+  <circle cx="220" cy="400" r="160" fill="rgba(123,108,246,.04)"/>
+
+  <!-- Main browser window -->
+  <g filter="url(#sh)">
+    <rect x="200" y="48" width="800" height="464" rx="14" fill="url(#scr)" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
+    <rect x="200" y="48" width="800" height="38" rx="14" fill="#131326"/>
+    <rect x="200" y="72" width="800" height="14" fill="#131326"/>
+    <circle cx="228" cy="67" r="5.5" fill="#FF5F57"/>
+    <circle cx="246" cy="67" r="5.5" fill="#FEBC2E"/>
+    <circle cx="264" cy="67" r="5.5" fill="#28C840"/>
+    <rect x="330" y="56" width="340" height="20" rx="10" fill="rgba(255,255,255,.05)"/>
+    <text x="500" y="70" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="rgba(255,255,255,.22)" text-anchor="middle">locatr.app/navigate</text>
+  </g>
+
+  <!-- Header bar -->
+  <rect x="200" y="86" width="800" height="48" fill="rgba(255,255,255,.02)"/>
+  <text x="220" y="116" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="rgba(238,238,248,.9)">Store Navigator</text>
+  <!-- Search input -->
+  <rect x="400" y="95" width="250" height="28" rx="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+  <text x="420" y="113" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.35)">📍 Find item in store...</text>
+  <!-- Smart List badge -->
+  <rect x="800" y="97" width="90" height="24" rx="12" fill="rgba(74,222,128,.12)" stroke="rgba(74,222,128,.22)" stroke-width="1"/>
+  <text x="845" y="113" font-family="system-ui,sans-serif" font-size="8.5" fill="#4ADE80" text-anchor="middle">Smart List ✓</text>
+  <rect x="898" y="97" width="90" height="24" rx="12" fill="#7B6CF6"/>
+  <text x="943" y="113" font-family="system-ui,sans-serif" font-size="8.5" fill="white" text-anchor="middle" font-weight="700">Navigate →</text>
+
+  <!-- Left panel: Smart Shopping List -->
+  <rect x="200" y="134" width="200" height="378" fill="rgba(255,255,255,.01)"/>
+  <line x1="400" y1="134" x2="400" y2="512" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+  <text x="216" y="156" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="rgba(238,238,248,.7)">My List</text>
+  <text x="360" y="156" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.35)">8 items</text>
+
+  <!-- List items -->
+  <!-- Item 1: found/checked -->
+  <rect x="210" y="164" width="180" height="34" rx="8" fill="rgba(74,222,128,.06)" stroke="rgba(74,222,128,.12)" stroke-width="1"/>
+  <rect x="218" y="174" width="14" height="14" rx="4" fill="#4ADE80"/>
+  <text x="222" y="184" font-family="system-ui,sans-serif" font-size="8" fill="white" font-weight="700">✓</text>
+  <text x="238" y="181" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.7)">Whole Milk · Aisle 3</text>
+  <text x="238" y="192" font-family="system-ui,sans-serif" font-size="7.5" fill="rgba(238,238,248,.3)">Found — 12s</text>
+
+  <!-- Item 2: active/navigating -->
+  <rect x="210" y="204" width="180" height="34" rx="8" fill="rgba(123,108,246,.1)" stroke="rgba(123,108,246,.25)" stroke-width="1.5"/>
+  <rect x="218" y="214" width="14" height="14" rx="4" fill="rgba(123,108,246,.3)" stroke="rgba(123,108,246,.5)" stroke-width="1"/>
+  <circle cx="225" cy="221" r="3" fill="#7B6CF6"/>
+  <text x="238" y="221" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.9)" font-weight="600">Organic Oats · Aisle 7</text>
+  <text x="238" y="232" font-family="system-ui,sans-serif" font-size="7.5" fill="#7B6CF6">Navigating → 38m away</text>
+
+  <!-- Item 3-6: pending -->
+  <rect x="218" y="249" width="14" height="14" rx="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+  <text x="238" y="260" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.5)">Almond Butter</text>
+  <line x1="210" y1="271" x2="388" y2="271" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+  <rect x="218" y="278" width="14" height="14" rx="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+  <text x="238" y="289" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.5)">Greek Yoghurt</text>
+  <line x1="210" y1="300" x2="388" y2="300" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+  <rect x="218" y="307" width="14" height="14" rx="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+  <text x="238" y="318" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.5)">Dark Chocolate</text>
+  <line x1="210" y1="329" x2="388" y2="329" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+  <rect x="218" y="336" width="14" height="14" rx="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+  <text x="238" y="347" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.5)">Sparkling Water</text>
+
+  <!-- Right panel: Store Map -->
+  <!-- Map grid background -->
+  <rect x="400" y="134" width="600" height="378" fill="#0A0A18"/>
+
+  <!-- Store grid lines -->
+  <!-- Vertical aisles -->
+  <line x1="460" y1="150" x2="460" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="530" y1="150" x2="530" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="600" y1="150" x2="600" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="670" y1="150" x2="670" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="740" y1="150" x2="740" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="810" y1="150" x2="810" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="880" y1="150" x2="880" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="950" y1="150" x2="950" y2="490" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+  <!-- Horizontal paths -->
+  <line x1="410" y1="200" x2="990" y2="200" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="410" y1="280" x2="990" y2="280" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="410" y1="360" x2="990" y2="360" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="410" y1="440" x2="990" y2="440" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+  <!-- Aisle shelves (rectangles) -->
+  <!-- Aisle 1 -->
+  <rect x="418" y="208" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <text x="435" y="250" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.2)" text-anchor="middle" transform="rotate(-90 435 240)">Aisle 1</text>
+  <rect x="418" y="288" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+
+  <!-- Aisle 3 (highlighted - Milk found here) -->
+  <rect x="558" y="208" width="34" height="64" rx="4" fill="rgba(74,222,128,.08)" stroke="rgba(74,222,128,.18)" stroke-width="1"/>
+  <text x="575" y="250" font-family="system-ui,sans-serif" font-size="8" fill="rgba(74,222,128,.6)" text-anchor="middle" transform="rotate(-90 575 240)">Aisle 3</text>
+  <!-- Found marker -->
+  <circle cx="575" cy="218" r="8" fill="rgba(74,222,128,.2)"/>
+  <circle cx="575" cy="218" r="5" fill="#4ADE80"/>
+  <text x="575" y="222" font-family="system-ui,sans-serif" font-size="7" fill="white" text-anchor="middle" font-weight="700">✓</text>
+  <rect x="558" y="288" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+
+  <!-- Aisle 5 -->
+  <rect x="698" y="208" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <rect x="698" y="288" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+
+  <!-- Aisle 7 (highlighted - destination) -->
+  <rect x="768" y="208" width="34" height="64" rx="4" fill="rgba(123,108,246,.1)" stroke="rgba(123,108,246,.25)" stroke-width="1.5"/>
+  <text x="785" y="250" font-family="system-ui,sans-serif" font-size="8" fill="rgba(123,108,246,.7)" text-anchor="middle" transform="rotate(-90 785 240)">Aisle 7</text>
+  <rect x="768" y="288" width="34" height="64" rx="4" fill="rgba(123,108,246,.08)" stroke="rgba(123,108,246,.15)" stroke-width="1"/>
+
+  <!-- Aisles 9, 11 -->
+  <rect x="838" y="208" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <rect x="838" y="288" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <rect x="908" y="208" width="34" height="64" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+
+  <!-- Navigation path (user moving from entrance to aisle 7) -->
+  <!-- Dashed path along the main corridor -->
+  <path d="M 440 460 L 440 440 L 785 440 L 785 360" fill="none" stroke="url(#pathGrad)" stroke-width="3" stroke-dasharray="8 5" stroke-linecap="round"/>
+  <!-- Path glow -->
+  <path d="M 440 460 L 440 440 L 785 440 L 785 360" fill="none" stroke="rgba(123,108,246,.2)" stroke-width="8"/>
+
+  <!-- User position -->
+  <circle cx="440" cy="460" r="12" fill="rgba(123,108,246,.2)"/>
+  <circle cx="440" cy="460" r="7" fill="#7B6CF6"/>
+  <text x="440" y="464" font-family="system-ui,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="800">U</text>
+
+  <!-- Destination marker -->
+  <circle cx="785" cy="340" r="12" fill="rgba(74,222,128,.2)"/>
+  <circle cx="785" cy="340" r="7" fill="#4ADE80"/>
+  <text x="785" y="344" font-family="system-ui,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="800">★</text>
+
+  <!-- Entrance label -->
+  <rect x="416" y="466" width="48" height="18" rx="9" fill="rgba(123,108,246,.2)"/>
+  <text x="440" y="478" font-family="system-ui,sans-serif" font-size="7.5" fill="#7B6CF6" text-anchor="middle">Entrance</text>
+
+  <!-- Destination label -->
+  <rect x="754" y="326" width="62" height="16" rx="8" fill="rgba(74,222,128,.15)"/>
+  <text x="785" y="337" font-family="system-ui,sans-serif" font-size="7.5" fill="#4ADE80" text-anchor="middle">Oats · Aisle 7</text>
+
+  <!-- Map legend -->
+  <text x="416" y="162" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" fill="rgba(238,238,248,.5)">FRESHMART · LEVEL 1</text>
+  <text x="916" y="162" font-family="system-ui,sans-serif" font-size="7.5" fill="rgba(238,238,248,.3)">ETA: 38s</text>
+
+  <!-- Fade -->
+  <rect x="400" y="468" width="600" height="44" fill="url(#fade)"/>
+
+  <!-- Floating card 1 -->
+  <g filter="url(#sh2)" transform="translate(22, 110)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(74,222,128,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#4ADE80"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Time to Find</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#EEEEF8" letter-spacing="-1">&lt; 30s</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="#4ADE80">Avg. item find time</text>
+  </g>
+
+  <!-- Floating card 2 -->
+  <g filter="url(#sh2)" transform="translate(14, 290)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(123,108,246,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#7B6CF6"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Indoor GPS</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="24" font-weight="800" fill="#EEEEF8" letter-spacing="-1">Real-time</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="rgba(238,238,248,.4)">No hardware needed</text>
+  </g>
+
+  <!-- Floating card 3 -->
+  <g filter="url(#sh2)" transform="translate(1016, 170)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(251,176,36,.25)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#FBB024"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Smart List</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#EEEEF8" letter-spacing="-1">Auto</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="rgba(238,238,248,.4)">Route optimised</text>
+  </g>
+</svg>

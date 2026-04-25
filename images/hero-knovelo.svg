@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560">
+  <defs>
+    <filter id="sh"><feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+    <filter id="sh2"><feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity=".45"/></filter>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#131326"/><stop offset="100%" stop-color="#0D0D1C"/></linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0D0D1C" stop-opacity="0"/><stop offset="100%" stop-color="#0D0D1C" stop-opacity="1"/></linearGradient>
+    <linearGradient id="book1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7B6CF6"/><stop offset="100%" stop-color="#4B3FC0"/></linearGradient>
+    <linearGradient id="book2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F06292"/><stop offset="100%" stop-color="#AD1457"/></linearGradient>
+    <linearGradient id="book3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4ADE80"/><stop offset="100%" stop-color="#16A34A"/></linearGradient>
+    <linearGradient id="book4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FBB024"/><stop offset="100%" stop-color="#B45309"/></linearGradient>
+    <linearGradient id="book5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22D3EE"/><stop offset="100%" stop-color="#0E7490"/></linearGradient>
+    <linearGradient id="book6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E879F9"/><stop offset="100%" stop-color="#7E22CE"/></linearGradient>
+  </defs>
+
+  <!-- Background glows -->
+  <circle cx="980" cy="100" r="200" fill="rgba(251,176,36,.05)"/>
+  <circle cx="180" cy="400" r="160" fill="rgba(240,98,146,.04)"/>
+
+  <!-- Main browser window (phone-like narrow frame to suggest mobile) -->
+  <g filter="url(#sh)">
+    <rect x="200" y="48" width="800" height="464" rx="14" fill="url(#scr)" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
+    <rect x="200" y="48" width="800" height="38" rx="14" fill="#131326"/>
+    <rect x="200" y="72" width="800" height="14" fill="#131326"/>
+    <circle cx="228" cy="67" r="5.5" fill="#FF5F57"/>
+    <circle cx="246" cy="67" r="5.5" fill="#FEBC2E"/>
+    <circle cx="264" cy="67" r="5.5" fill="#28C840"/>
+    <rect x="330" y="56" width="340" height="20" rx="10" fill="rgba(255,255,255,.05)"/>
+    <text x="500" y="70" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="rgba(255,255,255,.22)" text-anchor="middle">knovelo.app/discover</text>
+  </g>
+
+  <!-- Header bar -->
+  <rect x="200" y="86" width="800" height="48" fill="rgba(255,255,255,.02)"/>
+  <text x="220" y="116" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="rgba(238,238,248,.9)">Discover</text>
+  <!-- Search bar -->
+  <rect x="400" y="95" width="260" height="28" rx="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+  <text x="420" y="113" font-family="system-ui,sans-serif" font-size="9" fill="rgba(238,238,248,.3)">🔍 Search books, authors...</text>
+  <!-- Filter chips -->
+  <rect x="676" y="98" width="60" height="22" rx="11" fill="rgba(123,108,246,.2)" stroke="rgba(123,108,246,.3)" stroke-width="1"/>
+  <text x="706" y="113" font-family="system-ui,sans-serif" font-size="8" fill="#7B6CF6" text-anchor="middle">Fiction</text>
+  <rect x="744" y="98" width="60" height="22" rx="11" fill="rgba(255,255,255,.06)"/>
+  <text x="774" y="113" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)" text-anchor="middle">Non-Fiction</text>
+  <rect x="812" y="98" width="52" height="22" rx="11" fill="rgba(255,255,255,.06)"/>
+  <text x="838" y="113" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)" text-anchor="middle">Science</text>
+  <rect x="872" y="98" width="52" height="22" rx="11" fill="rgba(255,255,255,.06)"/>
+  <text x="898" y="113" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)" text-anchor="middle">History</text>
+  <rect x="932" y="98" width="56" height="22" rx="11" fill="rgba(255,255,255,.06)"/>
+  <text x="960" y="113" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)" text-anchor="middle">+ More</text>
+
+  <!-- Section label -->
+  <text x="220" y="154" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="rgba(238,238,248,.7)">Trending This Week</text>
+  <text x="934" y="154" font-family="system-ui,sans-serif" font-size="9" fill="rgba(123,108,246,.8)">See all →</text>
+
+  <!-- Book cards row 1 -->
+  <!-- Book 1 -->
+  <rect x="218" y="164" width="136" height="196" rx="12" fill="#0F0F20" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+  <rect x="218" y="164" width="136" height="130" rx="10" fill="url(#book1)"/>
+  <rect x="218" y="280" width="136" height="14" fill="#0F0F20"/>
+  <!-- Book spine detail -->
+  <rect x="218" y="164" width="8" height="130" rx="4" fill="rgba(0,0,0,.2)"/>
+  <text x="286" y="235" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Atomic</text>
+  <text x="286" y="250" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Habits</text>
+  <text x="226" y="310" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.85)">Atomic Habits</text>
+  <text x="226" y="325" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)">James Clear</text>
+  <!-- Stars -->
+  <text x="226" y="342" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024">★★★★★</text>
+  <text x="286" y="342" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">4.9</text>
+  <rect x="226" y="348" width="52" height="14" rx="7" fill="rgba(123,108,246,.15)"/>
+  <text x="252" y="358" font-family="system-ui,sans-serif" font-size="7.5" fill="#7B6CF6" text-anchor="middle">248 reviews</text>
+
+  <!-- Book 2 -->
+  <rect x="366" y="164" width="136" height="196" rx="12" fill="#0F0F20" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+  <rect x="366" y="164" width="136" height="130" rx="10" fill="url(#book2)"/>
+  <rect x="366" y="280" width="136" height="14" fill="#0F0F20"/>
+  <rect x="366" y="164" width="8" height="130" rx="4" fill="rgba(0,0,0,.2)"/>
+  <text x="434" y="235" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">The</text>
+  <text x="434" y="250" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Alchemist</text>
+  <text x="374" y="310" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.85)">The Alchemist</text>
+  <text x="374" y="325" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)">Paulo Coelho</text>
+  <text x="374" y="342" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024">★★★★★</text>
+  <text x="434" y="342" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">4.8</text>
+  <rect x="374" y="348" width="52" height="14" rx="7" fill="rgba(240,98,146,.12)"/>
+  <text x="400" y="358" font-family="system-ui,sans-serif" font-size="7.5" fill="#F06292" text-anchor="middle">186 reviews</text>
+
+  <!-- Book 3 -->
+  <rect x="514" y="164" width="136" height="196" rx="12" fill="#0F0F20" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+  <rect x="514" y="164" width="136" height="130" rx="10" fill="url(#book3)"/>
+  <rect x="514" y="280" width="136" height="14" fill="#0F0F20"/>
+  <rect x="514" y="164" width="8" height="130" rx="4" fill="rgba(0,0,0,.2)"/>
+  <text x="582" y="235" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Deep</text>
+  <text x="582" y="250" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Work</text>
+  <text x="522" y="310" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.85)">Deep Work</text>
+  <text x="522" y="325" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)">Cal Newport</text>
+  <text x="522" y="342" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024">★★★★☆</text>
+  <text x="582" y="342" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">4.6</text>
+  <rect x="522" y="348" width="52" height="14" rx="7" fill="rgba(74,222,128,.12)"/>
+  <text x="548" y="358" font-family="system-ui,sans-serif" font-size="7.5" fill="#4ADE80" text-anchor="middle">134 reviews</text>
+
+  <!-- Book 4 -->
+  <rect x="662" y="164" width="136" height="196" rx="12" fill="#0F0F20" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+  <rect x="662" y="164" width="136" height="130" rx="10" fill="url(#book4)"/>
+  <rect x="662" y="280" width="136" height="14" fill="#0F0F20"/>
+  <rect x="662" y="164" width="8" height="130" rx="4" fill="rgba(0,0,0,.2)"/>
+  <text x="730" y="235" font-family="system-ui,sans-serif" font-size="10" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Thinking,</text>
+  <text x="730" y="248" font-family="system-ui,sans-serif" font-size="10" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Fast &amp; Slow</text>
+  <text x="670" y="310" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.85)">Thinking, Fast &amp; Slow</text>
+  <text x="670" y="325" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)">Daniel Kahneman</text>
+  <text x="670" y="342" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024">★★★★★</text>
+  <text x="730" y="342" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.3)">4.7</text>
+
+  <!-- Book 5 (partially visible) -->
+  <rect x="810" y="164" width="136" height="196" rx="12" fill="#0F0F20" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+  <rect x="810" y="164" width="136" height="130" rx="10" fill="url(#book5)"/>
+  <rect x="810" y="280" width="136" height="14" fill="#0F0F20"/>
+  <rect x="810" y="164" width="8" height="130" rx="4" fill="rgba(0,0,0,.2)"/>
+  <text x="878" y="235" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="rgba(255,255,255,.85)" text-anchor="middle">Sapiens</text>
+  <text x="818" y="310" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="rgba(238,238,248,.85)">Sapiens</text>
+  <text x="818" y="325" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.4)">Yuval Noah Harari</text>
+  <text x="818" y="342" font-family="system-ui,sans-serif" font-size="9" fill="#FBB024">★★★★★</text>
+
+  <!-- Section 2: Community Highlights -->
+  <text x="220" y="393" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="rgba(238,238,248,.7)">Community Highlights</text>
+  <!-- Highlight pills (partially visible, fading out) -->
+  <rect x="218" y="404" width="200" height="52" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <text x="228" y="422" font-family="system-ui,sans-serif" font-size="8.5" fill="rgba(238,238,248,.7)">"The lesson I didn't expect..."</text>
+  <text x="228" y="440" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.35)">from Atomic Habits · 34 likes</text>
+
+  <rect x="426" y="404" width="200" height="52" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+  <text x="436" y="422" font-family="system-ui,sans-serif" font-size="8.5" fill="rgba(238,238,248,.7)">"We are all stories in the end"</text>
+  <text x="436" y="440" font-family="system-ui,sans-serif" font-size="8" fill="rgba(238,238,248,.35)">from The Alchemist · 28 likes</text>
+
+  <!-- Fade bottom -->
+  <rect x="200" y="430" width="800" height="82" fill="url(#fade)"/>
+
+  <!-- Floating card 1 -->
+  <g filter="url(#sh2)" transform="translate(22, 100)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(251,176,36,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#FBB024"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Books Catalogued</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#EEEEF8" letter-spacing="-1">2.4K</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="#FBB024">Across 18 genres</text>
+  </g>
+
+  <!-- Floating card 2 -->
+  <g filter="url(#sh2)" transform="translate(14, 290)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(240,98,146,.25)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#F06292"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Reading Streak</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#EEEEF8" letter-spacing="-1">21</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="rgba(238,238,248,.4)">Days in a row</text>
+  </g>
+
+  <!-- Floating card 3 -->
+  <g filter="url(#sh2)" transform="translate(1016, 170)">
+    <rect width="160" height="98" rx="14" fill="#131326" stroke="rgba(123,108,246,.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" rx="1.5" fill="#7B6CF6"/>
+    <text x="18" y="26" font-family="system-ui,sans-serif" font-size="10" fill="rgba(238,238,248,.5)">Community</text>
+    <text x="18" y="58" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#EEEEF8" letter-spacing="-1">8.6K</text>
+    <text x="18" y="80" font-family="system-ui,sans-serif" font-size="9.5" fill="rgba(238,238,248,.4)">Active readers</text>
+  </g>
+</svg>
