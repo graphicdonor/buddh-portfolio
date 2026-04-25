@@ -660,6 +660,7 @@
     .db-kpi-l { font-size: 9px; color: var(--text3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 7px; }
     .db-kpi-v { font-size: 22px; font-weight: 700; letter-spacing: -.03em; color: var(--text); }
     .db-kpi-d { font-size: 9px; color: var(--green); margin-top: 3px; }
+    .db-kpi-d.warn { color: var(--amber); }
     .db-r2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px; }
     .db-chart {
       background: rgba(255,255,255,.02);
@@ -668,11 +669,14 @@
       height: 148px; position: relative; overflow: hidden;
     }
     .db-chart-t { font-size: 10px; font-weight: 600; color: var(--text2); margin-bottom: 12px; }
-    .bars { display:flex; align-items: flex-end; gap: 5px; height: 88px; }
-    .bar {
-      flex:1; border-radius: 3px 3px 0 0;
-      background: linear-gradient(180deg, var(--accent), rgba(123,108,246,.25));
-    }
+    .db-hbars { display:flex; flex-direction:column; gap:9px; padding-top:2px; }
+    .db-hbar-row { display:flex; align-items:center; gap:9px; }
+    .db-hbar-label { font-size:9px; color:var(--text3); width:66px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .db-hbar-track { flex:1; height:6px; background:rgba(255,255,255,.06); border-radius:100px; overflow:hidden; }
+    .db-hbar-fill { height:100%; border-radius:100px; }
+    .db-hbar-fill.a { background:linear-gradient(90deg,var(--accent),rgba(123,108,246,.45)); }
+    .db-hbar-fill.b { background:linear-gradient(90deg,#22D3EE,rgba(34,211,238,.4)); }
+    .db-hbar-pct { font-size:9px; font-weight:700; color:var(--text2); width:24px; text-align:right; flex-shrink:0; }
     .db-tbl {
       background: rgba(255,255,255,.02);
       border: 1px solid var(--border);
@@ -691,6 +695,7 @@
       padding: 9px 14px;
       font-size: 10px; color: var(--text2);
       border-bottom: 1px solid rgba(255,255,255,.028);
+      align-items: center;
     }
     .db-tr:last-child { border-bottom: none; }
     .badge {
@@ -701,6 +706,7 @@
     .badge.g { background: rgba(74,222,128,.1); color: var(--green); }
     .badge.b { background: rgba(96,165,250,.1); color: #60A5FA; }
     .badge.y { background: rgba(251,176,36,.1); color: var(--amber); }
+    .badge.p { background: rgba(123,108,246,.14); color: var(--accent); }
 
     /* ─── CS DETAIL SECTIONS ─── */
     .cs-sections { display: flex; flex-direction: column; gap: 88px; }
@@ -1657,67 +1663,60 @@
       <div class="db-wrap">
         <div class="db-bar">
           <div class="db-dots"><span></span><span></span><span></span></div>
-          <div class="db-url">app.rdash.io/dashboard</div>
+          <div class="db-url">app.rdash.io/my-projects</div>
         </div>
         <div class="db-body">
           <div class="db-side">
-            <div class="db-si on"><span class="db-si-ic"></span>AI Copilot</div>
-            <div class="db-si"><span class="db-si-ic"></span>Procurement</div>
-            <div class="db-si"><span class="db-si-ic"></span>RA Billing</div>
-            <div class="db-si"><span class="db-si-ic"></span>Payments</div>
-            <div class="db-si"><span class="db-si-ic"></span>Execution</div>
-            <div class="db-si"><span class="db-si-ic"></span>Invoice IQ</div>
-            <div class="db-si"><span class="db-si-ic"></span>Analytics</div>
-            <div class="db-si"><span class="db-si-ic"></span>Settings</div>
+            <div class="db-si on"><span class="db-si-ic"></span>My Projects</div>
+            <div class="db-si"><span class="db-si-ic"></span>Recce</div>
+            <div class="db-si"><span class="db-si-ic"></span>Design</div>
+            <div class="db-si"><span class="db-si-ic"></span>BOQ</div>
+            <div class="db-si"><span class="db-si-ic"></span>Orders</div>
+            <div class="db-si"><span class="db-si-ic"></span>Work Progress</div>
+            <div class="db-si"><span class="db-si-ic"></span>Snags</div>
+            <div class="db-si"><span class="db-si-ic"></span>Handover</div>
           </div>
           <div class="db-main">
             <div class="db-r4">
               <div class="db-kpi">
-                <div class="db-kpi-l">ARR</div>
-                <div class="db-kpi-v">$4.3M</div>
-                <div class="db-kpi-d">↑ 63% MRR growth</div>
+                <div class="db-kpi-l">Scope Approved</div>
+                <div class="db-kpi-v">60%</div>
+                <div class="db-kpi-d">↑ 54 items approved</div>
               </div>
               <div class="db-kpi">
-                <div class="db-kpi-l">Cashflow Accuracy</div>
-                <div class="db-kpi-v">+28%</div>
-                <div class="db-kpi-d">↑ milestone billing</div>
+                <div class="db-kpi-l">Total Value</div>
+                <div class="db-kpi-v">₹3.45L</div>
+                <div class="db-kpi-d">↑ 7 vendors linked</div>
               </div>
               <div class="db-kpi">
-                <div class="db-kpi-l">Invoice Automation</div>
-                <div class="db-kpi-v">65%</div>
-                <div class="db-kpi-d">↓ manual effort</div>
+                <div class="db-kpi-l">Work Progress</div>
+                <div class="db-kpi-v">30%</div>
+                <div class="db-kpi-d">↑ material ok</div>
               </div>
               <div class="db-kpi">
-                <div class="db-kpi-l">Go-Live Time</div>
-                <div class="db-kpi-v">7 days</div>
-                <div class="db-kpi-d">↓ 50% impl. effort</div>
+                <div class="db-kpi-l">Timeline</div>
+                <div class="db-kpi-v">3 days</div>
+                <div class="db-kpi-d warn">⚠ to complete</div>
               </div>
             </div>
             <div class="db-r2">
               <div class="db-chart">
-                <div class="db-chart-t">ARR Growth — AI Copilot Adoption</div>
-                <div class="bars">
-                  <div class="bar" style="height:18%"></div>
-                  <div class="bar" style="height:28%"></div>
-                  <div class="bar" style="height:36%"></div>
-                  <div class="bar" style="height:48%"></div>
-                  <div class="bar" style="height:55%"></div>
-                  <div class="bar" style="height:62%"></div>
-                  <div class="bar" style="height:71%"></div>
-                  <div class="bar" style="height:79%"></div>
-                  <div class="bar" style="height:85%"></div>
-                  <div class="bar" style="height:90%"></div>
-                  <div class="bar" style="height:96%"></div>
-                  <div class="bar" style="height:100%"></div>
+                <div class="db-chart-t">Vendor Wise Progress</div>
+                <div class="db-hbars">
+                  <div class="db-hbar-row"><span class="db-hbar-label">Azeem Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill a" style="width:76%"></div></div><span class="db-hbar-pct">76%</span></div>
+                  <div class="db-hbar-row"><span class="db-hbar-label">Raheem Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill a" style="width:55%"></div></div><span class="db-hbar-pct">55%</span></div>
+                  <div class="db-hbar-row"><span class="db-hbar-label">Hafiz Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill b" style="width:89%"></div></div><span class="db-hbar-pct">89%</span></div>
+                  <div class="db-hbar-row"><span class="db-hbar-label">Abc Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill a" style="width:43%"></div></div><span class="db-hbar-pct">43%</span></div>
+                  <div class="db-hbar-row"><span class="db-hbar-label">Ranjeet Fab.</span><div class="db-hbar-track"><div class="db-hbar-fill b" style="width:36%"></div></div><span class="db-hbar-pct">36%</span></div>
                 </div>
               </div>
               <div class="db-tbl">
-                <div class="db-th"><span>Module</span><span>Status</span><span>Impact</span></div>
-                <div class="db-tr"><span>Invoice IQ (OCR)</span><span class="badge g">Live</span><span>−65% manual</span></div>
-                <div class="db-tr"><span>AI Copilot</span><span class="badge g">Live</span><span>−55% BI load</span></div>
-                <div class="db-tr"><span>Voice Copilot</span><span class="badge b">Beta</span><span>+40% speed</span></div>
-                <div class="db-tr"><span>Offline Sync</span><span class="badge g">Live</span><span>−95% data loss</span></div>
-                <div class="db-tr"><span>SSO Auth</span><span class="badge g">Live</span><span>+25% onboard</span></div>
+                <div class="db-th"><span>Project</span><span>Stage</span><span>Status</span></div>
+                <div class="db-tr"><span>BRID3342</span><span>Orders</span><span><span class="badge p">Active</span></span></div>
+                <div class="db-tr"><span>BRID3418</span><span>Design</span><span><span class="badge y">Pending</span></span></div>
+                <div class="db-tr"><span>BRID3389</span><span>BOQ</span><span><span class="badge g">Approved</span></span></div>
+                <div class="db-tr"><span>BRID3456</span><span>Recce</span><span><span class="badge b">Review</span></span></div>
+                <div class="db-tr"><span>BRID3501</span><span>W. Progress</span><span><span class="badge y">Pending</span></span></div>
               </div>
             </div>
           </div>
