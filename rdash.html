@@ -175,35 +175,30 @@
     .imp-n { font-size:42px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; margin-bottom:8px; }
     .imp-l { font-size:12px; color:var(--text2); line-height:1.6; }
 
-    /* ─── SCREENS SHOWCASE ─── */
-    .screens-sec { padding:80px 56px; border-bottom:1px solid var(--border); }
-    .screens-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-flow:dense; gap:20px; margin-top:48px; }
-    .screen-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s; }
-    .screen-card:hover { border-color:var(--border-hi); transform:translateY(-8px); box-shadow:0 32px 64px rgba(0,0,0,.5); }
-    .screen-card.featured { grid-column:span 2; }
-    .sc-img { position:relative; overflow:hidden; }
-    .sc-img img { width:100%; height:280px; object-fit:cover; object-position:top; display:block; transition:transform .7s cubic-bezier(.16,1,.3,1); }
-    .screen-card.featured .sc-img img { height:420px; }
-    .screen-card:hover .sc-img img { transform:scale(1.05); }
-    .sc-chrome { position:absolute; top:0; left:0; right:0; padding:12px 16px; background:linear-gradient(rgba(7,7,15,.75),transparent); display:flex; align-items:center; gap:10px; z-index:2; }
-    .sc-cdots { display:flex; gap:5px; }
-    .sc-cdots span { width:8px; height:8px; border-radius:50%; }
-    .sc-clabel { font-size:11px; font-weight:600; color:rgba(238,238,248,.45); letter-spacing:.08em; }
-    .sc-overlay { position:absolute; bottom:0; left:0; right:0; padding:48px 20px 18px; background:linear-gradient(transparent,rgba(7,7,15,.97)); z-index:2; }
-    .sc-stage { font-size:10px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:7px; }
-    .sc-title { font-size:16px; font-weight:700; color:#EEEEF8; line-height:1.3; }
-    .screen-card.featured .sc-title { font-size:22px; }
-    .sc-foot { padding:14px 20px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px; }
-    .sc-tags { display:flex; gap:6px; flex-wrap:wrap; }
-    .screen-tag { font-size:10px; font-weight:700; padding:3px 9px; border-radius:100px; background:var(--accent-lo); color:var(--accent); border:1px solid var(--border-hi); }
-    .sc-arrow { font-size:18px; color:var(--text3); flex-shrink:0; transition:color .25s,transform .25s; }
-    .screen-card:hover .sc-arrow { color:var(--accent); transform:translateX(5px); }
-    @media(max-width:1024px){ .screens-grid { grid-template-columns:repeat(2,1fr); } }
+    /* ─── MODULE MAP ─── */
+    .mod-sec { padding:80px 0; border-bottom:1px solid var(--border); }
+    .mod-sec .cs-sec-inner { padding:0 56px; }
+    .mod-pipeline { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:36px; }
+    .mod-pip-step { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:5px 12px; border-radius:100px; border:1px solid var(--border); color:var(--text3); }
+    .mod-pip-arr { font-size:10px; color:var(--text3); }
+    .mod-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-flow:dense; gap:16px; margin-top:48px; padding:0 56px 80px; }
+    .mod-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--r); padding:28px 28px 24px; border-top:2px solid var(--mc,var(--accent)); position:relative; transition:border-color .25s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s; }
+    .mod-card:hover { border-color:var(--mc,var(--accent)); transform:translateY(-4px); box-shadow:0 20px 48px rgba(0,0,0,.35); }
+    .mod-card.wide { grid-column:span 2; }
+    .mod-stage-lbl { font-size:10px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--mc,var(--accent)); margin-bottom:12px; display:block; }
+    .mod-count { position:absolute; top:24px; right:24px; font-size:10px; font-weight:700; color:var(--text3); background:var(--bg2); border:1px solid var(--border); border-radius:100px; padding:3px 10px; }
+    .mod-title { font-size:21px; font-weight:700; letter-spacing:-.025em; color:var(--text); line-height:1.2; margin-bottom:10px; }
+    .mod-card.wide .mod-title { font-size:25px; }
+    .mod-roles { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+    .mod-role-tag { font-size:11px; font-weight:600; color:var(--text2); background:var(--bg2); border:1px solid var(--border); border-radius:100px; padding:3px 10px; display:inline-flex; align-items:center; gap:5px; }
+    .mod-role-tag::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--mc,var(--accent)); flex-shrink:0; }
+    .mod-desc { font-size:13px; color:var(--text2); line-height:1.65; margin-bottom:20px; }
+    .mod-chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .mod-chip { font-size:11px; font-weight:600; color:var(--text3); background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:4px 9px; }
+    @media(max-width:1024px){ .mod-grid { grid-template-columns:repeat(2,1fr); } }
     @media(max-width:768px){
-      .screens-sec { padding:56px 24px; }
-      .screens-grid { grid-template-columns:1fr; }
-      .screen-card.featured { grid-column:span 1; }
-      .sc-img img,.screen-card.featured .sc-img img { height:240px; }
+      .mod-grid { grid-template-columns:1fr; padding:0 20px 60px; }
+      .mod-card.wide { grid-column:span 1; }
     }
 
     /* ─── DLS SECTION ─── */
@@ -525,315 +520,153 @@
   </section>
 
   <!-- PRODUCT SCREENS -->
-  <section class="screens-sec" style="background:var(--bg2)">
+  <section class="mod-sec" style="background:var(--bg2)">
     <div class="cs-sec-inner">
       <div class="tag rv">Product Screens</div>
-      <h2 class="cs-h2 rv d1">Every screen, a deliberate decision</h2>
-      <p class="cs-p rv d2">Seven modules, one pipeline — each screen designed around the actual mental model of a PM, contractor, or field engineer on a live construction project.</p>
+      <h2 class="cs-h2 rv d1">Eight modules. One construction pipeline.</h2>
+      <p class="cs-p rv d2">From first site survey to final handover — every stage has a dedicated module, each designed around the real mental model of its primary user.</p>
+      <div class="mod-pipeline rv d3">
+        <span class="mod-pip-step">Dashboard</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">Recce</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">Design</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">BOQ</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">Orders</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">Work Progress</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">Snags</span><span class="mod-pip-arr">›</span>
+        <span class="mod-pip-step">Handover</span>
+      </div>
     </div>
-    <div class="screens-grid">
 
-      <!-- 1: FEATURED — My Projects (spans 2 cols) -->
-      <div class="screen-card featured rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">My Projects</div>
-          </div>
-          <img src="/images/RDash/All%20project%20table%20design%20update%20%E2%80%93%20-1.png" alt="All Projects Table" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Dashboard</div>
-            <div class="sc-title">Project Fleet Overview</div>
-          </div>
+    <div class="mod-grid">
+
+      <!-- 1: Dashboard / My Projects — WIDE -->
+      <div class="mod-card wide rv" style="--mc:var(--accent)">
+        <span class="mod-stage-lbl">Platform Hub</span>
+        <span class="mod-count">3 screens</span>
+        <div class="mod-title">My Projects</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Project Manager</span>
+          <span class="mod-role-tag">Leadership</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">768 Projects</span><span class="screen-tag">8 Stages</span><span class="screen-tag">Table View</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Fleet-level view of 768 active projects with real-time stage progress, team load, and financial health. The single source of truth for any PM — designed for instant situational awareness before drilling into a project.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">768 Projects</span><span class="mod-chip">Table View</span><span class="mod-chip">8 Stage Columns</span><span class="mod-chip">Search & Filter</span><span class="mod-chip">Bulk Actions</span>
         </div>
       </div>
 
-      <!-- 2: My Projects Alt -->
-      <div class="screen-card rv d1">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">My Projects — Alt</div>
-          </div>
-          <img src="/images/RDash/All%20project%20table%20design%20update%20%E2%80%93%2033333.png" alt="Projects Table Updated" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Dashboard</div>
-            <div class="sc-title">Projects Table (Updated)</div>
-          </div>
+      <!-- 2: Recce -->
+      <div class="mod-card rv d1" style="--mc:#22D3EE">
+        <span class="mod-stage-lbl">Stage 01 / Recce</span>
+        <span class="mod-count">2 screens</span>
+        <div class="mod-title">Site Survey</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Site Engineer</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Search</span><span class="screen-tag">Sort</span><span class="screen-tag">Filter</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Structured site survey submitted from mobile — photo evidence, environmental conditions, and site readiness — reviewed and approved by PM on web.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">Photo Upload</span><span class="mod-chip">External Env</span><span class="mod-chip">Approval Flow</span><span class="mod-chip">Revision History</span>
         </div>
       </div>
 
-      <!-- 3: Recce Review -->
-      <div class="screen-card rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Recce — Review</div>
-          </div>
-          <img src="/images/RDash/Submitted%20recce%20on%20web%20External%20Environment%20%E2%80%93%202.png" alt="Recce Review" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 01 / Recce</div>
-            <div class="sc-title">Survey Review & Approval</div>
-          </div>
+      <!-- 3: Design -->
+      <div class="mod-card rv" style="--mc:var(--rose)">
+        <span class="mod-stage-lbl">Stage 02 / Design</span>
+        <span class="mod-count">2 screens</span>
+        <div class="mod-title">Drawing Review</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Design Lead</span>
+          <span class="mod-role-tag">PM</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Photo Evidence</span><span class="screen-tag">External Env</span><span class="screen-tag">Approve</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Architectural drawings with version control, markup for feedback cycles, and approval gates that must clear before BOQ scope can begin.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">Version Control</span><span class="mod-chip">Markup Tools</span><span class="mod-chip">Client Approvals</span>
         </div>
       </div>
 
-      <!-- 4: BOQ My Scope -->
-      <div class="screen-card rv d1">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">BOQ — My Scope</div>
-          </div>
-          <img src="/images/RDash/My%20scope%20%E2%80%93%204.png" alt="BOQ My Scope" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 03 / BOQ</div>
-            <div class="sc-title">Scope & Pricing</div>
-          </div>
+      <!-- 4: BOQ — WIDE -->
+      <div class="mod-card wide rv d1" style="--mc:var(--amber)">
+        <span class="mod-stage-lbl">Stage 03 / BOQ</span>
+        <span class="mod-count">4 screens</span>
+        <div class="mod-title">Bill of Quantities</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Procurement Manager</span>
+          <span class="mod-role-tag">Site Engineer</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">My Scope</span><span class="screen-tag">60% Approved</span><span class="screen-tag">Auto Totals</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">The heaviest design surface in R'Dash — scope line items with auto-totals, vendor proposal comparison, item-level detail pages with pricing history, and a phased approval flow that locks scope before procurement can begin.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">My Scope</span><span class="mod-chip">Auto Totals</span><span class="mod-chip">Item Detail</span><span class="mod-chip">Vendor Proposals</span><span class="mod-chip">60% Approval</span><span class="mod-chip">Rate History</span>
         </div>
       </div>
 
-      <!-- 5: BOQ Item Detail -->
-      <div class="screen-card rv d2">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">BOQ — Item Detail</div>
-          </div>
-          <img src="/images/RDash/Item%20Detail%20page%20web%20BOQ%20updates%20%E2%80%93%207.png" alt="BOQ Item Detail" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 03 / BOQ</div>
-            <div class="sc-title">Item Detail Page</div>
-          </div>
+      <!-- 5: Orders -->
+      <div class="mod-card rv" style="--mc:var(--green)">
+        <span class="mod-stage-lbl">Stage 04 / Orders</span>
+        <span class="mod-count">4 screens</span>
+        <div class="mod-title">Purchase & Orders</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Procurement Manager</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Item Detail</span><span class="screen-tag">Proposals</span><span class="screen-tag">Pricing</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Purchase requests, vendor order tracking, invoice management, and full audit trail — all linked back to BOQ line items for traceable spend.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">PO Tracking</span><span class="mod-chip">Vendor Orders</span><span class="mod-chip">Invoices</span><span class="mod-chip">Audit Trail</span>
         </div>
       </div>
 
-      <!-- 6: Purchase Requests (col 1 of row 3) -->
-      <div class="screen-card rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Orders — Purchase</div>
-          </div>
-          <img src="/images/RDash/Purchase%20request%20%E2%80%93%208.png" alt="Purchase Requests" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 04 / Orders</div>
-            <div class="sc-title">Purchase Requests</div>
-          </div>
+      <!-- 6: Work Progress -->
+      <div class="mod-card rv d1" style="--mc:#22D3EE">
+        <span class="mod-stage-lbl">Stage 05 / Progress</span>
+        <span class="mod-count">2 screens</span>
+        <div class="mod-title">Task Manager 2.0</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Field Engineer</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">PO Tracking</span><span class="screen-tag">Pending</span><span class="screen-tag">Approved</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Task assignment with section-level completion percentages, Gantt overview, and ₹ value tracking tied to actual progress — not just time.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">Section %</span><span class="mod-chip">Gantt</span><span class="mod-chip">₹ Summary</span><span class="mod-chip">Assign & Due Dates</span>
         </div>
       </div>
 
-      <!-- 7: FEATURED — Vendor Order Approval (spans cols 2-3) -->
-      <div class="screen-card featured rv d1">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Orders — Vendor Approval</div>
-          </div>
-          <img src="/images/RDash/Vendor%20Order%20Approval%20inside%20Project%204%20%E2%80%93%202.png" alt="Vendor Order Approval" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 04 / Orders</div>
-            <div class="sc-title">Vendor Order Approval</div>
-          </div>
+      <!-- 7: Snags -->
+      <div class="mod-card rv d2" style="--mc:var(--rose)">
+        <span class="mod-stage-lbl">Stage 06 / Snags</span>
+        <span class="mod-count">2 screens</span>
+        <div class="mod-title">Defect Tracking</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">QA Engineer</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">PO Details</span><span class="screen-tag">Approve</span><span class="screen-tag">Audit Trail</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Defect logging with photo evidence, location tags, severity classification, and a resolution workflow that closes the loop before handover is cleared.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">Defect Log</span><span class="mod-chip">Photo Evidence</span><span class="mod-chip">Severity</span><span class="mod-chip">Resolution</span>
         </div>
       </div>
 
-      <!-- 8: Purchase Request Detail -->
-      <div class="screen-card rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Orders — PR Detail</div>
-          </div>
-          <img src="/images/RDash/Purchase%20request%20%E2%80%93%2010.png" alt="Purchase Request Detail" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 04 / Orders</div>
-            <div class="sc-title">Purchase Request Detail</div>
-          </div>
+      <!-- 8: CRM / Leads — WIDE -->
+      <div class="mod-card wide rv" style="--mc:var(--accent)">
+        <span class="mod-stage-lbl">Growth / CRM</span>
+        <span class="mod-count">2 screens</span>
+        <div class="mod-title">Leads Manager</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">Business Development</span>
+          <span class="mod-role-tag">Leadership</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Line Items</span><span class="screen-tag">Vendor</span><span class="screen-tag">Approval</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Built outside the core PM pipeline — a CRM for construction companies to track project enquiries, manage lead stages, and convert prospects into onboarded projects. Includes an empty-state designed for first-time users.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">Lead Pipeline</span><span class="mod-chip">CRM View</span><span class="mod-chip">Convert to Project</span><span class="mod-chip">Empty State</span><span class="mod-chip">Kanban</span>
         </div>
       </div>
 
-      <!-- 9: Project Invoices -->
-      <div class="screen-card rv d1">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Invoices</div>
-          </div>
-          <img src="/images/RDash/Project%20all%20Invoice%20%E2%80%93%2029.png" alt="Project All Invoices" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 04 / Orders</div>
-            <div class="sc-title">All Project Invoices</div>
-          </div>
+      <!-- 9: Handover -->
+      <div class="mod-card rv d1" style="--mc:var(--green)">
+        <span class="mod-stage-lbl">Stage 07 / Handover</span>
+        <span class="mod-count">2 screens</span>
+        <div class="mod-title">Project Handover</div>
+        <div class="mod-roles">
+          <span class="mod-role-tag">PM</span>
+          <span class="mod-role-tag">Client</span>
         </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Invoices</span><span class="screen-tag">Payments</span><span class="screen-tag">Vendors</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 10: Task Manager 2.0 -->
-      <div class="screen-card rv d2">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Task Manager 2.0</div>
-          </div>
-          <img src="/images/RDash/Task%20Manager%202.0.0%202%20%E2%80%93%2011.png" alt="Task Manager 2.0" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 05 / Progress</div>
-            <div class="sc-title">Task Manager 2.0</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Assign</span><span class="screen-tag">Due Dates</span><span class="screen-tag">Priority</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 11: Task UI (col 1 of row 5) -->
-      <div class="screen-card rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Work Progress</div>
-          </div>
-          <img src="/images/RDash/Pure%20Task%20ui%20update%20%E2%80%93%206.png" alt="Task UI Update" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Stage 05 / Progress</div>
-            <div class="sc-title">Task & Progress UI</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Section %</span><span class="screen-tag">Gantt</span><span class="screen-tag">₹ Summary</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 12: FEATURED — Leads Manager (spans cols 2-3) -->
-      <div class="screen-card featured rv d1">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Leads Manager</div>
-          </div>
-          <img src="/images/RDash/Leads%20Manager%201%20%E2%80%93%2010.png" alt="Leads Manager" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">CRM</div>
-            <div class="sc-title">Leads Manager</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Leads</span><span class="screen-tag">CRM</span><span class="screen-tag">Pipeline</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 13: Leads Empty -->
-      <div class="screen-card rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Leads — Empty State</div>
-          </div>
-          <img src="/images/RDash/Leads%20Manager%201%20empty%20screen.png" alt="Leads Manager Empty State" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">CRM</div>
-            <div class="sc-title">Leads Manager — Empty</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Empty State</span><span class="screen-tag">Onboarding</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 14: Platform Module -->
-      <div class="screen-card rv d1">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Platform View</div>
-          </div>
-          <img src="/images/RDash/Mask%20Group%2010.png" alt="Platform Module" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Platform</div>
-            <div class="sc-title">Platform Module</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Overview</span><span class="screen-tag">Module</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 15: Platform Detail -->
-      <div class="screen-card rv d2">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Platform Detail</div>
-          </div>
-          <img src="/images/RDash/Mask%20Group%2011.png" alt="Platform Detail" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Platform</div>
-            <div class="sc-title">Platform Detail View</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">Detail</span><span class="screen-tag">Inline Actions</span></div>
-          <div class="sc-arrow">→</div>
-        </div>
-      </div>
-
-      <!-- 16: Platform Dashboard -->
-      <div class="screen-card rv">
-        <div class="sc-img">
-          <div class="sc-chrome">
-            <div class="sc-cdots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
-            <div class="sc-clabel">Dashboard</div>
-          </div>
-          <img src="/images/RDash/Artboard%20%E2%80%93%205jk.png" alt="Platform Dashboard" loading="lazy">
-          <div class="sc-overlay">
-            <div class="sc-stage">Platform</div>
-            <div class="sc-title">Platform Dashboard</div>
-          </div>
-        </div>
-        <div class="sc-foot">
-          <div class="sc-tags"><span class="screen-tag">KPIs</span><span class="screen-tag">Command Centre</span></div>
-          <div class="sc-arrow">→</div>
+        <p class="mod-desc">Final delivery checklist, snag clearance confirmation, as-built document upload, and client sign-off — the last gate before a project is officially closed.</p>
+        <div class="mod-chips">
+          <span class="mod-chip">Checklist</span><span class="mod-chip">Snag Clearance</span><span class="mod-chip">Documents</span><span class="mod-chip">Client Sign-off</span>
         </div>
       </div>
 
