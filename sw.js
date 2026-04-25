@@ -1,4 +1,4 @@
-const CACHE = 'buddh-v16';
+const CACHE = 'buddh-v17';
 const ASSETS = [
   '/',
   '/index.html',
