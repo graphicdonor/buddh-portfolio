@@ -206,6 +206,71 @@
       .sc-img img,.screen-card.featured .sc-img img { height:240px; }
     }
 
+    /* ─── DLS SECTION ─── */
+    .dls-roles { display:grid; grid-template-columns:1fr 44px 1fr 44px 1fr; gap:0; margin-top:48px; align-items:stretch; }
+    .dls-role { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px 24px; text-align:center; transition:border-color .3s,transform .3s; }
+    .dls-role:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+    .dls-role-icon { font-size:30px; margin-bottom:12px; }
+    .dls-role-name { font-size:14px; font-weight:700; margin-bottom:8px; }
+    .dls-role-desc { font-size:12px; color:var(--text2); line-height:1.6; margin-bottom:14px; }
+    .dls-role-tag { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:100px; background:var(--accent-lo); color:var(--accent); border:1px solid var(--border-hi); }
+    .dls-role-conn { display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--text3); }
+
+    .dls-probs { margin-top:40px; display:flex; flex-direction:column; gap:2px; }
+    .dls-prob-row { display:grid; grid-template-columns:220px 1fr; background:var(--bg2); border:1px solid var(--border); padding:18px 28px; gap:24px; transition:background .3s,border-color .3s; align-items:center; }
+    .dls-prob-row:hover { border-color:var(--border-hi); background:rgba(123,108,246,.03); }
+    .dls-prob-row:first-child { border-radius:var(--r) var(--r) 0 0; }
+    .dls-prob-row:last-child { border-radius:0 0 var(--r) var(--r); }
+    .dls-prob-q { font-size:13px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:10px; }
+    .dls-prob-q::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+    .dls-prob-a { font-size:13px; color:var(--text2); line-height:1.65; }
+
+    .dls-found { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+    .dls-found-c { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:28px; }
+    .dls-found-t { font-size:10px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--text3); margin-bottom:18px; }
+    .tok-statuses { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .tok-s { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:100px; font-size:11px; font-weight:700; }
+    .tok-s::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; flex-shrink:0; }
+    .tok-s.pend { background:rgba(251,176,36,.1); color:var(--amber); border:1px solid rgba(251,176,36,.25); }
+    .tok-s.act { background:var(--accent-lo); color:var(--accent); border:1px solid var(--border-hi); }
+    .tok-s.recv { background:rgba(74,222,128,.1); color:var(--green); border:1px solid rgba(74,222,128,.25); }
+    .tok-s.clos { background:rgba(255,255,255,.04); color:var(--text3); border:1px solid var(--border); }
+    .tok-s.err { background:rgba(240,98,146,.1); color:var(--rose); border:1px solid rgba(240,98,146,.25); }
+    .tok-note { font-size:11px; color:var(--text3); line-height:1.65; margin-top:4px; }
+    .tok-money { display:flex; flex-direction:column; gap:10px; }
+    .tok-money-row { display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--bg3); border-radius:var(--r-sm); border:1px solid var(--border); }
+    .tok-money-val { font-size:22px; font-weight:800; letter-spacing:-.04em; color:var(--text); }
+    .tok-money-meta { text-align:right; }
+    .tok-money-token { font-size:10px; font-weight:700; letter-spacing:.12em; color:var(--accent); text-transform:uppercase; }
+    .tok-money-surface { font-size:10px; color:var(--text3); margin-top:2px; }
+
+    .dls-schemas { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+    .dls-schema { border-radius:var(--r-sm); padding:16px; border:1px solid var(--border); }
+    .dls-schema.dark-s { background:#0F172A; }
+    .dls-schema.light-s { background:#FAFAFA; border-color:rgba(0,0,0,.08); }
+    .dls-schema-lbl { font-size:9px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+    .dls-schema.dark-s .dls-schema-lbl { color:rgba(168,196,232,.5); }
+    .dls-schema.light-s .dls-schema-lbl { color:rgba(30,58,95,.4); }
+    .dls-schema-sw { height:7px; border-radius:100px; margin-bottom:5px; }
+
+    .dls-panels { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:40px; }
+    .dls-panel { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r); padding:32px; position:relative; overflow:hidden; transition:border-color .3s,transform .3s; }
+    .dls-panel:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+    .dls-panel::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),transparent); }
+    .dls-panel-n { font-size:48px; font-weight:800; letter-spacing:-.06em; color:var(--text3); opacity:.2; line-height:1; margin-bottom:14px; }
+    .dls-panel-t { font-size:16px; font-weight:700; margin-bottom:10px; }
+    .dls-panel-p { font-size:13px; color:var(--text2); line-height:1.7; margin-bottom:16px; }
+    .dls-panel-screens { display:flex; gap:6px; flex-wrap:wrap; }
+    .dls-screen-tag { font-size:10px; font-weight:700; padding:3px 9px; border-radius:100px; background:var(--bg3); color:var(--text2); border:1px solid var(--border); }
+
+    @media(max-width:768px){
+      .dls-roles { grid-template-columns:1fr; }
+      .dls-role-conn { display:none; }
+      .dls-prob-row { grid-template-columns:1fr; gap:8px; }
+      .dls-found,.dls-panels { grid-template-columns:1fr; }
+      .dls-schemas { grid-template-columns:1fr 1fr; }
+    }
+
     /* ─── PROTOTYPE EMBED ─── */
     .proto-sec { padding:80px 56px; border-bottom:1px solid var(--border); }
     .proto-wrap { margin-top:40px; border:1px solid var(--border); border-radius:var(--r); overflow:hidden; position:relative; background:var(--bg2); }
@@ -775,7 +840,245 @@
     </div>
   </section>
 
-  <!-- 04 UX STRATEGY -->
+  <!-- 04 DESIGN LANGUAGE SYSTEM -->
+  <section class="cs-sec">
+    <div class="cs-sec-inner">
+      <div class="tag rv">04 / Design Language System</div>
+      <h2 class="cs-h2 rv d1">Stop losing two days every release to UI drift</h2>
+      <p class="cs-p rv d2">Three roles, three densities, one product. The DLS chapter is the spec — how tokens, components, and screens were forged together in conversation, not in sequence. Engineers import from one library; the same status never appears three different ways again.</p>
+    </div>
+
+    <!-- Role Triad -->
+    <div class="dls-roles rv d2">
+      <div class="dls-role">
+        <div class="dls-role-icon">🏗</div>
+        <div class="dls-role-name">Site Engineer</div>
+        <div class="dls-role-desc">3 tasks, 1 CTA, 240px screen outdoors in sun — low info, high urgency</div>
+        <div class="dls-role-tag">Low Density</div>
+      </div>
+      <div class="dls-role-conn">↔</div>
+      <div class="dls-role">
+        <div class="dls-role-icon">📦</div>
+        <div class="dls-role-name">Procurement Manager</div>
+        <div class="dls-role-desc">247 active POs, multi-filter, KPI tiles, table-heavy indoors at night</div>
+        <div class="dls-role-tag">High Density</div>
+      </div>
+      <div class="dls-role-conn">↔</div>
+      <div class="dls-role">
+        <div class="dls-role-icon">📊</div>
+        <div class="dls-role-name">Project Owner</div>
+        <div class="dls-role-desc">KPI hero, charts, budget burn vs. completion — bound to data tokens</div>
+        <div class="dls-role-tag">Data Dense</div>
+      </div>
+    </div>
+
+    <!-- 5 Problems -->
+    <div class="cs-sec-inner" style="margin-top:64px">
+      <div class="tag rv">What I Was Solving For</div>
+      <h3 class="cs-h2 rv d1" style="font-size:clamp(22px,2.8vw,36px);margin-bottom:8px">Five problems, one system</h3>
+    </div>
+    <div class="dls-probs rv d1">
+      <div class="dls-prob-row">
+        <div class="dls-prob-q">Drift</div>
+        <div class="dls-prob-a">Same status appears as a chip, a dot, a coloured row. Pick one. Map all five states to one taxonomy, one component, five tokens.</div>
+      </div>
+      <div class="dls-prob-row">
+        <div class="dls-prob-q">Density mismatch</div>
+        <div class="dls-prob-a">Site engineer's 240px screen ≠ PM's table-heavy view. Same tokens, different rhythms — a <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">density</code> prop, not a forked component.</div>
+      </div>
+      <div class="dls-prob-row">
+        <div class="dls-prob-q">Money formatting</div>
+        <div class="dls-prob-a">₹84,200 vs ₹2.69L vs ₹2,69,000 — all live in the codebase. Tokenize it: <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">currency/inr/lakh</code> on KPI tiles, <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">currency/inr/full</code> on invoice lines.</div>
+      </div>
+      <div class="dls-prob-row">
+        <div class="dls-prob-q">The states nobody designs</div>
+        <div class="dls-prob-a">Empty, Loading, Error — shipped as "we'll figure it out." Baked into the library so the team never decides what an empty list looks like at 11pm before a release.</div>
+      </div>
+      <div class="dls-prob-row">
+        <div class="dls-prob-q">Light + dark as siblings</div>
+        <div class="dls-prob-a">Site engineers work outdoors in sun; PMs work indoors at night. Both are first-class. The accent inverts, the relationships hold — not a CSS inversion filter.</div>
+      </div>
+    </div>
+
+    <!-- Foundations: Status + Money + Schema -->
+    <div class="cs-sec-inner" style="margin-top:64px">
+      <div class="tag rv">Token Foundations</div>
+      <h3 class="cs-h2 rv d1" style="font-size:clamp(22px,2.8vw,36px);margin-bottom:8px">Colour, type, spacing — all tokenized</h3>
+    </div>
+    <div class="dls-found rv d1">
+      <div class="dls-found-c">
+        <div class="dls-found-t">Status taxonomy — one component, five tokens</div>
+        <div class="tok-statuses">
+          <span class="tok-s pend">pending</span>
+          <span class="tok-s act">active</span>
+          <span class="tok-s recv">received</span>
+          <span class="tok-s clos">closed</span>
+          <span class="tok-s err">error</span>
+        </div>
+        <p class="tok-note">Five states. Five color tokens. Ad-hoc colored dots are banned. Every status surface in the product — chip, row highlight, badge — draws from this single taxonomy.</p>
+        <div class="dls-schemas">
+          <div class="dls-schema dark-s">
+            <div class="dls-schema-lbl">Dark schema</div>
+            <div class="dls-schema-sw" style="background:#0F172A;border:1px solid rgba(255,255,255,.1)"></div>
+            <div class="dls-schema-sw" style="background:#A8C4E8;width:60%"></div>
+            <div class="tok-note" style="color:rgba(168,196,232,.5)">surface/default #0F172A · primary #A8C4E8</div>
+          </div>
+          <div class="dls-schema light-s">
+            <div class="dls-schema-lbl">Light schema</div>
+            <div class="dls-schema-sw" style="background:#FAFAFA;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="dls-schema-sw" style="background:#1E3A5F;width:60%"></div>
+            <div class="tok-note" style="color:rgba(30,58,95,.4)">surface/lowest #FAFAFA · primary #1E3A5F</div>
+          </div>
+        </div>
+      </div>
+      <div class="dls-found-c">
+        <div class="dls-found-t">Currency tokens — same number, different surface</div>
+        <div class="tok-money">
+          <div class="tok-money-row">
+            <div class="tok-money-val">₹2.69L</div>
+            <div class="tok-money-meta">
+              <div class="tok-money-token">currency/inr/lakh</div>
+              <div class="tok-money-surface">KPI tile surface</div>
+            </div>
+          </div>
+          <div class="tok-money-row">
+            <div class="tok-money-val" style="font-size:16px;letter-spacing:0">₹2,69,000</div>
+            <div class="tok-money-meta">
+              <div class="tok-money-token">currency/inr/full</div>
+              <div class="tok-money-surface">Invoice line surface</div>
+            </div>
+          </div>
+          <div class="tok-money-row">
+            <div class="tok-money-val" style="font-size:16px;letter-spacing:0">₹84,200</div>
+            <div class="tok-money-meta">
+              <div class="tok-money-token">currency/inr/full</div>
+              <div class="tok-money-surface">Order summary surface</div>
+            </div>
+          </div>
+        </div>
+        <p class="tok-note" style="margin-top:14px">Same number, different token. The surface decides the format — not the engineer's judgment at 11pm.</p>
+      </div>
+    </div>
+
+    <!-- Four Motion Panels -->
+    <div class="cs-sec-inner" style="margin-top:64px">
+      <div class="tag rv">Motion Panels</div>
+      <h3 class="cs-h2 rv d1" style="font-size:clamp(22px,2.8vw,36px);margin-bottom:8px">The proof — same tokens, twelve screens</h3>
+      <p class="cs-p rv d2" style="max-width:660px">Foundations and Components on their own are just inventory. The motion panels show the same tokens consumed across twelve screens, three roles, three states, two color schemas — without forking.</p>
+    </div>
+    <div class="dls-panels rv d1">
+      <div class="dls-panel">
+        <div class="dls-panel-n">01</div>
+        <div class="dls-panel-t">From token to screen</div>
+        <p class="dls-panel-p">Three baseline flows as the thesis screen — if these three feel like one product, the system is working. Item details (bottom sheet over content), Order summary (dark schema, GST-aware total), Create order (light schema, multi-step form).</p>
+        <div class="dls-panel-screens">
+          <span class="dls-screen-tag">Item Details</span>
+          <span class="dls-screen-tag">Order Summary</span>
+          <span class="dls-screen-tag">Create Order</span>
+        </div>
+      </div>
+      <div class="dls-panel">
+        <div class="dls-panel-n">02</div>
+        <div class="dls-panel-t">After the order, the rest of the chain</div>
+        <p class="dls-panel-p">Procurement is not a single screen — it's a chain. Payment request (linked to PO, status pill), GRN linked (receipt timeline against a PO), Progress report (multi-row progress with photo log). The system holds across the chain, not just within a screen.</p>
+        <div class="dls-panel-screens">
+          <span class="dls-screen-tag">Payment Request</span>
+          <span class="dls-screen-tag">GRN Linked</span>
+          <span class="dls-screen-tag">Progress Report</span>
+        </div>
+      </div>
+      <div class="dls-panel">
+        <div class="dls-panel-n">03</div>
+        <div class="dls-panel-t">The states nobody designs</div>
+        <p class="dls-panel-p">Empty, Loading, Error — three states most systems quietly skip. Built into the library so the team never has to decide what an empty list looks like at 11pm before a release. Each state has a token recipe and a component contract.</p>
+        <div class="dls-panel-screens">
+          <span class="dls-screen-tag">Empty State</span>
+          <span class="dls-screen-tag">Loading State</span>
+          <span class="dls-screen-tag">Error State</span>
+        </div>
+      </div>
+      <div class="dls-panel">
+        <div class="dls-panel-n">04</div>
+        <div class="dls-panel-t">Density, by role</div>
+        <p class="dls-panel-p">Same tokens, three densities — no fork in the codebase. Site engineer (3 tasks, 1 CTA, comfortable density). Procurement manager (247 POs, multi-filter, KPI tiles, compact density). Project owner (KPI hero, charts, data tokens). A <code style="font-size:11px;background:var(--bg3);padding:2px 5px;border-radius:4px;color:var(--accent)">density</code> prop, not three components.</p>
+        <div class="dls-panel-screens">
+          <span class="dls-screen-tag">Site Engineer</span>
+          <span class="dls-screen-tag">Procurement PM</span>
+          <span class="dls-screen-tag">Project Owner</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decisions that mattered -->
+    <div class="cs-sec-inner" style="margin-top:64px">
+      <div class="tag rv">Key Decisions</div>
+      <h3 class="cs-h2 rv d1" style="font-size:clamp(22px,2.8vw,36px);margin-bottom:8px">Decisions that mattered</h3>
+    </div>
+    <div class="init-list rv d1" style="margin-top:24px">
+      <div class="init-c">
+        <div class="init-n">01</div>
+        <div>
+          <div class="init-t">Money is a token, not a string</div>
+          <div class="init-p"><code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">currency/inr/lakh</code> and <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">currency/inr/full</code> are typography tokens with formatting rules. ₹2.69L on a KPI tile, ₹2,69,000 on an invoice line. Same number, different surface, different token — not a different engineer decision each time.</div>
+          <div class="init-stats"><span class="init-stat">2 format tokens</span><span class="init-stat">Zero ad-hoc strings</span></div>
+        </div>
+      </div>
+      <div class="init-c">
+        <div class="init-n">02</div>
+        <div>
+          <div class="init-t">Status is one component with one taxonomy</div>
+          <div class="init-p">Five states — <span style="color:var(--amber)">pending</span>, <span style="color:var(--accent)">active</span>, <span style="color:var(--green)">received</span>, <span style="color:var(--text3)">closed</span>, <span style="color:var(--rose)">error</span> — mapped to five color tokens. The ad-hoc colored dot is banned from new screens. Chip, row highlight, and badge all draw from this single taxonomy.</div>
+          <div class="init-stats"><span class="init-stat">5 states</span><span class="init-stat">5 color tokens</span><span class="init-stat">1 component</span></div>
+        </div>
+      </div>
+      <div class="init-c">
+        <div class="init-n">03</div>
+        <div>
+          <div class="init-t">The bottom sheet is foundational, not decorative</div>
+          <div class="init-p">Every detail flow on mobile uses the same sheet primitive — same scrim, same radius, same handle. Item details, vendor picker, date picker, filter — all one component, three configurations. No more five slightly different bottom sheets across five teams.</div>
+          <div class="init-stats"><span class="init-stat">1 primitive</span><span class="init-stat">3 configurations</span><span class="init-stat">All mobile flows</span></div>
+        </div>
+      </div>
+      <div class="init-c">
+        <div class="init-n">04</div>
+        <div>
+          <div class="init-t">Light and dark are siblings, not inversions</div>
+          <div class="init-p">Light schema: <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">surface/lowest = #FAFAFA</code>, primary <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">#1E3A5F</code>. Dark schema: <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">surface/default = #0F172A</code>, primary <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">#A8C4E8</code>. The accent inverts, the relationships hold — site engineers outdoors in sun get the same quality as PMs indoors at night.</div>
+          <div class="init-stats"><span class="init-stat">2 schemas</span><span class="init-stat">Same token graph</span><span class="init-stat">No CSS inversion</span></div>
+        </div>
+      </div>
+      <div class="init-c">
+        <div class="init-n">05</div>
+        <div>
+          <div class="init-t">Density is a prop, not a screen</div>
+          <div class="init-p">A list row component takes <code style="font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)">density: 'comfortable' | 'compact'</code>. Site engineer gets comfortable — 3 tasks, 1 CTA. Procurement manager gets compact — 247 POs in one view. Same component, same tokens, two densities. No fork in the codebase.</div>
+          <div class="init-stats"><span class="init-stat">1 component</span><span class="init-stat">2 density props</span><span class="init-stat">Zero forks</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DLS Outcome -->
+    <div class="cs-sec-inner" style="margin-top:64px">
+      <div class="tag rv">DLS Outcome</div>
+      <h3 class="cs-h2 rv d1" style="font-size:clamp(22px,2.8vw,36px);margin-bottom:8px">Drift down, release speed up</h3>
+    </div>
+    <div class="imp-grid rv d1" style="margin-top:24px">
+      <div class="imp-c rv">
+        <div class="imp-n">−75%</div>
+        <div class="imp-l">UI cleanup time per release — down from two days to roughly half a day</div>
+      </div>
+      <div class="imp-c rv d1">
+        <div class="imp-n">1 lib</div>
+        <div class="imp-l">Engineers now import from one library — the "same status three ways" problem is gone from new screens</div>
+      </div>
+      <div class="imp-c rv d2">
+        <div class="imp-n">1 scroll</div>
+        <div class="imp-l">Onboarding a new designer or engineer means scrolling this chapter once — not reading a 40-page Notion doc</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 UX STRATEGY -->
   <section class="cs-sec" style="background:var(--bg2)">
     <div class="cs-sec-inner">
       <div class="tag rv">05 / UX Strategy</div>
@@ -825,10 +1128,10 @@
     </div>
   </section>
 
-  <!-- 05 IMPACT -->
+  <!-- 06 IMPACT -->
   <section class="cs-sec">
     <div class="cs-sec-inner">
-      <div class="tag rv">05 / Impact</div>
+      <div class="tag rv">06 / Impact</div>
       <h2 class="cs-h2 rv d1">Measurable at every layer</h2>
       <p class="cs-p rv d2">Every metric below is tied to a specific design decision — not just shipped features, but outcomes that changed how the business operates.</p>
     </div>
