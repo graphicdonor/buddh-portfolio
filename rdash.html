@@ -90,6 +90,11 @@
     .tag::before { content:''; width:22px; height:1px; background:var(--accent); }
     .serif { font-family:'Instrument Serif',serif; font-weight:400; font-style:italic; }
 
+    /* ─── HERO IMAGE ─── */
+    .cs-hero-img { position:relative; z-index:1; margin-top:48px; border-radius:var(--r); overflow:hidden; border:1px solid var(--border); box-shadow:0 32px 80px rgba(0,0,0,0.5); }
+    .cs-hero-img img { width:100%; display:block; }
+    @media(max-width:768px){ .cs-hero-img { margin-top:32px; } }
+
     /* ─── HERO ─── */
     .cs-hero { min-height:72vh; padding:140px 56px 80px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; }
     .cs-hero-bg { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,black,transparent); }
@@ -305,6 +310,9 @@
       <p class="cs-tagline rv d3">
         An <strong>AI-powered construction OS</strong> that unifies procurement, billing, execution, and analytics — connecting every stakeholder across the full project lifecycle into one intelligent platform.
       </p>
+      <div class="cs-hero-img rv d3">
+        <img src="/images/rdash-hero.svg" alt="R'Dash project dashboard — My Scope, Project Progress, Vendor Wise Progress, and analytics" loading="eager"/>
+      </div>
     </div>
   </div>
 
