@@ -119,6 +119,7 @@
     nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
     .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
     .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
     .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
@@ -184,8 +185,8 @@
     .cs-card-right { position:relative; overflow:hidden; background:var(--bg3); border-left:1px solid var(--border); }
     .cs-card.e60 .cs-card-right { border-left-color:rgba(16,185,129,.1); }
 
-    .cs-brand-logo-bg { display:inline-flex; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:10px; padding:10px 18px; margin-bottom:28px; transition:border-color .3s; }
-    .cs-card:hover .cs-brand-logo-bg { border-color:var(--border-hi); }
+    .cs-brand-logo-bg { display:inline-flex; align-items:center; margin-bottom:28px; }
+    .cs-card:hover .cs-brand-logo-bg { }
     .cs-brand-logo { height:30px; width:auto; display:block; }
     [data-theme="light"] .cs-brand-logo { filter:invert(1) hue-rotate(180deg) saturate(0) brightness(.15); }
     @media(prefers-color-scheme:light){ :root:not([data-theme="dark"]) .cs-brand-logo { filter:invert(1) hue-rotate(180deg) saturate(0) brightness(.15); } }
@@ -210,7 +211,7 @@
     .cs-stat-n.green { color:var(--e60); }
     .cs-stat-l { font-size:11px; color:var(--text2); margin-top:3px; }
 
-    .cs-card-link { display:inline-flex; align-items:center; gap:8px; padding:12px 26px; background:var(--accent); color:#fff; border-radius:100px; font-size:14px; font-weight:700; text-decoration:none; transition:background .2s,transform .2s,box-shadow .2s; margin-top:auto; width:fit-content; }
+    .cs-card-link { display:inline-flex; align-items:center; gap:8px; padding:12px 26px; background:var(--accent); color:#fff; border-radius:100px; font-size:14px; font-weight:700; text-decoration:none; transition:background .2s,transform .2s,box-shadow .2s; margin-top:40px; width:fit-content; }
     .cs-card-link:hover { background:#9d91ff; transform:translateY(-2px); box-shadow:0 12px 30px rgba(123,108,246,.4); }
     .cs-card-link.green { background:var(--e60); }
     .cs-card-link.green:hover { background:#34d399; box-shadow:0 12px 30px rgba(16,185,129,.35); }
@@ -489,7 +490,8 @@
   <!-- Nav -->
   <nav id="nav">
     <a href="/" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
       <li><a href="/work.html" class="active">Work</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/#process">Process</a></li>
@@ -499,6 +501,7 @@
     <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </nav>
 
   <!-- ═══ HERO ═══ -->

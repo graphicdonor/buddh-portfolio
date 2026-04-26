@@ -69,6 +69,7 @@
     nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
     .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
     .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
     .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
@@ -341,7 +342,8 @@
 
   <nav id="nav">
     <a href="/" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
       <li><a href="/work.html">Work</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/#process">Process</a></li>
@@ -351,6 +353,7 @@
     <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -369,8 +372,19 @@
       <p class="cs-tagline rv d3">
         An <strong>AI-powered construction OS</strong> that unifies procurement, billing, execution, and analytics — connecting every stakeholder across the full project lifecycle into one intelligent platform.
       </p>
-      <div class="cs-hero-img rv d3">
-        <img src="/images/rdash-hero.svg" alt="R'Dash project dashboard — My Scope, Project Progress, Vendor Wise Progress, and analytics" loading="eager"/>
+      <div class="proto-wrap rv d3" style="margin-top:48px">
+        <div class="proto-bar">
+          <div class="proto-dots"><span></span><span></span><span></span></div>
+          <div class="proto-label">R'Dash — Adobe XD Prototype</div>
+          <a href="https://xd.adobe.com/view/e484912b-3220-435f-ac04-40e3c95f5724-b1d7/?fullscreen" target="_blank" rel="noopener" class="proto-open">Open Fullscreen ↗</a>
+        </div>
+        <iframe
+          class="proto-frame"
+          src="https://xd.adobe.com/embed/e484912b-3220-435f-ac04-40e3c95f5724-b1d7"
+          allowfullscreen
+          title="R'Dash Interactive Prototype"
+          loading="eager">
+        </iframe>
       </div>
     </div>
   </div>
@@ -937,29 +951,6 @@
         <div class="ux-t">Mobile + Offline First</div>
         <div class="ux-p">Every screen designed for a construction site — works on mobile, degrades gracefully to full offline. Desktop was secondary; field reality was always the first constraint.</div>
       </div>
-    </div>
-  </section>
-
-  <!-- PROTOTYPE -->
-  <section class="proto-sec">
-    <div class="cs-sec-inner">
-      <div class="tag rv">Live Prototype</div>
-      <h2 class="cs-h2 rv d1">Interact with the design</h2>
-      <p class="cs-p rv d2">Click through the full R'Dash prototype — every screen, flow, and interaction, exactly as designed.</p>
-    </div>
-    <div class="proto-wrap rv d2">
-      <div class="proto-bar">
-        <div class="proto-dots"><span></span><span></span><span></span></div>
-        <div class="proto-label">R'Dash — Adobe XD Prototype</div>
-        <a href="https://xd.adobe.com/view/e484912b-3220-435f-ac04-40e3c95f5724-b1d7/?fullscreen" target="_blank" rel="noopener" class="proto-open">Open Fullscreen ↗</a>
-      </div>
-      <iframe
-        class="proto-frame"
-        src="https://xd.adobe.com/embed/e484912b-3220-435f-ac04-40e3c95f5724-b1d7"
-        allowfullscreen
-        title="R'Dash Interactive Prototype"
-        loading="lazy">
-      </iframe>
     </div>
   </section>
 

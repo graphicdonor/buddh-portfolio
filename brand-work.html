@@ -69,6 +69,7 @@
     nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
     .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
     .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
     .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
@@ -195,6 +196,39 @@
     .fc { font-size:12px; color:var(--text3); }
     .fc em { color:var(--accent); font-style:normal; }
 
+    /* ─── LOGO GALLERY ─── */
+    .logo-sec { padding:80px 0 0; }
+    .logo-sec-inner { max-width:1200px; margin:0 auto 48px; padding:0 56px; }
+    .logo-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:0;
+    }
+    .logo-card {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:0; overflow:hidden; position:relative;
+      cursor:none; height:320px;
+      display:flex; align-items:center; justify-content:center;
+      transition:border-color .35s, box-shadow .35s;
+      margin:-1px 0 0 -1px;
+    }
+    .logo-card:hover { border-color:var(--border-hi); z-index:2; box-shadow:inset 0 0 0 1px var(--border-hi); }
+    .logo-card img { width:100%; height:100%; object-fit:cover; transition:transform .4s cubic-bezier(.16,1,.3,1),filter .4s; filter:brightness(.85); display:block; }
+    .logo-card:hover img { transform:scale(1.04); filter:brightness(1); }
+    .logo-glow { position:absolute; inset:0; background:radial-gradient(circle at 50% 50%,rgba(192,132,252,.12),transparent 65%); opacity:0; transition:opacity .4s; pointer-events:none; }
+    .logo-card:hover .logo-glow { opacity:1; }
+    .logo-num { position:absolute; top:14px; left:18px; font-size:10px; font-weight:700; letter-spacing:.15em; color:rgba(255,255,255,.25); opacity:0; transition:opacity .3s; }
+    .logo-card:hover .logo-num { opacity:1; color:var(--accent); }
+    @media(max-width:768px){
+      .logo-sec-inner { padding:0 24px; }
+      .logo-grid { grid-template-columns:repeat(2,1fr); }
+      .logo-card { height:220px; }
+    }
+    @media(max-width:480px){
+      .logo-grid { grid-template-columns:1fr; }
+      .logo-card { height:240px; }
+    }
+
     /* ─── HERO CANVAS ─── */
     .hero-canvas{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;overflow:visible;z-index:0}
     .hc-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -260,7 +294,8 @@
 
   <nav id="nav">
     <a href="/" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
       <li><a href="/work.html">Work</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/#process">Process</a></li>
@@ -270,6 +305,7 @@
     <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -380,152 +416,129 @@
     </div>
   </div>
 
-  <!-- 01 OVERVIEW -->
-  <section class="cs-sec">
-    <div class="cs-sec-inner">
-      <div class="tag rv">01 / Overview</div>
-      <h2 class="cs-h2 rv d1">Design before the product exists</h2>
-      <p class="cs-p rv d2">Freelance brand and UI work requires a different mindset than product design — you're often working with founders who have a vision but no visual language, a concept but no component system. The job is to <strong>translate ambition into pixels quickly</strong>, without sacrificing quality.</p>
+  <!-- LOGO GALLERY -->
+  <section class="logo-sec">
+    <div class="logo-sec-inner">
+      <div class="tag rv">Logofolio</div>
+      <h2 class="cs-h2 rv d1">16 identities. <span class="serif">Every sector.</span></h2>
+      <p class="cs-p rv d2" style="max-width:560px">From fintech wordmarks to edtech illustration systems — each mark built to last, scale, and mean something.</p>
     </div>
-    <div class="sol-grid">
-      <div class="sol-c rv">
-        <div class="sol-t">Speed without chaos</div>
-        <div class="sol-p">Rapid iteration with a clear quality bar. Early-stage clients need velocity, but not at the cost of coherence — the system needs to hold up when the team grows and starts building independently.</div>
-      </div>
-      <div class="sol-c rv d1">
-        <div class="sol-t">Brand as product constraint</div>
-        <div class="sol-p">The brand sets the rules that make product decisions easier. A strong visual language reduces decision fatigue — when the brand says "clean and technical", you know what every button and card should feel like.</div>
-      </div>
-      <div class="sol-c rv d2">
-        <div class="sol-t">Systems thinking from day one</div>
-        <div class="sol-p">Even MVPs need a coherent token system — or you rebuild everything at series A. A few hours of upfront token work saves weeks of design debt when the product scales and the team triples.</div>
-      </div>
-    </div>
-  </section>
+    <div class="logo-grid">
 
-  <!-- 02 BRAND IDENTITY -->
-  <section class="cs-sec" style="background:var(--bg2)">
-    <div class="cs-sec-inner">
-      <div class="tag rv">02 / Brand Identity Work</div>
-      <h2 class="cs-h2 rv d1">Building the visual foundation</h2>
-      <p class="cs-p rv d2">Each brand project started with a positioning workshop — understanding who the client is, who they're talking to, and what feeling they want to leave. Then: wordmark, colour system, typography, and usage guidelines.</p>
-    </div>
-    <div class="pain-grid">
-      <div class="pain-c rv">
-        <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18"/><path d="M6 18V11"/><path d="M10 18V11"/><path d="M14 18V11"/><path d="M18 18V11"/><path d="M2 7l10-5 10 5z"/><path d="M2 9h20"/></svg></div>
-        <div class="pain-t">Fintech Startup</div>
-        <div class="pain-p">Clean, trustworthy mark with a system built for data-dense interfaces. Primary, secondary, and semantic colour tokens with WCAG AA contrast compliance across all states.</div>
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">01</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-09-13.png" alt="Logo 01" loading="lazy">
       </div>
-      <div class="pain-c rv d1">
-        <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-        <div class="pain-t">Edtech Platform</div>
-        <div class="pain-p">Friendly, approachable identity with an illustrated icon system. Colour-coded by subject area with a flexible layout system for course cards and progress indicators.</div>
-      </div>
-      <div class="pain-c rv d2">
-        <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-        <div class="pain-t">Retail Brand</div>
-        <div class="pain-p">Bold wordmark designed for both digital and print. Packaging guidelines, social media templates, and a Figma component library for the marketing team.</div>
-      </div>
-      <div class="pain-c rv d3">
-        <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="pain-t">Logistics SaaS</div>
-        <div class="pain-p">Minimal, operational identity. Icon system for vehicle types, status indicators, and route visualisation. Designed for high-information-density dashboards.</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 03 UI SYSTEM WORK -->
-  <section class="cs-sec">
-    <div class="cs-sec-inner">
-      <div class="tag rv">03 / UI System Work</div>
-      <h2 class="cs-h2 rv d1">Component libraries that scale</h2>
-      <p class="cs-p rv d2">Beyond branding, several engagements involved building UI component libraries from scratch — giving early-stage teams a <strong>shared foundation that lets them ship fast</strong> without accumulating design debt.</p>
-    </div>
-    <div class="ux-grid">
-      <div class="ux-c rv">
-        <div class="ux-t">Design Tokens</div>
-        <div class="ux-p">Colour, type scale, spacing, border radius, elevation — documented and named for dev handoff. Every token has a semantic alias so engineers reference meaning, not values.</div>
+      <div class="logo-card rv d1">
+        <div class="logo-glow"></div>
+        <span class="logo-num">02</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-09-36.png" alt="Logo 02" loading="lazy">
       </div>
-      <div class="ux-c rv d1">
-        <div class="ux-t">Core Components</div>
-        <div class="ux-p">Buttons, inputs, cards, badges, modals, toasts — all states, all sizes. Built with auto-layout so they respond correctly to content changes and never need manual resizing.</div>
-      </div>
-      <div class="ux-c rv d2">
-        <div class="ux-t">Patterns</div>
-        <div class="ux-p">Forms, tables, empty states, error states, onboarding checklists — the recurring UI moments that every product needs and almost nobody documents until it's too late.</div>
-      </div>
-      <div class="ux-c rv d3">
-        <div class="ux-t">Documentation</div>
-        <div class="ux-p">Figma component library with usage guidelines, do/don't examples, and Storybook specs. Engineers get everything they need to implement correctly, without design review for every button.</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 04 PROCESS -->
-  <section class="cs-sec" style="background:var(--bg2)">
-    <div class="cs-sec-inner">
-      <div class="tag rv">04 / Process</div>
-      <h2 class="cs-h2 rv d1">How I work with early-stage clients</h2>
-      <p class="cs-p rv d2">A structured 5-week engagement that moves from ambiguity to a fully documented brand and component system — with clear deliverables at every stage and no pixel touched before the brief is signed.</p>
-    </div>
-    <div class="flow rv d2">
-      <div class="flow-step on"><span class="flow-num">01</span> Discovery Call</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">02</span> Positioning Workshop</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">03</span> Moodboard</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">04</span> Direction Selection</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">05</span> Brand Build</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">06</span> System Build</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-num">07</span> Handoff</div>
-    </div>
-    <div class="init-list">
-      <div class="init-c rv">
-        <div class="init-n">01</div>
-        <div>
-          <div class="init-t">Week 1: Discovery</div>
-          <div class="init-p">Positioning workshop, competitor audit, audience definition. Deliverable: brand brief that everyone signs off on before a single pixel is touched.</div>
-        </div>
+      <div class="logo-card rv d2">
+        <div class="logo-glow"></div>
+        <span class="logo-num">03</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-09-50.png" alt="Logo 03" loading="lazy">
       </div>
-      <div class="init-c rv">
-        <div class="init-n">02</div>
-        <div>
-          <div class="init-t">Week 2–3: Identity</div>
-          <div class="init-p">Three directions presented. One selected and refined. Wordmark, colour, type, and icon system delivered — ready to apply across every touchpoint.</div>
-        </div>
-      </div>
-      <div class="init-c rv">
-        <div class="init-n">03</div>
-        <div>
-          <div class="init-t">Week 4: System</div>
-          <div class="init-p">Component library built in Figma. Tokens documented. Core UI components built to spec with all variants and states — no ambiguity for the engineering team.</div>
-        </div>
-      </div>
-      <div class="init-c rv">
-        <div class="init-n">04</div>
-        <div>
-          <div class="init-t">Week 5+: Handoff</div>
-          <div class="init-p">Figma handoff, design token export, usage guidelines, and a 60-minute walkthrough session for the engineering team. They ship with confidence, I'm available for follow-up.</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 05 OUTCOME -->
-  <section class="cs-sec">
-    <div class="cs-sec-inner">
-      <div class="tag rv">05 / Outcome</div>
-      <h2 class="cs-h2 rv d1">From zero to a visual identity</h2>
-      <p class="cs-p rv d2">Every engagement ended with a founder who had a clear, documented visual language they could hand to any designer or developer and get consistent results — not a mood board, not a logo, a system.</p>
-    </div>
-    <div class="imp-grid" style="margin-top:40px">
-      <div class="imp-c rv"><div class="imp-n">10+</div><div class="imp-l">Brand Systems Delivered</div></div>
-      <div class="imp-c rv d1"><div class="imp-n">MVPs</div><div class="imp-l">Shipped with Design Systems</div></div>
-      <div class="imp-c rv d2"><div class="imp-n">Full Handoff</div><div class="imp-l">to Engineering</div></div>
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">04</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-10-02.png" alt="Logo 04" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d1">
+        <div class="logo-glow"></div>
+        <span class="logo-num">05</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-10-15.png" alt="Logo 05" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d2">
+        <div class="logo-glow"></div>
+        <span class="logo-num">06</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-10-27.png" alt="Logo 06" loading="lazy">
+      </div>
+
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">07</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-10-39.png" alt="Logo 07" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d1">
+        <div class="logo-glow"></div>
+        <span class="logo-num">08</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-10-51.png" alt="Logo 08" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d2">
+        <div class="logo-glow"></div>
+        <span class="logo-num">09</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-11-05.png" alt="Logo 09" loading="lazy">
+      </div>
+
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">10</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-11-18.png" alt="Logo 10" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d1">
+        <div class="logo-glow"></div>
+        <span class="logo-num">11</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-11-32.png" alt="Logo 11" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d2">
+        <div class="logo-glow"></div>
+        <span class="logo-num">12</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-11-45.png" alt="Logo 12" loading="lazy">
+      </div>
+
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">13</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-11-58.png" alt="Logo 13" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d1">
+        <div class="logo-glow"></div>
+        <span class="logo-num">14</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-12-10.png" alt="Logo 14" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d2">
+        <div class="logo-glow"></div>
+        <span class="logo-num">15</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-12-22.png" alt="Logo 15" loading="lazy">
+      </div>
+
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">16</span>
+        <img src="/images/Logos/Screenshot%20at%20Apr%2026%2020-12-43.png" alt="Logo 16" loading="lazy">
+      </div>
+
+      <div class="logo-card rv">
+        <div class="logo-glow"></div>
+        <span class="logo-num">17</span>
+        <img src="/images/Logos/Group%2029332.png" alt="Logo 17" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d1">
+        <div class="logo-glow"></div>
+        <span class="logo-num">18</span>
+        <img src="/images/Logos/Group%2029335.png" alt="Logo 18" loading="lazy">
+      </div>
+
+      <div class="logo-card rv d2">
+        <div class="logo-glow"></div>
+        <span class="logo-num">19</span>
+        <img src="/images/Logos/Mask%20Group%209.png" alt="Logo 19" loading="lazy">
+      </div>
+
     </div>
   </section>
 
@@ -559,7 +572,7 @@
     let mx=0,my=0,fx=0,fy=0;
     document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
     (function tick(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;curf.style.left=fx+'px';curf.style.top=fy+'px';requestAnimationFrame(tick);})();
-    document.querySelectorAll('a,button,.pain-c,.sol-c,.ux-c,.imp-c,.init-c').forEach(el=>{
+    document.querySelectorAll('a,button,.pain-c,.sol-c,.ux-c,.imp-c,.init-c,.logo-card').forEach(el=>{
       el.addEventListener('mouseenter',()=>{cur.classList.add('h');curf.classList.add('h');});
       el.addEventListener('mouseleave',()=>{cur.classList.remove('h');curf.classList.remove('h');});
     });

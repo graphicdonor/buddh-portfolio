@@ -465,93 +465,57 @@
     @keyframes hcF2 { 0%,100%{ transform:translateY(-6px) }   50%{ transform:translateY(8px) } }
     @keyframes hcF3 { 0%,100%{ transform:translateY(0px) }    50%{ transform:translateY(-7px) } }
 
-    .hc-card {
-      background: rgba(13,13,28,0.76);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid rgba(123,108,246,0.22);
-      border-radius: 16px;
-      padding: 16px 18px;
-      box-shadow: 0 8px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.055);
-      animation-duration: 5.5s;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
+    /* ─── PRODUCT OS CARDS ─── */
+    .pi-card {
+      background: rgba(10,10,22,0.88);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(123,108,246,0.18);
+      border-radius: 18px; padding: 18px 20px;
+      box-shadow: 0 16px 56px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+      animation-duration: 6s; animation-timing-function: ease-in-out; animation-iteration-count: infinite;
     }
-    .hc-chip {
-      font-size: 9px; font-weight: 700;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 11px;
-      display: flex; align-items: center; gap: 7px;
-    }
-    .hc-chip::before {
-      content:''; width: 14px; height: 1px; background: var(--accent);
-    }
-    /* Typography card */
-    .hc-aa {
-      font-size: 50px; font-weight: 800;
-      line-height: 1; letter-spacing: -.04em;
-      color: var(--text); margin-bottom: 3px;
-    }
-    .hc-font-name {
-      font-size: 10px; font-weight: 500;
-      color: var(--text3); margin-bottom: 11px;
-    }
-    .hc-scale { display:flex; align-items:baseline; gap:10px; }
-    /* Color tokens */
-    .hc-swatches { display:flex; gap:6px; margin-bottom:10px; }
-    .hc-sw {
-      width:28px; height:28px; border-radius:8px;
-      transition: transform .18s, box-shadow .18s;
-      cursor: default;
-    }
-    .hc-sw:hover { transform:scale(1.18); box-shadow:0 4px 14px rgba(0,0,0,.5); }
-    .hc-token-name { font-size:10px; font-family:monospace; color:var(--text3); }
-    /* Layers */
-    .hc-layer-row {
-      display:flex; align-items:center; gap:8px;
-      font-size:11px; font-weight:500; color:var(--text2);
-      padding:5px 8px; border-radius:6px; margin-bottom:2px;
-    }
-    .hc-layer-sel { background:var(--accent-lo); color:var(--text); }
-    .hc-ico { width:14px; height:14px; color:var(--text3); flex-shrink:0; }
-    .hc-layer-sel .hc-ico { color:var(--accent); }
-    /* Component button */
-    .hc-demo-btn {
-      width:100%; padding:9px 18px;
-      background:var(--accent); color:#fff;
-      border:none; border-radius:100px;
-      font-size:12px; font-weight:700;
-      font-family:inherit; cursor:pointer;
-      transition:transform .18s, box-shadow .18s;
-      margin-bottom:10px;
-    }
-    .hc-demo-btn:hover {
-      transform:translateY(-2px);
-      box-shadow:0 8px 24px rgba(123,108,246,.5);
-    }
-    .hc-state-row { display:flex; gap:6px; }
-    .hc-state {
-      font-size:9px; font-weight:600; letter-spacing:.06em;
-      padding:3px 8px; border-radius:100px;
-      border:1px solid var(--border); color:var(--text3);
-    }
-    .hc-state-hov {
-      border-color:var(--accent); color:var(--accent);
-      background:var(--accent-lo);
-    }
-    /* Metrics */
-    .hc-met-grid { display:flex; gap:18px; }
-    .hc-met { text-align:center; }
-    .hc-met-v {
-      font-size:22px; font-weight:800;
-      letter-spacing:-.04em; color:var(--accent);
-      line-height:1; margin-bottom:4px;
-    }
-    .hc-met-l {
-      font-size:9px; font-weight:600;
-      letter-spacing:.08em; text-transform:uppercase; color:var(--text3);
-    }
+    .pi-chip { font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; display:flex; align-items:center; gap:7px; }
+    .pi-chip::before { content:''; width:14px; height:1px; background:var(--accent); }
+    /* Sprint board */
+    .pi-board-title { font-size:13px; font-weight:700; color:var(--text); margin-bottom:3px; }
+    .pi-board-sub { font-size:10px; color:var(--text3); font-weight:500; margin-bottom:13px; }
+    .pi-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-bottom:13px; }
+    .pi-col-head { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text3); margin-bottom:5px; }
+    .pi-item { display:flex; align-items:center; gap:5px; padding:4px 7px; border-radius:6px; background:rgba(255,255,255,0.04); font-size:10px; font-weight:600; color:var(--text2); margin-bottom:4px; border:1px solid rgba(255,255,255,0.05); white-space:nowrap; overflow:hidden; }
+    .pi-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .pi-progress-row { display:flex; align-items:center; gap:8px; }
+    .pi-bar { flex:1; height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; }
+    .pi-bar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--accent),#a78bfa); width:0%; animation:piFill 1.8s 2.8s ease-out forwards; }
+    @keyframes piFill { to { width:78%; } }
+    .pi-pct { font-size:10px; font-weight:700; color:var(--accent); }
+    /* Chart */
+    .pi-big-num { font-size:34px; font-weight:800; letter-spacing:-.05em; color:var(--text); line-height:1; margin-bottom:3px; }
+    .pi-big-label { font-size:10px; color:var(--text3); font-weight:500; margin-bottom:12px; }
+    .pi-sparkline { width:100%; height:48px; overflow:visible; }
+    .pi-spark-path { stroke:var(--accent); stroke-width:2; fill:none; stroke-dasharray:300; stroke-dashoffset:300; animation:piDraw 1.8s 3.2s ease-out forwards; }
+    .pi-spark-fill { fill:url(#piGrad); opacity:.18; }
+    @keyframes piDraw { to { stroke-dashoffset:0; } }
+    .pi-trend { display:flex; align-items:center; gap:7px; margin-top:10px; }
+    .pi-trend-badge { padding:2px 9px; background:rgba(74,222,128,.1); border:1px solid rgba(74,222,128,.22); border-radius:100px; font-size:9px; font-weight:700; color:var(--green); }
+    /* AI Copilot */
+    .pi-prompt-row { display:flex; align-items:center; gap:7px; padding:8px 10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:8px; margin-bottom:10px; }
+    .pi-prompt-text { font-size:11px; color:var(--text2); font-weight:500; font-family:monospace; }
+    .pi-cursor { display:inline-block; width:1px; height:11px; background:var(--accent); margin-left:1px; animation:piCursor .8s step-end infinite; vertical-align:middle; }
+    @keyframes piCursor { 0%,100%{opacity:1} 50%{opacity:0} }
+    .pi-response { display:flex; flex-direction:column; gap:6px; }
+    .pi-res-row { display:flex; align-items:center; gap:8px; font-size:10px; color:var(--text2); font-weight:500; }
+    .pi-res-dot { width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; opacity:.6; }
+    /* Activity feed */
+    .pi-act-row { display:flex; align-items:center; gap:9px; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .pi-act-row:last-child { border-bottom:none; padding-bottom:0; }
+    .pi-act-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .pi-act-info { flex:1; min-width:0; }
+    .pi-act-name { font-size:11px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .pi-act-sub { font-size:9px; color:var(--text3); font-weight:500; margin-top:1px; }
+    .pi-badge { padding:2px 8px; border-radius:100px; font-size:9px; font-weight:700; border:1px solid; flex-shrink:0; }
+    .pi-b-green { color:var(--green); border-color:rgba(74,222,128,.25); background:rgba(74,222,128,.08); }
+    .pi-b-amber { color:var(--amber); border-color:rgba(251,176,36,.25); background:rgba(251,176,36,.08); }
+    .pi-b-purple { color:var(--accent); border-color:rgba(123,108,246,.3); background:rgba(123,108,246,.08); }
     @media (max-width: 900px) { .hero-canvas { display:none; } }
 
     /* ─── MARQUEE ─── */
@@ -1646,102 +1610,98 @@
     <!-- ─── DESIGN CANVAS ─── -->
     <div class="hero-canvas" id="heroCanvas" aria-hidden="true">
 
-      <!-- connector lines -->
-      <svg class="hc-svg" viewBox="0 0 600 860" preserveAspectRatio="none" fill="none">
-        <line x1="108" y1="174" x2="398" y2="248" stroke="rgba(123,108,246,0.11)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="398" y1="248" x2="352" y2="378" stroke="rgba(123,108,246,0.09)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="62"  y1="454" x2="352" y2="378" stroke="rgba(123,108,246,0.09)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="62"  y1="454" x2="242" y2="574" stroke="rgba(123,108,246,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="352" y1="378" x2="242" y2="574" stroke="rgba(123,108,246,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
-        <circle cx="108" cy="174" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="398" cy="248" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="62"  cy="454" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="352" cy="378" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="242" cy="574" r="2.5" fill="rgba(123,108,246,0.28)"/>
-      </svg>
-
-      <!-- Card 1: Typography -->
-      <div class="hc-node" data-depth="0.04" style="top:12%;left:5%">
-        <div class="hc-card" style="animation-name:hcF1">
-          <div class="hc-chip">Typography</div>
-          <div class="hc-aa">Aa</div>
-          <div class="hc-font-name">Plus Jakarta Sans</div>
-          <div class="hc-scale">
-            <span style="font-size:17px;font-weight:800;color:var(--text)">H1</span>
-            <span style="font-size:13px;font-weight:600;color:var(--text2)">H3</span>
-            <span style="font-size:11px;font-weight:400;color:var(--text3)">Body</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Color tokens -->
-      <div class="hc-node" data-depth="0.07" style="top:20%;right:5%">
-        <div class="hc-card" style="animation-name:hcF2">
-          <div class="hc-chip">Color Tokens</div>
-          <div class="hc-swatches">
-            <div class="hc-sw" style="background:#7B6CF6"></div>
-            <div class="hc-sw" style="background:#4ADE80"></div>
-            <div class="hc-sw" style="background:#FBB024"></div>
-            <div class="hc-sw" style="background:#F06292"></div>
-            <div class="hc-sw" style="background:#60A5FA"></div>
-          </div>
-          <div class="hc-token-name">#7B6CF6 — primary</div>
-        </div>
-      </div>
-
-      <!-- Card 3: Layers panel -->
-      <div class="hc-node" data-depth="0.05" style="top:43%;left:3%">
-        <div class="hc-card" style="animation-name:hcF3;animation-duration:6.5s">
-          <div class="hc-chip">Layers</div>
-          <div class="hc-layer-row hc-layer-sel">
-            <svg class="hc-ico" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-            Navigation
-          </div>
-          <div class="hc-layer-row">
-            <svg class="hc-ico" viewBox="0 0 16 16"><rect x="1" y="5" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="4" y="1" width="8" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-            Hero Section
-          </div>
-          <div class="hc-layer-row">
-            <svg class="hc-ico" viewBox="0 0 16 16"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            Content Grid
-          </div>
-          <div class="hc-layer-row">
-            <svg class="hc-ico" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-            Background
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Component -->
-      <div class="hc-node" data-depth="0.09" style="top:35%;right:4%">
-        <div class="hc-card" style="animation-name:hcF1;animation-duration:4.8s">
-          <div class="hc-chip">Component</div>
-          <button class="hc-demo-btn">Primary Action ↗</button>
-          <div class="hc-state-row">
-            <span class="hc-state">Default</span>
-            <span class="hc-state hc-state-hov">Hover</span>
-            <span class="hc-state">Active</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5: Impact metrics -->
-      <div class="hc-node" data-depth="0.06" style="top:61%;left:28%">
-        <div class="hc-card" style="animation-name:hcF2;animation-duration:6s">
-          <div class="hc-chip">Impact</div>
-          <div class="hc-met-grid">
-            <div class="hc-met">
-              <div class="hc-met-v">9+</div>
-              <div class="hc-met-l">Years</div>
+      <!-- Card A: Sprint Board -->
+      <div class="hc-node" data-depth="0.04" style="top:16%;left:3%">
+        <div class="pi-card" style="width:258px;animation-name:hcF3">
+          <div class="pi-chip">Sprint Board</div>
+          <div class="pi-board-title">R'Dash · Sprint 12</div>
+          <div class="pi-board-sub">3 of 9 features shipped this cycle</div>
+          <div class="pi-cols">
+            <div>
+              <div class="pi-col-head">To Do</div>
+              <div class="pi-item"><div class="pi-dot" style="background:#7B6CF6"></div>AI Copilot</div>
+              <div class="pi-item"><div class="pi-dot" style="background:#7B6CF6"></div>BOQ v3</div>
             </div>
-            <div class="hc-met">
-              <div class="hc-met-v" style="color:var(--green)">$4.3M</div>
-              <div class="hc-met-l">ARR Scaled</div>
+            <div>
+              <div class="pi-col-head">In Progress</div>
+              <div class="pi-item"><div class="pi-dot" style="background:#FBB024"></div>Payments</div>
+              <div class="pi-item"><div class="pi-dot" style="background:#FBB024"></div>Mobile</div>
             </div>
-            <div class="hc-met">
-              <div class="hc-met-v" style="color:var(--amber)">12+</div>
-              <div class="hc-met-l">Products</div>
+            <div>
+              <div class="pi-col-head">Shipped</div>
+              <div class="pi-item"><div class="pi-dot" style="background:#4ADE80"></div>Scope</div>
+              <div class="pi-item"><div class="pi-dot" style="background:#4ADE80"></div>Snags</div>
             </div>
+          </div>
+          <div class="pi-progress-row">
+            <div class="pi-bar"><div class="pi-bar-fill"></div></div>
+            <div class="pi-pct">78%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card B: ARR Sparkline -->
+      <div class="hc-node" data-depth="0.07" style="top:14%;left:47%">
+        <div class="pi-card" style="width:198px;animation-name:hcF1">
+          <div class="pi-chip">Revenue Impact</div>
+          <div class="pi-big-num">$4.3M</div>
+          <div class="pi-big-label">ARR scaled from $0 · R'Dash</div>
+          <svg class="pi-sparkline" viewBox="0 0 178 48" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="piGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7B6CF6" stop-opacity=".45"/>
+                <stop offset="100%" stop-color="#7B6CF6" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="pi-spark-fill" d="M0 48 L0 44 L25 40 L50 34 L75 26 L100 18 L130 10 L155 5 L178 2 L178 48 Z"/>
+            <path class="pi-spark-path" d="M0 44 L25 40 L50 34 L75 26 L100 18 L130 10 L155 5 L178 2"/>
+          </svg>
+          <div class="pi-trend">
+            <span class="pi-trend-badge">↑ 63% MRR</span>
+            <span style="font-size:10px;color:var(--text3);font-weight:500">this year</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card C: AI Copilot -->
+      <div class="hc-node" data-depth="0.05" style="top:42%;left:3%">
+        <div class="pi-card" style="width:234px;animation-name:hcF2;animation-duration:7s">
+          <div class="pi-chip">AI Copilot</div>
+          <div class="pi-prompt-row">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="color:var(--accent);flex-shrink:0"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/></svg>
+            <span class="pi-prompt-text">Analyse scope gaps<span class="pi-cursor"></span></span>
+          </div>
+          <div class="pi-response">
+            <div class="pi-res-row"><div class="pi-res-dot"></div>3 BOQ items need review</div>
+            <div class="pi-res-row"><div class="pi-res-dot"></div>2 vendor approvals pending</div>
+            <div class="pi-res-row"><div class="pi-res-dot" style="background:var(--amber)"></div>BOQ delta: ₹1.2L flagged</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card D: Recently Shipped -->
+      <div class="hc-node" data-depth="0.08" style="top:40%;left:47%">
+        <div class="pi-card" style="width:218px;animation-name:hcF3;animation-duration:5.8s">
+          <div class="pi-chip">Recently Shipped</div>
+          <div class="pi-act-row">
+            <div class="pi-act-dot" style="background:#4ADE80"></div>
+            <div class="pi-act-info"><div class="pi-act-name">R'Dash v4.2</div><div class="pi-act-sub">AI Copilot · Construction OS</div></div>
+            <div class="pi-badge pi-b-green">Live</div>
+          </div>
+          <div class="pi-act-row">
+            <div class="pi-act-dot" style="background:#4ADE80"></div>
+            <div class="pi-act-info"><div class="pi-act-name">Elite60</div><div class="pi-act-sub">PWA + Android · Fitness</div></div>
+            <div class="pi-badge pi-b-green">Live</div>
+          </div>
+          <div class="pi-act-row">
+            <div class="pi-act-dot" style="background:#FBB024"></div>
+            <div class="pi-act-info"><div class="pi-act-name">WebSignals</div><div class="pi-act-sub">Brand Monitoring · B2B</div></div>
+            <div class="pi-badge pi-b-amber">In Use</div>
+          </div>
+          <div class="pi-act-row">
+            <div class="pi-act-dot" style="background:#7B6CF6"></div>
+            <div class="pi-act-info"><div class="pi-act-name">Rankwatch</div><div class="pi-act-sub">SEO Analytics · SaaS</div></div>
+            <div class="pi-badge pi-b-purple">Shipped</div>
           </div>
         </div>
       </div>
@@ -1850,295 +1810,10 @@
     </div>
   </section>
 
+
+
   <!-- ═══════════════ FEATURED CASE STUDY ═══════════════ -->
   <section id="work" style="padding-top:0">
-    <div class="tag rv">Featured Case Study</div>
-    <h2 class="sh rv d1" style="margin-bottom:44px">
-      R'Dash — <span class="serif">AI-Powered</span><br>Construction OS
-    </h2>
-
-    <div class="cs-wrap rv d2">
-      <!-- Header -->
-      <div class="cs-head">
-        <div>
-          <div class="cs-chips">
-            <span class="cs-chip">B2B SaaS</span>
-            <span class="cs-chip">AI-First</span>
-            <span class="cs-chip">0 → Scale</span>
-            <span class="cs-chip">Lead Product Designer</span>
-          </div>
-          <div class="cs-name">R<span class="serif">'Dash</span></div>
-          <p class="cs-tagline">
-            An AI-powered construction management platform that unifies procurement, billing, execution, and analytics — connecting every stakeholder across the full project lifecycle into one intelligent OS.
-          </p>
-        </div>
-        <div class="cs-meta-grid">
-          <div>
-            <div class="cs-mi-label">Role</div>
-            <div class="cs-mi-val">Lead Product Designer</div>
-          </div>
-          <div>
-            <div class="cs-mi-label">Timeline</div>
-            <div class="cs-mi-val">2022 – Present</div>
-          </div>
-          <div>
-            <div class="cs-mi-label">ARR Scaled</div>
-            <div class="cs-mi-val">$0 → $4.3M</div>
-          </div>
-          <div>
-            <div class="cs-mi-label">Industry</div>
-            <div class="cs-mi-val">Construction Tech</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dashboard Mockup -->
-      <div class="db-wrap">
-        <div class="db-bar">
-          <div class="db-dots"><span></span><span></span><span></span></div>
-          <div class="db-url">app.rdash.io/my-projects</div>
-        </div>
-        <div class="db-body">
-          <div class="db-side">
-            <div class="db-si on"><span class="db-si-ic"></span>My Projects</div>
-            <div class="db-si"><span class="db-si-ic"></span>Recce</div>
-            <div class="db-si"><span class="db-si-ic"></span>Design</div>
-            <div class="db-si"><span class="db-si-ic"></span>BOQ</div>
-            <div class="db-si"><span class="db-si-ic"></span>Orders</div>
-            <div class="db-si"><span class="db-si-ic"></span>Work Progress</div>
-            <div class="db-si"><span class="db-si-ic"></span>Snags</div>
-            <div class="db-si"><span class="db-si-ic"></span>Handover</div>
-          </div>
-          <div class="db-main">
-            <div class="db-r4">
-              <div class="db-kpi">
-                <div class="db-kpi-l">Scope Approved</div>
-                <div class="db-kpi-v">60%</div>
-                <div class="db-kpi-d">↑ 54 items approved</div>
-              </div>
-              <div class="db-kpi">
-                <div class="db-kpi-l">Total Value</div>
-                <div class="db-kpi-v">₹3.45L</div>
-                <div class="db-kpi-d">↑ 7 vendors linked</div>
-              </div>
-              <div class="db-kpi">
-                <div class="db-kpi-l">Work Progress</div>
-                <div class="db-kpi-v">30%</div>
-                <div class="db-kpi-d">↑ material ok</div>
-              </div>
-              <div class="db-kpi">
-                <div class="db-kpi-l">Timeline</div>
-                <div class="db-kpi-v">3 days</div>
-                <div class="db-kpi-d warn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> to complete</div>
-              </div>
-            </div>
-            <div class="db-r2">
-              <div class="db-chart">
-                <div class="db-chart-t">Vendor Wise Progress</div>
-                <div class="db-hbars">
-                  <div class="db-hbar-row"><span class="db-hbar-label">Azeem Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill a" style="width:76%"></div></div><span class="db-hbar-pct">76%</span></div>
-                  <div class="db-hbar-row"><span class="db-hbar-label">Raheem Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill a" style="width:55%"></div></div><span class="db-hbar-pct">55%</span></div>
-                  <div class="db-hbar-row"><span class="db-hbar-label">Hafiz Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill b" style="width:89%"></div></div><span class="db-hbar-pct">89%</span></div>
-                  <div class="db-hbar-row"><span class="db-hbar-label">Abc Contr.</span><div class="db-hbar-track"><div class="db-hbar-fill a" style="width:43%"></div></div><span class="db-hbar-pct">43%</span></div>
-                  <div class="db-hbar-row"><span class="db-hbar-label">Ranjeet Fab.</span><div class="db-hbar-track"><div class="db-hbar-fill b" style="width:36%"></div></div><span class="db-hbar-pct">36%</span></div>
-                </div>
-              </div>
-              <div class="db-tbl">
-                <div class="db-th"><span>Project</span><span>Stage</span><span>Status</span></div>
-                <div class="db-tr"><span>BRID3342</span><span>Orders</span><span><span class="badge p">Active</span></span></div>
-                <div class="db-tr"><span>BRID3418</span><span>Design</span><span><span class="badge y">Pending</span></span></div>
-                <div class="db-tr"><span>BRID3389</span><span>BOQ</span><span><span class="badge g">Approved</span></span></div>
-                <div class="db-tr"><span>BRID3456</span><span>Recce</span><span><span class="badge b">Review</span></span></div>
-                <div class="db-tr"><span>BRID3501</span><span>W. Progress</span><span><span class="badge y">Pending</span></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case Study Detail -->
-    <div class="cs-sections">
-
-      <!-- Problem -->
-      <div class="cs-sec rv">
-        <div class="cs-sec-lbl">01 / Problem</div>
-        <div>
-          <h3 class="cs-sec-t">Construction workflows are deeply fragmented</h3>
-          <p class="cs-sec-p">Teams ran critical workflows across Excel for BOQs, WhatsApp for communication, ERPs for finance, and manual on-site reporting — resulting in zero real-time visibility, delayed decisions, heavy cost leakages, and crushing operational overhead.</p>
-          <div class="pain-grid">
-            <div class="pain-c">
-              <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
-              <div class="pain-t">Excel BOQs &amp; manual data</div>
-              <div class="pain-p">Bill of quantities managed in spreadsheets with no live pricing, no vendor linking, and no audit trail — leading to costly errors.</div>
-            </div>
-            <div class="pain-c">
-              <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-              <div class="pain-t">WhatsApp-driven communication</div>
-              <div class="pain-p">Critical project decisions buried in chat threads with no structure, no accountability, and no searchable history.</div>
-            </div>
-            <div class="pain-c">
-              <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-              <div class="pain-t">Zero real-time visibility</div>
-              <div class="pain-p">Stakeholders had no live view of project health — everything was reactive, never proactive, driven by delayed manual reports.</div>
-            </div>
-            <div class="pain-c">
-              <div class="pain-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-              <div class="pain-t">High cost leakages</div>
-              <div class="pain-p">Disconnected billing, payment, and reconciliation caused cash leakages, invoice disputes, and follow-up loops that cost weeks.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Solution — Construction OS -->
-      <div class="cs-sec rv">
-        <div class="cs-sec-lbl">02 / Solution</div>
-        <div>
-          <h3 class="cs-sec-t">Construction OS — one unified platform</h3>
-          <p class="cs-sec-p">RDash connects every layer of a construction project into a single intelligent system — from procurement to payments, site execution to AI insights — eliminating tool-switching and giving every stakeholder exactly what they need.</p>
-          <div class="flow">
-            <div class="flow-s"><div class="flow-n">01</div><div class="flow-l">Project Setup</div></div>
-            <div class="flow-s"><div class="flow-n">02</div><div class="flow-l">BOQ Planning</div></div>
-            <div class="flow-s"><div class="flow-n">03</div><div class="flow-l">Procurement</div></div>
-            <div class="flow-s"><div class="flow-n">04</div><div class="flow-l">Execution</div></div>
-            <div class="flow-s"><div class="flow-n">05</div><div class="flow-l">Billing &amp; Pay</div></div>
-            <div class="flow-s"><div class="flow-n">06</div><div class="flow-l">AI Insights</div></div>
-          </div>
-          <div class="sol-grid" style="margin-top:24px">
-            <div class="sol-c">
-              <div class="sol-t">Procurement → Billing → Payments → Reconciliation</div>
-              <div class="sol-p">End-to-end financial lifecycle in one flow — milestone-based RA billing, AI-driven payment triggers, and 3-way matching for zero leakage.</div>
-            </div>
-            <div class="sol-c">
-              <div class="sol-t">Site Execution → Activity Tracking → Reporting</div>
-              <div class="sol-p">Real-time site execution with activity schedules, progress tracking, and daily report subscriptions via Email and WhatsApp.</div>
-            </div>
-            <div class="sol-c">
-              <div class="sol-t">AI Copilot → Insights → Automation</div>
-              <div class="sol-p">Natural language to dashboards — ask questions, get answers. Reduced BI workload by 55% and dashboard creation time by 60%.</div>
-            </div>
-            <div class="sol-c">
-              <div class="sol-t">AI Voice Copilot (Mobile)</div>
-              <div class="sol-p">Multilingual voice assistant for on-site teams — 30% less manual lookup and 40% faster decision-making in the field.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Key Initiatives -->
-      <div class="cs-sec rv">
-        <div class="cs-sec-lbl">03 / Key Initiatives</div>
-        <div>
-          <h3 class="cs-sec-t">Platform leadership across every layer</h3>
-          <div class="dec-list">
-            <div class="dec-c">
-              <div class="dec-n">01</div>
-              <div>
-                <div class="dec-t">SMB Growth Engine</div>
-                <div class="dec-p">AI-powered onboarding + self-serve billing reduced go-live from weeks to 7 days, cut implementation effort by 50%, and lowered support dependency by 30% — unlocking ~40% of total revenue from SMB segment.</div>
-              </div>
-            </div>
-            <div class="dec-c">
-              <div class="dec-n">02</div>
-              <div>
-                <div class="dec-t">Invoice Intelligence (OCR + 3-Way Matching)</div>
-                <div class="dec-p">OCR-based invoice booking with automated 3-way matching (Invoice × GRN × PO) cut manual effort by 60–70%, reduced disputes by 40%, and accelerated approvals across the billing chain.</div>
-              </div>
-            </div>
-            <div class="dec-c">
-              <div class="dec-n">03</div>
-              <div>
-                <div class="dec-t">Mobile-First Execution</div>
-                <div class="dec-p">Redesigned activity scheduling and site execution for mobile-first workflows — drove 63% MRR growth and 75% more engagement from field teams who previously had zero digital tooling.</div>
-              </div>
-            </div>
-            <div class="dec-c">
-              <div class="dec-n">04</div>
-              <div>
-                <div class="dec-t">Offline-First Infrastructure</div>
-                <div class="dec-p">Built offline sync across all modules for construction sites with poor connectivity — reduced data loss by 95% and ensured continuity even in zero-network environments.</div>
-              </div>
-            </div>
-            <div class="dec-c">
-              <div class="dec-n">05</div>
-              <div>
-                <div class="dec-t">Authentication &amp; Smart Notifications</div>
-                <div class="dec-p">In-house OTP + country-based routing reduced login cost by 70% and sped up auth by 95%. SSO (Amazon, Google, Microsoft) cut onboarding time by 25%. Smart notification routing cut costs by 40% and misroutes by 25%.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- UX Strategy -->
-      <div class="cs-sec rv">
-        <div class="cs-sec-lbl">04 / UX Strategy</div>
-        <div>
-          <h3 class="cs-sec-t">AI-first, systems-led design</h3>
-          <p class="cs-sec-p">The UX strategy was built around four principles that governed every design decision across the platform — from onboarding to AI Copilot to offline execution.</p>
-          <div class="sol-grid">
-            <div class="sol-c">
-              <div class="sol-t">AI-First Interaction</div>
-              <div class="sol-p">Designed every surface to leverage AI — natural language queries, predictive suggestions, and automated workflows as the default, not a feature.</div>
-            </div>
-            <div class="sol-c">
-              <div class="sol-t">Progressive Disclosure</div>
-              <div class="sol-p">Construction data is dense. Applied strict hierarchy and contextual reveal — showing complexity only when the user is ready for it, not all at once.</div>
-            </div>
-            <div class="sol-c">
-              <div class="sol-t">Role-Based UX</div>
-              <div class="sol-p">Each stakeholder — developer, contractor, site manager — gets a tailored view of the same underlying data, reducing noise and increasing task completion.</div>
-            </div>
-            <div class="sol-c">
-              <div class="sol-t">Mobile + Offline First</div>
-              <div class="sol-p">Designed for the construction site, not the boardroom. Every flow works on mobile and degrades gracefully to full offline capability when network fails.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Impact -->
-      <div class="cs-sec rv">
-        <div class="cs-sec-lbl">05 / Impact</div>
-        <div>
-          <h3 class="cs-sec-t">From $0 to $4.3M ARR — measurable at every layer</h3>
-          <p class="cs-sec-p">Every initiative shipped translated directly into business outcomes — from ARR growth to field team adoption to engineering cost savings.</p>
-          <div class="impact-grid" style="grid-template-columns:repeat(3,1fr)">
-            <div class="imp-c">
-              <div class="imp-n">$4.3M</div>
-              <div class="imp-l">ARR scaled from $0 as Lead Product Designer</div>
-            </div>
-            <div class="imp-c">
-              <div class="imp-n">63%</div>
-              <div class="imp-l">MRR growth driven by mobile-first execution redesign</div>
-            </div>
-            <div class="imp-c">
-              <div class="imp-n">65%</div>
-              <div class="imp-l">Reduction in manual invoice processing via OCR + 3-way match</div>
-            </div>
-            <div class="imp-c">
-              <div class="imp-n">55%</div>
-              <div class="imp-l">Less BI workload through AI Copilot natural language dashboards</div>
-            </div>
-            <div class="imp-c">
-              <div class="imp-n">95%</div>
-              <div class="imp-l">Reduction in field data loss with offline-first sync infrastructure</div>
-            </div>
-            <div class="imp-c">
-              <div class="imp-n">7 days</div>
-              <div class="imp-l">SMB go-live time — down from weeks, 50% less implementation effort</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════ ELITE60 CASE STUDY ═══════════════ -->
-  <div class="cs-divider"></div>
-  <section style="padding-top:80px">
     <div class="tag rv" style="color:#10B981">
       <span style="display:inline-block;width:22px;height:1px;background:#10B981;margin-right:10px"></span>
       Featured Case Study
@@ -2462,25 +2137,55 @@
     <h2 class="sh rv d1" style="margin-bottom:44px">More <span class="serif">projects</span></h2>
 
     <div class="bento">
-      <!-- WebSignals -->
-      <div class="pc rv">
-        <div class="pc-bg" style="background:#F06292"></div>
+      <!-- Rdash -->
+      <a href="/rdash.html" class="pc rv" style="text-decoration:none;color:inherit;display:block">
+        <div class="pc-bg" style="background:#7B6CF6"></div>
         <div class="pc-num">01</div>
+        <div class="pc-type">AI-Powered Construction OS</div>
+        <div class="pc-name">R'Dash</div>
+        <div class="pc-desc">Lead product design from 0 to $4.3M ARR — spanning procurement, billing, site execution, and AI analytics across web and mobile.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">B2B SaaS</span>
+          <span class="pc-tag">AI-First</span>
+          <span class="pc-tag">0 → Scale</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </a>
+
+      <!-- Rankwatch -->
+      <a href="/rankwatch.html" class="pc rv d1" style="text-decoration:none;color:inherit;display:block">
+        <div class="pc-bg" style="background:#FBB024"></div>
+        <div class="pc-num">02</div>
+        <div class="pc-type">SEO Analytics Platform</div>
+        <div class="pc-name">Rankwatch</div>
+        <div class="pc-desc">Redesigned the core ranking intelligence experience for a global SEO tool — improving data clarity and workflows for enterprise users.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">SaaS</span>
+          <span class="pc-tag">Analytics</span>
+          <span class="pc-tag">Enterprise</span>
+        </div>
+        <div class="pc-arrow">→</div>
+      </a>
+
+      <!-- WebSignals -->
+      <a href="/websignals.html" class="pc rv d2" style="text-decoration:none;color:inherit;display:block">
+        <div class="pc-bg" style="background:#F06292"></div>
+        <div class="pc-num">03</div>
         <div class="pc-type">Brand Monitoring · 0→1</div>
         <div class="pc-name">WebSignals</div>
-        <div class="pc-desc">0→1 brand monitoring platform — full product definition, design system creation, and launch experience for a B2B media intelligence tool.</div>
+        <div class="pc-desc">0→1 brand monitoring platform — full product definition, design system creation, and launch for a B2B media intelligence tool.</div>
         <div class="pc-tags">
           <span class="pc-tag">0 → 1</span>
           <span class="pc-tag">Brand System</span>
           <span class="pc-tag">B2B</span>
         </div>
         <div class="pc-arrow">→</div>
-      </div>
+      </a>
 
       <!-- Knovelo -->
-      <div class="pc rv d1">
+      <a href="/knovelo.html" class="pc rv d3" style="text-decoration:none;color:inherit;display:block">
         <div class="pc-bg" style="background:#4ADE80"></div>
-        <div class="pc-num">02</div>
+        <div class="pc-num">04</div>
         <div class="pc-type">Consumer App</div>
         <div class="pc-name">Knovelo</div>
         <div class="pc-desc">Reader community app connecting book lovers through shared discovery, highlights, and community reviews.</div>
@@ -2489,36 +2194,22 @@
           <span class="pc-tag">Community</span>
         </div>
         <div class="pc-arrow">→</div>
-      </div>
+      </a>
 
-      <!-- LocatR -->
-      <div class="pc rv d2">
-        <div class="pc-bg" style="background:#FBB024"></div>
-        <div class="pc-num">03</div>
-        <div class="pc-type">Navigation UX</div>
-        <div class="pc-name">LocatR</div>
-        <div class="pc-desc">Grocery store navigation UX — reducing time-to-find for shoppers using indoor wayfinding and smart list organization.</div>
-        <div class="pc-tags">
-          <span class="pc-tag">UX Research</span>
-          <span class="pc-tag">Wayfinding</span>
-        </div>
-        <div class="pc-arrow">→</div>
-      </div>
-
-      <!-- Kockpit -->
-      <div class="pc rv d3">
+      <!-- Logofolio -->
+      <a href="/brand-work.html" class="pc rv d4" style="text-decoration:none;color:inherit;display:block">
         <div class="pc-bg" style="background:#60A5FA"></div>
-        <div class="pc-num">04</div>
-        <div class="pc-type">BI Dashboard</div>
-        <div class="pc-name">Kockpit</div>
-        <div class="pc-desc">Executive business intelligence dashboard — translating complex enterprise data into clear, actionable insights for C-suite decision makers.</div>
+        <div class="pc-num">05</div>
+        <div class="pc-type">Brand & Visual Design</div>
+        <div class="pc-name">Logofolio</div>
+        <div class="pc-desc">Brand identity systems, logomarks, and visual design work spanning SaaS products, mobile apps, and consumer brands.</div>
         <div class="pc-tags">
-          <span class="pc-tag">BI</span>
-          <span class="pc-tag">Executive UX</span>
-          <span class="pc-tag">Data</span>
+          <span class="pc-tag">Branding</span>
+          <span class="pc-tag">Identity</span>
+          <span class="pc-tag">Visual</span>
         </div>
         <div class="pc-arrow">→</div>
-      </div>
+      </a>
     </div>
   </section>
 

@@ -140,6 +140,7 @@
     nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
     .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
     .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
     .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
@@ -395,6 +396,36 @@
     .hc-met-l{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
     @media(max-width:900px){.hero-canvas{display:none}}
 
+    /* ─── ABOUT PHOTO ─── */
+    .about-photo-frame {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      z-index: 0;
+      opacity: 0;
+      animation: hcIn 0.8s ease 0.8s forwards;
+    }
+    .about-photo {
+      width: 100%;
+      display: block;
+      border-radius: 24px 24px 0 0;
+      border: 1px solid rgba(123,108,246,0.28);
+      border-bottom: none;
+      box-shadow: 0 -32px 100px rgba(123,108,246,0.2), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .about-photo-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--bg), transparent);
+      border-radius: 0 0 24px 24px;
+      pointer-events: none;
+    }
+
     /* ─── MOBILE ─── */
     @media (max-width:768px) {
       #cur, #cur-f { display:none; }
@@ -440,7 +471,8 @@
   <!-- Nav -->
   <nav id="nav">
     <a href="/" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
       <li><a href="/work.html">Work</a></li>
       <li><a href="/about.html" class="active">About</a></li>
       <li><a href="/#process">Process</a></li>
@@ -450,6 +482,7 @@
     <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </nav>
 
   <!-- ═══ HERO ═══ -->
@@ -458,72 +491,9 @@
     <div class="about-hero-glow"></div>
     <div class="about-hero-glow2"></div>
     <div class="hero-canvas" id="heroCanvas" aria-hidden="true">
-      <svg class="hc-svg" viewBox="0 0 600 860" preserveAspectRatio="none" fill="none">
-        <line x1="108" y1="174" x2="398" y2="248" stroke="rgba(123,108,246,0.11)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="398" y1="248" x2="352" y2="378" stroke="rgba(123,108,246,0.09)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="62"  y1="454" x2="352" y2="378" stroke="rgba(123,108,246,0.09)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="62"  y1="454" x2="242" y2="574" stroke="rgba(123,108,246,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
-        <line x1="352" y1="378" x2="242" y2="574" stroke="rgba(123,108,246,0.07)" stroke-width="1" stroke-dasharray="4 8"/>
-        <circle cx="108" cy="174" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="398" cy="248" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="62"  cy="454" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="352" cy="378" r="2.5" fill="rgba(123,108,246,0.28)"/>
-        <circle cx="242" cy="574" r="2.5" fill="rgba(123,108,246,0.28)"/>
-      </svg>
-      <div class="hc-node" data-depth="0.04" style="top:12%;left:5%">
-        <div class="hc-card" style="animation-name:hcF1">
-          <div class="hc-chip">Typography</div>
-          <div class="hc-aa">Aa</div>
-          <div class="hc-font-name">Plus Jakarta Sans</div>
-          <div class="hc-scale">
-            <span style="font-size:17px;font-weight:800;color:var(--text)">H1</span>
-            <span style="font-size:13px;font-weight:600;color:var(--text2)">H3</span>
-            <span style="font-size:11px;font-weight:400;color:var(--text3)">Body</span>
-          </div>
-        </div>
-      </div>
-      <div class="hc-node" data-depth="0.07" style="top:20%;right:5%">
-        <div class="hc-card" style="animation-name:hcF2">
-          <div class="hc-chip">Color Tokens</div>
-          <div class="hc-swatches">
-            <div class="hc-sw" style="background:#7B6CF6"></div>
-            <div class="hc-sw" style="background:#4ADE80"></div>
-            <div class="hc-sw" style="background:#FBB024"></div>
-            <div class="hc-sw" style="background:#F06292"></div>
-            <div class="hc-sw" style="background:#60A5FA"></div>
-          </div>
-          <div class="hc-token-name">#7B6CF6 — primary</div>
-        </div>
-      </div>
-      <div class="hc-node" data-depth="0.05" style="top:40%;left:3%">
-        <div class="hc-card" style="animation-name:hcF3;animation-duration:6.5s">
-          <div class="hc-chip">Layers</div>
-          <div class="hc-layer-row hc-layer-sel"><svg class="hc-ico" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>Navigation</div>
-          <div class="hc-layer-row"><svg class="hc-ico" viewBox="0 0 16 16"><rect x="1" y="5" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="4" y="1" width="8" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>Hero Section</div>
-          <div class="hc-layer-row"><svg class="hc-ico" viewBox="0 0 16 16"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Content Grid</div>
-          <div class="hc-layer-row"><svg class="hc-ico" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>Background</div>
-        </div>
-      </div>
-      <div class="hc-node" data-depth="0.09" style="top:32%;right:4%">
-        <div class="hc-card" style="animation-name:hcF1;animation-duration:4.8s">
-          <div class="hc-chip">Component</div>
-          <button class="hc-demo-btn">Primary Action ↗</button>
-          <div class="hc-state-row">
-            <span class="hc-state">Default</span>
-            <span class="hc-state hc-state-hov">Hover</span>
-            <span class="hc-state">Active</span>
-          </div>
-        </div>
-      </div>
-      <div class="hc-node" data-depth="0.06" style="top:58%;left:28%">
-        <div class="hc-card" style="animation-name:hcF2;animation-duration:6s">
-          <div class="hc-chip">Impact</div>
-          <div class="hc-met-grid">
-            <div class="hc-met"><div class="hc-met-v">9+</div><div class="hc-met-l">Years</div></div>
-            <div class="hc-met"><div class="hc-met-v" style="color:var(--green)">$4.3M</div><div class="hc-met-l">ARR Scaled</div></div>
-            <div class="hc-met"><div class="hc-met-v" style="color:var(--amber)">12+</div><div class="hc-met-l">Products</div></div>
-          </div>
-        </div>
+      <div class="about-photo-frame">
+        <img src="/images/Buddhpriya_Gautam.png" alt="Buddhpriya Gautam" class="about-photo">
+        <div class="about-photo-fade"></div>
       </div>
     </div>
     <div class="about-hero-inner">

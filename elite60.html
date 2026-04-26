@@ -69,6 +69,7 @@
     nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
     .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
     .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
     .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
@@ -219,7 +220,8 @@
 
   <nav id="nav">
     <a href="/" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
       <li><a href="/work.html">Work</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/#process">Process</a></li>
@@ -229,6 +231,7 @@
     <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </nav>
 
   <!-- HERO -->

@@ -67,6 +67,7 @@
     nav.scrolled { background:var(--nav-scrolled-bg); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); }
     .nav-logo { font-size:16px; font-weight:800; letter-spacing:-.03em; text-decoration:none; color:var(--text); }
     .nav-logo em { color:var(--accent); font-style:normal; }
+    .nav-right { display:flex; align-items:center; gap:12px; }
     .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
     .nav-links a { font-size:14px; font-weight:500; color:var(--text2); text-decoration:none; transition:color .2s; position:relative; }
     .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s; }
@@ -190,6 +191,21 @@
     .fc { font-size:12px; color:var(--text3); }
     .fc em { color:var(--accent); font-style:normal; }
 
+    /* App Screens */
+    .kn-screens-sec { padding:80px 0 100px; overflow:hidden; }
+    .kn-screens-inner { max-width:1200px; margin:0 auto; padding:0 56px 32px; }
+    .kn-screens-h { font-size:clamp(24px,3vw,32px); font-weight:700; letter-spacing:-.03em; color:var(--text); margin:12px 0 8px; }
+    .kn-screens-sub { font-size:15px; color:var(--text2); line-height:1.6; }
+    .kn-strip-wrap { overflow-x:auto; padding:40px 56px 32px; scrollbar-width:thin; scrollbar-color:rgba(74,222,128,.3) transparent; cursor:grab; user-select:none; }
+    .kn-strip-wrap:active { cursor:grabbing; }
+    .kn-strip-wrap::-webkit-scrollbar { height:4px; }
+    .kn-strip-wrap::-webkit-scrollbar-track { background:transparent; }
+    .kn-strip-wrap::-webkit-scrollbar-thumb { background:rgba(74,222,128,.25); border-radius:2px; }
+    .kn-strip { display:flex; gap:20px; width:max-content; }
+    .kn-phone { width:220px; height:390px; flex-shrink:0; border-radius:36px; overflow:hidden; border:1.5px solid rgba(74,222,128,.22); box-shadow:0 24px 56px rgba(0,0,0,.6),0 0 0 1px rgba(74,222,128,.06); transition:transform .3s,box-shadow .3s; }
+    .kn-phone:hover { transform:translateY(-10px) scale(1.02); box-shadow:0 40px 80px rgba(0,0,0,.7),0 0 0 1.5px rgba(74,222,128,.28); }
+    .kn-phone img { display:block; width:100%; height:100%; object-fit:cover; object-position:top center; }
+
     @media (max-width:768px) {
       #cur,#cur-f { display:none; } body { cursor:auto; }
       nav { padding:18px 24px; }
@@ -210,6 +226,9 @@
       .cta-wrap { padding:40px 24px; }
       .cta-btns { flex-direction:column; }
       footer { padding:24px; flex-direction:column; gap:8px; text-align:center; }
+      .kn-screens-inner { padding:0 24px 24px; }
+      .kn-strip-wrap { padding:32px 24px 24px; }
+      .kn-phone { width:160px; height:284px; border-radius:24px; }
     }
   </style>
 </head>
@@ -222,7 +241,8 @@
 
   <nav id="nav">
     <a href="/" class="nav-logo">BG<em>.</em></a>
-    <ul class="nav-links" id="nav-links">
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
       <li><a href="/work.html">Work</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/#process">Process</a></li>
@@ -232,6 +252,7 @@
     <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -413,6 +434,35 @@
     </div>
   </section>
 
+  <!-- APP SCREENS -->
+  <section class="kn-screens-sec">
+    <div class="kn-screens-inner">
+      <div class="tag rv">App Screens</div>
+      <h2 class="kn-screens-h rv d1">15 screens. One coherent system.</h2>
+      <p class="kn-screens-sub rv d2">Swipe through the full Knovelo UI — onboarding, feed, discovery, profile, and settings.</p>
+    </div>
+    <div class="kn-strip-wrap">
+      <div class="kn-strip">
+        <div class="kn-phone rv"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2054.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d1"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2055.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d2"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2056.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2057.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d1"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2058.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d2"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2059.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2060.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d1"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2061.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d2"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2062.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv"><img src="/images/knovelo/iOS%20Mobile%20%E2%80%93%2063.png" alt="Knovelo app screen" loading="lazy"></div>
+        <div class="kn-phone rv d1"><img src="/images/knovelo/iOS%20ad%20d%20more%20books%20in%20your%20profile.png" alt="Knovelo add books screen" loading="lazy"></div>
+        <div class="kn-phone rv d2"><img src="/images/knovelo/iOS%20profile%20with%20bottom%20menu.png" alt="Knovelo profile screen" loading="lazy"></div>
+        <div class="kn-phone rv"><img src="/images/knovelo/iOS%20profile%20edit%20page.png" alt="Knovelo profile edit screen" loading="lazy"></div>
+        <div class="kn-phone rv d1"><img src="/images/knovelo/iOS%20profile%20edit%20%26%20setting%20button%201.png" alt="Knovelo profile settings" loading="lazy"></div>
+        <div class="kn-phone rv d2"><img src="/images/knovelo/iOS%20profile%20edit%20%26%20setting%20button%202.png" alt="Knovelo profile settings" loading="lazy"></div>
+        <div class="kn-phone rv"><img src="/images/knovelo/Settings.png" alt="Knovelo settings screen" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-sec">
     <div class="cta-wrap rv">
@@ -457,6 +507,7 @@
     burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');document.body.style.overflow=navLinks.classList.contains('open')?'hidden':'';});
     navLinks.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open');document.body.style.overflow='';});});
     if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});}
+    (function(){const wrap=document.querySelector('.kn-strip-wrap');if(!wrap)return;let isDragging=false,startX=0,scrollLeft=0;wrap.addEventListener('mousedown',e=>{isDragging=true;startX=e.pageX-wrap.offsetLeft;scrollLeft=wrap.scrollLeft;});wrap.addEventListener('mouseleave',()=>{isDragging=false;});wrap.addEventListener('mouseup',()=>{isDragging=false;});wrap.addEventListener('mousemove',e=>{if(!isDragging)return;e.preventDefault();const x=e.pageX-wrap.offsetLeft;wrap.scrollLeft=scrollLeft-(x-startX)*1.2;});})();
     const themeBtn=document.getElementById('theme-toggle');
     const sunSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
     const moonSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
